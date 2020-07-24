@@ -1,0 +1,30 @@
+{
+  "name": "awesome-date-picker",
+  "version": "0.0.1",
+  "description": "A date-picker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "husky": "^4.2.5",
+    "lint-staged": "8.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Js-Monkey/awesome-date-picker.git"
+  },
+  "author": "jumodada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Js-Monkey/awesome-date-picker/issues"
+  },
+  "homepage": "https://github.com/Js-Monkey/awesome-date-picker#readme"
+}
