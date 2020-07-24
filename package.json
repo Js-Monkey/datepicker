@@ -4,7 +4,14 @@
   "description": "A date-picker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bc": "gulp build --gulpfile src/assets/gulpfile.js && cp-cli src/assets/lib lib",
+    "dev": "webpack-dev-server --config build/webpack.demo.config.js",
+    "prebp": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c build/rollup.config.ts",
+    "build:demo": "webpack --config build/webpack.demo.config.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "test:prod": "npm run lint && npm run test -- --no-cache"
   },
   "husky": {
     "hooks": {
