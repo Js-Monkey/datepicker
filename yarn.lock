@@ -5624,11 +5624,6 @@ flagged-respawn@^1.0.0:
   resolved "https://registry.npmjs.org/flagged-respawn/-/flagged-respawn-1.0.1.tgz#e7de6f1279ddd9ca9aac8a5971d618606b3aab41"
   integrity sha512-lNaHNVymajmk0OJMBn8fVUAU1BtDeKIqKoVhk4xAALB57aALg6b4W0MfJ/cUE0g9YBXy5XhSlPIpYIJ7HaY/3Q==
 
-flex-date-picker@^1.2.7:
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/flex-date-picker/-/flex-date-picker-1.3.1.tgz#92f3214dc996c7d8224013ab86c098ebbbf0cbb3"
-  integrity sha512-BCIcT35Ix2CswvCzZLTaNDvxc5HyMTEnDElKRo5VPE2m2oBSbCZ+bvr0eMgSqzuZ0dwTnErZuabgzCX0AYxRQw==
-
 flush-write-stream@^1.0.0, flush-write-stream@^1.0.2:
   version "1.1.1"
   resolved "https://registry.npmjs.org/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"

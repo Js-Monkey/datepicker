@@ -33,7 +33,6 @@
     "core-js": "^3.6.4",
     "cp-cli": "^2.0.0",
     "css-loader": "^3.2.0",
-    "flex-date-picker": "^1.2.7",
     "gulp": "^4.0.2",
     "gulp-cssmin": "^0.2.0",
     "gulp-sass": "^4.1.0",
