@@ -7,7 +7,6 @@ import './assets/styles/index.scss'
 import Icon from './components/icon'
 import Input from './components/Input'
 import Button from './components/button'
-import '../src/assets/src/date-time-picker.scss'
 Vue.component(demoCard.name, demoCard)
 Vue.component(Input.name, Input)
 Vue.component(Icon.name,Icon)

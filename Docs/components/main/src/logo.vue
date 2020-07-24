@@ -8,12 +8,11 @@
 </template>
 
 <script>
-    import Code from '../../../view/components/API/index.md'
 
     export default {
         name: "card",
         components: {
-            Code
+
         },
         data() {
             return {
