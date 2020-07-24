@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+npm-debug.log
+yarn-error.log
+lib
+.idea
+coverage
+waiter.config.js
+dist
+.Ds_Store/
+.rpt2_cache
+Docs
