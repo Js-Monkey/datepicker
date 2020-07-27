@@ -5,19 +5,16 @@ const viewFiles = require.context('../view', true)
 const views = viewFiles.keys().reduce((views, path) => {
     const value = viewFiles(path).default
     if (['404', '500'].indexOf(value.name) === -1) {
-        const viewPath = value.__file.replace(/^Docs/, '..')
-        let name = value.__file.replace(/${view}(.*?)${index}/,)
-        console.log(name)
+        let name = value.__file.match(/view\/(\S*)\/index/)[1]
         views.push({
             path: '/components/' + name,
             name,
-            component: () => import(viewPath)
+            component: () => import(`../view/${name}/index.md`)
         })
     }
     return views
 }, [])
 
-console.log(views)
 export default [
     {
         path: '/',
