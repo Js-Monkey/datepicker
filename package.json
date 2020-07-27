@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "A date-picker",
   "main": "dist/flexDatePicker.umd.js",
-  "style": "dist/index.css",
   "module": "dist/flexDatePicker.es5.js",
   "scripts": {
     "build:css": "gulp build --gulpfile build/gulpfile.js",

@@ -9,7 +9,7 @@ function compile() {
     return src('../src/assets/*.scss')
         .pipe(sass.sync())
         .pipe(rename(function (path) {
-            path.basename =  "index"
+            path.basename = "index"
             path.extname = ".css"
         }))
         .pipe(cssmin())
