@@ -1,0 +1,12 @@
+.test{
+  color: red;
+  &:hover{
+   color: blue;
+  }
+  &.test-child{
+    color: #0eade8;
+  }
+  &.test-child1{
+    color: #1a2a3a;
+  }
+}
