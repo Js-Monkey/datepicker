@@ -1,7 +1,9 @@
 import Main from '../components/main/main.vue'
 import Content from '../components/content'
-
+import defaultViews from './default'
 const viewFiles = require.context('../view', true)
+
+
 const views = viewFiles.keys().reduce((views, path) => {
     const value = viewFiles(path).default
     const isNotErrorPage = ['404','500'].indexOf(value.name) === -1
@@ -18,16 +20,7 @@ const views = viewFiles.keys().reduce((views, path) => {
         })
     }
     return views
-}, [
-    {
-        path: '/install',
-        name: '安装',
-        meta: {
-            type:'compass'
-        },
-        component: () => import('../view/install/index.md')
-    },
-])
+},defaultViews)
 
 export default [
     {
