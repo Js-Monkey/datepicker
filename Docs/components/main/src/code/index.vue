@@ -17,6 +17,7 @@
 <style lang="scss">
     .flex-main-code{
         width: 58vw;
+        min-width:calc(720px + 16vw);
        &-wrapper{
            padding-top: 40px;
            padding-bottom: 80px;
