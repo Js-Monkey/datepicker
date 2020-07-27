@@ -1,5 +1,5 @@
 {
-  "name": "awesome-date-picker",
+  "name": "flex-datepicker",
   "version": "0.0.1",
   "description": "A date-picker",
   "main": "index.js",
@@ -92,12 +92,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Js-Monkey/awesome-date-picker.git"
+    "url": "git+https://github.com/Js-Monkey/flex-datepicker.git"
   },
   "author": "jumodada",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Js-Monkey/awesome-date-picker/issues"
+    "url": "https://github.com/Js-Monkey/flex-datepicker/issues"
   },
-  "homepage": "https://github.com/Js-Monkey/awesome-date-picker#readme"
+  "homepage": "https://github.com/Js-Monkey/flex-datepicker#readme"
 }
