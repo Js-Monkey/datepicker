@@ -1,4 +1,4 @@
-import Main from '../components/main/main.vue'
+import Main from '../components/main/index.vue'
 import Content from '../components/content'
 import defaultViews from './default'
 const viewFiles = require.context('../view', true)
