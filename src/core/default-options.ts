@@ -1,6 +1,6 @@
 import {placement, datepickerType} from "../types/options"
 
-class InitOptionsByDate{
+class defaultOptions{
     placement:placement
     type:datepickerType
     zIndex:number
@@ -17,4 +17,4 @@ class InitOptionsByDate{
 
 
 
-export default InitOptionsByDate
+export default defaultOptions

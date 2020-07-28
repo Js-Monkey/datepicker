@@ -1,12 +1,15 @@
 import Options from "../types/options"
+import validateOptions from "./validator/options"
+import defaultOptions from "./default-options"
 
 export default class Flex {
     options: Options
     static el:any
-    constructor(initialOptions: any) {
-        this.options = initialOptions
+    constructor() {
+        this.options = new defaultOptions()
     }
     static create(el: HTMLInputElement, options: any) {
+        if (options && !validateOptions(options)) return
         return this
     }
 

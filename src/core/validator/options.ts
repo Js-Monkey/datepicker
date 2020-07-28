@@ -25,7 +25,7 @@ function checkFormat(name:OptionsKey,options:any) {
     }
 }
 
-function validate(name:OptionsKey,options:any) {
+function validate(name:OptionsKey,options:any):boolean {
     if(name in options&&checkFormat(name,options)){
         console.error(`Invalid ${name}`)
         return false
