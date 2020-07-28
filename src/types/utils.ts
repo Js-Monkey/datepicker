@@ -1,8 +1,14 @@
+/** @format */
+
 export interface Types {
-    Date:string
-    Object: string
-    Array: string
-    String: string
-    Number: string
-    Function: string
+  Boolean: string
+  Number: string
+  String: string
+  Function: string
+  Array: string
+  Date: string
+  RegExp: string
+  Object: string
+  Error: string
+  Symbol: string
 }
