@@ -9,7 +9,7 @@ export default class Flex {
         this.options = new defaultOptions()
     }
     static create(el: HTMLInputElement, options: any) {
-        if (options && !validateOptions(options)) return
+        if (!validateOptions(options)) return
         return this
     }
 
