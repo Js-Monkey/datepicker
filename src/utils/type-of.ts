@@ -1,17 +1,44 @@
-import {Types} from "../types/utils"
-const types:Types= {
-    Date: '[object Date]',
-    Object: '[object Object]',
-    Array: '[object Array]',
-    String: '[object String]',
-    Number: '[object Number]',
-    Function: '[object Function]'
+/** @format */
+
+import {Types} from '../types/utils'
+
+const types: Types = {
+  Boolean: '[object Boolean]',
+  Number: '[object Number]',
+  String: '[object String]',
+  Function: '[object Function]',
+  Array: '[object Array]',
+  Date: '[object Date]',
+  RegExp: '[object RegExp]',
+  Object: '[object Object]',
+  Error: '[object Error]',
+  Symbol: '[object Symbol]',
 }
 const toString = Object.prototype.toString
-const typeOf = (val:any, typeName:string)=> toString.call(val) === types[typeName]
 
-export const isNumber = (val:any):val is number => typeOf(val, 'Number') && !Number.isNaN(val)
-export const isObject = (val:any) => typeOf(val, 'Object')
-export const isFunc = (val:any):val is Function => typeOf(val, 'Function')
-export const isString = (val:any):val is string => typeOf(val, 'String')
-export const isArray = (val:any):val is any[] => typeOf(val, 'Array')
+const class2Type: any = {} as any
+
+Object.keys(types).forEach(key => {
+  const value = types[key]
+  class2Type[value] = key.toLowerCase()
+})
+
+const typeOf = (val: unknown) => {
+  if (val === null) {
+    return val + ''
+  }
+  return typeof val === 'object' || typeof val === 'function' ? class2Type[toString.call(val)] || 'object' : typeof val
+}
+
+export const isBoolean = (val: unknown): boolean => typeOf(val) === 'boolean'
+export const isNumber = (val: unknown): boolean => typeOf(val) === 'number'
+export const isString = (val: unknown): boolean => typeOf(val) === 'string'
+export const isFunction = (val: unknown): boolean => typeOf(val) === 'function'
+export const isArray = (val: unknown): boolean => typeOf(val) === 'array'
+export const isDate = (val: unknown): boolean => typeOf(val) === 'date'
+export const isRegExp = (val: unknown): boolean => typeOf(val) === 'regexp'
+export const isObject = (val: unknown): boolean => typeOf(val) === 'object'
+export const isError = (val: unknown): boolean => typeOf(val) === 'error'
+export const isSymbol = (val: unknown): boolean => typeOf(val) === 'symbol'
+export const isNull = (val: unknown): boolean => typeOf(val) === 'null'
+export const isUndefined = (val: unknown): boolean => typeOf(val) === 'undefined'
