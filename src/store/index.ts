@@ -1,8 +1,9 @@
 import {State, stateKey} from '../types/store'
+import initState from './state'
 
 const Store = (function () {
   let uid = 0
-  let states = [] as State[]
+  let states = [initState()] as any[]
 
   function get(key: stateKey) {
     return states[uid][key]
@@ -17,8 +18,8 @@ const Store = (function () {
   }
 
   function changeUID(el: HTMLElement) {
-    removeNull()
-    uid = states.findIndex(state => state.reference === el)
+    // todo
+    uid = 1
   }
 
   return {get, set, changeUID}

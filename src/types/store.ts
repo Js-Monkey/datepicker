@@ -1,10 +1,9 @@
-export type stateKey = 'elements' | 'reference' | 'date' | 'component'
+export type stateKey = 'components' | 'utils'
 
 export interface State {
-  reference: any
-  elements: any
+  components: any
+  utils: any
   date: any
-  component: any
 }
 
 export type Store = State[]
