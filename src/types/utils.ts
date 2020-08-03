@@ -1,5 +1,3 @@
-/** @format */
-
 export interface UtilObject {
   [key: string]: any
 }

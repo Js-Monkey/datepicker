@@ -1,5 +1,3 @@
-/** @format */
-
 // https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js
 import {isIE, isNative} from './env'
 /*

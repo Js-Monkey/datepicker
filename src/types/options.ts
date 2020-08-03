@@ -1,5 +1,3 @@
-/** @format */
-
 export type placement = 'top' | 'left' | 'bottom' | 'right'
 export type datepickerType = 'date' | 'date-range'
 

@@ -1,5 +1,3 @@
-/** @format */
-
 import {getNodeName} from './node'
 
 export function isInput(el: HTMLElement): boolean {
