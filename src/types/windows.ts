@@ -1,5 +1,3 @@
-/** @format */
-
 export type Window = {
   innerHeight: number
   offsetHeight: number

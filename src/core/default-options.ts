@@ -1,5 +1,3 @@
-/** @format */
-
 import {placement, datepickerType} from '../types/options'
 
 class defaultOptions {
