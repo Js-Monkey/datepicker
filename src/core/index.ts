@@ -6,7 +6,7 @@ import defaultOptions from './default-options'
 
 export default class Flex {
   options: Options
-  static el: any
+  static el: HTMLInputElement
   constructor() {
     this.options = new defaultOptions()
   }

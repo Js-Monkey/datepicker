@@ -1,5 +1,3 @@
-/** @format */
-
 import {Window} from '../../types/windows'
 
 export function getNodeName(element: Node | Window): string | null {

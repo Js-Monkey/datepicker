@@ -2,9 +2,9 @@ export const getNodeName = (element: HTMLElement) => {
   return element ? (element.nodeName || '').toLowerCase() : null
 }
 
-export const getParentNode = (el: any) => {
+export const getParentNode = (el: HTMLElement): any => {
   if (getNodeName(el) === 'html') return el
-  return el.parentNode || el.host || document.ownerDocument || document.documentElement
+  return el.parentNode || document.ownerDocument || document.documentElement
 }
 
 export const isBody = (node: HTMLElement) => {
@@ -16,7 +16,7 @@ export const isHTMLElement = (node: HTMLElement) => {
   return node instanceof window.HTMLElement
 }
 
-export const getAllScrollParents = (node: HTMLElement, list?: any[]): unknown => {
+export const getAllScrollParents = (node: HTMLElement, list?: HTMLElement[]): unknown => {
   if (!list) list = []
   if (isBody(node)) return list
   if (isHTMLElement(node)) {

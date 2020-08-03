@@ -1,5 +1,3 @@
-/** @format */
-
 export function isElementExist(el: HTMLElement): boolean {
   if (!el) return false
   const bodyChildren = document.body.childNodes
