@@ -23,8 +23,8 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "eslint",
       "prettier --write",
+      "eslint",
       "git add"
     ]
   },
