@@ -1,14 +1,12 @@
-/** @format */
-
 module.exports = {
   printWidth: 120,
   semi: false,
   singleQuote: true,
-  trailingComma: 'all',
+  trailingComma: 'none',
   bracketSpacing: false,
   jsxBracketSameLine: true,
   arrowParens: 'avoid',
-  insertPragma: true,
+  insertPragma: false,
   tabWidth: 2,
   useTabs: false,
 }

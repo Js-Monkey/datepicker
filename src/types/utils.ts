@@ -1,14 +1,20 @@
 /** @format */
 
+export interface UtilObject {
+  [key: string]: any
+}
+
+export interface UtilFn extends UtilObject {
+  (...arg: any): unknown
+}
+
 export interface Types {
-  Boolean: string
   Number: string
   String: string
   Function: string
   Array: string
   Date: string
-  RegExp: string
   Object: string
-  Error: string
-  Symbol: string
 }
+
+export type TypeName = 'Number' | 'String' | 'Function' | 'Array' | 'Date' | 'Object'

@@ -1,13 +1,11 @@
-/** @format */
-
-import {Options, OptionsKey} from '../../types/options'
+import Options, {OptionsKey} from '../../types/options'
 import {isArray, isObject, isString} from '../../utils/type-of'
 
 const acceptOptions: Options = {
   placement: ['top', 'left', 'bottom', 'right'],
   type: ['date', 'date-range'],
   unlinkPanels: [true, false],
-  format: (val: any) => isString(val),
+  format: (val: any) => isString(val)
 }
 
 const checkLists: OptionsKey[] = ['placement', 'type', 'format']

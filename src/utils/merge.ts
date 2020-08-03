@@ -2,7 +2,7 @@
 
 import {isObject} from './type-of'
 
-export default function deepMerge(...objs: unknown[]): unknown {
+export default function deepMerge(...objs: any[]): unknown {
   const target = Object.create(null)
   objs.forEach(source => {
     if (source) {
@@ -21,7 +21,7 @@ export default function deepMerge(...objs: unknown[]): unknown {
 }
 
 export function mergeOptions<T>(source: T, target?: T): unknown {
-  const mergeOptions = deepMerge(Object.create(null), source)
+  const mergeOptions: any = deepMerge(Object.create(null), source)
   if (target) {
     for (const key in target) {
       if (typeof target[key] !== 'undefined') {

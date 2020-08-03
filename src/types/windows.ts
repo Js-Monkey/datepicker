@@ -8,8 +8,8 @@ export type Window = {
   pageXOffset: number
   pageYOffset: number
   getComputedStyle: typeof getComputedStyle
-  addEventListener(type: any, listener: any, optionsOrUseCapture?: any): void
-  removeEventListener(type: any, listener: any, optionsOrUseCapture?: any): void
+  addEventListener(type: unknown, listener: unknown, optionsOrUseCapture?: unknown): void
+  removeEventListener(type: unknown, listener: unknown, optionsOrUseCapture?: unknown): void
   Element: Element
   HTMLElement: HTMLElement
   Node: Node

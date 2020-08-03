@@ -42,7 +42,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const observer = new MutationObserver(flushCallbacks)
   const textNode = document.createTextNode(String(counter))
   observer.observe(textNode, {
-    characterData: true,
+    characterData: true
   })
   timerFunc = () => {
     counter = (counter + 1) % 2
