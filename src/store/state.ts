@@ -15,7 +15,8 @@ const handler = {
     return target.components[key]
   },
   set(target: any, key: any, value: any, receiver: any) {
-    return Reflect.set(target, key, value, receiver)
+    target.components[key] = value
+    return Reflect.set(target.components, key, value, receiver)
   }
 }
 

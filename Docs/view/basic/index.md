@@ -8,7 +8,6 @@
 export default {
     mounted(){
         let dp = new Flex(this.$refs.int.$el)
-            console.log(dp.getState())
     },
 
 }

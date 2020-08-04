@@ -1,4 +1,4 @@
-import {isObject} from './type-of'
+import {isObject} from './typeOf'
 import {UtilObject} from '../types/utils'
 
 export default function deepMerge(...objs: UtilObject[]): UtilObject {

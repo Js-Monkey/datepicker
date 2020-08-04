@@ -3,11 +3,6 @@ import {isIE, isNative} from './env'
 /*
  ** 在原有的 nextTick 上面，增添了对同一函数的滤除。
  */
-
-interface callback {
-  $FLEXPCIKERTYPE: string
-}
-
 const callbacks: any[] = []
 let pending = false
 
@@ -56,12 +51,13 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   }
 }
 
-function isInCallbacks(cb?: callback) {
+function isInCallbacks(cb?: () => string) {
   if (!cb) return true
-  return callbacks.some(_cb => _cb.toString() === cb.toString() && _cb.$FLEXPCIKERTYPE === cb.$FLEXPCIKERTYPE)
+  // todo缺少判断
+  return callbacks.some(_cb => _cb.toString() === cb.toString())
 }
 
-export default function nextTick(cb?: callback): any {
+export default function nextTick(cb?: () => string): any {
   let _resolve: (ctx: any) => void
 
   if (isInCallbacks(cb)) return

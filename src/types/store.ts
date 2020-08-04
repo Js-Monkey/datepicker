@@ -1,4 +1,4 @@
-export type stateKey = 'components' | 'utils'
+export type stateKey = 'components' | 'utils' | 'date'
 
 export interface State {
   components: any

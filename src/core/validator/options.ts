@@ -1,5 +1,5 @@
 import Options, {OptionsKey} from '../../types/options'
-import {isArray, isObject, isString} from '../../utils/type-of'
+import {isArray, isObject, isString} from '../../utils/typeOf'
 
 const acceptOptions: Options = {
   placement: ['top', 'left', 'bottom', 'right'],

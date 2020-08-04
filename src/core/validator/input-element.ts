@@ -1,5 +1,5 @@
-import {getNodeName} from '../../utils/dom-utils/node'
+import {getNodeName} from '../../utils/getNodeName'
 
-export function isInputElement(el: HTMLInputElement): boolean {
+export function isInputElement(el: Node | null): boolean {
   return getNodeName(el) === 'input'
 }

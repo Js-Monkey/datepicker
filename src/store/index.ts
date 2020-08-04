@@ -19,7 +19,7 @@ const Store = (function () {
 
   function changeUID(el: HTMLElement) {
     // todo
-    uid = 1
+    uid = 1 // 防止eslint报错，暂时这样写
   }
 
   return {get, set, changeUID}

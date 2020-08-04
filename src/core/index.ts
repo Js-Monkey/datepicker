@@ -1,7 +1,8 @@
 import Options from '../types/options'
 import validateOptions from './validator/options'
 import defaultOptions from './default-options'
-import {get} from '../store'
+import {findInputElement} from '../utils/findInputElement'
+import {isInputElement} from './validator/input-element'
 
 export default class Flex {
   options: Options
@@ -12,11 +13,9 @@ export default class Flex {
   }
 
   static create(el: HTMLInputElement, options: Options) {
+    const inputEl = findInputElement(el)
+    if (!isInputElement(inputEl)) return
     if (!validateOptions(options)) return
     return this
-  }
-
-  getState() {
-    return get('name')
   }
 }

@@ -1,7 +1,7 @@
 export default class Components {
-  name: number
+  reference: any
 
   constructor() {
-    this.name = 123
+    this.reference = null
   }
 }
