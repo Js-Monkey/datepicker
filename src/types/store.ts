@@ -3,7 +3,7 @@ export interface stateComponent {
 }
 
 export interface State extends stateComponent {
-  components: any
+  components: stateComponent
   utils: any
   date: any
 }

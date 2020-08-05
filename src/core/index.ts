@@ -17,7 +17,7 @@ export default class Flex {
     const inputEl = findInputElement(el)
     if (!isInputElement(inputEl)) return
     if (!validateOptions(options)) return
-    set('reference', 123)
+    set('reference', inputEl)
     return this
   }
 }
