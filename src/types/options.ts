@@ -10,7 +10,3 @@ export default interface Options {
   format?: string | ((val: unknown) => boolean)
   disabled?: (date: Date) => boolean
 }
-
-export type OptionsKey = 'placement' | 'type' | 'unlinkPanels' | 'offset' | 'zIndex' | 'format' | 'disabled'
-
-export type formatKey = 'dd' | 'd' | 'yyyy' | 'yy' | 'M' | 'MM'

@@ -1,4 +1,4 @@
-import Options, {OptionsKey} from '../../types/options'
+import Options from '../../types/options'
 import {isArray, isObject, isString} from '../../utils/typeOf'
 
 const acceptOptions: Options = {
@@ -8,9 +8,9 @@ const acceptOptions: Options = {
   format: (val: unknown) => isString(val)
 }
 
-const checkLists: OptionsKey[] = ['placement', 'type', 'format']
+const checkLists: (keyof Options)[] = ['placement', 'type', 'format']
 
-function checkFormat(name: OptionsKey, options: Options) {
+function checkFormat(name: keyof Options, options: Options) {
   const optionVal = acceptOptions[name] as any
   if (isArray(optionVal)) {
     return optionVal.indexOf(options[name]) === -1
@@ -19,7 +19,7 @@ function checkFormat(name: OptionsKey, options: Options) {
   }
 }
 
-function validate(name: OptionsKey, options: Options): boolean {
+function validate(name: keyof Options, options: Options): boolean {
   if (name in options && checkFormat(name, options)) {
     console.error(`Invalid ${name}`)
     return false

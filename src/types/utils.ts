@@ -14,5 +14,3 @@ export interface Types {
   Date: string
   Object: string
 }
-
-export type TypeName = 'Number' | 'String' | 'Function' | 'Array' | 'Date' | 'Object'

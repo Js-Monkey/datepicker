@@ -1,15 +1,15 @@
-import {State, stateKey} from '../types/store'
+import {State} from '../types/store'
 import initState from './state'
 
 const Store = (function () {
   let uid = 0
   let states = [initState()] as any[]
 
-  function get(key: stateKey) {
+  function get(key: keyof State) {
     return states[uid][key]
   }
 
-  function set(key: stateKey, data: unknown) {
+  function set(key: keyof State, data: unknown) {
     states[uid][key] = data
   }
 

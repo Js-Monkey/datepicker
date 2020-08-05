@@ -1,4 +1,4 @@
-import {TypeName, Types} from '../types/utils'
+import {Types} from '../types/utils'
 
 const types: Types = {
   Date: '[object Date]',
@@ -9,7 +9,7 @@ const types: Types = {
   Function: '[object Function]'
 }
 const toString = Object.prototype.toString
-const typeOf = (val: unknown, typeName: TypeName) => toString.call(val) === types[typeName]
+const typeOf = (val: unknown, typeName: keyof Types) => toString.call(val) === types[typeName]
 
 export const isNumber = (val: unknown): val is number => typeOf(val, 'Number') && !Number.isNaN(val)
 export const isObject = (val: unknown) => typeOf(val, 'Object')

@@ -1,6 +1,8 @@
-export type stateKey = 'components' | 'utils' | 'date'
+export interface stateComponent {
+  reference: null | HTMLElement
+}
 
-export interface State {
+export interface State extends stateComponent {
   components: any
   utils: any
   date: any
