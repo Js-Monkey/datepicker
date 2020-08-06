@@ -9,3 +9,7 @@ export interface State extends stateComponent {
 }
 
 export type Store = State[]
+
+export interface componentsWatchers<T = (...arg: unknown[]) => void> {
+  reference: T
+}

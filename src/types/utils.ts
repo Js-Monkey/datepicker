@@ -14,3 +14,14 @@ export interface Types {
   Date: string
   Object: string
 }
+
+// export interface NodeOptions<T = (el: HTMLElement, node: CreateNodeArguments) => any> {
+//   event: T
+//   class: T
+//   style: T
+//   update: T
+//   children: T
+//   name: () => void
+//   val: T
+//   initial: T
+// }

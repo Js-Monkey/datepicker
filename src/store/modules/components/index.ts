@@ -1,18 +1,23 @@
-class componentsState {
-  reference: any
-  popover: any
+import {componentsWatchers, stateComponent} from '../../../types/store'
+import {watchReference} from './watcher'
 
-  constructor() {
-    this.reference = null
+function componentsState(): stateComponent {
+  return {
+    reference: null
   }
 }
 
+const watchers: componentsWatchers = {
+  reference: watchReference
+}
+
 const handler = {
-  set(target: any, key: any, value: any, receiver: any) {
+  set(target: stateComponent, key: keyof stateComponent, value: unknown, receiver: unknown) {
+    watchers[key] && watchers[key](target, key, value)
     return Reflect.set(target, key, value, receiver)
   }
 }
 
-export default function storeComponents(): ProxyConstructor {
-  return new Proxy(new componentsState(), handler)
+export default function (): stateComponent {
+  return new Proxy(componentsState(), handler)
 }

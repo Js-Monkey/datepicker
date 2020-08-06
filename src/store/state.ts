@@ -1,11 +1,12 @@
 import storeDate from './modules/date'
+import storeComponents from './modules/components'
 
 class InitState {
   components: any
   utils: any
   date: any
   constructor() {
-    console.log(this.components.reference)
+    this.components = storeComponents()
     this.utils = null
     this.date = new storeDate()
   }
