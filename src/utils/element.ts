@@ -48,12 +48,12 @@
 //   return svg
 // }
 //
-// export function createNode(node: any): Element | HTMLElement {
-//   if (node.el && isFunc(node.el)) return (node.el as any)()
-//   if (node.el) return node.el as any
-//   const el = node.name === 'svg' ? createSVG(node.val) : createEL(node.name)
-//   Object.keys(node).forEach(key => {
-//     nodeOptions[key](el as HTMLElement, node)
+// export function createNode(options: any): Element | HTMLElement {
+//   if (options.el && isFunc(options.el)) return (options.el as any)()
+//   if (options.el) return options.el as any
+//   const el = options.name === 'svg' ? createSVG(options.val) : createEL(options.name)
+//   Object.keys(options).forEach(key => {
+//     nodeOptions[key](el as HTMLElement, options)
 //   })
 //   return el
 // }
