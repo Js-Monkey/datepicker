@@ -1,15 +1,37 @@
+import Options from './options'
+
+type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
+type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
+type utilWatcher = (target: stateUtil, key: keyof utilWatchers, value: unknown) => void
+
 export interface stateComponent {
-  reference: null | HTMLElement
+  reference?: null | HTMLElement
 }
 
-export interface State extends stateComponent {
+export interface stateDate<T = Date> {
+  startDate?: T
+}
+
+export interface stateUtil {
+  options?: Options
+}
+
+export interface componentsWatchers<T = componentWatcher> {
+  reference: T
+}
+
+export interface dateWatchers<T = dateWatcher> {
+  startDate: T
+}
+
+export interface utilWatchers<T = utilWatcher> {
+  options: T
+}
+
+export interface State extends stateComponent, stateDate, stateUtil {
   components: stateComponent
-  utils: any
-  date: any
+  utils: stateUtil
+  date: stateDate
 }
 
 export type Store = State[]
-
-export interface componentsWatchers<T = (...arg: unknown[]) => void> {
-  reference: T
-}

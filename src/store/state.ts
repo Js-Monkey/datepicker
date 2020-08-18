@@ -1,24 +1,25 @@
 import storeDate from './modules/date'
 import storeComponents from './modules/components'
+import storeUtil from './modules/util'
+import {State} from '../types/store'
 
-class InitState {
-  components: any
-  utils: any
-  date: any
-  constructor() {
-    this.components = storeComponents()
-    this.utils = null
-    this.date = new storeDate()
+function State(): State {
+  return {
+    components: storeComponents(),
+    utils: storeUtil(),
+    date: storeDate()
   }
 }
 
-export default function initState(): ProxyConstructor {
-  return new Proxy(new InitState(), {
-    get(target: any, key: any) {
-      return target.components[key]
+export default function initState(): State {
+  return new Proxy(State(), {
+    get(target: State, key: keyof State) {
+      // if(['reference'].indexOf(key)>-1){
+      //   return target.components[key]
+      // }
     },
-    set(target: any, key: any, value: any) {
-      target.components[key] = value
+    set(target: State, key: keyof State, value: any) {
+      // target.components[key] = value
       return true
     }
   })

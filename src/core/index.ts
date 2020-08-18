@@ -3,7 +3,7 @@ import validateOptions from './validator/options'
 import defaultOptions from './default-options'
 import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
-import {set} from '../store'
+import {set, get} from '../store'
 
 export default class Flex {
   options: Options
@@ -18,6 +18,7 @@ export default class Flex {
     if (!isInputElement(inputEl)) return
     if (!validateOptions(options)) return
     set('reference', inputEl)
+    console.log(get('reference'))
     return this
   }
 }
