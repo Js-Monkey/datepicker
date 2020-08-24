@@ -13,7 +13,7 @@ const watchers: componentsWatchers = {
 
 const handler = {
   set(target: stateComponent, key: keyof stateComponent, value: unknown, receiver: unknown) {
-    watchers[key] && watchers[key](target, key, value)
+    watchers[key](target, key, value)
     return Reflect.set(target, key, value, receiver)
   }
 }

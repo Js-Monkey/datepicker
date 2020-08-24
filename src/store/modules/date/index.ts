@@ -13,7 +13,7 @@ const watchers: dateWatchers = {
 
 const handler = {
   set(target: stateDate, key: keyof stateDate, value: unknown, receiver: unknown) {
-    watchers[key] && watchers[key](target, key, value)
+    watchers[key](target, key, value)
     return Reflect.set(target, key, value, receiver)
   }
 }

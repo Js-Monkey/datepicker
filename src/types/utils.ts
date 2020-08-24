@@ -15,7 +15,7 @@ export interface Types {
   Object: string
 }
 
-export interface NodeOptions<T = (el: HTMLElement, options: any) => any> {
+export interface NodeOptions<T = (el: HTMLElement, options: unknown) => unknown> {
   event: T
   class: T
   style: T

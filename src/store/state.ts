@@ -11,15 +11,17 @@ function State(): State {
   }
 }
 
+const proxyName = (target: State, key: keyof State) => Object.keys(target).find(k => key in target[k as never])
+
 export default function initState(): State {
   return new Proxy(State(), {
     get(target: State, key: keyof State) {
-      // if(['reference'].indexOf(key)>-1){
-      //   return target.components[key]
-      // }
+      const name = proxyName(target, key) as keyof State
+      return (target as never)[name][key]
     },
-    set(target: State, key: keyof State, value: any) {
-      // target.components[key] = value
+    set(target: State, key: keyof State, value: unknown) {
+      const name = proxyName(target, key) as keyof State
+      ;(target as any)[name][key] = value
       return true
     }
   })

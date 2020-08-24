@@ -2,9 +2,9 @@ export const getNodeName = (element: HTMLElement) => {
   return element ? (element.nodeName || '').toLowerCase() : null
 }
 
-export const getParentNode = (el: HTMLElement): any => {
+export const getParentNode = (el: HTMLElement): HTMLElement => {
   if (getNodeName(el) === 'html') return el
-  return el.parentNode || document.ownerDocument || document.documentElement
+  return (el.parentNode || document.ownerDocument || document.documentElement) as HTMLElement
 }
 
 export const isBody = (node: HTMLElement) => {

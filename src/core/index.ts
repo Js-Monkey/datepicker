@@ -18,7 +18,6 @@ export default class Flex {
     if (!isInputElement(inputEl)) return
     if (!validateOptions(options)) return
     set('reference', inputEl)
-    console.log(get('reference'))
     return this
   }
 }
