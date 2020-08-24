@@ -1,8 +1,8 @@
-export type placement = 'top' | 'left' | 'bottom' | 'right'
+export type Placement = 'top' | 'left' | 'bottom' | 'right'
 export type datepickerType = 'date' | 'date-range'
 
 export default interface Options {
-  placement: placement | placement[]
+  placement: Placement | Placement[]
   type?: datepickerType | datepickerType[]
   unlinkPanels?: boolean | boolean[]
   offset?: number

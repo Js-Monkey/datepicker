@@ -15,4 +15,4 @@ export const isNumber = (val: unknown): val is number => typeOf(val, 'Number') &
 export const isObject = (val: unknown) => typeOf(val, 'Object')
 export const isFunc = (val: unknown): val is () => string => typeOf(val, 'Function')
 export const isString = (val: unknown): val is string => typeOf(val, 'String')
-export const isArray = (val: unknown): val is any[] => typeOf(val, 'Array')
+export const isArray = (val: unknown): val is unknown[] => typeOf(val, 'Array')

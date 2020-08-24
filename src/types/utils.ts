@@ -3,7 +3,7 @@ export interface UtilObject {
 }
 
 export interface UtilFn extends UtilObject {
-  (...arg: any): unknown
+  (...arg: never): unknown
 }
 
 export interface Types {
@@ -13,6 +13,20 @@ export interface Types {
   Array: string
   Date: string
   Object: string
+}
+
+export interface Rect<T = number> {
+  width: T
+  height: T
+  left: T
+  top: T
+}
+
+export interface Transform<T = string> {
+  top: T
+  left: T
+  bottom: T
+  right: T
 }
 
 export interface NodeOptions<T = (el: HTMLElement, options: unknown) => unknown> {

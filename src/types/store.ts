@@ -4,8 +4,9 @@ type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, 
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
 type utilWatcher = (target: stateUtil, key: keyof utilWatchers, value: unknown) => void
 
-export interface stateComponent {
-  reference?: null | HTMLElement
+export interface stateComponent<T = null | HTMLElement> {
+  reference: T
+  popover: T
 }
 
 export interface stateDate<T = Date> {
@@ -18,6 +19,7 @@ export interface stateUtil {
 
 export interface componentsWatchers<T = componentWatcher> {
   reference: T
+  popover: T
 }
 
 export interface dateWatchers<T = dateWatcher> {
