@@ -1,39 +1,8 @@
 // import {isArray, isFunc} from './typeOf'
 // import {on} from './event'
+// import {NodeOptions} from '../types/utils'
 //
-// const nodeOptions: any = {
-//   event: (el: Event, node: any) => {
-//     if (isArray(node.event)) {
-//       node.event.forEach((e: {name: any; event: any}) => {
-//         on(el, e.name, e.event as any)
-//       })
-//     } else {
-//       on(el, 'click', node.event as any)
-//     }
-//   },
-//   val: (el, node) => {
-//     if (node.name !== 'svg') {
-//       ;(el as HTMLElement).innerText = node.val
-//     }
-//   },
-//   class: (el, node) => el.setAttribute('class', (node.class as any).join(' ')),
-//   style: (el, node) => el.setAttribute('style', node.style as any),
-//   update: (el, node) => node.update?.method(el, node.update?.name),
-//   children: (el, node) => {
-//     node.children?.forEach(child => {
-//       const childNode = createNode(child)
-//       el.appendChild(childNode)
-//     })
-//   },
-//   name: () => {
-//     // todo
-//   },
-//   initial: (el, node) => {
-//     if (node.initial === 'hidden') {
-//       addAttr(el, 'display:none', 'style')
-//     }
-//   }
-// }
+// const nodeOptions = {}
 //
 // export function createEL(tagName?: string): HTMLElement {
 //   if (!tagName) tagName = 'div'
@@ -48,7 +17,7 @@
 //   return svg
 // }
 //
-// export function createNode(options: any): Element | HTMLElement {
+// export function createNode(options: NodeOptions): Element | HTMLElement {
 //   if (options.el && isFunc(options.el)) return (options.el as any)()
 //   if (options.el) return options.el as any
 //   const el = options.name === 'svg' ? createSVG(options.val) : createEL(options.name)

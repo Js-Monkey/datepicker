@@ -29,7 +29,7 @@ export interface Transform<T = string> {
   right: T
 }
 
-export interface NodeOptions<T = (el: HTMLElement, options: unknown) => unknown> {
+export interface NodeOptions<T = (el: HTMLElement, options: unknown) => void> {
   event: T
   class: T
   style: T

@@ -8,10 +8,9 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-export function createPopover() {
-  // const {type} = getState('options')
-  // return createNode(popoverByType[type as 'date'])
-}
+// export function createPopover(type) {
+//   return createNode(popoverByType[type as 'date'])
+// }
 
 export function setPopoverLocation(popover: HTMLElement, reference: HTMLElement, placement: keyof Transform) {
   if (!popover || popover.style.display === 'none') return
