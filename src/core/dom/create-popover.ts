@@ -40,15 +40,3 @@ export function getPosition({top, left, height, width}: Rect): Transform<{left: 
     right: {top: _tTop, left: _rLeft}
   }
 }
-
-export function dispatchChange() {
-  // nextTick(() => {
-  //   const {type} = getState('options')
-  //   const onChange = getState('dateChange')
-  //   const [startDate, endDate] = [getState('date'), getState('endDate')]
-  //   const date = type === 'date-range' ? [startDate, endDate] : startDate
-  //   if (onChange) {
-  //     onChange(date)
-  //   }
-  // })
-}

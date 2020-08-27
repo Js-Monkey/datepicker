@@ -29,13 +29,33 @@ export interface Transform<T = string> {
   right: T
 }
 
-export interface NodeOptions<T = (el: HTMLElement, options: unknown) => void> {
+export type eventType = 'click' | 'mouseenter' | 'mouseleave'
+
+export type eventHandler = (e: Event) => unknown
+
+export interface EventListener {
+  name: eventType
+  handler: eventHandler
+}
+
+type _Event<T> = T extends eventHandler ? T : EventListener
+
+export interface CreateElementOptions<U = eventHandler> {
+  name?: 'svg' | 'span' | 'div' | 'ul' | 'li'
+  innerText?: string
+  event?: _Event<U>
+  class?: string[]
+  style?: string
+  children?: CreateElementOptions[]
+  initial?: 'hidden'
+}
+
+export interface Handler<T = (el: HTMLElement | Element, options: CreateElementOptions) => void> {
   event: T
   class: T
   style: T
-  update: T
   children: T
   name: () => void
-  val: T
+  innerText: T
   initial: T
 }
