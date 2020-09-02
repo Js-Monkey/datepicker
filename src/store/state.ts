@@ -1,13 +1,13 @@
-import storeDate from './modules/date'
-import storeComponents from './modules/components'
-import storeUtil from './modules/util'
+import date from './modules/date'
+import components from './modules/components'
+import utils from './modules/util'
 import {State} from '../types/store'
 
 function State(): State {
   return {
-    components: storeComponents(),
-    utils: storeUtil(),
-    date: storeDate()
+    components: components(),
+    utils: utils(),
+    date: date()
   }
 }
 
@@ -19,10 +19,10 @@ export default function initState(): State {
       const name = proxyName(target, key) as keyof State
       return (target as never)[name][key]
     },
-    set(target: State, key: keyof State, value: unknown) {
+    set(target: State, key: keyof State, value: unknown, receiver) {
       const name = proxyName(target, key) as keyof State
-      ;(target as any)[name][key] = value
-      return true
+      console.log(target)
+      return Reflect.set(target[name], key, value, receiver)
     }
   })
 }

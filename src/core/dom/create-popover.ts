@@ -1,5 +1,7 @@
 import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
+import {createElement} from '../../utils/element'
+import {wrapper} from '../../utils/classes'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -8,22 +10,24 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-// export function createPopover(type) {
-//   return createNode(popoverByType[type as 'date'])
-// }
+export function createPopover(): HTMLElement | Element {
+  return createElement({
+    class: [wrapper]
+  })
+}
 
-export function setPopoverLocation(popover: HTMLElement, reference: HTMLElement, placement: keyof Transform) {
+export function setPopoverLocation(popover: HTMLElement, reference: HTMLElement, placement: keyof Transform): void {
   if (!popover || popover.style.display === 'none') return
   const rect = reference.getBoundingClientRect()
   setPosition(popover, placement, rect)
   setTransform(popover, placement)
 }
 
-export function setTransform(el: HTMLElement, placement: keyof Transform) {
+export function setTransform(el: HTMLElement, placement: keyof Transform): void {
   nextTick(() => (el.style.transform = transform[placement]))
 }
 
-export function setPosition(el: HTMLElement, placement: keyof Transform, rect: Rect) {
+export function setPosition(el: HTMLElement, placement: keyof Transform, rect: Rect): void {
   const position = getPosition(rect)
   Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[placement][attr] + 'px'))
 }

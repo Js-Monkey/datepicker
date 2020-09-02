@@ -12,24 +12,16 @@ const handler: Handler = {
       on(el, 'click', ops.event as eventHandler)
     }
   },
-  class: () => {
-    //todo
+  class: (el, ops) => el.setAttribute('class', ops.class!.join(' ')),
+  style: (el, ops) => resetAttr(el, ops.style as string, 'style'),
+  children: (el, ops) => {
+    ops.children?.forEach(child => {
+      el.appendChild(createElement(child))
+    })
   },
-  style: () => {
-    //todo
-  },
-  children: () => {
-    //todo
-  },
-  name: () => {
-    //todo
-  },
-  innerText: () => {
-    //todo
-  },
-  initial: () => {
-    //todo
-  }
+  name: () => null,
+  innerText: (el, ops) => ((el as HTMLElement).innerText = ops.innerText as string),
+  initial: el => addAttr(el, 'display:none', 'style')
 }
 
 export function createEL(tagName?: string): HTMLElement {
@@ -60,24 +52,18 @@ export function appendChild(children: Element | Element[], parent?: Element): vo
       parent?.appendChild(child)
     })
   } else {
-    parent.appendChild(children as Element)
+    parent.appendChild(children)
   }
 }
 
-export function resetAttr(el: HTMLElement, val: string, name?: string) {
+export function resetAttr(el: HTMLElement | Element, val: string, name?: string): void {
   if (!name) name = 'class'
   el.setAttribute(name, val)
 }
 
-export function addAttr(el: HTMLElement, val: string, name?: string) {
+export function addAttr(el: HTMLElement | Element, val: string, name?: string): void {
   if (!name) name = 'class'
   const attr = el.getAttribute(name)
-  if (attr) {
-    if (attr.indexOf(val) === -1) {
-      val += ' ' + attr
-      el.setAttribute(name, val)
-    }
-  } else {
-    el.setAttribute(name, val)
-  }
+  if (attr && attr.indexOf(val) === -1) val += ' ' + attr
+  el.setAttribute(name, val)
 }

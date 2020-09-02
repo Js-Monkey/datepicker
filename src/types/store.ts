@@ -30,7 +30,7 @@ export interface utilWatchers<T = utilWatcher> {
   options: T
 }
 
-export interface State extends stateComponent, stateDate, stateUtil {
+export interface State {
   components: stateComponent
   utils: stateUtil
   date: stateDate
