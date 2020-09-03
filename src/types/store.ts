@@ -36,14 +36,20 @@ export interface State {
   date: stateDate
 }
 
-interface WatchersFn<T> {
+export interface WatchersFn<T> {
   (target: T, key: keyof T, value: unknown, receiver: StateExtends): void
 }
 
-export interface Watcher {
-  components: stateComponent<WatchersFn<stateComponent>>
-  utils: stateUtil<WatchersFn<stateUtil>>
-  date: stateDate<WatchersFn<stateDate>>
+export type componentsWatcherFn = stateComponent<WatchersFn<stateComponent>>
+
+export type utilsWatcherFn = stateUtil<WatchersFn<stateUtil>>
+
+export type dateWatcherFn = stateDate<WatchersFn<stateDate>>
+
+export interface Watchers {
+  components: componentsWatcherFn
+  utils: utilsWatcherFn
+  date: dateWatcherFn
 }
 
 export interface StateExtends extends State, componentsWatchers, dateWatcher, utilWatcher {}

@@ -1,11 +1,20 @@
-import {stateComponent} from '../../types/store'
+import {stateComponent, componentsWatcherFn} from '../../types/store'
+import {createPopover} from '../../core/dom/create-popover'
+import {set} from '../index'
+import {remove, on} from '../../utils/event'
 
-export const cw = {
-  reference() {
-    console.log(arguments)
+export const cw: componentsWatcherFn = {
+  reference(target, key, value): void {
+    // set('popover', createPopover())
+    // const preElement = state.reference
+    // remove(preElement, 'click', openPopover)
+    // if (ref) {
+    //   on(ref, 'click', openPopover)
+    //   on(document.body, 'click', clickOutside)
+    // }
   },
-  popover() {
-    //todo
+  popover(target, key, value): void {
+    console.log(value)
   }
 }
 
