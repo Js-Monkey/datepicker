@@ -8,7 +8,7 @@
     "build:css": "gulp build --gulpfile build/gulpfile.js",
     "dev": "webpack-dev-server --config build/webpack.demo.config.js",
     "prebp": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c build/rollup.config.ts && npm run build:css",
+    "build": "tsc --module commonjs && rollup -c build/rollup.config.js && npm run build:css",
     "build:demo": "webpack --config build/webpack.demo.config.js",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",

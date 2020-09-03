@@ -13,8 +13,8 @@ export interface stateDate<T = Date> {
   startDate?: T
 }
 
-export interface stateUtil {
-  options?: Options
+export interface stateUtil<T = Options> {
+  options?: T
 }
 
 export interface componentsWatchers<T = componentWatcher> {
@@ -34,6 +34,16 @@ export interface State {
   components: stateComponent
   utils: stateUtil
   date: stateDate
+}
+
+interface WatchersFn<T> {
+  (target: T, key: keyof T, value: unknown, receiver: StateExtends): void
+}
+
+export interface Watcher {
+  components: stateComponent<WatchersFn<stateComponent>>
+  utils: stateUtil<WatchersFn<stateUtil>>
+  date: stateDate<WatchersFn<stateDate>>
 }
 
 export interface StateExtends extends State, componentsWatchers, dateWatcher, utilWatcher {}

@@ -1,7 +1,10 @@
 import {stateComponent} from '../../types/store'
 
-export const watcher = {
+export const cw = {
   reference() {
+    console.log(arguments)
+  },
+  popover() {
     //todo
   }
 }

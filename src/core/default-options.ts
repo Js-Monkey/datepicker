@@ -1,7 +1,7 @@
-import {placement, datepickerType} from '../types/options'
+import {Placement, datepickerType} from '../types/options'
 
 class defaultOptions {
-  placement: placement
+  placement: Placement
   type: datepickerType
   zIndex: number
   unlinkPanels: boolean
