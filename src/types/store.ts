@@ -36,4 +36,6 @@ export interface State {
   date: stateDate
 }
 
+export interface StateExtends extends State, componentsWatchers, dateWatcher, utilWatcher {}
+
 export type Store = State[]

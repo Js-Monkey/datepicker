@@ -1,19 +1,19 @@
-import {State} from '../types/store'
+import {StateExtends} from '../types/store'
 import initState from './state'
 
 const Store = (function () {
   let uid = 0
   let states = [initState()] as any[]
 
-  function get(key: keyof State) {
+  function get(key: keyof StateExtends) {
     return states[uid][key]
   }
 
-  function set(key: keyof State, data: unknown) {
+  function set(key: keyof StateExtends, data: unknown) {
     states[uid][key] = data
   }
 
-  function removeNull() {
+  function removeNull(): void {
     states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
   }
 
