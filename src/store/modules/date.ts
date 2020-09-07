@@ -1,7 +1,7 @@
 import {stateDate} from '../../types/store'
 
 export const dw = {
-  startDate() {
+  startDate(): void {
     //todo
   }
 }

@@ -17,12 +17,28 @@ const Store = (function () {
     states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
   }
 
-  function changeUID(el: HTMLElement) {
-    // todo
-    uid = 1 // 防止eslint报错，暂时这样写
+  function changeUID(e: Event) {
+    const el = e.target || e
+    states = states.filter((s, idx) => Object.keys(s).length > 0)
+    uid = states.findIndex(s => s.reference === el)
   }
 
-  return {get, set, changeUID}
+  function closeAllButHasId() {
+    states.forEach((s, idx) => {
+      if (idx !== uid && s.popover) {
+        s.visible = false
+      }
+    })
+  }
+
+  function openPopover(e: Event): void {
+    changeUID(e)
+    closeAllButHasId()
+    if (states[uid].visible) return
+    states[uid].visible = true
+  }
+
+  return {get, set, changeUID, openPopover}
 })()
 
-export const {get, set, changeUID} = Store
+export const {get, set, changeUID, openPopover} = Store

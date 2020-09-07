@@ -14,7 +14,8 @@ export interface stateDate<T = Date> {
 }
 
 export interface stateUtil<T = Options> {
-  options?: T
+  options: T
+  visible: boolean
 }
 
 export interface componentsWatchers<T = componentWatcher> {
@@ -28,6 +29,7 @@ export interface dateWatchers<T = dateWatcher> {
 
 export interface utilWatchers<T = utilWatcher> {
   options: T
+  visible: T
 }
 
 export interface State {
@@ -52,6 +54,6 @@ export interface Watchers {
   date: dateWatcherFn
 }
 
-export interface StateExtends extends State, componentsWatchers, dateWatcher, utilWatcher {}
+export interface StateExtends extends State, stateDate, stateUtil, stateComponent {}
 
 export type Store = State[]
