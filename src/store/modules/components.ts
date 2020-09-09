@@ -5,11 +5,11 @@ import {remove, on} from '../../utils/event'
 import clickOutside from '../../utils/clickoutside'
 
 export const cw: componentsWatcherFn = {
-  reference(target, key, value, rec): void {
+  reference(target, key, val, rec): void {
     const {reference, popover} = target
     remove(reference, 'click', openPopover)
-    if (value) {
-      on(value, 'click', openPopover)
+    if (val) {
+      on(val, 'click', openPopover)
       on(document.body, 'click', clickOutside.bind(null, rec))
     }
     set('popover', createPopover())

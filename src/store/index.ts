@@ -19,7 +19,7 @@ const Store = (function () {
 
   function changeUID(e: Event) {
     const el = e.target || e
-    states = states.filter((s, idx) => Object.keys(s).length > 0)
+    states = states.filter(s => Object.keys(s).length > 0)
     uid = states.findIndex(s => s.reference === el)
   }
 

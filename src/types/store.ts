@@ -13,9 +13,14 @@ export interface stateDate<T = Date> {
   startDate?: T
 }
 
-export interface stateUtil<T = Options> {
-  options: T
+export interface stateUtil {
+  options: Options
   visible: boolean
+}
+
+export interface util<T> {
+  options: T
+  visible: T
 }
 
 export interface componentsWatchers<T = componentWatcher> {
@@ -44,7 +49,7 @@ export interface WatchersFn<T> {
 
 export type componentsWatcherFn = stateComponent<WatchersFn<stateComponent>>
 
-export type utilsWatcherFn = stateUtil<WatchersFn<stateUtil>>
+export type utilsWatcherFn = util<WatchersFn<stateUtil>>
 
 export type dateWatcherFn = stateDate<WatchersFn<stateDate>>
 
