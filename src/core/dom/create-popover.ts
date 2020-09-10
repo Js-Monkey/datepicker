@@ -1,7 +1,8 @@
 import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
-import {createElement} from '../../utils/element'
+import {addAttr, createElement} from '../../utils/element'
 import {wrapper} from '../../utils/classes'
+import {StateExtends} from '../../types/store'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -16,11 +17,24 @@ export function createPopover(): HTMLElement | Element {
   })
 }
 
-export function setPopoverLocation(popover: HTMLElement, reference: HTMLElement, placement: keyof Transform): void {
+export function updatePopover(rec: StateExtends, visible: boolean): void {
+  if (visible) {
+    const {popover, reference} = rec.components
+    const {placement} = rec.utils.options
+    setPopoverLocation(popover, reference as HTMLElement, placement)
+  }
+}
+
+export function setPopoverStyle(el: HTMLElement, zx: number): void {
+  const style = `position:absolute;z-index:${zx};`
+  addAttr(el, style, 'style')
+}
+
+export function setPopoverLocation(popover: HTMLElement | null, ref: HTMLElement, pla: any): void {
   if (!popover || popover.style.display === 'none') return
-  const rect = reference.getBoundingClientRect()
-  setPosition(popover, placement, rect)
-  setTransform(popover, placement)
+  const rect = ref.getBoundingClientRect()
+  setPosition(popover, pla, rect)
+  setTransform(popover, pla)
 }
 
 export function setTransform(el: HTMLElement, placement: keyof Transform): void {

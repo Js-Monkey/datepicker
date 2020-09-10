@@ -6,10 +6,10 @@ const handler: Handler = {
   event: (el, ops) => {
     if (isArray<{name: eventType; handler: eventHandler}>(ops.event)) {
       ops.event.forEach(e => {
-        on(el, e.name, e.handler)
+        on(el, e.handler, e.name)
       })
     } else {
-      on(el, 'click', ops.event as eventHandler)
+      on(el, ops.event as eventHandler)
     }
   },
   class: (el, ops) => el.setAttribute('class', ops.class!.join(' ')),

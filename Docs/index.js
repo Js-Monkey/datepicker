@@ -12,6 +12,7 @@ Vue.component(Input.name, Input)
 Vue.component(Icon.name,Icon)
 Vue.component(Button.name,Button)
 import datePicker from '../src/index'
+import '../src/assets/date-picker.scss'
 window.Flex = datePicker
 router.afterEach(() => {
    Vue.nextTick(() => document.querySelectorAll('pre code').forEach(block=>highlightJs.highlightBlock(block)))

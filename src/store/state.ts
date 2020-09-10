@@ -26,8 +26,7 @@ export default function initState(): State {
       const name = proxyName(target, key)
       return (target as never)[name][key]
     },
-    set(target: State, key: keyof State, value: unknown, receiver) {
-      console.log(receiver)
+    set(target: State, key: keyof State, value: unknown) {
       const name = proxyName(target, key)
       const proxy = target[name]
       ;(watcher[name] as any)[key](proxy, key, value, target) //todo any的写法有待改进，这会放弃其他的所有检查

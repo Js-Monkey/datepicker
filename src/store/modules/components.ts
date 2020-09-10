@@ -3,19 +3,24 @@ import {createPopover} from '../../core/dom/create-popover'
 import {set, openPopover} from '../index'
 import {remove, on} from '../../utils/event'
 import clickOutside from '../../utils/clickoutside'
+import {isElementExist} from '../../utils/isElementExist'
+import {appendChild} from '../../utils/element'
 
 export const cw: componentsWatcherFn = {
   reference(target, key, val, rec): void {
-    const {reference, popover} = target
-    remove(reference, 'click', openPopover)
+    const {reference} = target
+    remove(reference, openPopover)
     if (val) {
-      on(val, 'click', openPopover)
-      on(document.body, 'click', clickOutside.bind(null, rec))
+      on(val, openPopover)
+      on(document.body, clickOutside.bind(null, rec))
     }
     set('popover', createPopover())
   },
   popover(target, key, value): void {
-    console.log(value)
+    const {popover} = target
+    if (!isElementExist(popover)) {
+      appendChild(value as Element)
+    }
   }
 }
 

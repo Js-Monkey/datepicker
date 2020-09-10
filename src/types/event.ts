@@ -1,5 +1,9 @@
 export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'scroll' | 'resize' | 'focus' | 'blur'
 
+export interface Handler {
+  (e: Event): unknown
+}
+
 export interface _Event {
   isTrusted: boolean
   screenX: number

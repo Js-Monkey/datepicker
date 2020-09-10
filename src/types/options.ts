@@ -6,7 +6,7 @@ export default interface Options {
   type?: datepickerType | datepickerType[]
   unlinkPanels?: boolean | boolean[]
   offset?: number
-  zIndex?: number
-  format?: string | ((val: unknown) => boolean)
+  zIndex: number
+  format: string | ((val: unknown) => boolean)
   disabled?: (date: Date) => boolean
 }
