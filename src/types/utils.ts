@@ -1,9 +1,9 @@
 export interface UtilObject {
-  [key: string]: unknown
+  [key: string]: any
 }
 
 export interface UtilFn extends UtilObject {
-  (...arg: never): unknown
+  (...arg: any): any
 }
 
 export interface Types {

@@ -1,7 +1,7 @@
 import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
-import {addAttr, createElement} from '../../utils/element'
-import {wrapper} from '../../utils/classes'
+import {addAttr, createElement, toggleCls} from '../../utils/element'
+import {hidden, show, wrapper} from '../../utils/classes'
 import {StateExtends} from '../../types/store'
 
 const transform: Transform = {
@@ -18,11 +18,13 @@ export function createPopover(): HTMLElement | Element {
 }
 
 export function updatePopover(rec: StateExtends, vis: boolean): void {
+  const {popover, reference} = rec.components
   if (vis) {
-    const {popover, reference} = rec.components
-    const {placement, zIndex} = rec.utils.options
+    const {placement} = rec.utils.options
     setPopoverLocation(popover, reference as HTMLElement, placement)
-    setPopoverStyle(popover as HTMLElement, zIndex)
+    toggleCls(popover as HTMLElement, show, hidden)
+  } else {
+    toggleCls(popover as HTMLElement, hidden, show)
   }
 }
 

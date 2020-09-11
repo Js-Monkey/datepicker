@@ -38,7 +38,7 @@ const Store = (function () {
 
   function openPopover(e: Event): void {
     changeUID(e)
-    closeAllButHasId()
+    // closeAllButHasId()
     if (states[uid].visible) return
     states[uid].visible = true
   }

@@ -68,3 +68,13 @@ export function addAttr(el: HTMLElement | Element, val: string | UtilObject, nam
   if (attr && attr.indexOf(val) === -1) val += ' ' + attr
   el.setAttribute(name, val)
 }
+
+export function toggleCls(el: HTMLElement, pre: string, source: string): void {
+  const classes = el.getAttribute('class') || ' '
+  const newCls = classes
+    .split(' ')
+    .filter(item => item !== pre && item !== source)
+    .concat([pre])
+    .join(' ')
+  el.setAttribute('class', newCls)
+}

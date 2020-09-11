@@ -1,6 +1,58 @@
+$blue: #00acff;
+$text-color: rgba(0, 0, 0, 0.52);
+$text-color-fade-1: rgba(0, 0, 0, 0.42);
+$text-color-fade-2: rgba(0, 0, 0, 0.22);
+$background-color-light: rgba(0, 0, 0, 0.05);
+$background-color-dark: rgba(0, 0, 0, 0.12);
+
+$border-color-1: #dde0e7;
+$border-color-2: #e7eaf1;
+
 .fl-datepicker-wrapper{
-  position: absolute !important;
-  width: 100px;
-  height: 100px;
-  background: red;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+  font-size: 14px;
+  list-style: none;
+  min-width: 320px;
+  min-height: 200px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+}
+
+@keyframes datepickerShow {
+  0%{
+    display: block;
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+  100%{
+    display: block;
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes datepickerHidden {
+  0%{
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+    transform: scaleY(.8);
+  }
+}
+
+
+.fl-datepicker-show{
+  animation: datepickerShow .3s;
+}
+.fl-datepicker-hidden{
+  animation: datepickerHidden .3s forwards;
 }
