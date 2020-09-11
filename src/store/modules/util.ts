@@ -1,5 +1,5 @@
 import {stateUtil, utilsWatcherFn} from '../../types/store'
-import {updatePopover, setPopoverStyle} from '../../core/dom/create-popover'
+import {updatePopover} from '../../core/dom/create-popover'
 
 export const uw: utilsWatcherFn = {
   options(): void {
