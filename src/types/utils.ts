@@ -1,5 +1,5 @@
 export interface UtilObject {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface UtilFn extends UtilObject {

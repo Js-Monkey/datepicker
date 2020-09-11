@@ -6,10 +6,7 @@ export const uw: utilsWatcherFn = {
     //todo
   },
   visible(target, key, val, rec): void {
-    const {popover} = rec.components
-    const {zIndex} = rec.utils.options
     updatePopover(rec, val as boolean)
-    setPopoverStyle(popover as HTMLElement, zIndex)
   }
 }
 

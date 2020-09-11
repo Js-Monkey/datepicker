@@ -17,33 +17,37 @@ export function createPopover(): HTMLElement | Element {
   })
 }
 
-export function updatePopover(rec: StateExtends, visible: boolean): void {
-  if (visible) {
+export function updatePopover(rec: StateExtends, vis: boolean): void {
+  if (vis) {
     const {popover, reference} = rec.components
-    const {placement} = rec.utils.options
+    const {placement, zIndex} = rec.utils.options
     setPopoverLocation(popover, reference as HTMLElement, placement)
+    setPopoverStyle(popover as HTMLElement, zIndex)
   }
 }
 
 export function setPopoverStyle(el: HTMLElement, zx: number): void {
-  const style = `position:absolute;z-index:${zx};`
+  const style = {
+    position: 'absolute',
+    zIndex: zx
+  }
   addAttr(el, style, 'style')
 }
 
-export function setPopoverLocation(popover: HTMLElement | null, ref: HTMLElement, pla: any): void {
-  if (!popover || popover.style.display === 'none') return
+export function setPopoverLocation(pop: HTMLElement | null, ref: HTMLElement, plt: any): void {
+  if (!pop || pop.style.display === 'none') return
   const rect = ref.getBoundingClientRect()
-  setPosition(popover, pla, rect)
-  setTransform(popover, pla)
+  setPosition(pop, plt, rect)
+  setTransform(pop, plt)
 }
 
-export function setTransform(el: HTMLElement, placement: keyof Transform): void {
-  nextTick(() => (el.style.transform = transform[placement]))
+export function setTransform(el: HTMLElement, plt: keyof Transform): void {
+  nextTick(() => (el.style.transform = transform[plt]))
 }
 
-export function setPosition(el: HTMLElement, placement: keyof Transform, rect: Rect): void {
+export function setPosition(el: HTMLElement, plt: keyof Transform, rect: Rect): void {
   const position = getPosition(rect)
-  Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[placement][attr] + 'px'))
+  Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[plt][attr] + 'px'))
 }
 
 export function getPosition({top, left, height, width}: Rect): Transform<{left: number; top: number}> {

@@ -1,6 +1,6 @@
-import {isArray} from './typeOf'
+import {isArray, isObject} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler} from '../types/utils'
+import {CreateElementOptions, eventHandler, eventType, Handler, UtilObject} from '../types/utils'
 
 const handler: Handler = {
   event: (el, ops) => {
@@ -61,9 +61,10 @@ export function resetAttr(el: HTMLElement | Element, val: string, name?: string)
   el.setAttribute(name, val)
 }
 
-export function addAttr(el: HTMLElement | Element, val: string, name?: string): void {
+export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name?: string): void {
   if (!name) name = 'class'
   const attr = el.getAttribute(name)
+  if (isObject(val)) val = JSON.stringify(val)
   if (attr && attr.indexOf(val) === -1) val += ' ' + attr
   el.setAttribute(name, val)
 }
