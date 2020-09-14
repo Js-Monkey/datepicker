@@ -12,12 +12,13 @@ export default class Flex {
   constructor() {
     this.options = new defaultOptions()
   }
+
   static create(el: HTMLInputElement, options: Options) {
-    const inputEl = findInputElement(el)
-    if (!isInputElement(inputEl)) return
+    const input = findInputElement(el)
+    if (!isInputElement(input)) return
     if (!validateOptions(options)) return
     pushState()
-    set('reference', inputEl)
+    set('reference', input)
     return this
   }
 }

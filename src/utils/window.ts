@@ -16,7 +16,7 @@ export const isHTMLElement = (node: HTMLElement) => {
   return node instanceof window.HTMLElement
 }
 
-export const getAllScrollParents = (node: HTMLElement, list?: HTMLElement[]): unknown => {
+export const getAllScrollParents = (node: HTMLElement, list?: HTMLElement[]): HTMLElement[] => {
   if (!list) list = []
   if (isBody(node)) return list
   if (isHTMLElement(node)) {

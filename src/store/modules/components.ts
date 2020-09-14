@@ -5,6 +5,7 @@ import {remove, on} from '../../utils/event'
 import clickOutside from '../../utils/clickoutside'
 import {isElementExist} from '../../utils/isElementExist'
 import {appendChild} from '../../utils/element'
+import {listenToScrollParents} from '../../utils/listenToParents'
 
 export const cw: componentsWatcherFn = {
   reference(target, key, val, rec): void {
@@ -12,6 +13,7 @@ export const cw: componentsWatcherFn = {
     remove(reference, openPopover)
     on(val, openPopover)
     on(document.body, clickOutside.bind(null, rec))
+    listenToScrollParents(val as HTMLElement)
     set('popover', createPopover())
   },
   popover(target, key, value, rec): void {

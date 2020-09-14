@@ -28,7 +28,7 @@ const Store = (function () {
     uid = states.findIndex(s => s.reference === el)
   }
 
-  function closeAllButHasId() {
+  function closeAllButHasId(): void {
     states.forEach((s, idx) => {
       if (idx !== uid && s.popover) {
         s.visible = false
@@ -38,7 +38,7 @@ const Store = (function () {
 
   function openPopover(e: Event): void {
     changeUID(e)
-    // closeAllButHasId()
+    closeAllButHasId()
     if (states[uid].visible) return
     states[uid].visible = true
   }

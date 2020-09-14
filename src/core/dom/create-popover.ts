@@ -3,6 +3,7 @@ import {Rect, Transform} from '../../types/utils'
 import {addAttr, createElement, toggleCls} from '../../utils/element'
 import {hidden, show, wrapper} from '../../utils/classes'
 import {StateExtends} from '../../types/store'
+import {get} from '../../store'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -18,10 +19,9 @@ export function createPopover(): HTMLElement | Element {
 }
 
 export function updatePopover(rec: StateExtends, vis: boolean): void {
-  const {popover, reference} = rec.components
+  const {popover} = rec.components
   if (vis) {
-    const {placement} = rec.utils.options
-    setPopoverLocation(popover, reference as HTMLElement, placement)
+    setPopoverLocation()
     toggleCls(popover as HTMLElement, show, hidden)
   } else {
     toggleCls(popover as HTMLElement, hidden, show)
@@ -36,11 +36,13 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
   addAttr(el, style, 'style')
 }
 
-export function setPopoverLocation(pop: HTMLElement | null, ref: HTMLElement, plt: any): void {
-  if (!pop || pop.style.display === 'none') return
+export function setPopoverLocation(): void {
+  const pop = get('popover')
+  const ref = get('reference')
+  const {placement} = get('options')
   const rect = ref.getBoundingClientRect()
-  setPosition(pop, plt, rect)
-  setTransform(pop, plt)
+  setPosition(pop, placement, rect)
+  setTransform(pop, placement)
 }
 
 export function setTransform(el: HTMLElement, plt: keyof Transform): void {
