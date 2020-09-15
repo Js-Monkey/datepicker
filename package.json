@@ -1,4 +1,4 @@
-  {
+{
   "name": "flex-datepicker",
   "version": "0.0.1",
   "description": "A date-picker",
@@ -20,6 +20,9 @@
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "jest": {
+    "preset": "./build/jest.config"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

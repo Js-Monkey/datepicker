@@ -1,11 +1,12 @@
 import Options from '../../types/options'
-import {isArray, isObject, isString} from '../../utils/typeOf'
+import {isArray, isNumber, isObject, isString} from '../../utils/typeOf'
 
 const acceptOptions: Options = {
   placement: ['top', 'left', 'bottom', 'right'],
   type: ['date', 'date-range'],
   unlinkPanels: [true, false],
-  format: (val: unknown) => isString(val)
+  format: (val: unknown) => isString(val),
+  zIndex: (val: unknown) => isNumber(val)
 }
 
 const checkLists: (keyof Options)[] = ['placement', 'type', 'format']

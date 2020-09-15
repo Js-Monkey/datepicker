@@ -3,7 +3,7 @@ module.exports = {
       ".(ts|tsx)": "ts-jest"
     },
     "testEnvironment": "jsdom",
-    "testRegex": "/test/.*\\.(test|spec)\\.(ts)$",
+    "testRegex": "/src/.*\\.(test|spec)\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -11,7 +11,7 @@ module.exports = {
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/test/"
+      "/tests/"
     ],
     "coverageThreshold": {
       "global": {
@@ -23,8 +23,5 @@ module.exports = {
     "collectCoverageFrom": [
       "src/*.{js,ts}",
       "src/**/*.{js,ts}"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/boot.ts"
     ]
 };
