@@ -1,0 +1,24 @@
+name:  code-test
+ 
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    # Runs at 12am UTC
+    - cron: '0 0 * * *'
+
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+    - name: test
+      run: |
+        npm i
+        npm run test
