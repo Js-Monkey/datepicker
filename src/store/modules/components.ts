@@ -21,7 +21,7 @@ export const cw: componentsWatcherFn = {
     const {zIndex} = rec.utils.options
     if (!isElementExist(popover)) {
       appendChild(value as Element)
-      setPopoverStyle(value as HTMLElement, zIndex)
+      setPopoverStyle(value as HTMLElement, zIndex as number)
     }
   }
 }

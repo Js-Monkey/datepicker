@@ -1,4 +1,4 @@
-export const getNodeName = (element: HTMLElement) => {
+export const getNodeName = (element: HTMLElement | null) => {
   return element ? (element.nodeName || '').toLowerCase() : null
 }
 

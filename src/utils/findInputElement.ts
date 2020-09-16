@@ -1,10 +1,10 @@
-import {getNodeName} from './getNodeName'
+import {getNodeName} from './window'
 
 export function isInput(el: HTMLElement): boolean {
   return getNodeName(el) === 'input'
 }
 
-function findNode(el: any): null | Node {
+function findNode(el: any): null | HTMLElement {
   if (isInput(el)) return el
   const childLists = el.childNodes
   if (!childLists) return null
@@ -16,7 +16,7 @@ function findNode(el: any): null | Node {
   return inputEl || false
 }
 
-export function findInputElement(el: HTMLElement): Node | null {
+export function findInputElement(el: HTMLElement): HTMLElement | null {
   const nodeName = getNodeName(el)
   if (nodeName) return findNode(el)
   console.error('Invalid argument provided. They must be a Input element')
