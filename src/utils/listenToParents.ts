@@ -1,8 +1,8 @@
-import {getAllScrollParents} from './window'
+import {getScrollParents} from './window'
 import {setPopoverLocation} from '../core/dom/create-popover'
 
 export const listenToScrollParents = (el: HTMLElement) => {
-  const scrollParents = getAllScrollParents(el)
+  const scrollParents = getScrollParents(el)
   console.log(scrollParents)
   scrollParents.forEach(el => {
     el.addEventListener('scroll', setPopoverLocation as never)

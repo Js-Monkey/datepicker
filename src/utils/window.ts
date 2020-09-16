@@ -12,11 +12,11 @@ export const isBody = (node: HTMLElement) => {
   return name === 'body' || name === 'html'
 }
 
-export const isHTMLElement = (node: HTMLElement) => {
+export const isHTMLElement = (node: unknown) => {
   return node instanceof window.HTMLElement
 }
 
-export const getAllScrollParents = (node: HTMLElement, list?: HTMLElement[]): HTMLElement[] => {
+export const getScrollParents = (node: HTMLElement, list?: HTMLElement[]): HTMLElement[] => {
   if (!list) list = []
   if (isBody(node)) return list
   if (isHTMLElement(node)) {
@@ -25,5 +25,5 @@ export const getAllScrollParents = (node: HTMLElement, list?: HTMLElement[]): HT
       list.push(node)
     }
   }
-  return getAllScrollParents(getParentNode(node), list)
+  return getScrollParents(getParentNode(node), list)
 }

@@ -1,11 +1,11 @@
-import {getAllScrollParents} from "../utils/window"
+import {getScrollParents} from "../utils/window"
 
 export default {
     inserted(el, binding){
         function handler(e) {
             if (binding.expression) binding.value(e)
         }
-        let $parents =  getAllScrollParents(el)
+        let $parents =  getScrollParents(el)
         $parents.forEach(node => {
             if (node) node.addEventListener('scroll', handler)
         })
@@ -14,7 +14,7 @@ export default {
         el._$scrollParents = $parents
     },
     unbind(el) {
-        if(!el._$scrollParents)el._$scrollParents = getAllScrollParents(el)
+        if(!el._$scrollParents)el._$scrollParents = getScrollParents(el)
         el._$scrollParents.forEach(node => {
             if (node) node.removeEventListener('scroll',el._element_position_detector)
         })
