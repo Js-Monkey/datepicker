@@ -6,7 +6,7 @@ import {isIE, isNative} from './env'
 const callbacks: any[] = []
 let pending = false
 
-function flushCallbacks() {
+export function flushCallbacks(): void {
   pending = false
   const copies = callbacks.slice(0)
   callbacks.length = 0
@@ -51,13 +51,13 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   }
 }
 
-function isInCallbacks(cb?: () => string) {
+export function isInCallbacks(cb?: () => unknown): boolean {
   if (!cb) return true
   // todo缺少判断
   return callbacks.some(_cb => _cb.toString() === cb.toString())
 }
 
-export default function nextTick(cb?: () => string): any {
+export default function nextTick(cb?: () => unknown): any {
   let _resolve: (ctx: any) => void
 
   if (isInCallbacks(cb)) return
