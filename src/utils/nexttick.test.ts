@@ -25,4 +25,13 @@ describe('nextTick', () => {
     flushCallbacks()
     expect(fn).toBeCalled()
   })
+
+  test('same callbacks be called only once', done => {
+    const fn = jest.fn()
+    Array.from({length: 3}).forEach(() => nextTick(fn))
+    setTimeout(() => {
+      expect(fn.mock.calls.length).toBe(1)
+      done()
+    }, 0)
+  })
 })
