@@ -3,7 +3,7 @@ module.exports = {
       ".(ts|tsx)": "ts-jest"
     },
     "testEnvironment": "jsdom",
-    "testRegex": "/src/.*\\.(test|spec)\\.(ts)$",
+    "testRegex": "/tests/.*\\.(test|spec)\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -11,7 +11,6 @@ module.exports = {
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/tests/"
     ],
     "coverageThreshold": {
       "global": {

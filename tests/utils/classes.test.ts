@@ -1,4 +1,4 @@
-import * as classesName from './classes'
+import * as classesName from '../../src/utils/classes'
 
 describe('classes', () => {
   test('className', () => {

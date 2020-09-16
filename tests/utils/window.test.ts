@@ -1,4 +1,4 @@
-import {getScrollParents, getNodeName, getParentNode, isBody, isHTMLElement} from './window'
+import {getScrollParents, getNodeName, getParentNode, isBody, isHTMLElement} from '../../src/utils/window'
 
 function createElement(name?: string): HTMLElement {
   if (!name) name = 'div'

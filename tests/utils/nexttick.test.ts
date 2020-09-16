@@ -1,4 +1,4 @@
-import nextTick, {flushCallbacks, isInCallbacks} from './nexttick'
+import nextTick, {flushCallbacks, isInCallbacks} from '../../src/utils/nexttick'
 
 describe('nextTick', () => {
   test('callbacks has been called in the next tick', done => {

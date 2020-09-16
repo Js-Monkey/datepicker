@@ -1,4 +1,4 @@
-import {isString, isArray, isFunc, isNumber, isObject} from './typeOf'
+import {isString, isArray, isFunc, isNumber, isObject} from '../../src/utils/typeOf'
 
 describe('type-of', () => {
   test('variable is number', () => {
