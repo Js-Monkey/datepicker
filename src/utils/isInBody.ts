@@ -1,4 +1,4 @@
-export function isElementExist(el: HTMLElement | null): boolean {
+export function isInBody(el: HTMLElement | null): boolean {
   if (!el) return false
   const bodyChildren = document.body.childNodes
   let isExist = false

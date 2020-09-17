@@ -3,7 +3,7 @@ import {createPopover, setPopoverStyle} from '../../core/dom/create-popover'
 import {set, openPopover} from '../index'
 import {remove, on} from '../../utils/event'
 import clickOutside from '../../utils/clickoutside'
-import {isElementExist} from '../../utils/isElementExist'
+import {isInBody} from '../../utils/isInBody'
 import {appendChild} from '../../utils/element'
 import {listenToScrollParents} from '../../utils/listenToParents'
 
@@ -19,7 +19,7 @@ export const cw: componentsWatcherFn = {
   popover(target, key, value, rec): void {
     const {popover} = target
     const {zIndex} = rec.utils.options
-    if (!isElementExist(popover)) {
+    if (!isInBody(popover)) {
       appendChild(value as Element)
       setPopoverStyle(value as HTMLElement, zIndex as number)
     }
