@@ -13,7 +13,7 @@ function findNode(el: any): null | HTMLElement {
     const node = isInput(child) ? child : findNode(child)
     if (node) inputEl = node
   }
-  return inputEl || false
+  return inputEl || null
 }
 
 export function findInputElement(el: HTMLElement): HTMLElement | null {
