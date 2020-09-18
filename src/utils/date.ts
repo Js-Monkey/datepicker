@@ -1,9 +1,9 @@
-export function getFullYear(date?: Date): number {
+export function getYear(date?: Date): number {
   if (!date) date = new Date()
   return date.getFullYear()
 }
 
-export function getRealMonth(date?: Date): number {
+export function getMonth(date?: Date): number {
   if (!date) date = new Date()
   return date.getMonth() + 1
 }
@@ -17,18 +17,17 @@ export function monthHasDays(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
-export function whatDayIsMonthFirstDay(year: number, month: number): number {
+export function monthFirstDay(year: number, month: number): number {
   const firstDate = new Date(`${year},${month}, 01`)
   return firstDate.getDay()
 }
 
-export function joinDate<T = number, U = string>(year: T | U, month: T | U, day: T | U) {
+export function joinDate<T = number, U = string>(year: T | U, month: T | U, day: T | U): string {
   return year + '/' + month + '/' + day
 }
 
-export function transformDateToN(date: Date) {
-  if (!date) return ''
-  return joinDate(getFullYear(date), getRealMonth(date), getDay(date))
+export function transformDate(date: Date): string {
+  return joinDate(getYear(date), getMonth(date), getDay(date))
 }
 
 export function getNextMonth(val: number): number {
