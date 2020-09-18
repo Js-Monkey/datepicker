@@ -1,6 +1,6 @@
 import {isArray, isObject} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler, UtilObject} from '../types/utils'
+import {CreateElementOptions, eventHandler, EventListener, eventType, Handler, UtilObject} from '../types/utils'
 
 const handler: Handler = {
   event: (el, ops) => {
@@ -37,7 +37,7 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement(options: CreateElementOptions): Element | HTMLElement {
+export function createElement(options: CreateElementOptions): HTMLElement | Element {
   const el = options.name === 'svg' ? createSVG(options.innerText as string) : createEL(options.name)
   Object.keys(options).forEach(key => {
     handler[key as keyof CreateElementOptions](el, options)

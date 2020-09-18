@@ -29,7 +29,7 @@ export interface Transform<T = string> {
   right: T
 }
 
-export type eventType = 'click' | 'mouseenter' | 'mouseleave'
+export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'focus'
 
 export type eventHandler = (e: Event) => unknown
 
@@ -38,12 +38,10 @@ export interface EventListener {
   handler: eventHandler
 }
 
-type _Event<T> = T extends eventHandler ? T : EventListener
-
-export interface CreateElementOptions<U = eventHandler> {
-  name?: 'svg' | 'span' | 'div' | 'ul' | 'li'
+export interface CreateElementOptions {
+  name?: 'svg' | 'span' | 'div' | 'ul' | 'li' | 'input'
   innerText?: string
-  event?: _Event<U>
+  event?: eventHandler | EventListener[]
   class?: string[]
   style?: string
   children?: CreateElementOptions[]

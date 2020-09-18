@@ -11,7 +11,7 @@ describe('nextTick', () => {
       expect(fn.mock.calls.length).toBe(1)
     }, 0)
   })
-  test('isInCallbacks can filter the same callbacks', () => {
+  test('support filter the same callbacks', () => {
     Array.from({length: 3}).forEach(() => nextTick(jest.fn(() => null)))
     const callback = () => console.log('been called')
     expect(isInCallbacks(callback)).toBeFalsy()
