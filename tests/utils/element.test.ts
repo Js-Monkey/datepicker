@@ -1,4 +1,4 @@
-import createSVG, {appendChild, createEL, createElement} from '../../src/utils/element'
+import createSVG, {addAttr, appendChild, createEL, createElement, resetAttr, toggleCls} from '../../src/utils/element'
 import {doc} from 'prettier'
 
 function isNode(el: any) {
@@ -111,27 +111,75 @@ describe('element', () => {
     })
   })
 
-  describe('appendChild', () => {
-    test('support appendChild', () => {
-      const wrapper = createEL()
-      const child = createEL()
-      appendChild(child, wrapper)
-      expect(wrapper.childNodes[0]).toEqual(child)
+  describe('resetAttr', () => {
+    test('support setAttribute:no params', () => {
+      const el = createEL()
+      const className = 'initial-class'
+      resetAttr(el, className)
+      const classes = el.getAttribute('class')
+      expect(classes).toContain(className)
     })
-    test('support batch appendChild', () => {
-      const childrenNodeNames = ['div', 'span', 'input']
-      const wrapper = createEL()
-      const children = childrenNodeNames.map(name => createEL(name))
-      appendChild(children, wrapper)
-      expect(wrapper.childNodes.length).toBe(3)
-      expect(Array.from(wrapper.childNodes).map(node => node.nodeName.toLowerCase())).toEqual(childrenNodeNames)
+    test('support setAttribute', () => {
+      const el = createEL()
+      const style = 'width:100px'
+      resetAttr(el, style, 'style')
+      const classes = el.getAttribute('style')
+      expect(classes).toContain(style)
+    })
+  })
+
+  describe('addAttr', () => {
+    test('support addAttribute:no params', () => {
+      const el = createEL()
+      const initialClass = 'initial-class'
+      const newClasses = 'initial-class'
+      addAttr(el, initialClass)
+      addAttr(el, newClasses)
+      const classes = el.getAttribute('class')
+      expect(classes).toContain(initialClass)
+      expect(classes).toContain(newClasses)
+    })
+    test('support addAttribute', () => {
+      const el = createEL()
+      const initialStyle = (el.style.height = '100px')
+      const style = 'width:100px'
+      addAttr(el, style, 'style')
+      const elStyle = el.getAttribute('style')
+      expect(elStyle).toContain(style)
+      expect(elStyle).toContain(initialStyle)
     })
 
-    test('second parameter is undefined', () => {
-      const node = createEL()
-      appendChild(node)
-      const isInBody = Array.from(document.body.childNodes).find(child => node === child)
-      expect(isInBody).toBeTruthy()
+    test('param type is object', () => {
+      const el = createEL()
+      const style = {
+        position: 'absolute',
+        zIndex: 2000,
+        display: 'flex'
+      }
+      addAttr(el, style, 'style')
+      const elStyle = JSON.parse(el.getAttribute('style') as string)
+      expect(elStyle).toEqual(style)
+    })
+  })
+  describe('toggleCls', () => {
+    test('toggle class', () => {
+      const el = createEL()
+      Array.from({length: 5}).forEach((_, idx) => {
+        const even = idx & 1
+        toggleCls(el, ['classA', 'classB'], even)
+        expect(el.getAttribute('class')?.trim()).toEqual(even ? 'classA' : 'classB')
+      })
+    })
+
+    test('not affect other classes', () => {
+      const el = createEL()
+      el.setAttribute('class', 'classC classD')
+      Array.from({length: 2}).forEach((_, idx) => {
+        const even = idx & 1
+        toggleCls(el, ['classA', 'classB'], even)
+        expect(el.getAttribute('class')).toContain('classC')
+        expect(el.getAttribute('class')).toContain('classD')
+      })
     })
   })
 })

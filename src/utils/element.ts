@@ -69,8 +69,10 @@ export function addAttr(el: HTMLElement | Element, val: string | UtilObject, nam
   el.setAttribute(name, val)
 }
 
-export function toggleCls(el: HTMLElement, pre: string, source: string): void {
+export function toggleCls(el: HTMLElement, cls: [string, string], vis: boolean | number): void {
   const classes = el.getAttribute('class') || ' '
+  const pre = cls[Number(!vis)]
+  const source = cls[Number(vis)]
   const newCls = classes
     .split(' ')
     .filter(item => item !== pre && item !== source)

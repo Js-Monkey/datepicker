@@ -22,10 +22,8 @@ export function updatePopover(rec: StateExtends, vis: boolean): void {
   const {popover} = rec.components
   if (vis) {
     setPopoverLocation()
-    toggleCls(popover as HTMLElement, show, hidden)
-  } else {
-    toggleCls(popover as HTMLElement, hidden, show)
   }
+  toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
 
 export function setPopoverStyle(el: HTMLElement, zx: number): void {
