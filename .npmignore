@@ -1,0 +1,17 @@
+node_modules/*
+test/*
+src/*
+Docs/*
+config/*
+lib/*
+coverage/*
+.idea/*
+tsconfig.json
+tslint.json
+yarn.lock
+.babelrc
+.travis.yml
+.github/*
+.rpt2_cache/*
+build/*
+commitlint.config
