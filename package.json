@@ -1,5 +1,5 @@
 {
-  "name": "flex-datepicker",
+  "name": "bettter-datepicker",
   "version": "0.0.1",
   "description": "A date-picker",
   "main": "dist/flexDatePicker.umd.js",
