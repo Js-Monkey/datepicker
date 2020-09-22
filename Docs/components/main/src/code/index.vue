@@ -1,6 +1,6 @@
 <template>
-    <div class="flex-main-code-wrapper">
-       <div class="flex-main-code">
+    <div class="better-main-code-wrapper">
+       <div class="better-main-code">
            <Code></Code>
        </div>
     </div>
@@ -15,7 +15,7 @@
 </script>
 
 <style lang="scss">
-    .flex-main-code{
+    .better-main-code{
         width: 58vw;
         min-width:calc(720px + 16vw);
        &-wrapper{

@@ -5,7 +5,7 @@ import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
 import {pushState, set} from '../store'
 
-export default class Flex {
+export default class better {
   options: Options
   static el: HTMLInputElement
 

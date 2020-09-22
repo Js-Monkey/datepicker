@@ -2,8 +2,8 @@
   "name": "bettter-datepicker",
   "version": "0.0.1",
   "description": "A date-picker",
-  "main": "dist/flexDatePicker.umd.js",
-  "module": "dist/flexDatePicker.es5.js",
+  "main": "dist/betterDatePicker.umd.js",
+  "module": "dist/betterDatePicker.es5.js",
   "scripts": {
     "build:css": "gulp build --gulpfile build/gulpfile.js",
     "dev": "webpack-dev-server --config build/webpack.demo.config.js",
@@ -107,12 +107,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Js-Monkey/flex-datepicker.git"
+    "url": "git+https://github.com/Js-Monkey/better-datepicker.git"
   },
   "author": "jumodada",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Js-Monkey/flex-datepicker/issues"
+    "url": "https://github.com/Js-Monkey/better-datepicker/issues"
   },
-  "homepage": "https://github.com/Js-Monkey/flex-datepicker#readme"
+  "homepage": "https://github.com/Js-Monkey/better-datepicker#readme"
 }

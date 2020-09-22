@@ -7,7 +7,7 @@
 <script>
 export default {
     mounted(){
-        let dp = new Flex(this.$refs.int.$el)
+        let dp = new better(this.$refs.int.$el)
     },
 
 }
@@ -24,7 +24,7 @@ export default {
 <script>
 export default {
     mounted(){
-        let dp = new Flex(this.$refs.int.$el)
+        let dp = new better(this.$refs.int.$el)
     },
 
 }
@@ -39,7 +39,7 @@ export default {
 <script>
 export default {
     mounted(){
-        let dp = new Flex(this.$refs.int.$el)
+        let dp = new better(this.$refs.int.$el)
     },
 
 }
@@ -54,7 +54,7 @@ export default {
 <script>
 export default {
     mounted(){
-        let dp = new Flex(this.$refs.int.$el)
+        let dp = new better(this.$refs.int.$el)
     },
 
 }

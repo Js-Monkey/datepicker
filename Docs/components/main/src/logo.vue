@@ -1,8 +1,8 @@
 <template>
-    <div class="flex-logo">
+    <div class="better-logo">
         <f-icon width="23rem" name="flex"></f-icon>
         <div>
-            <f-button @click="toStart" class="flex-logo-enter" type="warn"> 快速上手 →</f-button>
+            <f-button @click="toStart" class="better-logo-enter" type="warn"> 快速上手 →</f-button>
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@
         transition: all .3s ease-out;
     }
 
-    .flex-logo {
+    .better-logo {
         background-color: $brand1-1;
         display: flex;
         flex-direction: column;
