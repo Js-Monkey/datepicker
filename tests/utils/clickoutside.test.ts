@@ -1,4 +1,4 @@
-import {get, set} from '../../src/store'
+import {get} from '../../src/store'
 import clickOutside from '../../src/utils/clickoutside'
 import Better from '../../src'
 

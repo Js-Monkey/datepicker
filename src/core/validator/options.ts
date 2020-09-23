@@ -28,7 +28,7 @@ function validate(name: keyof Options, options: Options): boolean {
   return true
 }
 
-export default function validateOptions(options: Options): boolean {
+export default function validateOptions(options?: Options): boolean {
   if (typeof options === 'undefined') return true
   if (isObject(options)) return checkLists.every(list => validate(list, options))
   console.error('Invalid argument provided.Options must be an object')
