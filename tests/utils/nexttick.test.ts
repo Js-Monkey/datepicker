@@ -1,4 +1,4 @@
-import nextTick, {flushCallbacks, isInCallbacks} from '../../src/utils/nexttick'
+import nextTick, {isInCallbacks} from '../../src/utils/nexttick'
 
 describe('nextTick', () => {
   test('callbacks has been called in the next tick', done => {
@@ -19,14 +19,16 @@ describe('nextTick', () => {
     expect(isInCallbacks(callback)).toBeTruthy()
   })
 
-  test('flushCallbacks is working', () => {
+  test('same callbacks been called only once', done => {
     const fn = jest.fn()
-    nextTick(fn)
-    flushCallbacks()
-    expect(fn).toBeCalled()
+    Array.from({length: 3}).forEach(() => nextTick(fn))
+    setTimeout(() => {
+      expect(fn.mock.calls.length).toBe(1)
+      done()
+    }, 0)
   })
 
-  test('same callbacks be called only once', done => {
+  test('callback is undefined && browser support promise', done => {
     const fn = jest.fn()
     Array.from({length: 3}).forEach(() => nextTick(fn))
     setTimeout(() => {

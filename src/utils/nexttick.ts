@@ -6,7 +6,7 @@ import {isIE, isNative} from './env'
 const callbacks: any[] = []
 let pending = false
 
-export function flushCallbacks(): void {
+function flushCallbacks(): void {
   pending = false
   const copies = callbacks.slice(0)
   callbacks.length = 0
