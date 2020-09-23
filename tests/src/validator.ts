@@ -1,5 +1,6 @@
 import {isInputElement} from '../../src/core/validator/input-element'
 import validateOptions from '../../src/core/validator/options'
+import Options from '../../src/types/options'
 
 describe('validator-input', () => {
   test('inputElement validate', () => {
@@ -33,6 +34,10 @@ describe('validator options', () => {
       expect(validateOptions({unlinkPanels: true})).toBeTruthy()
       const testNumber = (1000 as unknown) as boolean
       expect(validateOptions({unlinkPanels: testNumber})).toBeFalsy()
+    })
+    test('throw error', () => {
+      expect(validateOptions(123 as Options)).toThrowError()
+      expect(validateOptions('123' as Options)).toThrowError()
     })
   })
 })
