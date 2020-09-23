@@ -17,7 +17,7 @@ const Store = (function () {
     states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
   }
 
-  function pushState(): void {
+  function createState(): void {
     states.push(initState())
     uid = states.length - 1
   }
@@ -43,7 +43,7 @@ const Store = (function () {
     states[uid].visible = true
   }
 
-  return {get, set, changeUID, openPopover, pushState}
+  return {get, set, changeUID, openPopover, createState}
 })()
 
-export const {get, set, changeUID, openPopover, pushState} = Store
+export const {get, set, changeUID, openPopover, createState} = Store

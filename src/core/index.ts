@@ -3,7 +3,7 @@ import validateOptions from './validator/options'
 import defaultOptions from './default-options'
 import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
-import {pushState, set} from '../store'
+import {createState, set} from '../store'
 import {mergeOptions} from '../utils/merge'
 
 export default class better {
@@ -19,7 +19,7 @@ export default class better {
     const input = findInputElement(el)
     if (!isInputElement(input)) return
     if (!validateOptions(options)) return
-    pushState()
+    createState()
     set('reference', input)
   }
 }
