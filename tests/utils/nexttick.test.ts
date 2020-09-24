@@ -27,13 +27,4 @@ describe('nextTick', () => {
       done()
     }, 0)
   })
-
-  test('callback is undefined && browser support promise', done => {
-    const fn = jest.fn()
-    Array.from({length: 3}).forEach(() => nextTick(fn))
-    setTimeout(() => {
-      expect(fn.mock.calls.length).toBe(1)
-      done()
-    }, 0)
-  })
 })

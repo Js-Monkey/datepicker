@@ -57,19 +57,12 @@ export function isInCallbacks(cb?: () => unknown): boolean {
   return callbacks.some(_cb => _cb.toString() === cb.toString())
 }
 
-export default function nextTick(cb?: () => unknown): any {
-  let _resolve: (ctx: any) => void
-
+export default function nextTick(cb?: () => unknown): void {
   if (isInCallbacks(cb)) return
   callbacks.push(cb)
   if (!pending) {
     pending = true
     timerFunc()
-  }
-  if (!cb && typeof Promise !== 'undefined') {
-    return new Promise(resolve => {
-      _resolve = resolve
-    })
   }
 }
 
