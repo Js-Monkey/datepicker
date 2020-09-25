@@ -8,7 +8,7 @@ $background-color-dark: rgba(0, 0, 0, 0.12);
 $border-color-1: #dde0e7;
 $border-color-2: #e7eaf1;
 
-.fl-datepicker-wrapper{
+.better-datepicker-wrapper{
   margin: 0;
   padding: 0;
   color: $text-color;
@@ -25,7 +25,7 @@ $border-color-2: #e7eaf1;
   position: absolute;
 }
 
-@keyframes datepickerShow {
+@keyframes show {
   0%{
     display: block;
     opacity: 0;
@@ -37,7 +37,7 @@ $border-color-2: #e7eaf1;
     transform: scaleY(1);
   }
 }
-@keyframes datepickerHidden {
+@keyframes hidden {
   0%{
     opacity: 1;
     transform: scaleY(1);
@@ -50,9 +50,9 @@ $border-color-2: #e7eaf1;
 }
 
 
-.fl-datepicker-show{
-  animation: datepickerShow .3s;
+.better-datepicker-show{
+  animation: show .3s;
 }
-.fl-datepicker-hidden{
-  animation: datepickerHidden .3s forwards;
+.better-datepicker-hidden{
+  animation: hidden .3s forwards;
 }
