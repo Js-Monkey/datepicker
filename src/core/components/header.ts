@@ -8,19 +8,31 @@ export function createHeader(type?: HeaderType): HTMLElement {
     children: [
       {
         name: 'svg',
-        text: 'd-left'
+        text: 'd-left',
+        style: {
+          float: 'left'
+        }
       },
       {
         name: 'svg',
-        text: 'left'
+        text: 'left',
+        style: {
+          float: 'left'
+        }
       },
       {
         name: 'svg',
-        text: 'right'
+        text: 'right',
+        style: {
+          float: 'right'
+        }
       },
       {
         name: 'svg',
-        text: 'd-right'
+        text: 'd-right',
+        style: {
+          float: 'right'
+        }
       }
     ]
   }) as HTMLElement

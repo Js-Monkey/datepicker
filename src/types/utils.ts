@@ -38,13 +38,19 @@ export interface EventListener {
   handler: eventHandler
 }
 
+export interface Style {
+  float?: 'left' | 'right'
+  color?: string
+  backgroundColor?: string
+}
+
 export interface CreateElementOptions {
   name?: 'svg' | 'span' | 'div' | 'ul' | 'li' | 'input'
   el?: (...arg: any) => HTMLElement
   text?: string
   event?: eventHandler | EventListener[]
   class?: string[]
-  style?: string
+  style?: Style
   children?: CreateElementOptions[]
   initial?: 'hidden'
 }

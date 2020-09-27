@@ -1,6 +1,6 @@
 import {isArray, isObject} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler, UtilObject} from '../types/utils'
+import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 
 const handler: Handler = {
   event: (el, ops) => {
@@ -13,7 +13,7 @@ const handler: Handler = {
     }
   },
   class: (el, ops) => el.setAttribute('class', ops.class!.join(' ')),
-  style: (el, ops) => resetAttr(el, ops.style as string, 'style'),
+  style: (el, ops) => resetAttr(el, transformStyle(ops.style!), 'style'),
   children: (el, ops) => {
     ops.children?.forEach(child => {
       el.appendChild(createElement(child))
@@ -61,6 +61,12 @@ export function appendChild(children: Element | Element[], parent?: Element): vo
 export function resetAttr(el: HTMLElement | Element, val: string, name?: string): void {
   if (!name) name = 'class'
   el.setAttribute(name, val)
+}
+
+export function transformStyle(sty: Style): string {
+  return Object.keys(sty)
+    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}` as never), [])
+    .join(';')
 }
 
 export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name?: string): void {
