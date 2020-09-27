@@ -40,7 +40,8 @@ export interface EventListener {
 
 export interface CreateElementOptions {
   name?: 'svg' | 'span' | 'div' | 'ul' | 'li' | 'input'
-  innerText?: string
+  el?: (...arg: any) => HTMLElement
+  text?: string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: string
@@ -51,9 +52,10 @@ export interface CreateElementOptions {
 export interface Handler<T = (el: HTMLElement | Element, options: CreateElementOptions) => void> {
   event: T
   class: T
+  el: T
   style: T
   children: T
   name: () => void
-  innerText: T
+  text: T
   initial: T
 }

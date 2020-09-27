@@ -11,26 +11,26 @@ const acceptOptions: Options = {
 
 const checkLists: (keyof Options)[] = ['placement', 'type', 'format']
 
-function checkFormat(name: keyof Options, options: Options) {
+function checkFormat(name: keyof Options, opt: Options) {
   const optionVal = acceptOptions[name] as any
   if (isArray(optionVal)) {
-    return optionVal.indexOf(options[name]) === -1
+    return optionVal.indexOf(opt[name]) === -1
   } else {
-    return !optionVal(options[name])
+    return !optionVal(opt[name])
   }
 }
 
-function validate(name: keyof Options, options: Options): boolean {
-  if (name in options && checkFormat(name, options)) {
+function validate(name: keyof Options, opt: Options): boolean {
+  if (name in opt && checkFormat(name, opt)) {
     console.error(`Invalid ${name}`)
     return false
   }
   return true
 }
 
-export default function validateOptions(options?: Options): boolean {
-  if (typeof options === 'undefined') return true
-  if (isObject(options)) return checkLists.every(list => validate(list, options))
+export default function validateOptions(opt?: Options): boolean {
+  if (typeof opt === 'undefined') return true
+  if (isObject(opt)) return checkLists.every(list => validate(list, opt))
   console.error('Invalid argument provided.Options must be an object')
   return false
 }

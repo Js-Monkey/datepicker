@@ -1,7 +1,7 @@
 import Better from './core'
 import extend from './utils/extend'
 import Options from './types/options'
-
+import './svg'
 function createInstance(): typeof Better {
   return function (el: HTMLInputElement, options?: Options) {
     const context = new Better(el, options)

@@ -16,13 +16,13 @@ export default function deepMerge(...objs: UtilObject[]): UtilObject {
 }
 
 export function mergeOptions(source: UtilObject, target?: UtilObject): UtilObject {
-  const mergeOptions: UtilObject = deepMerge(Object.create(null), source)
+  const mergeOpt: UtilObject = deepMerge(Object.create(null), source)
   if (target) {
     for (const key in target) {
       if (typeof target[key] !== 'undefined') {
-        mergeOptions[key] = target[key]
+        mergeOpt[key] = target[key]
       }
     }
   }
-  return mergeOptions
+  return mergeOpt
 }

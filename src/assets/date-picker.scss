@@ -23,6 +23,17 @@ $border-color-2: #e7eaf1;
   -ms-user-select: none;
   user-select: none;
   position: absolute;
+  svg{
+    width: 17px;
+    height: 17px;
+    fill: $text-color-fade-1;
+  }
+}
+.better-datepicker-header{
+  width: 320px;
+  height: 30px;
+  margin: 4px;
+  text-align: center;
 }
 
 @keyframes show {
