@@ -1,6 +1,7 @@
 import {isArray, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
+import {isHTMLElement} from './window'
 
 const handler: Handler = {
   event: (el, ops) => {
@@ -20,7 +21,6 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  el: () => null,
   text: (el, ops) => ((el as HTMLElement).innerText = ops.text as string),
   initial: el => addAttr(el, 'display:none', 'style')
 }
@@ -38,8 +38,8 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement(opt: CreateElementOptions): HTMLElement | Element {
-  if (opt.el) return opt.el()
+export function createElement(opt: CreateElementOptions | HTMLElement): HTMLElement | Element {
+  if (isHTMLElement(opt)) return opt
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
     handler[key as keyof CreateElementOptions](el, opt)
@@ -65,7 +65,7 @@ export function resetAttr(el: HTMLElement | Element, val: string, name?: string)
 
 export function transformStyle(sty: Style): string {
   return Object.keys(sty)
-    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}` as never), [])
+    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}`), [] as any[])
     .join(';')
 }
 

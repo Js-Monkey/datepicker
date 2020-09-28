@@ -42,23 +42,27 @@ export interface Style {
   float?: 'left' | 'right'
   color?: string
   backgroundColor?: string
+  margin?: string
+  'margin-left'?: string
+  'margin-right'?: string
+  'margin-top'?: string
+  'margin-bottom'?: string
+  padding?: string
 }
 
 export interface CreateElementOptions {
   name?: 'svg' | 'span' | 'div' | 'ul' | 'li' | 'input'
-  el?: (...arg: any) => HTMLElement
   text?: string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: Style
-  children?: CreateElementOptions[]
+  children?: (CreateElementOptions | HTMLElement)[]
   initial?: 'hidden'
 }
 
 export interface Handler<T = (el: HTMLElement | Element, options: CreateElementOptions) => void> {
   event: T
   class: T
-  el: T
   style: T
   children: T
   name: () => void

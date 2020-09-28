@@ -4,7 +4,7 @@ import {addAttr, createElement, toggleCls} from '../../utils/element'
 import {hidden, show, wrapper} from '../../utils/classes'
 import {StateExtends} from '../../types/store'
 import {get} from '../../store'
-import {createHeader} from '../components/header'
+import {Header} from '../components/header'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -16,7 +16,7 @@ const transform: Transform = {
 export function createPopover(): HTMLElement | Element {
   return createElement({
     class: [wrapper],
-    children: [{el: createHeader}]
+    children: [Header()]
   })
 }
 

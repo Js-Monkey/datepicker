@@ -11,6 +11,8 @@ export interface stateComponent<T = null | HTMLElement> {
 
 export interface stateDate<T = Date> {
   startDate?: T
+  startYear?: number
+  startMonth?: number
 }
 
 export interface stateUtil {

@@ -12,7 +12,7 @@ export const isBody = (node: HTMLElement) => {
   return name === 'body' || name === 'html'
 }
 
-export const isHTMLElement = (node: unknown) => {
+export const isHTMLElement = (node: unknown): node is HTMLElement => {
   return node instanceof window.HTMLElement
 }
 

@@ -4,7 +4,7 @@ $text-color-fade-1: rgba(0, 0, 0, 0.42);
 $text-color-fade-2: rgba(0, 0, 0, 0.22);
 $background-color-light: rgba(0, 0, 0, 0.05);
 $background-color-dark: rgba(0, 0, 0, 0.12);
-
+$transition:.27s all ease;
 $border-color-1: #dde0e7;
 $border-color-2: #e7eaf1;
 
@@ -24,16 +24,35 @@ $border-color-2: #e7eaf1;
   user-select: none;
   position: absolute;
   svg{
-    width: 17px;
-    height: 17px;
+    width: 14px;
+    height: 14px;
     fill: $text-color-fade-1;
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+      fill: $blue;
+    }
   }
 }
 .better-datepicker-header{
   width: 320px;
   height: 30px;
+  line-height: 30px;
   margin: 12px;
   text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  color: $text-color;
+  span{
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+      color: $blue;
+    }
+  }
+  svg{
+    margin-top: 8px;
+  }
 }
 
 @keyframes show {
