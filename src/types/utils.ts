@@ -39,6 +39,8 @@ export interface EventListener {
 }
 
 export interface Style {
+  height?: string
+  width?: string
   float?: 'left' | 'right'
   color?: string
   backgroundColor?: string

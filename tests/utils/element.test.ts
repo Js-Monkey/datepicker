@@ -76,7 +76,7 @@ describe('element', () => {
     })
     describe('support set innerText', () => {
       const tree = createElement({
-        innerText: 'just test'
+        text: 'just test'
       }) as HTMLElement
       expect(tree.innerText).toBe('just test')
     })
@@ -88,7 +88,9 @@ describe('element', () => {
     })
     describe('support set style', () => {
       const tree = createElement({
-        style: 'height:100px'
+        style: {
+          height: '100px'
+        }
       })
       expect(tree.getAttribute('style')).toEqual('height:100px')
     })
