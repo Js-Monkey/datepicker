@@ -11,7 +11,7 @@ export function Header(type?: HeaderType): HTMLElement {
   return createElement({
     class: [header],
     children: [
-      {
+      createElement({
         name: 'svg',
         text: 'd-left',
         style: {
@@ -19,7 +19,7 @@ export function Header(type?: HeaderType): HTMLElement {
           'margin-left': '10px'
         },
         event: addYear
-      },
+      }) as HTMLElement,
       {
         name: 'svg',
         text: 'left',

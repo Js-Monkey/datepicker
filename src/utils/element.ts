@@ -38,7 +38,7 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement(opt: CreateElementOptions | HTMLElement): HTMLElement | Element {
+export function createElement<T = HTMLElement>(opt: CreateElementOptions | HTMLElement): Element | HTMLElement {
   if (isHTMLElement(opt)) return opt
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {

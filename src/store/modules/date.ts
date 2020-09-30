@@ -1,8 +1,14 @@
-import {stateDate} from '../../types/store'
+import {dateWatcherFn, stateDate} from '../../types/store'
 import {getMonth, getYear} from '../../utils/date'
 
-export const dw = {
+export const dw: dateWatcherFn = {
   startDate(): void {
+    //todo
+  },
+  startYear(): void {
+    //todo
+  },
+  startMonth(): void {
     //todo
   }
 }
