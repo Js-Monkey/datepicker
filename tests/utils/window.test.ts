@@ -1,4 +1,4 @@
-import {getScrollParents, getNodeName, getParentNode, isBody, isHTMLElement} from '../../src/utils/window'
+import {getScrollParents, getNodeName, getParentNode, isBody, isNode} from '../../src/utils/window'
 
 function createElement(name?: string): HTMLElement {
   if (!name) name = 'div'
@@ -38,11 +38,11 @@ describe('window', () => {
     expect(isBody(html as HTMLElement)).toBeTruthy()
   })
 
-  test('function isHTMLElement', () => {
-    expect(isHTMLElement(body)).toBeTruthy()
-    expect(isHTMLElement(level1)).toBeTruthy()
-    expect(isHTMLElement(level2)).toBeTruthy()
-    expect(isHTMLElement(svg)).toBeFalsy()
+  test('function isNode', () => {
+    expect(isNode(body)).toBeTruthy()
+    expect(isNode(level1)).toBeTruthy()
+    expect(isNode(level2)).toBeTruthy()
+    expect(isNode(svg)).toBeFalsy()
   })
 
   test('function getScrollParents', () => {

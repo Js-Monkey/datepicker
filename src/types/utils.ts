@@ -52,8 +52,8 @@ export interface Style {
   padding?: string
 }
 
-export interface CreateElementOptions {
-  name?: 'svg' | 'span' | 'div' | 'ul' | 'li' | 'input'
+export interface CreateElementOptions<T = 'svg'> {
+  name?: T | ('span' | 'div' | 'ul' | 'li' | 'input')
   text?: string
   event?: eventHandler | EventListener[]
   class?: string[]

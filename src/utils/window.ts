@@ -12,14 +12,14 @@ export const isBody = (node: HTMLElement) => {
   return name === 'body' || name === 'html'
 }
 
-export const isHTMLElement = (node: unknown): node is HTMLElement => {
-  return node instanceof window.HTMLElement
+export const isNode = (node: unknown): node is Node => {
+  return node instanceof window.Node
 }
 
 export const getScrollParents = (node: HTMLElement, list?: HTMLElement[]): HTMLElement[] => {
   if (!list) list = []
   if (isBody(node)) return list
-  if (isHTMLElement(node)) {
+  if (isNode(node)) {
     const {overflow, overflowX, overflowY} = getComputedStyle(node)
     if (/auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX)) {
       list.push(node)
