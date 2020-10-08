@@ -19,7 +19,9 @@ export default function (): stateUtil {
     },
     visible: false,
     _w: {
-      startDate: []
+      startDate: [],
+      startMonth: [],
+      startYear: []
     }
   }
 }

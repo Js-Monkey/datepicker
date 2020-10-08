@@ -2,6 +2,7 @@ import date, {dw} from './modules/date'
 import components, {cw} from './modules/components'
 import utils, {uw} from './modules/util'
 import {State, Watchers} from '../types/store'
+
 function State(): State {
   return {
     components: components(),

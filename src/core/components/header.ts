@@ -2,9 +2,11 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
+import {set} from '../../store'
 
 export function addYear(): void {
   // todo
+  set('startYear', 2020)
 }
 
 function year(type?: HeaderType) {
@@ -44,9 +46,8 @@ function preYear() {
     style: {
       float: 'left',
       'margin-left': '10px'
-    },
-    event: addYear
-  }) as HTMLElement
+    }
+  })
 }
 
 function preMonth() {
@@ -58,7 +59,7 @@ function preMonth() {
       'margin-left': '10px'
     },
     event: addYear
-  }) as HTMLElement
+  })
 }
 
 function nextMonth() {
@@ -69,7 +70,7 @@ function nextMonth() {
       float: 'right',
       'margin-right': '10px'
     }
-  }) as HTMLElement
+  })
 }
 
 function nextYear() {
@@ -79,8 +80,9 @@ function nextYear() {
     style: {
       float: 'right',
       'margin-right': '5px'
-    }
-  }) as HTMLElement
+    },
+    event: addYear
+  })
 }
 
 export function Header(type?: HeaderType): Node {

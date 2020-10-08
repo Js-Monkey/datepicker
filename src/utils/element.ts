@@ -2,8 +2,7 @@ import {isArray, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {isNode} from './window'
-import {get} from '../store'
-
+import {get, addDep} from '../store'
 const handler: Handler = {
   event: (el, ops) => {
     if (isArray<{name: eventType; handler: eventHandler}>(ops.event)) {
@@ -25,6 +24,10 @@ const handler: Handler = {
   text: (el, ops) => {
     if (isObject(ops.text)) {
       el.innerText = ops.text.output!(get(ops.text.dep))
+      addDep(ops.text.dep, {
+        el: el,
+        fn: ops.text.output!
+      }) //依赖收集
     } else {
       el.innerText = ops.text as string
     }
@@ -49,7 +52,7 @@ export function createElement<T = HTMLElement>(opt: CreateElementOptions | Node)
   if (isNode(opt)) return opt
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el, opt)
+    handler[key as keyof CreateElementOptions](el as HTMLElement, opt)
   })
   return el
 }
