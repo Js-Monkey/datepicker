@@ -17,6 +17,9 @@ export default function (): stateUtil {
       zIndex: 1000,
       format: 'yyyy-mm-dd'
     },
-    visible: false
+    visible: false,
+    _w: {
+      startDate: []
+    }
   }
 }

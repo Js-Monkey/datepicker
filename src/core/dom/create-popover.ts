@@ -13,7 +13,7 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-export function createPopover(): HTMLElement | Element {
+export function createPopover(): Node {
   return createElement({
     class: [wrapper],
     children: [Header()]

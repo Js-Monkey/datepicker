@@ -2,6 +2,7 @@ import {isArray, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {isNode} from './window'
+import {get} from '../store'
 
 const handler: Handler = {
   event: (el, ops) => {
@@ -21,7 +22,13 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, ops) => ((el as HTMLElement).innerText = ops.text as string),
+  text: (el, ops) => {
+    if (isObject(ops.text)) {
+      el.innerText = ops.text.output!(get(ops.text.dep))
+    } else {
+      el.innerText = ops.text as string
+    }
+  },
   initial: el => addAttr(el, 'display:none', 'style')
 }
 
@@ -38,7 +45,7 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement<T = HTMLElement>(opt: CreateElementOptions | HTMLElement): Element | HTMLElement {
+export function createElement<T = HTMLElement>(opt: CreateElementOptions | Node): Node {
   if (isNode(opt)) return opt
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {

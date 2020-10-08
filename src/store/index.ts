@@ -1,4 +1,4 @@
-import {StateExtends} from '../types/store'
+import {dependence, depWatcher, StateExtends} from '../types/store'
 import initState from './state'
 
 const Store = (function () {
@@ -13,9 +13,13 @@ const Store = (function () {
     states[uid][key] = data
   }
 
-  function removeNull(): void {
-    states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
+  function addDep(key: keyof depWatcher, dep: dependence) {
+    states[uid]._w[key].push(dep)
   }
+
+  // function removeNull(): void {
+  //   states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
+  // }
 
   function createState(): void {
     states.push(initState())
@@ -43,7 +47,7 @@ const Store = (function () {
     states[uid].visible = true
   }
 
-  return {get, set, changeUID, openPopover, createState}
+  return {get, set, changeUID, openPopover, createState, addDep}
 })()
 
-export const {get, set, changeUID, openPopover, createState} = Store
+export const {get, set, changeUID, openPopover, createState, addDep} = Store

@@ -1,3 +1,5 @@
+import {depWatcher} from './store'
+
 export interface UtilObject {
   [key: string]: any
 }
@@ -52,13 +54,18 @@ export interface Style {
   padding?: string
 }
 
-export interface CreateElementOptions<T = 'svg'> {
-  name?: T | ('span' | 'div' | 'ul' | 'li' | 'input')
-  text?: string
+export interface CreateElementOptions {
+  name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
+  text?:
+    | {
+        dep: keyof depWatcher
+        output?: (val: string) => string
+      }
+    | string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: Style
-  children?: (CreateElementOptions | HTMLElement)[]
+  children?: (CreateElementOptions | Node)[]
   initial?: 'hidden'
 }
 
@@ -68,6 +75,6 @@ export interface Handler<T = (el: HTMLElement | Element, options: CreateElementO
   style: T
   children: T
   name: () => void
-  text: T
+  text: (el: HTMLElement, options: CreateElementOptions) => void
   initial: T
 }

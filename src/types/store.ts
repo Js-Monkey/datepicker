@@ -15,10 +15,24 @@ export interface stateDate<T = Date> {
   startMonth?: T | number
 }
 
+export interface depWatcher<T = dependencies> {
+  startDate: T
+  startMonth: T
+  startYear: T
+}
+
 export interface stateUtil {
   options: Options
   visible: boolean
+  _w: depWatcher
 }
+
+export interface dependence {
+  el: Node
+  fn: (val: string) => string | number
+}
+
+export type dependencies = dependence[]
 
 export interface util<T> {
   options: T

@@ -1,63 +1,91 @@
 import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
-import {get} from '../../store'
+import {CreateElementOptions} from '../../types/utils'
 
 export function addYear(): void {
   // todo
 }
 
-export function Header(type?: HeaderType): HTMLElement {
+function year(type?: HeaderType) {
+  const opt: CreateElementOptions = {
+    name: 'span',
+    text: {
+      dep: 'startYear',
+      output: val => val + '年'
+    },
+    style: {
+      padding: '0 4px'
+    }
+  }
+  //if (!type) opt.event = '' todo
+  return createElement(opt)
+}
+
+function month(type?: HeaderType) {
+  const opt: CreateElementOptions = {
+    name: 'span',
+    text: {
+      dep: 'startMonth',
+      output: val => val + '月'
+    },
+    style: {
+      padding: '0 4px'
+    }
+  }
+  //if (!type) opt.event = '' todo
+  return createElement(opt)
+}
+
+function preYear() {
+  return createElement({
+    name: 'svg',
+    text: 'd-left',
+    style: {
+      float: 'left',
+      'margin-left': '10px'
+    },
+    event: addYear
+  }) as HTMLElement
+}
+
+function preMonth() {
+  return createElement({
+    name: 'svg',
+    text: 'left',
+    style: {
+      float: 'left',
+      'margin-left': '10px'
+    },
+    event: addYear
+  }) as HTMLElement
+}
+
+function nextMonth() {
+  return createElement({
+    name: 'svg',
+    text: 'd-right',
+    style: {
+      float: 'right',
+      'margin-right': '10px'
+    }
+  }) as HTMLElement
+}
+
+function nextYear() {
+  return createElement({
+    name: 'svg',
+    text: 'right',
+    style: {
+      float: 'right',
+      'margin-right': '5px'
+    }
+  }) as HTMLElement
+}
+
+export function Header(type?: HeaderType): Node {
   return createElement({
     class: [header],
-    children: [
-      createElement({
-        name: 'svg',
-        text: 'd-left',
-        style: {
-          float: 'left',
-          'margin-left': '10px'
-        },
-        event: addYear
-      }) as HTMLElement,
-      {
-        name: 'svg',
-        text: 'left',
-        style: {
-          float: 'left',
-          'margin-left': '5px'
-        }
-      },
-      {
-        name: 'svg',
-        text: 'd-right',
-        style: {
-          float: 'right',
-          'margin-right': '10px'
-        }
-      },
-      {
-        name: 'span',
-        text: get('startYear') + '年',
-        style: {
-          padding: '0 4px'
-        }
-      },
-      {
-        name: 'span',
-        text: get('startMonth') + '月',
-        style: {
-          padding: '0 4px'
-        }
-      },
-      {
-        name: 'svg',
-        text: 'right',
-        style: {
-          float: 'right',
-          'margin-right': '5px'
-        }
-      }
-    ]
-  }) as HTMLElement
+    children: [preYear(), preMonth(), year(), month(), nextMonth(), nextYear()]
+  })
 }
