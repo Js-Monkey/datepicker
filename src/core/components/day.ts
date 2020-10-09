@@ -2,7 +2,7 @@ import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 
-function bar(): Node {
+function content(): Node {
   return createElement({
     class: [dayContent],
     children: Array.from({length: 42}).map((d, idx) => {
@@ -11,7 +11,7 @@ function bar(): Node {
   })
 }
 
-function content(): Node {
+function bar(): Node {
   return createElement({
     class: [dayBar],
     children: dayBarNames.map(name => {
@@ -23,6 +23,6 @@ function content(): Node {
 export function Day(): Node {
   return createElement({
     class: [day],
-    children: [content, bar]
+    children: [bar, content]
   })
 }

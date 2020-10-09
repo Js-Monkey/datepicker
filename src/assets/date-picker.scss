@@ -66,7 +66,6 @@ $border-color-2: #e7eaf1;
   }
 
   &-day {
-    height: 300px;
     width: 350px;
     text-align: center;
     padding: 5px 20px;
@@ -79,6 +78,15 @@ $border-color-2: #e7eaf1;
     }
     &-bar{
       border-bottom: 1px solid $border-color-2;
+    }
+    &-content{
+      span{
+        transition: $transition;
+        cursor: pointer;
+        &:hover{
+          color: $blue;
+        }
+      }
     }
   }
 }
