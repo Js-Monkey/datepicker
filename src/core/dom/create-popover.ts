@@ -5,6 +5,7 @@ import {hidden, show, wrapper} from '../../utils/classes'
 import {StateExtends} from '../../types/store'
 import {get} from '../../store'
 import {Header} from '../components/header'
+import {Day} from '../components/day'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -14,10 +15,10 @@ const transform: Transform = {
 }
 
 export function createPopover(): Node {
-  const {type} = get('options')
+  // const {type} = get('options')
   return createElement({
     class: [wrapper],
-    children: [Header.bind(null, 'left')]
+    children: [Header, Day]
   })
 }
 

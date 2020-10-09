@@ -4,75 +4,103 @@ $text-color-fade-1: rgba(0, 0, 0, 0.42);
 $text-color-fade-2: rgba(0, 0, 0, 0.22);
 $background-color-light: rgba(0, 0, 0, 0.05);
 $background-color-dark: rgba(0, 0, 0, 0.12);
-$transition:.37s all ease;
+$transition: .37s all ease;
 $border-color-1: #dde0e7;
 $border-color-2: #e7eaf1;
 
-.better-datepicker-wrapper{
-  margin: 0;
-  padding: 0;
-  color: $text-color;
-  font-size: 14px;
-  list-style: none;
-  min-width: 320px;
-  min-height: 200px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  position: absolute;
-  svg{
-    width: 14px;
-    height: 14px;
-    fill: $text-color-fade-1;
-    cursor: pointer;
-    transition: $transition;
-    &:hover{
-      fill: $blue;
+.better-datepicker {
+  *{
+    box-sizing: border-box;
+  }
+  &-wrapper {
+    margin: 0;
+    padding: 0;
+    color: $text-color;
+    font-size: 14px;
+    list-style: none;
+    min-width: 320px;
+    min-height: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: $text-color-fade-1;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        fill: $blue;
+      }
     }
   }
-}
-.better-datepicker-header{
-  width: 320px;
-  height: 30px;
-  line-height: 30px;
-  margin: 12px;
-  text-align: center;
-  font-weight: 500;
-  font-size: 16px;
-  color: $text-color;
-  span{
-    cursor: pointer;
-    transition: $transition;
-    &:hover{
-      color: $blue;
+
+  &-header {
+    width: 320px;
+    height: 30px;
+    line-height: 30px;
+    margin: 12px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    color: $text-color;
+
+    span {
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    svg {
+      margin-top: 8px;
     }
   }
-  svg{
-    margin-top: 8px;
+
+  &-day {
+    height: 300px;
+    text-align: center;
+    padding: 5px 20px;
+    span{
+      display: inline-block;
+      line-height: 30px;
+      padding: 5px;
+      width: 41px;
+      height: 41px;
+    }
+    &-bar{
+      border-bottom: 1px solid $border-color-2;
+    }
   }
 }
 
 @keyframes show {
-  0%{
+  0% {
     display: block;
     opacity: 0;
     transform: scaleY(0.8);
   }
-  100%{
+  100% {
     display: block;
     opacity: 1;
     transform: scaleY(1);
   }
 }
+
 @keyframes hidden {
-  0%{
+  0% {
     opacity: 1;
     transform: scaleY(1);
   }
-  100%{
+  100% {
     opacity: 0;
     visibility: hidden;
     transform: scaleY(.8);
@@ -80,9 +108,10 @@ $border-color-2: #e7eaf1;
 }
 
 
-.better-datepicker-show{
+.better-datepicker-show {
   animation: show .3s;
 }
-.better-datepicker-hidden{
+
+.better-datepicker-hidden {
   animation: hidden .3s forwards;
 }

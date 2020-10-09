@@ -1,10 +1,19 @@
-import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
-import {header} from '../../utils/classes'
+import {day, dayBar} from '../../utils/classes'
+import {dayBarNames} from '../i18n'
 
-// export function Day(type: HeaderType = 'main'): Node {
-//   return createElement({
-//     class: [header],
-//     children: headerChildren(type)[type]
-//   })
-// }
+function bar(): Node {
+  return createElement({
+    class: [dayBar],
+    children: dayBarNames.map(name => {
+      return {text: name, name: 'span'}
+    })
+  })
+}
+
+export function Day(): Node {
+  return createElement({
+    class: [day],
+    children: [bar]
+  })
+}
