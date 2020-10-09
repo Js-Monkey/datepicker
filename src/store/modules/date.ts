@@ -5,7 +5,7 @@ export const dw: dateWatcherFn = {
   startDate(): void {
     //todo
   },
-  startYear(): void {
+  startYear(target, key, val): void {
     //todo
   },
   startMonth(): void {

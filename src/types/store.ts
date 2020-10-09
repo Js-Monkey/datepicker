@@ -29,7 +29,7 @@ export interface stateUtil {
 
 export interface dependence {
   el: HTMLElement
-  fn: (val: string) => string
+  fn: (val: unknown) => string
 }
 
 export type dependencies = dependence[]

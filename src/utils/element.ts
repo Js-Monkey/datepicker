@@ -1,7 +1,6 @@
-import {isArray, isObject} from './typeOf'
+import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
-import {isNode} from './window'
+import {CreateElement, CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {get, addDep} from '../store'
 const handler: Handler = {
   event: (el, ops) => {
@@ -48,8 +47,8 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement<T = HTMLElement>(opt: CreateElementOptions | Node): Node {
-  if (isNode(opt)) return opt
+export function createElement<T = HTMLElement>(opt: CreateElementOptions | CreateElement): Node {
+  if (isFunc<Node>(opt)) return opt()
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
     handler[key as keyof CreateElementOptions](el as HTMLElement, opt)

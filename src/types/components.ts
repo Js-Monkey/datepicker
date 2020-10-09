@@ -1,1 +1,1 @@
-export type HeaderType = 'left' | 'right'
+export type HeaderType = 'left' | 'right' | 'main'

@@ -4,10 +4,6 @@ export interface UtilObject {
   [key: string]: any
 }
 
-export interface UtilFn extends UtilObject {
-  (...arg: any): any
-}
-
 export interface Types {
   Number: string
   String: string
@@ -54,18 +50,22 @@ export interface Style {
   padding?: string
 }
 
+export interface CreateElement {
+  (...arg: any): Node
+}
+
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
   text?:
     | {
         dep: keyof depWatcher
-        output?: (val: string) => string
+        output?: (val: unknown) => string
       }
     | string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: Style
-  children?: (CreateElementOptions | Node)[]
+  children?: (CreateElementOptions | CreateElement)[]
   initial?: 'hidden'
 }
 

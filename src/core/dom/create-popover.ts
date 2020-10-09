@@ -14,9 +14,10 @@ const transform: Transform = {
 }
 
 export function createPopover(): Node {
+  const {type} = get('options')
   return createElement({
     class: [wrapper],
-    children: [Header()]
+    children: [Header.bind(null, 'left')]
   })
 }
 
