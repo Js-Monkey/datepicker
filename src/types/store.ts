@@ -24,7 +24,7 @@ export interface depWatcher<T = dependencies> {
 export interface stateUtil {
   options: Options
   visible: boolean
-  _w: depWatcher
+  deps: depWatcher
 }
 
 export interface dependence {

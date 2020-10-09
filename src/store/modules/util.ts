@@ -18,7 +18,7 @@ export default function (): stateUtil {
       format: 'yyyy-mm-dd'
     },
     visible: false,
-    _w: {
+    deps: {
       startDate: [],
       startMonth: [],
       startYear: []

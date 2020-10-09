@@ -42,7 +42,7 @@ function month(type?: HeaderType) {
 function preYear() {
   return createElement({
     name: 'svg',
-    text: 'd-left',
+    text: 'pre-year',
     style: {
       float: 'left',
       'margin-left': '10px'
@@ -53,10 +53,21 @@ function preYear() {
 function preMonth() {
   return createElement({
     name: 'svg',
-    text: 'left',
+    text: 'pre-month',
     style: {
       float: 'left',
       'margin-left': '10px'
+    }
+  })
+}
+
+function nextYear() {
+  return createElement({
+    name: 'svg',
+    text: 'next-year',
+    style: {
+      float: 'right',
+      'margin-right': '10px'
     },
     event: addYear
   })
@@ -65,29 +76,17 @@ function preMonth() {
 function nextMonth() {
   return createElement({
     name: 'svg',
-    text: 'd-right',
-    style: {
-      float: 'right',
-      'margin-right': '10px'
-    }
-  })
-}
-
-function nextYear() {
-  return createElement({
-    name: 'svg',
-    text: 'right',
+    text: 'next-month',
     style: {
       float: 'right',
       'margin-right': '5px'
-    },
-    event: addYear
+    }
   })
 }
 
 export function Header(type?: HeaderType): Node {
   return createElement({
     class: [header],
-    children: [preYear(), preMonth(), year(), month(), nextMonth(), nextYear()]
+    children: [preYear(), preMonth(), year(), month(), nextYear(), nextMonth()]
   })
 }

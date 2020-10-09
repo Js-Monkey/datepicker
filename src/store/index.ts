@@ -14,7 +14,7 @@ const Store = (function () {
   }
 
   function addDep(key: keyof depWatcher, dep: dependence) {
-    states[uid]._w[key].push(dep)
+    states[uid].deps[key].push(dep)
   }
 
   // function removeNull(): void {
