@@ -2,6 +2,7 @@ import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElement, CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {get, addDep} from '../store'
+
 const handler: Handler = {
   event: (el, ops) => {
     if (isArray<{name: eventType; handler: eventHandler}>(ops.event)) {
@@ -21,17 +22,19 @@ const handler: Handler = {
   },
   name: () => null,
   text: (el, ops) => {
-    if (isObject(ops.text)) {
-      el.innerText = ops.text.output!(get(ops.text.dep))
-      addDep(ops.text.dep, {
-        el: el,
-        fn: ops.text.output!
-      }) //依赖收集
+    const {text} = ops
+    if (isObject(text)) {
+      text.deps.forEach(dep => {
+        el.innerText = text.output(get(dep))
+        addDep(dep, {
+          el: el,
+          fn: text.output
+        })
+      })
     } else {
-      el.innerText = ops.text as string
+      el.innerText = text as string
     }
-  },
-  initial: el => addAttr(el, 'display:none', 'style')
+  }
 }
 
 export function createEL(tagName?: string): HTMLElement {

@@ -26,3 +26,6 @@ export function Day(): Node {
     children: [bar, content]
   })
 }
+
+// index、第一天是星期几、上个月的总天数、这个月的总天数
+// 0、4、30、31

@@ -58,15 +58,14 @@ export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
   text?:
     | {
-        dep: keyof depWatcher
-        output?: (val: unknown) => string
+        deps: (keyof depWatcher)[]
+        output: (val: unknown) => string
       }
     | string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
-  initial?: 'hidden'
 }
 
 export interface Handler<T = (el: HTMLElement | Element, options: CreateElementOptions) => void> {
@@ -76,5 +75,4 @@ export interface Handler<T = (el: HTMLElement | Element, options: CreateElementO
   children: T
   name: () => void
   text: (el: HTMLElement, options: CreateElementOptions) => void
-  initial: T
 }

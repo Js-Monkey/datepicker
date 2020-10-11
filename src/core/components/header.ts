@@ -36,7 +36,7 @@ function year() {
   const opt: CreateElementOptions = {
     name: 'span',
     text: {
-      dep: 'startYear',
+      deps: ['startYear'],
       output: val => val + '年'
     },
     style: {
@@ -51,7 +51,7 @@ function month() {
   const opt: CreateElementOptions = {
     name: 'span',
     text: {
-      dep: 'startMonth',
+      deps: ['startMonth'],
       output: val => val + '月'
     },
     style: {
@@ -114,6 +114,7 @@ function headerChildren(type: HeaderType) {
   function bind(cb: () => any) {
     return cb.bind(null, type)
   }
+
   return {
     left: [preYearSVG, preMonthSVG, bind(year), bind(month)],
     main: [preYearSVG, preMonthSVG, year, month, nextYearSVG, nextMonthSVG],
