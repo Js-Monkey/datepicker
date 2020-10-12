@@ -52,7 +52,7 @@ function month() {
     name: 'span',
     text: {
       deps: ['startMonth'],
-      output: val => val + '月'
+      output: month => month + '月'
     },
     style: {
       padding: '0 4px'

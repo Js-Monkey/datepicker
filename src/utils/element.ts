@@ -25,10 +25,10 @@ const handler: Handler = {
     const {text} = ops
     if (isObject(text)) {
       text.deps.forEach(dep => {
-        el.innerText = text.output(get(dep))
         addDep(dep, {
-          el: el,
-          fn: text.output
+          el,
+          fn: text.output,
+          depName: text.deps
         })
       })
     } else {
