@@ -3,6 +3,7 @@ import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
 import {set, get} from '../../store'
+import {getNextMonth, getPreMonth} from '../../utils/date'
 
 export function nextYear(): void {
   let newVal = get('startYear')
@@ -15,21 +16,13 @@ export function preYear(): void {
 }
 
 export function nextMonth(): void {
-  let newVal = get('startMonth')
-  if (++newVal === 13) {
-    newVal = 1
-    nextYear()
-  }
-  set('startMonth', newVal)
+  const m = get('startMonth')
+  set('startMonth', getNextMonth(m, undefined, nextYear))
 }
 
 export function preMonth(): void {
-  let newVal = get('startMonth')
-  if (--newVal === 0) {
-    newVal = 12
-    preYear()
-  }
-  set('startMonth', newVal)
+  const m = get('startMonth')
+  set('startMonth', getPreMonth(m, undefined, preYear))
 }
 
 function year() {

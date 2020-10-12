@@ -30,14 +30,29 @@ export function transformDate(date: Date): string {
   return joinDate(getYear(date), getMonth(date), getDay(date))
 }
 
-export function getNextMonth(val: number): number {
-  let month = ++val
-  if (month === 13) month = 1
+export function getNextMonth(m: number, y?: number, cb: () => void = () => null): number {
+  let month = ++m
+  if (month === 13) {
+    cb()
+    month = 1
+  }
   return month
 }
 
-export function getBackMonth(val: number): number {
-  let month = --val
-  if (month === 0) month = 12
-  return month
+interface Pre {
+  preMonth: number
+  preYear: number
+}
+
+export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = () => null): T {
+  let month = --m
+  if (month === 0) {
+    cb()
+    month = 12
+  }
+  if (y) {
+    ++y
+    return ({preMonth: month, preYear: y} as unknown) as T
+  }
+  return (month as unknown) as T
 }

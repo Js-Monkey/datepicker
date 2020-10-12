@@ -31,6 +31,7 @@ export default function initState(): State {
       const watcher = watchers[name] as any
       const proxy: any = target[name]
       if (proxy[key] === val) return true
+      proxy[key] = val
       if (key in target.utils.deps) {
         updateDeps((target.utils.deps as any)[key])
       }

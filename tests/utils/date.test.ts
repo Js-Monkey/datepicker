@@ -7,7 +7,7 @@ import {
   joinDate,
   transformDate,
   getNextMonth,
-  getBackMonth
+  getPreMonth
 } from '../../src/utils/date'
 
 describe('date function', () => {
@@ -44,9 +44,9 @@ describe('date function', () => {
     expect(getNextMonth(12)).toBe(1)
     expect(getNextMonth(1)).toBe(2)
   })
-  test('getBackMonth', () => {
-    expect(getBackMonth(10)).toBe(9)
-    expect(getBackMonth(12)).toBe(11)
-    expect(getBackMonth(1)).toBe(12)
+  test('getPreMonth', () => {
+    expect(getPreMonth(10)).toBe(9)
+    expect(getPreMonth(12)).toBe(11)
+    expect(getPreMonth(1)).toBe(12)
   })
 })
