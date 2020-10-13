@@ -2,6 +2,10 @@ export const getNodeName = (element: HTMLElement | null) => {
   return element ? (element.nodeName || '').toLowerCase() : null
 }
 
+export function reflectSet(target: any, key: any, val: unknown): boolean {
+  return Reflect.set(target, key, val)
+}
+
 export const getParentNode = (el: HTMLElement): HTMLElement => {
   if (getNodeName(el) === 'html') return el
   return (el.parentNode || document.ownerDocument || document.documentElement) as HTMLElement

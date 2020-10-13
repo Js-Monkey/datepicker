@@ -29,7 +29,7 @@ export interface stateUtil {
 
 export interface dependence {
   el: HTMLElement
-  fn: (...arg: any) => string
+  fn: (...arg: any) => string | number
   depName: (keyof depWatcher)[]
 }
 

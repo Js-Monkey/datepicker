@@ -18,8 +18,9 @@ export function monthHasDays(year: number, month: number): number {
 }
 
 export function monthFirstDay(year: number, month: number): number {
-  const firstDate = new Date(`${year},${month}, 01`)
-  return firstDate.getDay()
+  let firstDate = new Date(`${year},${month}, 01`).getDay()
+  if (firstDate === 0) firstDate = 7
+  return firstDate
 }
 
 export function joinDate<T = number, U = string>(year: T | U, month: T | U, day: T | U): string {
@@ -39,19 +40,14 @@ export function getNextMonth(m: number, y?: number, cb: () => void = () => null)
   return month
 }
 
-interface Pre {
-  preMonth: number
-  preYear: number
-}
-
 export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = () => null): T {
   let month = --m
   if (month === 0) {
     cb()
     month = 12
+    if (y) ++y
   }
   if (y) {
-    ++y
     return ({preMonth: month, preYear: y} as unknown) as T
   }
   return (month as unknown) as T

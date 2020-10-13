@@ -59,7 +59,7 @@ export interface CreateElementOptions {
   text?:
     | {
         deps: (keyof depWatcher)[]
-        output: (...arg: any) => string
+        output: (...arg: any) => number | string
       }
     | string
   event?: eventHandler | EventListener[]

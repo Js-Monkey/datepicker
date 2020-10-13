@@ -1,6 +1,7 @@
 import {dependence, dependencies, stateUtil, utilsWatcherFn} from '../../types/store'
 import {updatePopover} from '../../core/dom/create-popover'
 import {get} from '../index'
+import {reflectSet} from '../../utils/window'
 
 export const uw: utilsWatcherFn = {
   options(): void {
@@ -14,14 +15,14 @@ export const uw: utilsWatcherFn = {
 export function updateDeps(deps: dependencies): void {
   deps.forEach(dep => {
     const params = dep.depName.map(name => get(name))
-    dep.el.innerText = dep.fn(...params)
+    dep.el.innerText = String(dep.fn(...params))
   })
 }
 
 const handler = {
-  set(target: dependencies, key: 'length' | 0, val: dependence) {
-    updateDeps(target)
-    return Reflect.set(target, key, val)
+  set(target: dependencies, key: 'length' | number, val: dependence) {
+    if (key !== 'length' && !val.el.innerText) updateDeps([val])
+    return reflectSet(target, key, val)
   }
 }
 

@@ -2,6 +2,7 @@ import date, {dw} from './modules/date'
 import components, {cw} from './modules/components'
 import utils, {updateDeps, uw} from './modules/util'
 import {State, Watchers} from '../types/store'
+import {reflectSet} from '../utils/window'
 
 function State(): State {
   return {
@@ -36,7 +37,7 @@ export default function initState(): State {
         updateDeps((target.utils.deps as any)[key])
       }
       watcher[key](proxy, key, val, target) //todo any的写法有待改进，这会放弃其他的所有检查
-      return Reflect.set(proxy, key, val)
+      return reflectSet(proxy, key, val)
     }
   })
 }

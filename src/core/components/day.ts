@@ -6,17 +6,23 @@ import {getPreMonth, monthFirstDay, monthHasDays} from '../../utils/date'
 function content(): Node {
   return createElement({
     class: [dayContent],
-    children: Array.from({length: 42}).map((d, idx) => {
+    children: Array.from({length: 42}).map((d, index) => {
       return {
         text: {
           deps: ['startMonth', 'startYear'],
           output: (month: number, year: number) => {
             const fd = monthFirstDay(year, month)
-            const {preMonth, preYear} = getPreMonth(month, year)
-            if (idx < fd) {
-              return monthHasDays(preMonth, preYear) - fd + idx + ''
+            const days = monthHasDays(year, month)
+            const {preYear, preMonth} = getPreMonth(month, year)
+            const preDays = monthHasDays(preYear, preMonth)
+            const idx = index + 1
+            if (index < fd) {
+              return preDays - fd + idx
+            } else if (index < fd + days) {
+              return idx - fd
+            } else {
+              return idx - fd - days
             }
-            return '12'
           }
         },
         name: 'span'
