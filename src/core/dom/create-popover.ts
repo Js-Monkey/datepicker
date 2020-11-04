@@ -24,9 +24,7 @@ export function createPopover(): Node {
 
 export function updatePopover(rec: StateExtends, vis: boolean): void {
   const {popover} = rec.components
-  if (vis) {
-    setPopoverLocation()
-  }
+  if (vis) setPopoverLocation()
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
 

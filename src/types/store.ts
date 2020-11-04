@@ -29,8 +29,9 @@ export interface stateUtil {
 
 export interface dependence {
   el: HTMLElement
-  fn: (...arg: any) => string | number
-  depName: (keyof depWatcher)[]
+  name: (keyof depWatcher)[]
+  textCb?: (...arg: any) => string | number
+  classCb?: (...arg: any) => string[]
 }
 
 export type dependencies = dependence[]

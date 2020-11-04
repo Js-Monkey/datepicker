@@ -9,8 +9,8 @@ const Store = (function () {
     return states[uid][key]
   }
 
-  function set(key: keyof StateExtends, data: unknown) {
-    states[uid][key] = data
+  function set(key: keyof StateExtends, val: unknown) {
+    states[uid][key] = val
   }
 
   function addDep(key: keyof depWatcher, dep: dependence) {

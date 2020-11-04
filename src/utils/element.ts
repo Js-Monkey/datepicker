@@ -1,39 +1,31 @@
 import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElement, CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
-import {get, addDep} from '../store'
+import {addDep} from '../store'
 
 const handler: Handler = {
-  event: (el, ops) => {
-    if (isArray<{name: eventType; handler: eventHandler}>(ops.event)) {
-      ops.event.forEach(e => {
+  event(el, event) {
+    if (isArray<{name: eventType; handler: eventHandler}>(event)) {
+      event.forEach(e => {
         on(el, e.handler, e.name)
       })
     } else {
-      on(el, ops.event as eventHandler)
+      on(el, event as eventHandler)
     }
   },
-  class: (el, ops) => el.setAttribute('class', ops.class!.join(' ')),
-  style: (el, ops) => resetAttr(el, transformStyle(ops.style!), 'style'),
-  children: (el, ops) => {
-    ops.children?.forEach(child => {
+  class: (el, cls) => el.setAttribute('class', cls.join(' ')),
+  style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
+  children(el, children) {
+    children.forEach((child: CreateElementOptions) => {
       el.appendChild(createElement(child))
     })
   },
   name: () => null,
-  text: (el, ops) => {
-    const {text} = ops
-    if (isObject(text)) {
-      text.deps.forEach(dep => {
-        addDep(dep, {
-          el,
-          fn: text.output,
-          depName: text.deps
-        })
-      })
-    } else {
-      el.innerText = text as string
-    }
+  text: (el, text) => (el.innerText = text),
+  deps(el, deps) {
+    deps.forEach(dep => {
+      dep.name.forEach(name => addDep(name, {el, ...dep}))
+    })
   }
 }
 
@@ -54,7 +46,7 @@ export function createElement<T = HTMLElement>(opt: CreateElementOptions | Creat
   if (isFunc<Node>(opt)) return opt()
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, opt)
+    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], opt)
   })
   return el
 }

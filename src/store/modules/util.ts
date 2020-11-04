@@ -14,8 +14,8 @@ export const uw: utilsWatcherFn = {
 
 export function updateDeps(deps: dependencies): void {
   deps.forEach(dep => {
-    const params = dep.depName.map(name => get(name))
-    dep.el.innerText = String(dep.fn(...params))
+    const params = dep.name.map(name => get(name))
+    if (dep.textCb) dep.el.innerText = String(dep.textCb(...params))
   })
 }
 

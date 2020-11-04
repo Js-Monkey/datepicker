@@ -54,25 +54,31 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
+export interface dependenceWatcher {
+  name: (keyof depWatcher)[]
+  textCb?: (...arg: any) => number | string
+  classCb?: (...arg: any) => string[]
+}
+
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
-  text?:
-    | {
-        deps: (keyof depWatcher)[]
-        output: (...arg: any) => number | string
-      }
-    | string
+  text?: string
   event?: eventHandler | EventListener[]
   class?: string[]
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
+  deps?: dependenceWatcher[]
 }
 
-export interface Handler<T = (el: HTMLElement | Element, options: CreateElementOptions) => void> {
+export interface Handler<
+  T = (el: HTMLElement | Element, val: any, options: CreateElementOptions) => void,
+  U = HTMLElement
+> {
   event: T
   class: T
   style: T
   children: T
   name: () => void
-  text: (el: HTMLElement, options: CreateElementOptions) => void
+  text: (el: HTMLElement, text: string) => void
+  deps: (el: HTMLElement, deps: dependenceWatcher[]) => void
 }

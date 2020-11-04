@@ -28,13 +28,15 @@ export function preMonth(): void {
 function year() {
   const opt: CreateElementOptions = {
     name: 'span',
-    text: {
-      deps: ['startYear'],
-      output: val => val + '年'
-    },
     style: {
       padding: '0 4px'
-    }
+    },
+    deps: [
+      {
+        name: ['startYear'],
+        textCb: val => val + '年'
+      }
+    ]
   }
   //if (!type) opt.event = '' todo
   return createElement(opt)
@@ -43,10 +45,12 @@ function year() {
 function month() {
   const opt: CreateElementOptions = {
     name: 'span',
-    text: {
-      deps: ['startMonth'],
-      output: month => month + '月'
-    },
+    deps: [
+      {
+        name: ['startMonth'],
+        textCb: month => month + '月'
+      }
+    ],
     style: {
       padding: '0 4px'
     }

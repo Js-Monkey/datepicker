@@ -9,9 +9,10 @@ $border-color-1: #dde0e7;
 $border-color-2: #e7eaf1;
 
 .better-datepicker {
-  *{
+  * {
     box-sizing: border-box;
   }
+
   &-wrapper {
     margin: 0;
     padding: 0;
@@ -69,22 +70,33 @@ $border-color-2: #e7eaf1;
     width: 350px;
     text-align: center;
     padding: 5px 20px;
-    span{
+
+    span {
       display: inline-block;
       line-height: 30px;
       padding: 5px;
       width: 41px;
       height: 41px;
     }
-    &-bar{
+
+    &-bar {
       border-bottom: 1px solid $border-color-2;
     }
-    &-content{
-      span{
+
+    &-content {
+      span {
         transition: $transition;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
           color: $blue;
+        }
+      }
+
+      .pre, .next {
+        opacity: .3;
+        &:hover {
+          color: inherit;
         }
       }
     }
