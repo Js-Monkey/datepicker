@@ -24,7 +24,7 @@ const handler: Handler = {
   text: (el, text) => (el.innerText = text),
   deps(el, deps) {
     deps.forEach(dep => {
-      dep.name.forEach(name => addDep(name, {el, ...dep}))
+      dep.name.forEach(name => addDep(name, {...dep, el}))
     })
   }
 }

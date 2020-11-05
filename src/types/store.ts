@@ -31,7 +31,7 @@ export interface dependence {
   el: HTMLElement
   name: (keyof depWatcher)[]
   textCb?: (...arg: any) => string | number
-  classCb?: (...arg: any) => string[]
+  classCb?: (...arg: any) => string
 }
 
 export type dependencies = dependence[]

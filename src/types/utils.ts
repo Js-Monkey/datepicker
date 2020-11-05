@@ -1,4 +1,4 @@
-import {depWatcher} from './store'
+import {dependence, depWatcher} from './store'
 
 export interface UtilObject {
   [key: string]: any
@@ -57,7 +57,7 @@ export interface CreateElement {
 export interface dependenceWatcher {
   name: (keyof depWatcher)[]
   textCb?: (...arg: any) => number | string
-  classCb?: (...arg: any) => string[]
+  classCb?: (...arg: any) => string
 }
 
 export interface CreateElementOptions {
@@ -81,5 +81,5 @@ export interface Handler<> {
   children: HandlerCb<CreateElementOptions[]>
   name: () => void
   text: HandlerCb<string>
-  deps: HandlerCb<dependenceWatcher[]>
+  deps: HandlerCb<dependence[]>
 }

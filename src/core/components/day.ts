@@ -7,6 +7,7 @@ function content(): Node {
   return createElement({
     class: [dayContent],
     children: Array.from({length: 42}).map((d, index) => {
+      const idx = index + 1
       return {
         deps: [
           {
@@ -16,7 +17,6 @@ function content(): Node {
               const days = monthHasDays(year, month)
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = monthHasDays(preYear, preMonth)
-              const idx = index + 1
               if (index < fd) {
                 return preDays - fd + idx
               } else if (index < fd + days) {
@@ -24,6 +24,14 @@ function content(): Node {
               } else {
                 return idx - fd - days
               }
+            },
+            classCb(month: number, year: number) {
+              const fd = monthFirstDay(year, month)
+              const days = monthHasDays(year, month)
+              if (index < fd) return 'pre'
+              else if (idx > fd + days) {
+                return 'next'
+              } else return ''
             }
           }
         ],
