@@ -58,6 +58,7 @@ export interface dependenceWatcher {
   name: (keyof depWatcher)[]
   textCb?: (...arg: any) => number | string
   classCb?: (...arg: any) => string
+  paramsCb?: (...arg: any) => number[]
 }
 
 export interface CreateElementOptions {

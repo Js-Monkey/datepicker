@@ -1,4 +1,5 @@
 import Options from './options'
+import {UtilObject} from './utils'
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
@@ -32,6 +33,7 @@ export interface dependence {
   name: (keyof depWatcher)[]
   textCb?: (...arg: any) => string | number
   classCb?: (...arg: any) => string
+  paramsCb?: (...arg: any) => UtilObject
 }
 
 export type dependencies = dependence[]
