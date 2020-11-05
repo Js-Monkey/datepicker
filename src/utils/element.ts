@@ -1,6 +1,6 @@
 import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
-import {CreateElement, CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
+import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {addDep} from '../store'
 
 const handler: Handler = {
@@ -10,13 +10,13 @@ const handler: Handler = {
         on(el, e.handler, e.name)
       })
     } else {
-      on(el, event as eventHandler)
+      on(el, event)
     }
   },
   class: (el, cls) => el.setAttribute('class', cls.join(' ')),
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
   children(el, children) {
-    children.forEach((child: CreateElementOptions) => {
+    children.forEach(child => {
       el.appendChild(createElement(child))
     })
   },
@@ -42,11 +42,11 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement<T = HTMLElement>(opt: CreateElementOptions | CreateElement): Node {
+export function createElement<T = HTMLElement>(opt: CreateElementOptions): Node {
   if (isFunc<Node>(opt)) return opt()
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], opt)
+    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key])
   })
   return el
 }

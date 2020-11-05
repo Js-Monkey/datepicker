@@ -70,15 +70,16 @@ export interface CreateElementOptions {
   deps?: dependenceWatcher[]
 }
 
-export interface Handler<
-  T = (el: HTMLElement | Element, val: any, options: CreateElementOptions) => void,
-  U = HTMLElement
-> {
-  event: T
-  class: T
-  style: T
-  children: T
+interface HandlerCb<T> {
+  (el: HTMLElement, val: T): void
+}
+
+export interface Handler<> {
+  event: HandlerCb<eventHandler>
+  class: HandlerCb<string[]>
+  style: HandlerCb<Style>
+  children: HandlerCb<CreateElementOptions[]>
   name: () => void
-  text: (el: HTMLElement, text: string) => void
-  deps: (el: HTMLElement, deps: dependenceWatcher[]) => void
+  text: HandlerCb<string>
+  deps: HandlerCb<dependenceWatcher[]>
 }
