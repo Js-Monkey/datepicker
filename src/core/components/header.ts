@@ -2,32 +2,7 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
-import {set, get} from '../../store'
-import {getNextMonth, getPreMonth} from '../../utils/date'
-
-export function nextYear(): void {
-  let newVal = get('startYear')
-  set('startYear', ++newVal)
-}
-
-export function preYear(): void {
-  let newVal = get('startYear')
-  set('startYear', --newVal)
-}
-
-export function nextMonth(): void {
-  const m = get('startMonth')
-  set('startMonth', getNextMonth(m, undefined, nextYear))
-}
-
-export function preMonth(): void {
-  const m = get('startMonth')
-  set('startMonth', getPreMonth(m, undefined, preYear))
-}
-
-export function toMonthPage(): void {
-  set('page', 2)
-}
+import {monthClassCb, nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
 
 function year() {
   const opt: CreateElementOptions = {
@@ -40,7 +15,8 @@ function year() {
         name: ['startYear'],
         textCb: val => val + '年'
       }
-    ]
+    ],
+    event: toYearPage
   }
   //if (!type) opt.event = '' todo
   return createElement(opt)
@@ -53,6 +29,10 @@ function month() {
       {
         name: ['startMonth'],
         textCb: month => month + '月'
+      },
+      {
+        name: ['page'],
+        classCb: monthClassCb
       }
     ],
     style: {
@@ -84,7 +64,13 @@ function preMonthSVG() {
       float: 'left',
       'margin-left': '10px'
     },
-    event: preMonth
+    event: preMonth,
+    deps: [
+      {
+        name: ['page'],
+        classCb: monthClassCb
+      }
+    ]
   })
 }
 
@@ -108,7 +94,13 @@ function nextMonthSVG() {
       float: 'right',
       'margin-right': '5px'
     },
-    event: nextMonth
+    event: nextMonth,
+    deps: [
+      {
+        name: ['page'],
+        classCb: monthClassCb
+      }
+    ]
   })
 }
 

@@ -66,7 +66,7 @@ $border-color-2: #e7eaf1;
     }
   }
 
-  &-day, &-month {
+  &-day, &-month,&-year {
     width: 350px;
     text-align: center;
     padding: 5px 20px;
@@ -111,12 +111,23 @@ $border-color-2: #e7eaf1;
     }
   }
 
-  &-month {
+  &-month{
     span {
       display: inline-block;
       line-height: 60px;
       padding: 5px;
       width: 70px;
+      height: 70px;
+    }
+  }
+  &-year{
+    text-align: start;
+    span{
+      text-align: center;
+      display: inline-block;
+      line-height: 60px;
+      padding: 5px;
+      width: 77px;
       height: 70px;
     }
   }

@@ -38,7 +38,7 @@ export default function (): stateUtil {
       format: 'yyyy-mm-dd'
     },
     visible: false,
-    page: 1,
+    page: 'day',
     deps: {
       startDate: new Proxy([], handler),
       startMonth: new Proxy([], handler),

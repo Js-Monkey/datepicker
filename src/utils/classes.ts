@@ -5,5 +5,6 @@ export const day = `${logo}-day`
 export const dayBar = `${day}-bar`
 export const dayContent = `${day}-content`
 export const month = `${logo}-month`
+export const year = `${logo}-year`
 export const show = `${logo}-show`
 export const hidden = `${logo}-hidden`

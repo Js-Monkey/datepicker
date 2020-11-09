@@ -15,7 +15,7 @@ export function Month(): Node {
       {
         name: ['page'],
         classCb(page) {
-          if (page === 2) return 'show'
+          if (page === 'month') return 'show'
           return 'hidden'
         }
       }

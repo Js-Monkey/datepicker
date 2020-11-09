@@ -23,10 +23,12 @@ export interface depWatcher<T = dependencies> {
   page: T
 }
 
+export type pageName = 'day' | 'year' | 'mouth'
+
 export interface stateUtil {
   options: Options
   visible: boolean
-  page: number
+  page: pageName
   deps: depWatcher
 }
 

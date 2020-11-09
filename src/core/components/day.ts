@@ -2,6 +2,7 @@ import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 import {getPreMonth, monthFirstDay, monthHasDays} from '../../utils/date'
+import {pageName} from '../../types/store'
 
 function content(): Node {
   return createElement({
@@ -51,8 +52,8 @@ export function Day(): Node {
     deps: [
       {
         name: ['page'],
-        classCb(page: number) {
-          if (page === 1) return 'show'
+        classCb(page: pageName) {
+          if (page === 'day') return 'show'
           return 'hidden'
         }
       }
