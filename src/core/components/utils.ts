@@ -1,6 +1,8 @@
 import {get, set} from '../../store'
 import {getNextMonth, getPreMonth} from '../../utils/date'
 import {pageName} from '../../types/store'
+import {_Event} from '../../types/event'
+import {isNumber} from '../../utils/typeOf'
 
 export function nextYear(): void {
   let newVal = get('startYear')
@@ -22,8 +24,15 @@ export function preMonth(): void {
   set('startMonth', getPreMonth(m, undefined, preYear))
 }
 
-export function toMonthPage(): void {
+export function toMonthPage(e?: _Event): void {
+  const text = Number(e?.target.innerText)
+  if (isNumber(text)) set('startYear', text)
   set('page', 'month')
+}
+
+export function toDayPage(month: number): void {
+  set('startMonth', month)
+  set('page', 'day')
 }
 
 export function toYearPage(): void {

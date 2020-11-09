@@ -1,4 +1,5 @@
 import {dependence, depWatcher} from './store'
+import {_Event} from './event'
 
 export interface UtilObject {
   [key: string]: any
@@ -29,7 +30,7 @@ export interface Transform<T = string> {
 
 export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'focus'
 
-export type eventHandler = (e: Event) => unknown
+export type eventHandler = (...arg: any) => unknown
 
 export interface EventListener {
   name: eventType
