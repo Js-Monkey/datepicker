@@ -6,6 +6,7 @@ import {StateExtends} from '../../types/store'
 import {get} from '../../store'
 import {Header} from '../components/header'
 import {Day} from '../components/day'
+import {Month} from '../components/month'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -18,7 +19,7 @@ export function createPopover(): Node {
   // const {type} = get('options')
   return createElement({
     class: [wrapper],
-    children: [Header, Day]
+    children: [Header, Day, Month]
   })
 }
 

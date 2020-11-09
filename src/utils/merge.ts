@@ -1,4 +1,4 @@
-import {isObject} from './typeOf'
+import {isArray, isObject} from './typeOf'
 import {UtilObject} from '../types/utils'
 
 export default function deepMerge(...objs: UtilObject[]): UtilObject {
@@ -25,4 +25,13 @@ export function mergeOptions(source: UtilObject, target?: UtilObject): UtilObjec
     }
   }
   return mergeOpt
+}
+
+export function mergeClasses(...args: (string | string[] | undefined)[]): string {
+  return args.reduce((classes: string, arg) => {
+    if (!arg) return classes
+    if (isArray(arg)) classes += ' ' + arg.join(' ')
+    else classes += ' ' + arg
+    return classes
+  }, '')
 }

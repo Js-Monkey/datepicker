@@ -3,6 +3,7 @@ import {updatePopover} from '../../core/dom/create-popover'
 import {get} from '../index'
 import {reflectSet} from '../../utils/window'
 import {resetAttr} from '../../utils/element'
+import {mergeClasses} from '../../utils/merge'
 
 export const uw: utilsWatcherFn = {
   options(): void {
@@ -18,13 +19,13 @@ export function updateDeps(deps: dependencies): void {
     let params = dep.name.map(name => get(name))
     dep.paramsCb && (params = params.concat(dep.paramsCb(...params)))
     dep.textCb && (dep.el.innerText = String(dep.textCb(...params)))
-    dep.classCb && resetAttr(dep.el, dep.classCb(...params))
+    dep.classCb && resetAttr(dep.el, mergeClasses(dep.classCb(...params), dep.class))
   })
 }
 
 const handler = {
   set(target: dependencies, key: 'length' | number, val: dependence) {
-    if (key !== 'length' && !val.el.innerText) updateDeps([val])
+    if (key !== 'length' && (!val.textCb || !val.el.innerText)) updateDeps([val])
     return reflectSet(target, key, val)
   }
 }
@@ -37,10 +38,12 @@ export default function (): stateUtil {
       format: 'yyyy-mm-dd'
     },
     visible: false,
+    page: 1,
     deps: {
       startDate: new Proxy([], handler),
       startMonth: new Proxy([], handler),
-      startYear: new Proxy([], handler)
+      startYear: new Proxy([], handler),
+      page: new Proxy([], handler)
     }
   }
 }

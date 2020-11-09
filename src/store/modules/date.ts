@@ -1,18 +1,5 @@
-import {dateWatcherFn, stateDate} from '../../types/store'
+import {stateDate} from '../../types/store'
 import {getMonth, getYear} from '../../utils/date'
-
-export const dw: dateWatcherFn = {
-  startDate(): void {
-    //todo
-  },
-  startYear(target, key, val): void {
-    //todo
-  },
-  startMonth(): void {
-    //todo
-  }
-}
-
 export default function (): stateDate {
   const date = new Date()
   return {

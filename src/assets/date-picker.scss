@@ -66,11 +66,22 @@ $border-color-2: #e7eaf1;
     }
   }
 
-  &-day {
+  &-day, &-month {
     width: 350px;
     text-align: center;
     padding: 5px 20px;
 
+    span {
+      transition: $transition;
+      cursor: pointer;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+
+  &-day {
     span {
       display: inline-block;
       line-height: 30px;
@@ -81,26 +92,42 @@ $border-color-2: #e7eaf1;
 
     &-bar {
       border-bottom: 1px solid $border-color-2;
+      span{
+        &:hover {
+          color: inherit;
+        }
+      }
     }
 
     &-content {
-      span {
-        transition: $transition;
-        cursor: pointer;
-
-        &:hover {
-          color: $blue;
-        }
-      }
 
       .pre, .next {
         opacity: .3;
+
         &:hover {
           color: inherit;
         }
       }
     }
   }
+
+  &-month {
+    span {
+      display: inline-block;
+      line-height: 60px;
+      padding: 5px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+}
+
+.show {
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes show {

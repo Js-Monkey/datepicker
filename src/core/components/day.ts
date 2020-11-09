@@ -47,6 +47,15 @@ function bar(): Node {
 export function Day(): Node {
   return createElement({
     class: [day],
-    children: [bar, content]
+    children: [bar, content],
+    deps: [
+      {
+        name: ['page'],
+        classCb(page: number) {
+          if (page === 1) return 'show'
+          return 'hidden'
+        }
+      }
+    ]
   })
 }

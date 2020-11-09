@@ -22,9 +22,9 @@ const handler: Handler = {
   },
   name: () => null,
   text: (el, text) => (el.innerText = text),
-  deps(el, deps) {
+  deps(el, deps, opt) {
     deps.forEach(dep => {
-      dep.name.forEach(name => addDep(name, {...dep, el}))
+      dep.name.forEach(name => addDep(name, {...dep, el, class: opt.class}))
     })
   }
 }
@@ -46,7 +46,7 @@ export function createElement<T = HTMLElement>(opt: CreateElementOptions): Node 
   if (isFunc<Node>(opt)) return opt()
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key])
+    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], opt)
   })
   return el
 }

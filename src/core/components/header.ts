@@ -25,6 +25,10 @@ export function preMonth(): void {
   set('startMonth', getPreMonth(m, undefined, preYear))
 }
 
+export function toMonthPage(): void {
+  set('page', 2)
+}
+
 function year() {
   const opt: CreateElementOptions = {
     name: 'span',
@@ -53,7 +57,8 @@ function month() {
     ],
     style: {
       padding: '0 4px'
-    }
+    },
+    event: toMonthPage
   }
   //if (!type) opt.event = '' todo
   return createElement(opt)

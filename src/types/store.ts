@@ -20,11 +20,13 @@ export interface depWatcher<T = dependencies> {
   startDate: T
   startMonth: T
   startYear: T
+  page: T
 }
 
 export interface stateUtil {
   options: Options
   visible: boolean
+  page: number
   deps: depWatcher
 }
 
@@ -34,6 +36,7 @@ export interface dependence {
   textCb?: (...arg: any) => string | number
   classCb?: (...arg: any) => string
   paramsCb?: (...arg: any) => UtilObject
+  class: string[] | undefined
 }
 
 export type dependencies = dependence[]
@@ -55,6 +58,7 @@ export interface dateWatchers<T = dateWatcher> {
 export interface utilWatchers<T = utilWatcher> {
   options: T
   visible: T
+  page: T
 }
 
 export interface State {
@@ -71,12 +75,10 @@ export type componentsWatcherFn = stateComponent<WatchersFn<stateComponent>>
 
 export type utilsWatcherFn = util<WatchersFn<stateUtil>>
 
-export type dateWatcherFn = stateDate<WatchersFn<stateDate>>
-
 export interface Watchers {
   components: componentsWatcherFn
   utils: utilsWatcherFn
-  date: dateWatcherFn
+  date: UtilObject
 }
 
 export interface StateExtends extends State, stateDate, stateUtil, stateComponent {}

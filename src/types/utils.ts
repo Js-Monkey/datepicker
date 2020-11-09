@@ -72,7 +72,7 @@ export interface CreateElementOptions {
 }
 
 interface HandlerCb<T> {
-  (el: HTMLElement, val: T): void
+  (el: HTMLElement, val: T, opt: CreateElementOptions): void
 }
 
 export interface Handler<> {
