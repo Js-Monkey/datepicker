@@ -27,8 +27,7 @@ export function Year(): Node {
       {
         name: ['page'],
         classCb(page: pageName) {
-          if (page === 'year') return 'show'
-          return 'hidden'
+          return page === 'year' ? 'show' : 'hidden'
         }
       }
     ]
