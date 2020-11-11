@@ -11,8 +11,3 @@ export function on(el: any, handler: Handler, eventName?: eventType, params: (ke
   }
   el.addEventListener(eventName, listener)
 }
-
-export function remove(el: any, handler: Handler, eventName?: eventType): void {
-  if (!eventName) eventName = 'click'
-  el.removeEventListener(eventName, handler)
-}

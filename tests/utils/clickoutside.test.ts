@@ -1,7 +1,6 @@
 import {get} from '../../src/store'
 import clickOutside from '../../src/utils/clickoutside'
 import Better from '../../src'
-
 describe('click-outside', () => {
   const ref = document.createElement('input')
   const outsideNode = document.createElement('div')

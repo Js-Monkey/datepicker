@@ -1,4 +1,4 @@
-import {on, remove} from '../../src/utils/event'
+import {on} from '../../src/utils/event'
 import {createEL} from '../../src/utils/element'
 
 describe('eventListener', () => {
@@ -15,31 +15,19 @@ describe('eventListener', () => {
       expect(listener.mock.calls.length).toBe(idx + 1)
     })
   })
-  test('removeEventListener', () => {
-    on(div, listener)
-    remove(div, listener)
-    div.click()
-    expect(listener.mock.calls.length).toBe(0)
-  })
   test('pass in the eventName parameter', () => {
     on(div, listener, 'click')
     div.click()
     expect(listener.mock.calls.length).toBe(1)
-    remove(div, listener, 'click')
-    div.click()
-    expect(listener.mock.calls.length).toBe(1)
   })
 
-  test('params 0 is null:add', () => {
-    on(null, listener)
-    expect(listener.mock.calls.length).toBe(0)
-  })
-  test('params 0 is null:remove', () => {
-    on(div, listener, 'click')
-    div.click()
-    expect(listener.mock.calls.length).toBe(1)
-    remove(null, listener, 'click')
-    div.click()
-    expect(listener.mock.calls.length).toBe(2)
-  })
+  // test('params 0 is null:add', () => {
+  //   on(null, listener)
+  //   expect(listener.mock.calls.length).toBe(0)
+  // })
+  // test('params 0 is null:remove', () => {
+  //   on(div, listener, 'click')
+  //   div.click()
+  //   expect(listener.mock.calls.length).toBe(1)
+  // })
 })

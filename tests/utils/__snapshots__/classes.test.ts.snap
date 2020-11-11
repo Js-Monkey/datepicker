@@ -2,9 +2,14 @@
 
 exports[`classes className 1`] = `
 Object {
+  "day": "better-datepicker-day",
+  "dayBar": "better-datepicker-day-bar",
+  "dayContent": "better-datepicker-day-content",
   "header": "better-datepicker-header",
   "hidden": "better-datepicker-hidden",
+  "month": "better-datepicker-month",
   "show": "better-datepicker-show",
   "wrapper": "better-datepicker-wrapper",
+  "year": "better-datepicker-year",
 }
 `;

@@ -1,5 +1,4 @@
-import createSVG, {addAttr, appendChild, createEL, createElement, resetAttr, toggleCls} from '../../src/utils/element'
-import {doc} from 'prettier'
+import createSVG, {addAttr, createEL, createElement, resetAttr, toggleCls} from '../../src/utils/element'
 
 function isNode(el: any) {
   expect(el.addEventListener).toBeDefined()
@@ -50,7 +49,9 @@ describe('element', () => {
     describe('support addEventListener', () => {
       const fn = jest.fn()
       const tree = createElement({
-        event: [{name: 'click', handler: fn}]
+        event: {
+          cb: [{name: 'click', handler: fn}]
+        }
       }) as HTMLElement
       tree.click()
       expect(fn.mock.calls.length).toBe(1)
@@ -59,7 +60,9 @@ describe('element', () => {
     describe('support addEventListener: other', () => {
       const fn = jest.fn()
       const tree = createElement({
-        event: fn
+        event: {
+          cb: fn
+        }
       }) as HTMLElement
       tree.click()
       expect(fn.mock.calls.length).toBe(1)
@@ -69,7 +72,9 @@ describe('element', () => {
       const fn = jest.fn()
       const tree = createElement({
         name: 'input',
-        event: [{name: 'focus', handler: fn}]
+        event: {
+          cb: [{name: 'focus', handler: fn}]
+        }
       }) as HTMLElement
       tree.focus()
       expect(fn.mock.calls.length).toBe(1)
@@ -91,7 +96,7 @@ describe('element', () => {
         style: {
           height: '100px'
         }
-      })
+      }) as HTMLElement
       expect(tree.getAttribute('style')).toEqual('height:100px')
     })
     describe('support append childrenNodes', () => {
@@ -104,7 +109,14 @@ describe('element', () => {
     describe('children support append addEventListener', () => {
       const fn = jest.fn()
       const tree = createElement({
-        children: [{name: 'span', event: fn}]
+        children: [
+          {
+            name: 'span',
+            event: {
+              cb: fn
+            }
+          }
+        ]
       })
       const children = tree.childNodes
       expect(children.length).toBe(1)

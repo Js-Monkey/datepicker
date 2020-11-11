@@ -42,7 +42,7 @@ describe('window', () => {
     expect(isNode(body)).toBeTruthy()
     expect(isNode(level1)).toBeTruthy()
     expect(isNode(level2)).toBeTruthy()
-    expect(isNode(svg)).toBeFalsy()
+    expect(isNode(svg)).toBeTruthy()
   })
 
   test('function getScrollParents', () => {
