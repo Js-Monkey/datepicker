@@ -1,15 +1,12 @@
-export function getYear(date?: Date): number {
-  if (!date) date = new Date()
+export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
 }
 
-export function getMonth(date?: Date): number {
-  if (!date) date = new Date()
+export function getMonth(date: Date = new Date()): number {
   return date.getMonth() + 1
 }
 
-export function getDay(date?: Date): number {
-  if (!date) date = new Date()
+export function getDay(date: Date = new Date()): number {
   return date.getDate()
 }
 
@@ -51,8 +48,6 @@ export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = 
     month = 12
     if (y) ++y
   }
-  if (y) {
-    return ({preMonth: month, preYear: y} as unknown) as T
-  }
+  if (y) return ({preMonth: month, preYear: y} as unknown) as T
   return (month as unknown) as T
 }

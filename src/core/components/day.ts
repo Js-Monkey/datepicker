@@ -53,8 +53,7 @@ export function Day(): Node {
       {
         name: ['page'],
         classCb(page: pageName) {
-          if (page === 'day') return 'show'
-          return 'hidden'
+          return page === 'day' ? 'show' : 'hidden'
         }
       }
     ]

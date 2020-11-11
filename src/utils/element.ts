@@ -4,8 +4,7 @@ import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObjec
 import {addDep} from '../store'
 
 const handler: Handler = {
-  event(el, {cb, params}) {
-    if (!params) params = []
+  event(el, {cb, params = []}) {
     if (isArray<{name: eventType; handler: eventHandler}>(cb)) {
       cb.forEach(e => {
         on(el, e.handler, e.name)
@@ -30,8 +29,7 @@ const handler: Handler = {
   }
 }
 
-export function createEL(tagName?: string): HTMLElement {
-  if (!tagName) tagName = 'div'
+export function createEL(tagName = 'div'): HTMLElement {
   return document.createElement(tagName)
 }
 
@@ -52,19 +50,15 @@ export function createElement<T = HTMLElement>(opt: CreateElementOptions): Node 
   return el
 }
 
-export function appendChild(children: Element | Element[], parent?: Element): void {
-  if (!parent) parent = document.body
+export function appendChild(children: Element | Element[], parent: Element = document.body): void {
   if (isArray(children)) {
-    children.forEach(child => {
-      parent?.appendChild(child)
-    })
+    children.forEach(child => parent?.appendChild(child))
   } else {
     parent.appendChild(children)
   }
 }
 
-export function resetAttr(el: HTMLElement | Element, val: string, name?: string): void {
-  if (!name) name = 'class'
+export function resetAttr(el: HTMLElement | Element, val: string, name = 'class'): void {
   el.setAttribute(name, val)
 }
 
@@ -74,8 +68,7 @@ export function transformStyle(sty: Style): string {
     .join(';')
 }
 
-export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name?: string): void {
-  if (!name) name = 'class'
+export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name = 'class'): void {
   const attr = el.getAttribute(name)
   if (isObject(val)) val = JSON.stringify(val)
   if (attr && attr.indexOf(val) === -1) val += ' ' + attr
