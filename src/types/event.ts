@@ -1,7 +1,7 @@
 export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'scroll' | 'resize' | 'focus' | 'blur'
 
 export interface Handler {
-  (e: Event): unknown
+  (...arg: any): unknown
 }
 
 export interface _Event {

@@ -10,7 +10,10 @@ export function Month(): Node {
       return {
         name: 'span',
         text: item,
-        event: toDayPage.bind(null, ++idx)
+        event: {
+          cb: toDayPage,
+          params: [++idx]
+        }
       }
     }),
     deps: [

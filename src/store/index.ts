@@ -1,5 +1,6 @@
 import {dependence, depWatcher, StateExtends} from '../types/store'
 import initState from './state'
+import {_Event} from '../types/event'
 
 const Store = (function () {
   let uid = 0
@@ -26,7 +27,7 @@ const Store = (function () {
     uid = states.length - 1
   }
 
-  function changeUID(e: Event) {
+  function changeUID(e: _Event) {
     const el = e.target || e
     states = states.filter(s => Object.keys(s).length > 0)
     uid = states.findIndex(s => s.reference === el)
@@ -40,7 +41,7 @@ const Store = (function () {
     })
   }
 
-  function openPopover(e: Event): void {
+  function openPopover(e: _Event): void {
     changeUID(e)
     closeAllButHasId()
     if (states[uid].visible) return

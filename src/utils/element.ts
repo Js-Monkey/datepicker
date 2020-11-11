@@ -1,16 +1,17 @@
-import {isArray, isFunc, isObject} from './typeOf'
+import {isArray, isFunc, isObject, isString} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
 import {addDep} from '../store'
 
 const handler: Handler = {
-  event(el, event) {
-    if (isArray<{name: eventType; handler: eventHandler}>(event)) {
-      event.forEach(e => {
+  event(el, {cb, params}) {
+    if (!params) params = []
+    if (isArray<{name: eventType; handler: eventHandler}>(cb)) {
+      cb.forEach(e => {
         on(el, e.handler, e.name)
       })
     } else {
-      on(el, event)
+      on(el, cb, 'click', params)
     }
   },
   class: (el, cls) => el.setAttribute('class', cls.join(' ')),

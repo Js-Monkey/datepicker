@@ -93,6 +93,7 @@ $border-color-2: #e7eaf1;
     &-bar {
       border-bottom: 1px solid $border-color-2;
       span{
+        cursor: inherit;
         &:hover {
           color: inherit;
         }

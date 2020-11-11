@@ -16,7 +16,10 @@ function year() {
         textCb: val => val + '年'
       }
     ],
-    event: toYearPage
+    event: {
+      cb: toYearPage,
+      params: ['startYear']
+    }
   }
   //if (!type) opt.event = '' todo
   return createElement(opt)
@@ -38,7 +41,9 @@ function month() {
     style: {
       padding: '0 4px'
     },
-    event: toMonthPage
+    event: {
+      cb: toMonthPage
+    }
   }
   //if (!type) opt.event = '' todo
   return createElement(opt)
@@ -52,7 +57,9 @@ function preYearSVG() {
       float: 'left',
       'margin-left': '10px'
     },
-    event: preYear
+    event: {
+      cb: preYear
+    }
   })
 }
 
@@ -64,7 +71,9 @@ function preMonthSVG() {
       float: 'left',
       'margin-left': '10px'
     },
-    event: preMonth,
+    event: {
+      cb: preMonth
+    },
     deps: [
       {
         name: ['page'],
@@ -82,7 +91,9 @@ function nextYearSVG() {
       float: 'right',
       'margin-right': '10px'
     },
-    event: nextYear
+    event: {
+      cb: nextYear
+    }
   })
 }
 
@@ -94,7 +105,9 @@ function nextMonthSVG() {
       float: 'right',
       'margin-right': '5px'
     },
-    event: nextMonth,
+    event: {
+      cb: nextMonth
+    },
     deps: [
       {
         name: ['page'],

@@ -1,5 +1,4 @@
 import {dependence, depWatcher} from './store'
-import {_Event} from './event'
 
 export interface UtilObject {
   [key: string]: any
@@ -55,7 +54,7 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface dependenceWatcher {
+export interface DependenceWatcher {
   name: (keyof depWatcher)[]
   textCb?: (...arg: any) => number | string
   classCb?: (...arg: any) => string
@@ -65,11 +64,14 @@ export interface dependenceWatcher {
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
   text?: string
-  event?: eventHandler | EventListener[]
+  event?: {
+    cb: eventHandler | EventListener[]
+    params?: (keyof depWatcher | number)[]
+  }
   class?: string[]
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
-  deps?: dependenceWatcher[]
+  deps?: DependenceWatcher[]
 }
 
 interface HandlerCb<T> {
@@ -77,7 +79,10 @@ interface HandlerCb<T> {
 }
 
 export interface Handler<> {
-  event: HandlerCb<eventHandler>
+  event: HandlerCb<{
+    cb: eventHandler | EventListener[]
+    params?: (keyof depWatcher | number)[]
+  }>
   class: HandlerCb<string[]>
   style: HandlerCb<Style>
   children: HandlerCb<CreateElementOptions[]>

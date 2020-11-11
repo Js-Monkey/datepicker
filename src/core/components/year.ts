@@ -17,7 +17,10 @@ export function Year(): Node {
             }
           }
         ],
-        event: toMonthPage
+        event: {
+          cb: toMonthPage,
+          params: ['startYear', idx]
+        }
       }
     }),
     deps: [

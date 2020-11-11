@@ -2,7 +2,7 @@ import {
   getYear,
   getMonth,
   getDay,
-  monthHasDays,
+  daysInAMonth,
   monthFirstDay,
   joinDate,
   transformDate,
@@ -27,8 +27,8 @@ describe('date function', () => {
     expect(getDay(date)).toBe(1)
   })
 
-  test('monthHasDays', () => {
-    expect(monthHasDays(2020, 9)).toBe(30)
+  test('daysInAMonth', () => {
+    expect(daysInAMonth(2020, 9)).toBe(30)
   })
   test('monthFirstDay', () => {
     expect(monthFirstDay(2020, 9)).toBe(2)

@@ -1,7 +1,6 @@
 import {get, set} from '../../store'
-import {getNextMonth, getPreMonth} from '../../utils/date'
+import {getDate, getNextMonth, getPreMonth} from '../../utils/date'
 import {pageName} from '../../types/store'
-import {_Event} from '../../types/event'
 import {isNumber} from '../../utils/typeOf'
 
 export function nextYear(): void {
@@ -24,9 +23,9 @@ export function preMonth(): void {
   set('startMonth', getPreMonth(m, undefined, preYear))
 }
 
-export function toMonthPage(e?: _Event): void {
-  const text = Number(e?.target.innerText)
-  if (isNumber(text)) set('startYear', text)
+export function toMonthPage(year: number, idx: number): void {
+  console.log(year)
+  if (isNumber(year)) set('startYear', year + idx)
   set('page', 'month')
 }
 
@@ -37,6 +36,12 @@ export function toDayPage(month: number): void {
 
 export function toYearPage(): void {
   set('page', 'year')
+}
+
+export function selectDate(day: number): void {
+  const year = get('startYear')
+  const month = get('startMonth')
+  set('startDate', getDate(year, month, day))
 }
 
 export function monthClassCb(page: pageName): string {

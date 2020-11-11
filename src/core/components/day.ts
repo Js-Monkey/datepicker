@@ -1,7 +1,7 @@
 import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
-import {getPreMonth, monthFirstDay, monthHasDays} from '../../utils/date'
+import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
 import {pageName} from '../../types/store'
 
 function content(): Node {
@@ -15,7 +15,7 @@ function content(): Node {
             name: ['startMonth', 'startYear'],
             textCb(month: number, year: number, fd: number, days: number) {
               const {preYear, preMonth} = getPreMonth(month, year)
-              const preDays = monthHasDays(preYear, preMonth)
+              const preDays = daysInAMonth(preYear, preMonth)
               if (index < fd) return preDays - fd + idx
               else if (index < fd + days) return idx - fd
               else return idx - fd - days
@@ -26,7 +26,7 @@ function content(): Node {
               else return ''
             },
             paramsCb(month: number, year: number) {
-              return [monthFirstDay(year, month), monthHasDays(year, month)]
+              return [monthFirstDay(year, month), daysInAMonth(year, month)]
             }
           }
         ],

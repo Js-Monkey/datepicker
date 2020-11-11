@@ -38,7 +38,7 @@ export interface dependence {
   textCb?: (...arg: any) => string | number
   classCb?: (...arg: any) => string
   paramsCb?: (...arg: any) => UtilObject
-  class: string[] | undefined
+  class?: string[]
 }
 
 export type dependencies = dependence[]

@@ -13,7 +13,11 @@ export function getDay(date?: Date): number {
   return date.getDate()
 }
 
-export function monthHasDays(year: number, month: number): number {
+export function getDate(year: number, month: number, day: number): Date {
+  return new Date(joinDate(year, month, day))
+}
+
+export function daysInAMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
