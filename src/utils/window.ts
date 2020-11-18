@@ -20,8 +20,7 @@ export const isNode = (node: unknown): node is Node => {
   return node instanceof window.Node
 }
 
-export const getScrollParents = (node: HTMLElement, list?: HTMLElement[]): HTMLElement[] => {
-  if (!list) list = []
+export const getScrollParents = (node: HTMLElement, list: HTMLElement[] = []): HTMLElement[] => {
   if (isBody(node)) return list
   if (isNode(node)) {
     const {overflow, overflowX, overflowY} = getComputedStyle(node)

@@ -28,8 +28,8 @@ export function mergeOptions(source: UtilObject, target?: UtilObject): UtilObjec
 }
 
 export function mergeClasses(...args: (string | string[] | undefined)[]): string {
-  return args.reduce((classes: string, arg) => {
-    if (!arg) return classes
-    return classes + ' ' + (isArray(arg) ? arg.join(' ') : arg)
-  }, '')
+  return args.reduce(
+    (classes: string, arg) => (!arg ? classes : classes + ' ' + (isArray(arg) ? arg.join(' ') : arg)),
+    ''
+  )
 }

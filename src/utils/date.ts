@@ -41,13 +41,17 @@ export function getNextMonth(m: number, y?: number, cb: () => void = () => null)
   return month
 }
 
-export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = () => null): T {
+export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = () => null): any {
   let month = --m
   if (month === 0) {
     cb()
     month = 12
     if (y) ++y
   }
-  if (y) return ({preMonth: month, preYear: y} as unknown) as T
-  return (month as unknown) as T
+  return y
+    ? {
+        preMonth: month,
+        preYear: y
+      }
+    : m
 }

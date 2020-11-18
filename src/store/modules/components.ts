@@ -9,7 +9,6 @@ import {listenToScrollParents} from '../../utils/listenToParents'
 
 export const cw: componentsWatcherFn = {
   reference(target, key, val, rec): void {
-    const {reference} = target
     on(val, openPopover)
     on(document.body, clickOutside.bind(null, rec))
     listenToScrollParents(val as HTMLElement)
@@ -25,9 +24,17 @@ export const cw: componentsWatcherFn = {
   }
 }
 
+const dayComponents = Array.from({length: 42}).map((_: unknown) => {
+  return {
+    el: null,
+    text: ''
+  }
+})
+
 export default function (): stateComponent {
   return {
     reference: null,
-    popover: null
+    popover: null,
+    dayComponents
   }
 }

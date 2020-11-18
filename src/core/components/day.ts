@@ -16,14 +16,10 @@ function content(): Node {
             textCb(month: number, year: number, fd: number, days: number) {
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = daysInAMonth(preYear, preMonth)
-              if (index < fd) return preDays - fd + idx
-              else if (index < fd + days) return idx - fd
-              else return idx - fd - days
+              return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
             },
             classCb(month: number, year: number, fd: number, days: number) {
-              if (index < fd) return 'pre'
-              else if (idx > fd + days) return 'next'
-              else return ''
+              return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
             },
             paramsCb(month: number, year: number) {
               return [monthFirstDay(year, month), daysInAMonth(year, month)]

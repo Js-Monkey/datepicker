@@ -8,6 +8,7 @@ type utilWatcher = (target: stateUtil, key: keyof utilWatchers, value: unknown) 
 export interface stateComponent<T = null | HTMLElement> {
   reference: T
   popover: T
+  dayComponents?: any[]
 }
 
 export interface stateDate<T = Date> {

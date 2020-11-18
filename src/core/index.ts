@@ -17,8 +17,7 @@ export default class better {
 
   static create(el: HTMLInputElement, options: Options) {
     const input = findInputElement(el)
-    if (!isInputElement(input)) return
-    if (!validateOptions(options)) return
+    if (!isInputElement(input) || !validateOptions(options)) return
     createState()
     set('reference', input)
   }
