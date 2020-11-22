@@ -1,7 +1,6 @@
-import {isArray, isFunc, isObject, isString} from './typeOf'
+import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
-import {addDep} from '../store'
 
 const handler: Handler = {
   event(el, {cb, params = []}) {
@@ -21,12 +20,7 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, text) => (el.innerText = text),
-  deps(el, deps, opt) {
-    deps.forEach(dep => {
-      dep.name.forEach(name => addDep(name, {...dep, el, class: opt.class}))
-    })
-  }
+  text: (el, text) => (el.innerText = text)
 }
 
 export function createEL(tagName = 'div'): HTMLElement {

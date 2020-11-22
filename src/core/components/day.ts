@@ -10,22 +10,22 @@ function content(): Node {
     children: Array.from({length: 42}).map((d, index) => {
       const idx = index + 1
       return {
-        deps: [
-          {
-            name: ['startMonth', 'startYear'],
-            textCb(month: number, year: number, fd: number, days: number) {
-              const {preYear, preMonth} = getPreMonth(month, year)
-              const preDays = daysInAMonth(preYear, preMonth)
-              return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
-            },
-            classCb(month: number, year: number, fd: number, days: number) {
-              return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
-            },
-            paramsCb(month: number, year: number) {
-              return [monthFirstDay(year, month), daysInAMonth(year, month)]
-            }
-          }
-        ],
+        // deps: [
+        //   {
+        //     name: ['startMonth', 'startYear'],
+        //     textCb(month: number, year: number, fd: number, days: number) {
+        //       const {preYear, preMonth} = getPreMonth(month, year)
+        //       const preDays = daysInAMonth(preYear, preMonth)
+        //       return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
+        //     },
+        //     classCb(month: number, year: number, fd: number, days: number) {
+        //       return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
+        //     },
+        //     paramsCb(month: number, year: number) {
+        //       return [monthFirstDay(year, month), daysInAMonth(year, month)]
+        //     }
+        //   }
+        // ],
         name: 'span'
       }
     })
@@ -44,14 +44,14 @@ function bar(): Node {
 export function Day(): Node {
   return createElement({
     class: [day],
-    children: [bar, content],
-    deps: [
-      {
-        name: ['page'],
-        classCb(page: pageName) {
-          return page === 'day' ? 'show' : 'hidden'
-        }
-      }
-    ]
+    children: [bar, content]
+    // deps: [
+    //   {
+    //     name: ['page'],
+    //     classCb(page: pageName) {
+    //       return page === 'day' ? 'show' : 'hidden'
+    //     }
+    //   }
+    // ]
   })
 }

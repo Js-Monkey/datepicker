@@ -9,27 +9,11 @@ export function Year(): Node {
     children: Array.from({length: 10}).map((_, idx) => {
       return {
         name: 'span',
-        deps: [
-          {
-            name: ['startYear'],
-            textCb(year) {
-              return year + idx
-            }
-          }
-        ],
         event: {
           cb: toMonthPage,
           params: ['startYear', idx]
         }
       }
-    }),
-    deps: [
-      {
-        name: ['page'],
-        classCb(page: pageName) {
-          return page === 'year' ? 'show' : 'hidden'
-        }
-      }
-    ]
+    })
   })
 }

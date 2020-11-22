@@ -1,4 +1,4 @@
-import {dependence, depWatcher, StateExtends} from '../types/store'
+import {StateExtends} from '../types/store'
 import initState from './state'
 import {_Event} from '../types/event'
 
@@ -12,10 +12,6 @@ const Store = (function () {
 
   function set(key: keyof StateExtends, val: unknown) {
     states[uid][key] = val
-  }
-
-  function addDep(key: keyof depWatcher, dep: dependence) {
-    states[uid].deps[key].push(dep)
   }
 
   // function removeNull(): void {
@@ -48,7 +44,7 @@ const Store = (function () {
     states[uid].visible = true
   }
 
-  return {get, set, changeUID, openPopover, createState, addDep}
+  return {get, set, changeUID, openPopover, createState}
 })()
 
-export const {get, set, changeUID, openPopover, createState, addDep} = Store
+export const {get, set, changeUID, openPopover, createState} = Store

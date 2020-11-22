@@ -10,12 +10,12 @@ function year() {
     style: {
       padding: '0 4px'
     },
-    deps: [
-      {
-        name: ['startYear'],
-        textCb: val => val + '年'
-      }
-    ],
+    // deps: [
+    //   {
+    //     name: ['startYear'],
+    //     textCb: val => val + '年'
+    //   }
+    // ],
     event: {
       cb: toYearPage,
       params: ['startYear']
@@ -28,16 +28,20 @@ function year() {
 function month() {
   const opt: CreateElementOptions = {
     name: 'span',
-    deps: [
-      {
-        name: ['startMonth'],
-        textCb: month => month + '月'
-      },
-      {
-        name: ['page'],
-        classCb: monthClassCb
-      }
-    ],
+    // deps: [
+    //   {
+    //     name: ['startMonth'],
+    //     textCb: month => month + '月'
+    //   },
+    //   {
+    //     name: ['page'],
+    //     classCb: monthClassCb
+    //   }
+    // ],
+    text: {
+      name: ['startMonth'],
+      cb: month => month + '月'
+    },
     style: {
       padding: '0 4px'
     },
@@ -73,13 +77,13 @@ function preMonthSVG() {
     },
     event: {
       cb: preMonth
-    },
-    deps: [
-      {
-        name: ['page'],
-        classCb: monthClassCb
-      }
-    ]
+    }
+    // deps: [
+    //   {
+    //     name: ['page'],
+    //     classCb: monthClassCb
+    //   }
+    // ]
   })
 }
 
@@ -107,13 +111,13 @@ function nextMonthSVG() {
     },
     event: {
       cb: nextMonth
-    },
-    deps: [
-      {
-        name: ['page'],
-        classCb: monthClassCb
-      }
-    ]
+    }
+    // deps: [
+    //   {
+    //     name: ['page'],
+    //     classCb: monthClassCb
+    //   }
+    // ]
   })
 }
 

@@ -10,8 +10,8 @@ export function on(
   params: (keyof depWatcher | number)[] = []
 ): void {
   const listener = function (e: _Event) {
-    const args = params.map(param => (isString(param) ? get(param) : param))
-    handler(...args, e)
+    const args = params.map(param => (isString(param) ? get(param) : param)).concat(e)
+    handler(...args)
   }
   el.addEventListener(eventName, listener)
 }

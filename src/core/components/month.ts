@@ -15,14 +15,14 @@ export function Month(): Node {
           params: [++idx]
         }
       }
-    }),
-    deps: [
-      {
-        name: ['page'],
-        classCb(page) {
-          return page === 'month' ? 'show' : 'hidden'
-        }
-      }
-    ]
+    })
+    // deps: [
+    //   {
+    //     name: ['page'],
+    //     classCb(page) {
+    //       return page === 'month' ? 'show' : 'hidden'
+    //     }
+    //   }
+    // ]
   })
 }

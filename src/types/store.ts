@@ -30,7 +30,6 @@ export interface stateUtil {
   options: Options
   visible: boolean
   page: pageName
-  deps: depWatcher
 }
 
 export interface dependence {

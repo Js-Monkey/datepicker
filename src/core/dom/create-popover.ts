@@ -20,7 +20,7 @@ export function createPopover(): Node {
   // const {type} = get('options')
   return createElement({
     class: [wrapper],
-    children: [Header, Day, Month, Year]
+    children: [Header, Day]
   })
 }
 

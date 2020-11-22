@@ -54,24 +54,26 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface DependenceWatcher {
+export interface Dependence<T = string> {
   name: (keyof depWatcher)[]
-  textCb?: (...arg: any) => number | string
-  classCb?: (...arg: any) => string
-  paramsCb?: (...arg: any) => number[]
+  cb?: (...arg: any) => T
+}
+
+export interface classOptions {
+  static?: string[]
+  dep: Dependence
 }
 
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
-  text?: string
+  text?: string | Dependence
   event?: {
     cb: eventHandler | EventListener[]
     params?: (keyof depWatcher | number)[]
   }
-  class?: string[]
+  class?: string[] | classOptions
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
-  deps?: DependenceWatcher[]
 }
 
 interface HandlerCb<T> {
@@ -88,5 +90,4 @@ export interface Handler<> {
   children: HandlerCb<CreateElementOptions[]>
   name: () => void
   text: HandlerCb<string>
-  deps: HandlerCb<dependence[]>
 }
