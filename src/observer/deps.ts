@@ -1,24 +1,26 @@
+import {Sub, Watcher} from '../types/observer'
 import {State} from '../types/store'
 
 let uid = 0
 
-function updateView(sub: any) {
-  //todo
+export function updateView(sub: Sub, state: State): void {
+  const params = sub.name.map(name => state[name])
+  sub.cb(...params)
 }
 
 export default class Dep {
   static target: any
   id: number
   subs: any[]
-  name: keyof State
+  state: State
 
-  constructor(name: keyof State) {
+  constructor(state: State) {
     this.id = uid++
     this.subs = []
-    this.name = name
+    this.state = state
   }
 
-  addSub(sub: any): void {
+  addSub(sub: Sub): void {
     this.subs.push(sub)
   }
 
@@ -29,19 +31,18 @@ export default class Dep {
   }
 
   notify(): void {
-    console.log(this.subs)
     this.subs.forEach(sub => {
-      updateView(sub)
+      updateView(sub.watcher, this.state)
     })
   }
 }
 
 Dep.target = null
 
-export function setTarget(target: any): void {
+export function setTarget(target: Watcher): void {
   Dep.target = target
 }
 
-export function cleanTarget(): void {
+export function clearTarget(): void {
   Dep.target = null
 }

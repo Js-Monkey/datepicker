@@ -4,7 +4,7 @@ import utils from './modules/util'
 import {State} from '../types/store'
 import {observe} from '../observer'
 
-function State(): any {
+function State(): State {
   return Object.assign(components(), date(), utils())
 }
 

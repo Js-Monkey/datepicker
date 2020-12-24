@@ -63,11 +63,7 @@ export interface utilWatchers<T = utilWatcher> {
   page: T
 }
 
-export interface State {
-  components: stateComponent
-  utils: stateUtil
-  date: stateDate
-}
+export interface State extends stateComponent, stateUtil, stateDate {}
 
 export interface WatchersFn<T> {
   (target: T, key: keyof T, value: unknown, receiver: StateExtends): void

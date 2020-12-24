@@ -5,6 +5,7 @@ import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
 import {createState, set} from '../store'
 import {mergeOptions} from '../utils/merge'
+import {watch} from './watch'
 
 export default class better {
   options: Options
@@ -15,10 +16,11 @@ export default class better {
     better.create(el, this.options)
   }
 
-  static create(el: HTMLInputElement, options: Options) {
+  static create(el: HTMLInputElement, options: Options): void {
     const input = findInputElement(el)
     if (!isInputElement(input) || !validateOptions(options)) return
     createState()
+    watch()
     set('reference', input)
   }
 }

@@ -3,30 +3,36 @@ import {openPopover, set} from '../../store'
 import clickOutside from '../../utils/clickoutside'
 import {listenToScrollParents} from '../../utils/listenToParents'
 import {isInBody} from '../../utils/isInBody'
-import {createPopover} from '../dom/create-popover'
+import {createPopover, updatePopover} from '../dom/create-popover'
 import {appendChild} from '../../utils/element'
 import {setPopoverStyle} from '../dom/create-popover'
+import {addWatch} from '../../observer/watcher'
+import Options from '../../types/options'
 
-const reference = {
-  name: ['reference'],
-  cb(val: HTMLElement): void {
-    on(val, openPopover)
-    //on(document.body, clickOutside.bind(null, rec))
-    listenToScrollParents(val)
-    set('popover', createPopover())
-  }
-}
-
-const popover = {
-  name: ['popover'],
-  cb(val: HTMLElement): void {
-    // const {popover} = target
-    // const {zIndex} = rec.utils.options
-    // if (!isInBody(popover)) {
-    //   appendChild(val as Element)
-    //   setPopoverStyle(val as HTMLElement, zIndex as number)
-    // }
-    appendChild(val as Element)
-    setPopoverStyle(val as HTMLElement, 2020)
-  }
+export function watch(): void {
+  addWatch({
+    name: ['reference'],
+    cb(val: HTMLElement): void {
+      on(val, openPopover)
+      on(document.body, clickOutside)
+      listenToScrollParents(val)
+      set('popover', createPopover())
+    }
+  })
+  addWatch({
+    name: ['popover', 'options'],
+    cb(pop: HTMLElement, options: Options): void {
+      if (!isInBody(pop)) {
+        appendChild(pop as Element)
+        const {zIndex} = options
+        setPopoverStyle(pop as HTMLElement, zIndex as number)
+      }
+    }
+  })
+  addWatch({
+    name: ['popover', 'visible'],
+    cb(pop: HTMLElement, show: boolean): void {
+      updatePopover(pop, show)
+    }
+  })
 }

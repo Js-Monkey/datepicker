@@ -64,7 +64,9 @@ export function transformStyle(sty: Style): string {
 
 export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name = 'class'): void {
   const attr = el.getAttribute(name)
-  if (isObject(val)) val = JSON.stringify(val)
+  if (isObject(val)) {
+    val = Object.keys(val).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
+  }
   if (attr && attr.indexOf(val) === -1) val += ' ' + attr
   el.setAttribute(name, val)
 }

@@ -2,12 +2,9 @@ import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
 import {addAttr, createElement, toggleCls} from '../../utils/element'
 import {hidden, show, wrapper} from '../../utils/classes'
-import {StateExtends} from '../../types/store'
 import {get} from '../../store'
 import {Header} from '../components/header'
 import {Day} from '../components/day'
-import {Month} from '../components/month'
-import {Year} from '../components/year'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -24,8 +21,7 @@ export function createPopover(): Node {
   })
 }
 
-export function updatePopover(rec: StateExtends, vis: boolean): void {
-  const {popover} = rec.components
+export function updatePopover(popover: HTMLElement, vis: boolean): void {
   if (vis) setPopoverLocation()
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
@@ -33,7 +29,7 @@ export function updatePopover(rec: StateExtends, vis: boolean): void {
 export function setPopoverStyle(el: HTMLElement, zx: number): void {
   const style = {
     position: 'absolute',
-    zIndex: zx
+    'z-index': zx
   }
   addAttr(el, style, 'style')
 }

@@ -1,20 +1,15 @@
-import {UtilObject} from '../types/utils'
 import Dep from './deps'
 import {State} from '../types/store'
 
 export function observe(obj: State): State {
-  console.log(obj)
   Object.keys(obj).forEach(key => {
-    defineReactive(obj, key, obj[key as keyof State])
+    defineReactive(obj, key as keyof State, obj[key as keyof State])
   })
   return obj
 }
 
-function defineReactive(obj: UtilObject, key: keyof UtilObject, val: any) {
-  const dep = new Dep(key)
-  if (arguments.length === 2) {
-    val = obj[key]
-  }
+function defineReactive(obj: State, key: keyof State, val: any) {
+  const dep = new Dep(obj)
   Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
@@ -24,6 +19,7 @@ function defineReactive(obj: UtilObject, key: keyof UtilObject, val: any) {
     },
     set(newVal) {
       if (newVal === val) return
+      console.log(dep)
       val = newVal
       dep.notify()
     }

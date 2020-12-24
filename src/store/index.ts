@@ -6,6 +6,10 @@ const Store = (function () {
   let uid = 0
   let states = [] as any[]
 
+  function getState() {
+    return states[uid]
+  }
+
   function get(key: keyof StateExtends) {
     return states[uid][key]
   }
@@ -29,7 +33,7 @@ const Store = (function () {
     uid = states.findIndex(s => s.reference === el)
   }
 
-  function closeAllButHasId(): void {
+  function closeOther(): void {
     states.forEach((s, idx) => {
       if (idx !== uid && s.popover) {
         s.visible = false
@@ -39,12 +43,12 @@ const Store = (function () {
 
   function openPopover(e: _Event): void {
     changeUID(e)
-    closeAllButHasId()
+    closeOther()
     if (states[uid].visible) return
     states[uid].visible = true
   }
 
-  return {get, set, changeUID, openPopover, createState}
+  return {get, set, changeUID, openPopover, createState, getState}
 })()
 
-export const {get, set, changeUID, openPopover, createState} = Store
+export const {get, set, changeUID, openPopover, createState, getState} = Store
