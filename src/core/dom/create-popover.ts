@@ -13,12 +13,14 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-export function createPopover(): Node {
-  // const {type} = get('options')
-  return createElement({
-    class: [wrapper],
-    children: [Header, Day]
-  })
+export function createPopover(state: State): Node {
+  return createElement(
+    {
+      class: [wrapper],
+      children: [Header, Day]
+    },
+    state
+  )
 }
 
 export function updatePopover(popover: HTMLElement, vis: boolean, state: State): void {

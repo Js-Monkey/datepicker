@@ -2,30 +2,29 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
-import {monthClassCb, nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
+import {nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
+import {State} from '../../types/store'
 
-function year() {
+function year(state: State) {
   const opt: CreateElementOptions = {
     name: 'span',
     style: {
       padding: '0 4px'
     },
+    text: '2020',
     // deps: [
     //   {
     //     name: ['startYear'],
     //     textCb: val => val + '年'
     //   }
     // ],
-    event: {
-      cb: toYearPage,
-      params: ['startYear']
-    }
+    event: toYearPage
   }
   //if (!type) opt.event = '' todo
-  return createElement(opt)
+  return createElement(opt, state)
 }
 
-function month() {
+function month(state: State) {
   const opt: CreateElementOptions = {
     name: 'span',
     // deps: [
@@ -45,97 +44,102 @@ function month() {
     style: {
       padding: '0 4px'
     },
-    event: {
-      cb: toMonthPage
-    }
+    event: toMonthPage
   }
   //if (!type) opt.event = '' todo
-  return createElement(opt)
+  return createElement(opt, state)
 }
 
-function preYearSVG() {
-  return createElement({
-    name: 'svg',
-    text: 'pre-year',
-    style: {
-      float: 'left',
-      'margin-left': '10px'
+function preYearSVG(state: State) {
+  return createElement(
+    {
+      name: 'svg',
+      text: 'pre-year',
+      style: {
+        float: 'left',
+        'margin-left': '10px'
+      },
+      event: preYear
     },
-    event: {
-      cb: preYear
-    }
-  })
+    state
+  )
 }
 
-function preMonthSVG() {
-  return createElement({
-    name: 'svg',
-    text: 'pre-month',
-    style: {
-      float: 'left',
-      'margin-left': '10px'
+function preMonthSVG(state: State) {
+  return createElement(
+    {
+      name: 'svg',
+      text: 'pre-month',
+      style: {
+        float: 'left',
+        'margin-left': '10px'
+      },
+      event: preMonth
+      // deps: [
+      //   {
+      //     name: ['page'],
+      //     classCb: monthClassCb
+      //   }
+      // ]
     },
-    event: {
-      cb: preMonth
-    }
-    // deps: [
-    //   {
-    //     name: ['page'],
-    //     classCb: monthClassCb
-    //   }
-    // ]
-  })
+    state
+  )
 }
 
-function nextYearSVG() {
-  return createElement({
-    name: 'svg',
-    text: 'next-year',
-    style: {
-      float: 'right',
-      'margin-right': '10px'
+function nextYearSVG(state: State) {
+  return createElement(
+    {
+      name: 'svg',
+      text: 'next-year',
+      style: {
+        float: 'right',
+        'margin-right': '10px'
+      },
+      event: nextYear
     },
-    event: {
-      cb: nextYear
-    }
-  })
+    state
+  )
 }
 
-function nextMonthSVG() {
-  return createElement({
-    name: 'svg',
-    text: 'next-month',
-    style: {
-      float: 'right',
-      'margin-right': '5px'
+function nextMonthSVG(state: State) {
+  return createElement(
+    {
+      name: 'svg',
+      text: 'next-month',
+      style: {
+        float: 'right',
+        'margin-right': '5px'
+      },
+      event: nextMonth
+      // deps: [
+      //   {
+      //     name: ['page'],
+      //     classCb: monthClassCb
+      //   }0
+      // ]
     },
-    event: {
-      cb: nextMonth
-    }
-    // deps: [
-    //   {
-    //     name: ['page'],
-    //     classCb: monthClassCb
-    //   }
-    // ]
-  })
+    state
+  )
 }
 
 function headerChildren(type: HeaderType) {
-  function bind(cb: () => any) {
-    return cb.bind(null, type)
-  }
+  // function bind(cb: () => any) {
+  //   return cb.bind(null, state)
+  // }
 
   return {
-    left: [preYearSVG, preMonthSVG, bind(year), bind(month)],
+    left: [preYearSVG, preMonthSVG, year, month],
     main: [preYearSVG, preMonthSVG, year, month, nextYearSVG, nextMonthSVG],
-    right: [bind(month), bind(month), nextYearSVG, nextMonthSVG]
+    right: [year, month, nextYearSVG, nextMonthSVG]
   }
 }
 
-export function Header(type: HeaderType = 'main'): Node {
-  return createElement({
-    class: [header],
-    children: headerChildren(type)[type]
-  })
+export function Header(state: State, type: HeaderType = 'main'): Node {
+  return createElement(
+    {
+      class: [header],
+      children: headerChildren(type)[type]
+    },
+    state
+  )
 }

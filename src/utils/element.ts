@@ -1,22 +1,23 @@
 import {isArray, isFunc, isObject} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
+import {State} from '../types/store'
 
 const handler: Handler = {
-  event(el, {cb, params = []}) {
-    if (isArray<{name: eventType; handler: eventHandler}>(cb)) {
-      cb.forEach(e => {
-        on(el, e.handler, e.name)
+  event(el, listener, state) {
+    if (isArray<{name: eventType; handler: eventHandler}>(listener)) {
+      listener.forEach(e => {
+        on(el, e.handler, e.name, state)
       })
     } else {
-      on(el, cb, 'click', params)
+      on(el, listener, 'click', state)
     }
   },
   class: (el, cls) => el.setAttribute('class', cls.join(' ')),
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
-  children(el, children) {
+  children(el, children, state) {
     children.forEach(child => {
-      el.appendChild(createElement(child))
+      el.appendChild(createElement(child, state))
     })
   },
   name: () => null,
@@ -35,11 +36,11 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement<T = HTMLElement>(opt: CreateElementOptions): Node {
-  if (isFunc<Node>(opt)) return opt()
+export function createElement<T = HTMLElement>(opt: CreateElementOptions, state: State): Node {
+  if (isFunc<Node>(opt)) return opt(state)
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], opt)
+    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], state)
   })
   return el
 }

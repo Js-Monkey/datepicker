@@ -1,4 +1,4 @@
-import {dependence, depWatcher} from './store'
+import {dependence, depWatcher, State} from './store'
 
 export interface UtilObject {
   [key: string]: any
@@ -67,24 +67,18 @@ export interface classOptions {
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
   text?: string | Dependence
-  event?: {
-    cb: eventHandler | EventListener[]
-    params?: (keyof depWatcher | number)[]
-  }
+  event?: eventHandler | EventListener[]
   class?: string[] | classOptions
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
 }
 
 interface HandlerCb<T> {
-  (el: HTMLElement, val: T, opt: CreateElementOptions): void
+  (el: HTMLElement, val: T, state: State): void
 }
 
 export interface Handler<> {
-  event: HandlerCb<{
-    cb: eventHandler | EventListener[]
-    params?: (keyof depWatcher | number)[]
-  }>
+  event: HandlerCb<eventHandler | EventListener[]>
   class: HandlerCb<string[]>
   style: HandlerCb<Style>
   children: HandlerCb<CreateElementOptions[]>

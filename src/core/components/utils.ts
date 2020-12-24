@@ -1,26 +1,24 @@
 import {get, set} from '../../store'
 import {getDate, getNextMonth, getPreMonth} from '../../utils/date'
-import {pageName} from '../../types/store'
+import {pageName, State} from '../../types/store'
 import {isNumber} from '../../utils/typeOf'
 
-export function nextYear(): void {
-  let newVal = get('startYear')
-  set('startYear', ++newVal)
+export function nextYear(state: State): void {
+  state.startYear += 1
 }
 
-export function preYear(): void {
-  let newVal = get('startYear')
-  set('startYear', --newVal)
+export function preYear(state: State): void {
+  state.startYear -= 1
 }
 
 export function nextMonth(): void {
   const m = get('startMonth')
-  set('startMonth', getNextMonth(m, undefined, nextYear))
+  //set('startMonth', getNextMonth(m, undefined, nextYear))
 }
 
 export function preMonth(): void {
   const m = get('startMonth')
-  set('startMonth', getPreMonth(m, undefined, preYear))
+  //set('startMonth', getPreMonth(m, undefined, preYear))
 }
 
 export function toMonthPage(year: number, idx: number): void {
@@ -34,8 +32,8 @@ export function toDayPage(month: number): void {
   set('page', 'day')
 }
 
-export function toYearPage(): void {
-  set('page', 'year')
+export function toYearPage(state: State): void {
+  state.page = 'year'
 }
 
 export function selectDate(day: number): void {

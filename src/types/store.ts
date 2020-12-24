@@ -12,9 +12,9 @@ export interface stateComponent<T = null | HTMLElement> {
 }
 
 export interface stateDate<T = Date> {
-  startDate?: T | Date
-  startYear?: T | number
-  startMonth?: T | number
+  startDate: T | Date
+  startYear: number
+  startMonth: number
 }
 
 export interface depWatcher<T = dependencies> {

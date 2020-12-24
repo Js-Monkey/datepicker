@@ -13,6 +13,6 @@ const typeOf = (val: unknown, typeName: keyof Types) => toString.call(val) === t
 
 export const isNumber = (val: unknown): val is number => typeOf(val, 'Number') && !Number.isNaN(val)
 export const isObject = (val: unknown): val is UtilObject => typeOf(val, 'Object')
-export const isFunc = <T = string>(val: unknown): val is () => T => typeOf(val, 'Function')
+export const isFunc = <T = string>(val: unknown): val is (...arg: any) => T => typeOf(val, 'Function')
 export const isString = (val: unknown): val is string => typeOf(val, 'String')
 export const isArray = <T = unknown>(val: unknown): val is T[] => typeOf(val, 'Array')

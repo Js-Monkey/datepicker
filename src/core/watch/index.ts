@@ -19,7 +19,7 @@ export function watch(): void {
       })
       on(document.body, clickOutside.bind(null, state as any))
       listenToScrollParents(ref)
-      set('popover', createPopover())
+      set('popover', createPopover(state))
     }
   })
   addWatch({

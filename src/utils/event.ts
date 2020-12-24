@@ -1,17 +1,11 @@
 import {_Event, eventType, Handler} from '../types/event'
-import {isString} from './typeOf'
-import {get} from '../store'
-import {depWatcher} from '../types/store'
+import {State} from '../types/store'
 
-export function on(
-  el: any,
-  handler: Handler,
-  eventName: eventType = 'click',
-  params: (keyof depWatcher | number)[] = []
-): void {
+export function on(el: any, handler: Handler, eventName: eventType = 'click', state?: State): void {
   const listener = function (e: _Event) {
-    const args = params.map(param => (isString(param) ? get(param) : param)).concat(e)
-    handler(...args)
+    const params = [e]
+    if (state) params.unshift(state as any)
+    handler(...params)
   }
   el.addEventListener(eventName, listener)
 }
