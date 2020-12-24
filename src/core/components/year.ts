@@ -10,10 +10,8 @@ export function Year(state: State): Node {
       children: Array.from({length: 10}).map((_, idx) => {
         return {
           name: 'span',
-          event: {
-            cb() {
-              toMonthPage(state.startYear, idx)
-            }
+          event() {
+            toMonthPage(state.startYear, idx)
           }
         }
       })

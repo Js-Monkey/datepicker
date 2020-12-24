@@ -31,6 +31,7 @@ export default class Dep {
   }
 
   notify(): void {
+    console.log(this.subs)
     this.subs.forEach(sub => {
       updateView(sub.watcher, this.state)
     })

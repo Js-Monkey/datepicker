@@ -1,7 +1,9 @@
-import {isArray, isFunc, isObject} from './typeOf'
+import {isArray, isFunc} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler, Style, UtilObject} from '../types/utils'
+import {CreateElementOptions, eventHandler, eventType, Handler} from '../types/utils'
 import {State} from '../types/store'
+import {addWatch} from '../observer/watcher'
+import {resetAttr, transformStyle} from './attribute'
 
 const handler: Handler = {
   event(el, listener, state) {
@@ -53,33 +55,11 @@ export function appendChild(children: Element | Element[], parent: Element = doc
   }
 }
 
-export function resetAttr(el: HTMLElement | Element, val: string, name = 'class'): void {
-  el.setAttribute(name, val)
-}
-
-export function transformStyle(sty: Style): string {
-  return Object.keys(sty)
-    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}`), [] as any[])
-    .join(';')
-}
-
-export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name = 'class'): void {
-  const attr = el.getAttribute(name)
-  if (isObject(val)) {
-    val = Object.keys(val).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
-  }
-  if (attr && attr.indexOf(val) === -1) val += ' ' + attr
-  el.setAttribute(name, val)
-}
-
-export function toggleCls(el: HTMLElement, cls: [string, string], vis: boolean | number): void {
-  const classes = el.getAttribute('class') || ' '
-  const pre = cls[Number(!vis)]
-  const source = cls[Number(vis)]
-  const newCls = classes
-    .split(' ')
-    .filter(item => item !== pre && item !== source)
-    .concat([pre])
-    .join(' ')
-  el.setAttribute('class', newCls)
+export function updateText(el: HTMLElement, name: (keyof State)[], textCb: (...arg: any) => string): void {
+  addWatch({
+    name,
+    cb() {
+      el.innerText = textCb(arguments)
+    }
+  })
 }
