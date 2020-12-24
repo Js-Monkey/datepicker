@@ -1,8 +1,8 @@
-import {getState, set} from '../store'
 import {_Event} from '../types/event'
+import {State} from '../types/store'
 
-export default function clickOutside(e: _Event): void {
-  const {visible, reference, popover} = getState()
-  if (!visible || reference?.contains(e.target) || popover?.contains(e.target)) return
-  set('visible', false)
+export default function clickOutside(state: State, e: _Event): void {
+  const {visible, reference, popover} = state
+  if (!visible || reference?.contains(e.target as any) || popover?.contains(e.target as any)) return
+  state.visible = false
 }

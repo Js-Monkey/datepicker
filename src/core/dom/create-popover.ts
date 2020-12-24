@@ -2,9 +2,9 @@ import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
 import {addAttr, createElement, toggleCls} from '../../utils/element'
 import {hidden, show, wrapper} from '../../utils/classes'
-import {get} from '../../store'
 import {Header} from '../components/header'
 import {Day} from '../components/day'
+import {State} from '../../types/store'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -21,8 +21,8 @@ export function createPopover(): Node {
   })
 }
 
-export function updatePopover(popover: HTMLElement, vis: boolean): void {
-  if (vis) setPopoverLocation()
+export function updatePopover(popover: HTMLElement, vis: boolean, state: State): void {
+  if (vis) setPopoverLocation(state)
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
 
@@ -34,20 +34,19 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
   addAttr(el, style, 'style')
 }
 
-export function setPopoverLocation(): void {
-  const pop = get('popover')
-  const ref = get('reference')
-  const {placement} = get('options')
-  const rect = ref.getBoundingClientRect()
-  setPosition(pop, placement, rect)
-  setTransform(pop, placement)
+export function setPopoverLocation(state: State): void {
+  const {popover, reference, options} = state
+  const {placement} = options
+  const rect = reference?.getBoundingClientRect()
+  setPosition(popover as HTMLElement, placement as 'left', rect as DOMRect)
+  setTransform(popover as HTMLElement, placement as 'left')
 }
 
 export function setTransform(el: HTMLElement, plt: keyof Transform): void {
   nextTick(() => (el.style.transform = transform[plt]))
 }
 
-export function setPosition(el: HTMLElement, plt: keyof Transform, rect: Rect): void {
+export function setPosition(el: HTMLElement, plt: 'top' | 'left' | 'bottom' | 'right', rect: DOMRect): void {
   const position = getPosition(rect)
   Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[plt][attr] + 'px'))
 }

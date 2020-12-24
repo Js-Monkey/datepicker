@@ -4,7 +4,7 @@ import {State} from '../types/store'
 let uid = 0
 
 export function updateView(sub: Sub, state: State): void {
-  const params = sub.name.map(name => state[name])
+  const params = sub.name.map(name => state[name]).concat([state])
   sub.cb(...params)
 }
 
