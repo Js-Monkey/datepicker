@@ -23,7 +23,6 @@ export default class Dep {
 
   addSub(sub: Watcher): void {
     this.subs.push(sub)
-    console.log(sub)
   }
 
   depend(): void {

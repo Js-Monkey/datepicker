@@ -32,7 +32,7 @@ export function transformDate(date: Date): string {
   return joinDate(getYear(date), getMonth(date), getDay(date))
 }
 
-export function getNextMonth(m: number, y?: number, cb: () => void = () => null): number {
+export function getNextMonth(m: number, cb: () => void = () => null): number {
   let month = ++m
   if (month === 13) {
     cb()
@@ -41,7 +41,7 @@ export function getNextMonth(m: number, y?: number, cb: () => void = () => null)
   return month
 }
 
-export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = () => null): any {
+export function getPreMonth<T = number>(m: number, y?: number | null, cb: () => void = () => null): any {
   let month = --m
   if (month === 0) {
     cb()
@@ -53,5 +53,5 @@ export function getPreMonth<T = number>(m: number, y?: number, cb: () => void = 
         preMonth: month,
         preYear: y
       }
-    : m
+    : month
 }

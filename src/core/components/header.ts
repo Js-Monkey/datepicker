@@ -14,9 +14,7 @@ function year(state: State) {
       },
       text: {
         name: ['startYear'],
-        cb(year) {
-          return year + '年'
-        }
+        cb: year => year + '年'
       },
       event: toYearPage
     },
@@ -28,11 +26,6 @@ function month(state: State) {
   const opt: CreateElementOptions = {
     name: 'span',
     // deps: [
-    //   {
-    //     name: ['startMonth'],
-    //     textCb: month => month + '月'
-    //   },
-    //   {
     //     name: ['page'],
     //     classCb: monthClassCb
     //   }
@@ -115,7 +108,7 @@ function nextMonthSVG(state: State) {
       //   {
       //     name: ['page'],
       //     classCb: monthClassCb
-      //   }0
+      //   }
       // ]
     },
     state

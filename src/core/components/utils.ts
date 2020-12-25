@@ -11,14 +11,12 @@ export function preYear(state: State): void {
   state.startYear -= 1
 }
 
-export function nextMonth(): void {
-  const m = get('startMonth')
-  //set('startMonth', getNextMonth(m, undefined, nextYear))
+export function nextMonth(state: State): void {
+  state.startMonth = getNextMonth(state.startMonth, nextYear.bind(null, state))
 }
 
-export function preMonth(): void {
-  const m = get('startMonth')
-  //set('startMonth', getPreMonth(m, undefined, preYear))
+export function preMonth(state: State): void {
+  state.startMonth = getPreMonth(state.startMonth, null, preYear.bind(null, state))
 }
 
 export function toMonthPage(year: number, idx: number): void {
