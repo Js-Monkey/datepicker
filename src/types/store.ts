@@ -17,13 +17,6 @@ export interface stateDate<T = Date> {
   startMonth: number
 }
 
-export interface depWatcher<T = dependencies> {
-  startDate: T
-  startMonth: T
-  startYear: T
-  page: T
-}
-
 export type pageName = 'day' | 'year' | 'mouth'
 
 export interface stateUtil {
@@ -31,17 +24,6 @@ export interface stateUtil {
   visible: boolean
   page: pageName
 }
-
-export interface dependence {
-  el: HTMLElement
-  name: (keyof depWatcher)[]
-  textCb?: (...arg: any) => string | number
-  classCb?: (...arg: any) => string
-  paramsCb?: (...arg: any) => UtilObject
-  class?: string[]
-}
-
-export type dependencies = dependence[]
 
 export interface util<T> {
   options: T

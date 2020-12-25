@@ -1,10 +1,12 @@
 import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
-import {addAttr, createElement, toggleCls} from '../../utils/element'
+import {createElement} from '../../utils/element'
+
 import {hidden, show, wrapper} from '../../utils/classes'
 import {Header} from '../components/header'
 import {Day} from '../components/day'
 import {State} from '../../types/store'
+import {addAttr, toggleCls} from '../../utils/attribute'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,

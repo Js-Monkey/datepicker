@@ -1,4 +1,5 @@
-import {dependence, depWatcher, State} from './store'
+import {State} from './store'
+import {AddWatch} from './observer'
 
 export interface UtilObject {
   [key: string]: any
@@ -55,7 +56,7 @@ export interface CreateElement {
 }
 
 export interface Dependence<T = string> {
-  name: (keyof depWatcher)[]
+  name: (keyof State)[]
   cb?: (...arg: any) => T
 }
 
@@ -66,7 +67,7 @@ export interface classOptions {
 
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
-  text?: string | Dependence
+  text?: string | AddWatch
   event?: eventHandler | EventListener[]
   class?: string[] | classOptions
   style?: Style
@@ -83,5 +84,5 @@ export interface Handler<> {
   style: HandlerCb<Style>
   children: HandlerCb<CreateElementOptions[]>
   name: () => void
-  text: HandlerCb<string>
+  text: HandlerCb<AddWatch<string> | string>
 }

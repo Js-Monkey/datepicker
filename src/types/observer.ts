@@ -13,17 +13,20 @@ export interface Dep {
 
 export type SubType = 'class' | 'text' | null
 
-export interface addWatch {
+export interface AddWatch<T = void> {
   name: (keyof State)[]
-  cb: (...arg: any) => string | void
+  cb: (...arg: any) => T
+  immediate?: boolean
 }
 
 export interface Sub {
   name: (keyof State)[]
   cb: (...arg: any) => string
+  immediate?: boolean
   type: SubType
 }
 
 export interface Watcher {
   addDep(dep: Dep): void
+  watcher: Sub
 }

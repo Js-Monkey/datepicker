@@ -1,6 +1,6 @@
-import {setTarget, clearTarget} from './deps'
-import {addWatch, Dep, Sub} from '../types/observer'
-import {get} from '../store'
+import {setTarget, clearTarget, updateView} from './deps'
+import {AddWatch, Dep, Sub} from '../types/observer'
+import {getState} from '../store'
 
 export default class Watcher {
   watcher: Sub
@@ -8,7 +8,7 @@ export default class Watcher {
   constructor(watcher: Sub) {
     this.watcher = watcher
     setTarget(this)
-    watcher.name.map(name => get(name))
+    updateView(this.watcher, getState())
     clearTarget()
   }
 
@@ -17,6 +17,6 @@ export default class Watcher {
   }
 }
 
-export function addWatch(sub: addWatch, type = null): void {
+export function addWatch<T>(sub: AddWatch<T>, type = null): void {
   new Watcher(Object.assign(sub, type))
 }

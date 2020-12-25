@@ -6,22 +6,22 @@ import {nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from '.
 import {State} from '../../types/store'
 
 function year(state: State) {
-  const opt: CreateElementOptions = {
-    name: 'span',
-    style: {
-      padding: '0 4px'
+  return createElement(
+    {
+      name: 'span',
+      style: {
+        padding: '0 4px'
+      },
+      text: {
+        name: ['startYear'],
+        cb(year) {
+          return year + '年'
+        }
+      },
+      event: toYearPage
     },
-    text: '2020',
-    // deps: [
-    //   {
-    //     name: ['startYear'],
-    //     textCb: val => val + '年'
-    //   }
-    // ],
-    event: toYearPage
-  }
-  //if (!type) opt.event = '' todo
-  return createElement(opt, state)
+    state
+  )
 }
 
 function month(state: State) {

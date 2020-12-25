@@ -9,6 +9,10 @@ const Store = (function () {
     return states[uid][key]
   }
 
+  function getState() {
+    return states[uid]
+  }
+
   function set(key: keyof StateExtends, val: unknown) {
     states[uid][key] = val
   }
@@ -22,7 +26,7 @@ const Store = (function () {
     uid = states.length - 1
   }
 
-  return {get, set, createState}
+  return {get, set, createState, getState}
 })()
 
-export const {get, set, createState} = Store
+export const {get, set, createState, getState} = Store

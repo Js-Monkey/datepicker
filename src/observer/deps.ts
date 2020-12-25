@@ -4,14 +4,15 @@ import {State} from '../types/store'
 let uid = 0
 
 export function updateView(sub: Sub, state: State): void {
-  const params = sub.name.map(name => state[name]).concat([state])
-  sub.cb(...params)
+  const names = sub.name.map(name => state[name])
+  if (names.findIndex(name => name === null) > -1) return
+  sub.cb(...names.concat([state]))
 }
 
 export default class Dep {
   static target: any
   id: number
-  subs: any[]
+  subs: Watcher[]
   state: State
 
   constructor(state: State) {
@@ -20,8 +21,9 @@ export default class Dep {
     this.state = state
   }
 
-  addSub(sub: Sub): void {
+  addSub(sub: Watcher): void {
     this.subs.push(sub)
+    console.log(sub)
   }
 
   depend(): void {
@@ -31,7 +33,6 @@ export default class Dep {
   }
 
   notify(): void {
-    console.log(this.subs)
     this.subs.forEach(sub => {
       updateView(sub.watcher, this.state)
     })

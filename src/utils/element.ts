@@ -1,4 +1,4 @@
-import {isArray, isFunc} from './typeOf'
+import {isArray, isFunc, isString} from './typeOf'
 import {on} from './event'
 import {CreateElementOptions, eventHandler, eventType, Handler} from '../types/utils'
 import {State} from '../types/store'
@@ -23,7 +23,13 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, text) => (el.innerText = text)
+  text: (el, text, state) => {
+    if (isString(text)) {
+      el.innerText = text
+    } else {
+      updateText(el, text.name, text.cb)
+    }
+  }
 }
 
 export function createEL(tagName = 'div'): HTMLElement {
@@ -58,8 +64,9 @@ export function appendChild(children: Element | Element[], parent: Element = doc
 export function updateText(el: HTMLElement, name: (keyof State)[], textCb: (...arg: any) => string): void {
   addWatch({
     name,
-    cb() {
-      el.innerText = textCb(arguments)
+    immediate: true,
+    cb(...arg: any): void {
+      el.innerText = textCb.apply(this, arg)
     }
   })
 }
