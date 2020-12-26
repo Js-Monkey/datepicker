@@ -5,6 +5,7 @@ import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
 import {pageName, State} from '../../types/store'
 
 function content(state: State): Node {
+  const handleParams = (month: number, year: number) => [monthFirstDay(year, month), daysInAMonth(year, month)]
   return createElement(
     {
       class: [dayContent],
@@ -13,25 +14,20 @@ function content(state: State): Node {
         return {
           text: {
             name: ['startMonth', 'startYear'],
-            cb(month: number, year: number) {
-              const fd = monthFirstDay(year, month)
-              const days = daysInAMonth(year, month)
+            cb(month: number, year: number, fd: number, days: number) {
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = daysInAMonth(preYear, preMonth)
               return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
-            }
+            },
+            handleParams
           },
-          // deps: [
-          //   {
-          //     name: ['startMonth', 'startYear'],
-          //     classCb(month: number, year: number, fd: number, days: number) {
-          //       return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
-          //     },
-          //     paramsCb(month: number, year: number) {
-          //       return [monthFirstDay(year, month), daysInAMonth(year, month)]
-          //     }
-          //   }
-          // ],
+          class: {
+            name: ['startMonth', 'startYear'],
+            cb(month: number, year: number, fd: number, days: number) {
+              return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
+            },
+            handleParams
+          },
           name: 'span'
         }
       })
@@ -55,16 +51,14 @@ function bar(state: State): Node {
 export function Day(state: State): Node {
   return createElement(
     {
-      class: [day],
-      children: [bar, content]
-      // deps: [
-      //   {
-      //     name: ['page'],
-      //     classCb(page: pageName) {
-      //       return page === 'day' ? 'show' : 'hidden'
-      //     }
-      //   }
-      // ]
+      children: [bar, content],
+      class: {
+        name: ['page'],
+        cb(page: pageName) {
+          return page === 'day' ? 'show' : 'hidden'
+        },
+        static: [day]
+      }
     },
     state
   )

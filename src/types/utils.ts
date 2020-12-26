@@ -1,5 +1,5 @@
 import {State} from './store'
-import {AddWatch} from './observer'
+import {Sub} from './observer'
 
 export interface UtilObject {
   [key: string]: any
@@ -65,11 +65,18 @@ export interface classOptions {
   dep: Dependence
 }
 
+export interface CreateElementOptionsClass {
+  name: (keyof State)[]
+  cb: (...arg: any) => string
+  handleParams?: (...arg: any) => any[]
+  static?: string[]
+}
+
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
-  text?: string | AddWatch
+  text?: string | Sub
+  class?: CreateElementOptionsClass | string[]
   event?: eventHandler | EventListener[]
-  class?: string[] | classOptions
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
 }
@@ -80,9 +87,9 @@ interface HandlerCb<T> {
 
 export interface Handler<> {
   event: HandlerCb<eventHandler | EventListener[]>
-  class: HandlerCb<string[]>
+  class: HandlerCb<CreateElementOptionsClass | string[]>
   style: HandlerCb<Style>
   children: HandlerCb<CreateElementOptions[]>
   name: () => void
-  text: HandlerCb<AddWatch<string> | string>
+  text: HandlerCb<Sub<string> | string>
 }

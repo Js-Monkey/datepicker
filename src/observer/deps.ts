@@ -4,9 +4,12 @@ import {State} from '../types/store'
 let uid = 0
 
 export function updateView(sub: Sub, state: State): void {
-  const names = sub.name.map(name => state[name])
-  if (names.findIndex(name => name === null) > -1) return
-  sub.cb(...names.concat([state]))
+  const params: unknown[] = sub.name.map(name => state[name])
+  const {handleParams} = sub
+  if (params.findIndex(name => name === null) > -1) return
+  if (handleParams) params.push(...handleParams(...params))
+  params.push(state)
+  sub.cb(...params)
 }
 
 export default class Dep {

@@ -20,7 +20,6 @@ export function preMonth(state: State): void {
 }
 
 export function toMonthPage(year: number, idx: number): void {
-  console.log(year)
   if (isNumber(year)) set('startYear', year + idx)
   set('page', 'month')
 }

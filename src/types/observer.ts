@@ -11,19 +11,10 @@ export interface Dep {
   updateView: () => void
 }
 
-export type SubType = 'class' | 'text' | null
-
-export interface AddWatch<T = void> {
+export interface Sub<T = void> {
   name: (keyof State)[]
   cb: (...arg: any) => T
-  immediate?: boolean
-}
-
-export interface Sub {
-  name: (keyof State)[]
-  cb: (...arg: any) => string
-  immediate?: boolean
-  type: SubType
+  handleParams?: (...arg: any) => any[]
 }
 
 export interface Watcher {

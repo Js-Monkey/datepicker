@@ -1,9 +1,11 @@
 import {isArray, isFunc, isString} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, eventHandler, eventType, Handler} from '../types/utils'
+import {CreateElementOptions, CreateElementOptionsClass, eventHandler, eventType, Handler} from '../types/utils'
 import {State} from '../types/store'
 import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
+import {mergeClasses} from './merge'
+import {Sub} from '../types/observer'
 
 const handler: Handler = {
   event(el, listener, state) {
@@ -15,7 +17,9 @@ const handler: Handler = {
       on(el, listener, 'click', state)
     }
   },
-  class: (el, cls) => el.setAttribute('class', cls.join(' ')),
+  class: (el, cls) => {
+    updateClasses(el, cls)
+  },
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
   children(el, children, state) {
     children.forEach(child => {
@@ -23,11 +27,11 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, text, state) => {
+  text: (el, text) => {
     if (isString(text)) {
       el.innerText = text
     } else {
-      updateText(el, text.name, text.cb)
+      updateText(el, text)
     }
   }
 }
@@ -61,12 +65,25 @@ export function appendChild(children: Element | Element[], parent: Element = doc
   }
 }
 
-export function updateText(el: HTMLElement, name: (keyof State)[], textCb: (...arg: any) => string): void {
+export function updateText(el: HTMLElement, text: Sub<string>): void {
+  const {name, handleParams, cb} = text
   addWatch({
     name,
-    immediate: true,
     cb(...arg: any): void {
-      el.innerText = textCb.apply(this, arg)
-    }
+      el.innerText = cb.apply(this, arg)
+    },
+    handleParams
+  })
+}
+
+export function updateClasses(el: HTMLElement, cls: CreateElementOptionsClass | string[]): void {
+  if (isArray(cls)) return el.setAttribute('class', cls.join(' '))
+  const {name, handleParams, cb} = cls
+  addWatch({
+    name,
+    cb(...arg: any): void {
+      resetAttr(el, mergeClasses(cb(...arg), cls.static))
+    },
+    handleParams
   })
 }
