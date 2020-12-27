@@ -9,8 +9,8 @@ export function Year(state: State): Node {
       children: Array.from({length: 10}).map((_, idx) => {
         return {
           name: 'span',
-          event() {
-            toMonthPage(state.startYear, idx)
+          event(state: State) {
+            toMonthPage(state, idx)
           },
           text: {
             name: ['startYear'],

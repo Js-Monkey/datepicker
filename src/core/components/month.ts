@@ -11,8 +11,8 @@ export function Month(state: State): Node {
         return {
           name: 'span',
           text: item,
-          event: () => {
-            toDayPage(++idx)
+          event: (state: State) => {
+            toDayPage(state, ++idx)
           }
         }
       }),

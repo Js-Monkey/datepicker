@@ -54,9 +54,7 @@ export function Day(state: State): Node {
       children: [bar, content],
       class: {
         name: ['page'],
-        cb(page: pageName) {
-          return page === 'day' ? 'show' : 'hidden'
-        },
+        cb: (page: pageName) => (page === 'day' ? 'show' : 'hidden'),
         static: [day]
       }
     },

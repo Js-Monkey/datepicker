@@ -17,7 +17,7 @@ export interface stateDate<T = Date> {
   startMonth: number
 }
 
-export type pageName = 'day' | 'year' | 'mouth'
+export type pageName = 'day' | 'year' | 'month'
 
 export interface stateUtil {
   options: Options

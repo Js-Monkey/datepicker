@@ -2,8 +2,8 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
-import {monthClassCb, nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
-import {State} from '../../types/store'
+import {nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
+import {pageName, State} from '../../types/store'
 
 function year(state: State) {
   return createElement(
@@ -34,11 +34,10 @@ function month(state: State) {
     },
     class: {
       name: ['page'],
-      cb: monthClassCb
+      cb: (page: pageName) => (page === 'day' ? 'show' : 'hidden')
     },
     event: toMonthPage
   }
-  //if (!type) opt.event = '' todo
   return createElement(opt, state)
 }
 
