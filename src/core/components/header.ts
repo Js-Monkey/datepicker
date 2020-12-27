@@ -13,7 +13,7 @@ function year(state: State) {
         padding: '0 4px'
       },
       text: {
-        name: ['startYear'],
+        key: ['startYear', 'startDayComponents'],
         cb: year => year + '年'
       },
       event: toYearPage
@@ -26,14 +26,14 @@ function month(state: State) {
   const opt: CreateElementOptions = {
     name: 'span',
     text: {
-      name: ['startMonth'],
+      key: ['startMonth'],
       cb: month => month + '月'
     },
     style: {
       padding: '0 4px'
     },
     class: {
-      name: ['page'],
+      key: ['page'],
       cb: toggleVisibility
     },
     event: toMonthPage
@@ -67,7 +67,7 @@ function preMonthSVG(state: State) {
       },
       event: preMonth,
       class: {
-        name: ['page'],
+        key: ['page'],
         cb: toggleVisibility
       }
     },
@@ -101,7 +101,7 @@ function nextMonthSVG(state: State) {
       },
       event: nextMonth,
       class: {
-        name: ['page'],
+        key: ['page'],
         cb: toggleVisibility
       }
     },

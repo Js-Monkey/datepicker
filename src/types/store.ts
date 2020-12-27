@@ -1,14 +1,18 @@
 import Options from './options'
-import {UtilObject} from './utils'
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
 type utilWatcher = (target: stateUtil, key: keyof utilWatchers, value: unknown) => void
 
+export interface DayComponents {
+  text: string
+  status: 'normal' | 'pre' | 'next' | 'selected'
+}
+
 export interface stateComponent<T = null | HTMLElement> {
   reference: T
   popover: T
-  dayComponents?: any[]
+  startDayComponents?: DayComponents[]
 }
 
 export interface stateDate<T = Date> {
@@ -54,12 +58,6 @@ export interface WatchersFn<T> {
 export type componentsWatcherFn = stateComponent<WatchersFn<stateComponent>>
 
 export type utilsWatcherFn = util<WatchersFn<stateUtil>>
-
-export interface Watchers {
-  components: componentsWatcherFn
-  utils: utilsWatcherFn
-  date: UtilObject
-}
 
 export interface StateExtends extends State, stateDate, stateUtil, stateComponent {}
 

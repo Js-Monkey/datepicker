@@ -3,8 +3,8 @@ import {State} from '../types/store'
 
 let uid = 0
 
-export function updateView(sub: Sub, state: State): void {
-  const params: unknown[] = sub.name.map(name => state[name])
+export function updateView<T = State>(sub: Sub, state: T): void {
+  const params: unknown[] = sub.key.map(key => state[key as keyof T])
   const {handleParams} = sub
   if (params.findIndex(name => name === null) > -1) return
   if (handleParams) params.push(...handleParams(...params))
@@ -12,13 +12,13 @@ export function updateView(sub: Sub, state: State): void {
   sub.cb(...params)
 }
 
-export default class Dep {
+export default class Dep<T = State> {
   static target: any
   id: number
   subs: Watcher[]
-  state: State
+  state: T
 
-  constructor(state: State) {
+  constructor(state: T) {
     this.id = uid++
     this.subs = []
     this.state = state
@@ -36,7 +36,7 @@ export default class Dep {
 
   notify(): void {
     this.subs.forEach(sub => {
-      updateView(sub.watcher, this.state)
+      updateView<T>(sub.watcher, this.state)
     })
   }
 }

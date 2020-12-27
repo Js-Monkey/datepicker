@@ -1,16 +1,17 @@
-import {stateComponent} from '../../types/store'
+import {DayComponents, stateComponent} from '../../types/store'
+import {observe} from '../../observer'
 
 const dayComponents = Array.from({length: 42}).map((_: unknown) => {
-  return {
-    el: null,
-    text: ''
-  }
+  return observe<DayComponents>({
+    text: '',
+    status: 'normal'
+  })
 })
 
 export default function (): stateComponent {
   return {
     reference: null,
     popover: null,
-    dayComponents
+    startDayComponents: dayComponents
   }
 }

@@ -13,7 +13,7 @@ export function Year(state: State): Node {
             toMonthPage(state, idx)
           },
           text: {
-            name: ['startYear'],
+            key: ['startYear'],
             cb(year: number) {
               return year + idx
             }
@@ -21,11 +21,8 @@ export function Year(state: State): Node {
         }
       }),
       class: {
-        name: ['page'],
-        cb(page: pageName) {
-          console.log(page === 'year' ? 'show' : 'hidden')
-          return page === 'year' ? 'show' : 'hidden'
-        },
+        key: ['page'],
+        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden'),
         static: [year]
       }
     },

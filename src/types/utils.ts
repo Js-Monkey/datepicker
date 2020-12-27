@@ -55,18 +55,8 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface Dependence<T = string> {
-  name: (keyof State)[]
-  cb?: (...arg: any) => T
-}
-
-export interface classOptions {
-  static?: string[]
-  dep: Dependence
-}
-
 export interface updateOptions {
-  name: (keyof State)[]
+  key: (keyof State)[]
   cb: (...arg: any) => string
   handleParams?: (...arg: any) => any[]
   static?: string[]

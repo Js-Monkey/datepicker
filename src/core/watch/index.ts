@@ -12,18 +12,16 @@ import {State} from '../../types/store'
 
 export function watch(): void {
   addWatch({
-    name: ['reference'],
+    key: ['reference'],
     cb(ref: HTMLElement, state: State): void {
-      on(ref, (e: Event) => {
-        state.visible = true
-      })
+      on(ref, () => (state.visible = true))
       on(document.body, clickOutside.bind(null, state as any))
       listenToScrollParents(ref)
       set('popover', createPopover(state))
     }
   })
   addWatch({
-    name: ['popover', 'options'],
+    key: ['popover', 'options'],
     cb(pop: HTMLElement, options: Options): void {
       if (!isInBody(pop)) {
         appendChild(pop as Element)
@@ -33,7 +31,7 @@ export function watch(): void {
     }
   })
   addWatch({
-    name: ['popover', 'visible'],
+    key: ['popover', 'visible'],
     cb(pop: HTMLElement, show: boolean, state: State): void {
       updatePopover(pop, show, state)
     }

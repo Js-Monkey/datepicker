@@ -7,7 +7,7 @@ export interface Dep {
 }
 
 export interface Sub<T = void> {
-  name: (keyof State)[]
+  key: (keyof State)[]
   cb: (...arg: any) => T
   handleParams?: (...arg: any) => any[]
 }

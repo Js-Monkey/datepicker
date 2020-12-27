@@ -17,7 +17,7 @@ export function Month(state: State): Node {
         }
       }),
       class: {
-        name: ['page'],
+        key: ['page'],
         cb(page) {
           return page === 'month' ? 'show' : 'hidden'
         },

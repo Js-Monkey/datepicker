@@ -66,13 +66,13 @@ export function appendChild(children: Element | Element[], parent: Element = doc
 
 export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?: 'cls'): void {
   if (isArray(opt)) return el.setAttribute('class', opt.join(' '))
-  const {name, handleParams, cb} = opt
+  const {key, handleParams, cb} = opt
   const updateCb =
     type === 'cls'
       ? (arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
       : (arg: any) => (el.innerText = cb(...arg))
   addWatch({
-    name,
+    key,
     cb(...arg: any): void {
       updateCb(arg)
     },

@@ -2,7 +2,7 @@ import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
-import {pageName, State} from '../../types/store'
+import {State} from '../../types/store'
 import {toggleVisibility} from './utils'
 
 function content(state: State): Node {
@@ -14,7 +14,7 @@ function content(state: State): Node {
         const idx = index + 1
         return {
           text: {
-            name: ['startMonth', 'startYear'],
+            key: ['startMonth', 'startYear'],
             cb(month: number, year: number, fd: number, days: number) {
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = daysInAMonth(preYear, preMonth)
@@ -23,7 +23,7 @@ function content(state: State): Node {
             handleParams
           },
           class: {
-            name: ['startMonth', 'startYear'],
+            key: ['startMonth', 'startYear'],
             cb(month: number, year: number, fd: number, days: number) {
               return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
             },
@@ -54,7 +54,7 @@ export function Day(state: State): Node {
     {
       children: [bar, content],
       class: {
-        name: ['page'],
+        key: ['page'],
         cb: toggleVisibility,
         static: [day]
       }
