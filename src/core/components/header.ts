@@ -2,7 +2,7 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
-import {nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
+import {monthClassCb, nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
 import {State} from '../../types/store'
 
 function year(state: State) {
@@ -25,17 +25,16 @@ function year(state: State) {
 function month(state: State) {
   const opt: CreateElementOptions = {
     name: 'span',
-    // deps: [
-    //     name: ['page'],
-    //     classCb: monthClassCb
-    //   }
-    // ],
     text: {
       name: ['startMonth'],
       cb: month => month + '月'
     },
     style: {
       padding: '0 4px'
+    },
+    class: {
+      name: ['page'],
+      cb: monthClassCb
     },
     event: toMonthPage
   }

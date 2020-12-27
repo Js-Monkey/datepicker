@@ -65,7 +65,7 @@ export interface classOptions {
   dep: Dependence
 }
 
-export interface CreateElementOptionsClass {
+export interface updateOptions {
   name: (keyof State)[]
   cb: (...arg: any) => string
   handleParams?: (...arg: any) => any[]
@@ -75,7 +75,7 @@ export interface CreateElementOptionsClass {
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
   text?: string | Sub
-  class?: CreateElementOptionsClass | string[]
+  class?: updateOptions | string[]
   event?: eventHandler | EventListener[]
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
@@ -87,7 +87,7 @@ interface HandlerCb<T> {
 
 export interface Handler<> {
   event: HandlerCb<eventHandler | EventListener[]>
-  class: HandlerCb<CreateElementOptionsClass | string[]>
+  class: HandlerCb<updateOptions | string[]>
   style: HandlerCb<Style>
   children: HandlerCb<CreateElementOptions[]>
   name: () => void

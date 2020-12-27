@@ -7,6 +7,8 @@ import {Header} from '../components/header'
 import {Day} from '../components/day'
 import {State} from '../../types/store'
 import {addAttr, toggleCls} from '../../utils/attribute'
+import {Month} from '../components/month'
+import {Year} from '../components/year'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -19,7 +21,7 @@ export function createPopover(state: State): Node {
   return createElement(
     {
       class: [wrapper],
-      children: [Header, Day]
+      children: [Header, Day, Month, Year]
     },
     state
   )

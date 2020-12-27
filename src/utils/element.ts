@@ -1,11 +1,10 @@
 import {isArray, isFunc, isString} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, CreateElementOptionsClass, eventHandler, eventType, Handler} from '../types/utils'
+import {CreateElementOptions, updateOptions, eventHandler, eventType, Handler} from '../types/utils'
 import {State} from '../types/store'
 import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
-import {Sub} from '../types/observer'
 
 const handler: Handler = {
   event(el, listener, state) {
@@ -18,7 +17,7 @@ const handler: Handler = {
     }
   },
   class: (el, cls) => {
-    updateClasses(el, cls)
+    update(el, cls, 'cls')
   },
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
   children(el, children, state) {
@@ -31,7 +30,7 @@ const handler: Handler = {
     if (isString(text)) {
       el.innerText = text
     } else {
-      updateText(el, text)
+      update(el, text)
     }
   }
 }
@@ -65,24 +64,17 @@ export function appendChild(children: Element | Element[], parent: Element = doc
   }
 }
 
-export function updateText(el: HTMLElement, text: Sub<string>): void {
-  const {name, handleParams, cb} = text
+export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?: 'cls'): void {
+  if (isArray(opt)) return el.setAttribute('class', opt.join(' '))
+  const {name, handleParams, cb} = opt
+  const updateCb =
+    type === 'cls'
+      ? (...arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
+      : (...arg: any) => (el.innerText = cb.call(null, ...arg))
   addWatch({
     name,
     cb(...arg: any): void {
-      el.innerText = cb.apply(this, arg)
-    },
-    handleParams
-  })
-}
-
-export function updateClasses(el: HTMLElement, cls: CreateElementOptionsClass | string[]): void {
-  if (isArray(cls)) return el.setAttribute('class', cls.join(' '))
-  const {name, handleParams, cb} = cls
-  addWatch({
-    name,
-    cb(...arg: any): void {
-      resetAttr(el, mergeClasses(cb(...arg), cls.static))
+      updateCb(...arg)
     },
     handleParams
   })
