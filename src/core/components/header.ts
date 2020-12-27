@@ -13,7 +13,7 @@ function year(state: State) {
         padding: '0 4px'
       },
       text: {
-        key: ['startYear', 'startDayComponents'],
+        key: ['startYear', 'startDayComponent'],
         cb: year => year + '年'
       },
       event: toYearPage

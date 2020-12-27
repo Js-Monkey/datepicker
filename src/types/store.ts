@@ -12,7 +12,7 @@ export interface DayComponents {
 export interface stateComponent<T = null | HTMLElement> {
   reference: T
   popover: T
-  startDayComponents?: DayComponents[]
+  startDayComponent?: DayComponents[]
 }
 
 export interface stateDate<T = Date> {

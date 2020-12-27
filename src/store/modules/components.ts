@@ -12,6 +12,6 @@ export default function (): stateComponent {
   return {
     reference: null,
     popover: null,
-    startDayComponents: dayComponents
+    startDayComponent: dayComponents
   }
 }

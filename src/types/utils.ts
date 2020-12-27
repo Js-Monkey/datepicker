@@ -1,5 +1,5 @@
 import {State} from './store'
-import {Sub} from './observer'
+import {keyIsArray, Sub} from './observer'
 
 export interface UtilObject {
   [key: string]: any
@@ -56,7 +56,7 @@ export interface CreateElement {
 }
 
 export interface updateOptions {
-  key: (keyof State)[]
+  key: (keyof State | keyIsArray)[]
   cb: (...arg: any) => string
   handleParams?: (...arg: any) => any[]
   static?: string[]

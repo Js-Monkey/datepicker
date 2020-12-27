@@ -14,7 +14,14 @@ function content(state: State): Node {
         const idx = index + 1
         return {
           text: {
-            key: ['startMonth', 'startYear'],
+            key: [
+              'startMonth',
+              'startYear',
+              {
+                name: 'startDayComponent',
+                index
+              }
+            ],
             cb(month: number, year: number, fd: number, days: number) {
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = daysInAMonth(preYear, preMonth)
