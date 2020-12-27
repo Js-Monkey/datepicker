@@ -12,7 +12,7 @@ export function Month(state: State): Node {
           name: 'span',
           text: item,
           event: (state: State) => {
-            toDayPage(state, ++idx)
+            toDayPage(state, idx + 1)
           }
         }
       }),

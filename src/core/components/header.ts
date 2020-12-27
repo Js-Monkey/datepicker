@@ -2,8 +2,8 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {CreateElementOptions} from '../../types/utils'
-import {nextMonth, nextYear, preMonth, preYear, toMonthPage, toYearPage} from './utils'
-import {pageName, State} from '../../types/store'
+import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
+import {State} from '../../types/store'
 
 function year(state: State) {
   return createElement(
@@ -34,7 +34,7 @@ function month(state: State) {
     },
     class: {
       name: ['page'],
-      cb: (page: pageName) => (page === 'day' ? 'show' : 'hidden')
+      cb: toggleVisibility
     },
     event: toMonthPage
   }
@@ -65,13 +65,11 @@ function preMonthSVG(state: State) {
         float: 'left',
         'margin-left': '10px'
       },
-      event: preMonth
-      // deps: [
-      //   {
-      //     name: ['page'],
-      //     classCb: monthClassCb
-      //   }
-      // ]
+      event: preMonth,
+      class: {
+        name: ['page'],
+        cb: toggleVisibility
+      }
     },
     state
   )
@@ -101,13 +99,11 @@ function nextMonthSVG(state: State) {
         float: 'right',
         'margin-right': '5px'
       },
-      event: nextMonth
-      // deps: [
-      //   {
-      //     name: ['page'],
-      //     classCb: monthClassCb
-      //   }
-      // ]
+      event: nextMonth,
+      class: {
+        name: ['page'],
+        cb: toggleVisibility
+      }
     },
     state
   )

@@ -69,12 +69,12 @@ export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?:
   const {name, handleParams, cb} = opt
   const updateCb =
     type === 'cls'
-      ? (...arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
-      : (...arg: any) => (el.innerText = cb.call(null, ...arg))
+      ? (arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
+      : (arg: any) => (el.innerText = cb(...arg))
   addWatch({
     name,
     cb(...arg: any): void {
-      updateCb(...arg)
+      updateCb(arg)
     },
     handleParams
   })

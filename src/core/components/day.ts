@@ -3,6 +3,7 @@ import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
 import {pageName, State} from '../../types/store'
+import {toggleVisibility} from './utils'
 
 function content(state: State): Node {
   const handleParams = (month: number, year: number) => [monthFirstDay(year, month), daysInAMonth(year, month)]
@@ -54,7 +55,7 @@ export function Day(state: State): Node {
       children: [bar, content],
       class: {
         name: ['page'],
-        cb: (page: pageName) => (page === 'day' ? 'show' : 'hidden'),
+        cb: toggleVisibility,
         static: [day]
       }
     },

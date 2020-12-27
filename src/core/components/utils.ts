@@ -1,6 +1,6 @@
 import {get, set} from '../../store'
 import {getDate, getNextMonth, getPreMonth} from '../../utils/date'
-import {State} from '../../types/store'
+import {pageName, State} from '../../types/store'
 import {isNumber} from '../../utils/typeOf'
 
 export function nextYear(state: State): void {
@@ -37,4 +37,8 @@ export function selectDate(day: number): void {
   const year = get('startYear')
   const month = get('startMonth')
   set('startDate', getDate(year, month, day))
+}
+
+export function toggleVisibility(page: pageName): string {
+  return page === 'day' ? 'show' : 'hidden'
 }
