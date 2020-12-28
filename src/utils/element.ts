@@ -26,7 +26,7 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, text) => {
+  text: (el, text, state: State) => {
     if (isString(text)) {
       el.innerText = text
     } else {
@@ -70,12 +70,13 @@ export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?:
   const updateCb =
     type === 'cls'
       ? (arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
-      : (arg: any) => (el.innerText = cb(...arg))
+      : (arg: any) => {
+          el.innerText = cb(...arg)
+        }
   addWatch(
     {
       key,
       cb(...arg: any): void {
-        console.log(el)
         updateCb(arg)
       },
       handleParams

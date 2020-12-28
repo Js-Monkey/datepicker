@@ -22,6 +22,7 @@ export function createPopover(state: State): Node {
     {
       class: [wrapper],
       children: [Header, Day, Month, Year]
+      // children: [Day]
     },
     state
   )

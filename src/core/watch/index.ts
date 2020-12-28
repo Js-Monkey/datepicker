@@ -49,5 +49,4 @@ export function watch(): void {
       })
     }
   })
-  console.log(2)
 }
