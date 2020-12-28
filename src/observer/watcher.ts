@@ -6,6 +6,7 @@ export default class Watcher {
   watcher: Sub
 
   constructor(watcher: Sub) {
+    console.log(watcher)
     this.watcher = watcher
     setTarget(this)
     updateView(this.watcher, getState())

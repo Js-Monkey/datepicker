@@ -22,7 +22,8 @@ function content(state: State): Node {
                 index
               }
             ],
-            cb(month: number, year: number, fd: number, days: number) {
+            cb(month: number, year: number, xx: any, fd: number, days: number) {
+              console.log(1)
               const {preYear, preMonth} = getPreMonth(month, year)
               const preDays = daysInAMonth(preYear, preMonth)
               return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days

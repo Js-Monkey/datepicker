@@ -1,9 +1,15 @@
 import Dep from './deps'
 import {State} from '../types/store'
+import {isArray} from '../utils/typeOf'
 
 export function observe<T = State>(obj: T): T {
   Object.keys(obj).forEach(key => {
-    defineReactive<T>(obj, key as keyof T, obj[key as keyof T])
+    const val = obj[key as keyof T]
+    if (isArray(val)) {
+      val.forEach(v => observe(v))
+    } else {
+      defineReactive<T>(obj, key as keyof T, val)
+    }
   })
   return obj
 }
@@ -19,7 +25,6 @@ function defineReactive<T>(obj: T, key: keyof T, val: any) {
     },
     set(newVal) {
       if (newVal === val) return
-      console.log(newVal)
       val = newVal
       dep.notify()
     }

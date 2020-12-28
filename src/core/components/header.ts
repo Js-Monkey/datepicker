@@ -23,22 +23,24 @@ function year(state: State) {
 }
 
 function month(state: State) {
-  const opt: CreateElementOptions = {
-    name: 'span',
-    text: {
-      key: ['startMonth'],
-      cb: month => month + '月'
+  return createElement(
+    {
+      name: 'span',
+      text: {
+        key: ['startMonth'],
+        cb: month => month + '月'
+      },
+      style: {
+        padding: '0 4px'
+      },
+      class: {
+        key: ['page'],
+        cb: toggleVisibility
+      },
+      event: toMonthPage
     },
-    style: {
-      padding: '0 4px'
-    },
-    class: {
-      key: ['page'],
-      cb: toggleVisibility
-    },
-    event: toMonthPage
-  }
-  return createElement(opt, state)
+    state
+  )
 }
 
 function preYearSVG(state: State) {

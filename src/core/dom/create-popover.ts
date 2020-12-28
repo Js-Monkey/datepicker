@@ -49,7 +49,7 @@ export function setPopoverLocation(state: State): void {
 }
 
 export function setTransform(el: HTMLElement, plt: keyof Transform): void {
-  nextTick(() => (el.style.transform = transform[plt]))
+  el.style.transform = transform[plt]
 }
 
 export function setPosition(el: HTMLElement, plt: 'top' | 'left' | 'bottom' | 'right', rect: DOMRect): void {
