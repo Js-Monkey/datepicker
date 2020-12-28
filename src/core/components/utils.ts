@@ -30,7 +30,6 @@ export function toDayPage(state: State, month: number): void {
 
 export function toYearPage(state: State): void {
   state.page = 'year'
-  state.startDayComponent[0].status = 'selected'
 }
 
 export function selectDate(day: number): void {

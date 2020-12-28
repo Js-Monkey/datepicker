@@ -60,6 +60,8 @@ export interface updateOptions {
   cb: (...arg: any) => string
   handleParams?: (...arg: any) => any[]
   static?: string[]
+  childKey?: keyof State
+  childIdx?: number
 }
 
 export interface CreateElementOptions {

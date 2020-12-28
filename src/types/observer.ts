@@ -12,13 +12,14 @@ export interface keyIsArray {
 }
 
 export interface Sub<T = void> {
-  key: (keyof State | keyIsArray)[]
+  key: any[]
   cb: (...arg: any) => T
   handleParams?: (...arg: any) => any[]
+  childKey?: keyof State
+  childIdx?: number
 }
 
 export interface Watcher {
   addDep(dep: Dep): void
-
   watcher: Sub
 }

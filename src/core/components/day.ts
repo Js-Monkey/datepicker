@@ -14,21 +14,12 @@ function content(state: State): Node {
         const idx = index + 1
         return {
           text: {
-            key: [
-              'startMonth',
-              'startYear',
-              {
-                name: 'startDayComponent',
-                index
-              }
-            ],
-            cb(month: number, year: number, xx: any, fd: number, days: number) {
-              console.log(1)
-              const {preYear, preMonth} = getPreMonth(month, year)
-              const preDays = daysInAMonth(preYear, preMonth)
-              return index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
-            },
-            handleParams
+            childKey: 'startDayComponent',
+            childIdx: index,
+            key: ['text'],
+            cb(text: string) {
+              return text
+            }
           },
           class: {
             key: ['startMonth', 'startYear'],

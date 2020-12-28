@@ -20,6 +20,7 @@ export default class better {
     const input = findInputElement(el)
     if (!isInputElement(input) || !validateOptions(options)) return
     createState()
+    console.log(1)
     watch()
     set('reference', input)
   }
