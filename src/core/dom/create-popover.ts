@@ -1,4 +1,3 @@
-import nextTick from '../../utils/nexttick'
 import {Rect, Transform} from '../../types/utils'
 import {createElement} from '../../utils/element'
 
