@@ -5,9 +5,7 @@ let uid = 0
 
 export function updateView<T = State>(sub: Sub, state: T): void {
   const params: unknown[] = sub.key.map(key => state[key as keyof T])
-  const {handleParams} = sub
   if (params.findIndex(name => name === null) > -1) return
-  if (handleParams) params.push(...handleParams(...params))
   params.push(state)
   sub.cb(...params)
 }

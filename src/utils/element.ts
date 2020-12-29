@@ -66,7 +66,7 @@ export function appendChild(children: Element | Element[], parent: Element = doc
 
 export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?: 'cls'): void {
   if (isArray(opt)) return el.setAttribute('class', opt.join(' '))
-  const {key, handleParams, cb} = opt
+  const {key, cb} = opt
   const updateCb =
     type === 'cls'
       ? (arg: any) => resetAttr(el, mergeClasses(cb(...arg), opt.static))
@@ -78,8 +78,7 @@ export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?:
       key,
       cb(...arg: any): void {
         updateCb(arg)
-      },
-      handleParams
+      }
     },
     opt.childKey,
     opt.childIdx

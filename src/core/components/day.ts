@@ -1,12 +1,10 @@
 import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
-import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
 import {ComponentStatus, State} from '../../types/store'
 import {toggleVisibility} from './utils'
 
 function content(state: State): Node {
-  const handleParams = (month: number, year: number) => [monthFirstDay(year, month), daysInAMonth(year, month)]
   return createElement(
     {
       class: [dayContent],
@@ -26,8 +24,7 @@ function content(state: State): Node {
             key: ['status'],
             cb(status: ComponentStatus) {
               return status
-            },
-            handleParams
+            }
           },
           name: 'span'
         }

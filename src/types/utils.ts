@@ -58,7 +58,6 @@ export interface CreateElement {
 export interface updateOptions {
   key: (keyof State | keyof DayComponents)[]
   cb: (...arg: any) => string
-  handleParams?: (...arg: any) => any[]
   static?: string[]
   childKey?: keyof State
   childIdx?: number

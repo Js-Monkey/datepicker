@@ -14,7 +14,6 @@ export interface keyIsArray {
 export interface Sub<T = void> {
   key: any[]
   cb: (...arg: any) => T
-  handleParams?: (...arg: any) => any[]
   childKey?: keyof State
   childIdx?: number
 }
