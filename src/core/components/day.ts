@@ -2,7 +2,7 @@ import {createElement} from '../../utils/element'
 import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 import {getPreMonth, monthFirstDay, daysInAMonth} from '../../utils/date'
-import {State} from '../../types/store'
+import {ComponentStatus, State} from '../../types/store'
 import {toggleVisibility} from './utils'
 
 function content(state: State): Node {
@@ -11,7 +11,6 @@ function content(state: State): Node {
     {
       class: [dayContent],
       children: Array.from({length: 42}).map((d, index) => {
-        const idx = index + 1
         return {
           text: {
             childKey: 'startDayComponent',
@@ -22,9 +21,11 @@ function content(state: State): Node {
             }
           },
           class: {
-            key: ['startMonth', 'startYear'],
-            cb(month: number, year: number, fd: number, days: number) {
-              return index < fd ? 'pre' : idx > fd + days ? 'next' : ''
+            childKey: 'startDayComponent',
+            childIdx: index,
+            key: ['status'],
+            cb(status: ComponentStatus) {
+              return status
             },
             handleParams
           },

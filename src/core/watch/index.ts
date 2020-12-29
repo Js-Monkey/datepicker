@@ -46,6 +46,7 @@ export function watch(): void {
       state.startDayComponent.forEach((item, index) => {
         const idx = index + 1
         item.text = String(index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days)
+        item.status = index < fd ? 'pre' : idx > fd + days ? 'next' : ''
       })
     }
   })

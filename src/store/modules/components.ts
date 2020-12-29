@@ -4,7 +4,8 @@ const dayComponents = (): DayComponents[] =>
   Array.from({length: 42}).map((_: unknown) => {
     return {
       text: '',
-      status: 'normal'
+      status: '',
+      class: ''
     }
   })
 
