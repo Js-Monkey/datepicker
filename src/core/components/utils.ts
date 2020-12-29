@@ -31,10 +31,6 @@ export function toYearPage(state: State): void {
   state.page = 'year'
 }
 
-export function selectDate(day: number): void {
-  //todo
-}
-
-export function toggleVisibility(page: pageName): string {
+export function toggleVisibility(page: pageName): 'show' | 'hidden' {
   return page === 'day' ? 'show' : 'hidden'
 }

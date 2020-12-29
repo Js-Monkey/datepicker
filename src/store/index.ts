@@ -1,11 +1,11 @@
-import {StateExtends} from '../types/store'
+import {State} from '../types/store'
 import initState from './state'
 
 const Store = (function () {
   let uid = 0
   const states = [] as any[]
 
-  function get(key: keyof StateExtends) {
+  function get(key: keyof State) {
     return states[uid][key]
   }
 
@@ -13,7 +13,7 @@ const Store = (function () {
     return states[uid]
   }
 
-  function set(key: keyof StateExtends, val: unknown) {
+  function set(key: keyof State, val: unknown) {
     states[uid][key] = val
   }
 

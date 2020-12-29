@@ -3,6 +3,7 @@ import {day, dayBar, dayContent} from '../../utils/classes'
 import {dayBarNames} from '../i18n'
 import {ComponentStatus, State} from '../../types/store'
 import {toggleVisibility} from './utils'
+import {joinDate} from '../../utils/date'
 
 function content(state: State): Node {
   return createElement(
@@ -32,6 +33,7 @@ function content(state: State): Node {
             state.startDay = Number(text)
             if (data.status === 'pre') state.startMonth -= 1
             if (data.status === 'next') state.startMonth += 1
+            state.startDate = joinDate(state.startYear, state.startMonth, state.startDay)
           },
           name: 'span'
         }

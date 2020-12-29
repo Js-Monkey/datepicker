@@ -9,7 +9,7 @@ import {setPopoverStyle} from '../dom/create-popover'
 import {addWatch} from '../../observer/watcher'
 import Options from '../../types/options'
 import {State} from '../../types/store'
-import {daysInAMonth, getPreMonth, monthFirstDay} from '../../utils/date'
+import {daysInAMonth, getPreMonth, joinDate, monthFirstDay} from '../../utils/date'
 
 export function watch(): void {
   addWatch({
@@ -58,8 +58,16 @@ export function watch(): void {
       const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
       state.startDayComponent.forEach((item, index) => {
         const idx = index + 1
-        item.text = String(index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days)
-        item.status = index < fd ? 'pre' : idx > fd + days ? 'next' : ''
+        const day = index < fd ? preDays - fd + idx : index < fd + days ? idx - fd : idx - fd - days
+        item.text = String(day)
+        item.status =
+          index < fd
+            ? 'pre'
+            : idx > fd + days
+            ? 'next'
+            : joinDate(year, month, day) === state.startDate
+            ? 'selected'
+            : ''
       })
     }
   })

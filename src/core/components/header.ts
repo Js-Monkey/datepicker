@@ -1,7 +1,6 @@
 import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
-import {CreateElementOptions} from '../../types/utils'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
 import {State} from '../../types/store'
 
