@@ -38,9 +38,4 @@ describe('date function', () => {
   test('transformDate', () => {
     expect(transformDate(date)).toBe('2020/9/1')
   })
-  test('getPreMonth', () => {
-    expect(getPreMonth(10)).toBe(9)
-    expect(getPreMonth(12)).toBe(11)
-    expect(getPreMonth(1)).toBe(12)
-  })
 })
