@@ -38,6 +38,19 @@ export function watch(): void {
     }
   })
   addWatch({
+    key: ['startMonth'],
+    cb(month: number, state: State): void {
+      if (month === 13) {
+        state.startMonth = 1
+        state.startYear += 1
+      }
+      if (month === 0) {
+        state.startMonth = 12
+        state.startYear -= 1
+      }
+    }
+  })
+  addWatch({
     key: ['startMonth', 'startYear'],
     cb(month: number, year: number, state: State): void {
       const {preYear, preMonth} = getPreMonth(month, year)

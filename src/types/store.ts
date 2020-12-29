@@ -18,9 +18,10 @@ export interface stateComponent<T = null | HTMLElement> {
 }
 
 export interface stateDate<T = Date> {
-  startDate: T | Date
+  startDate: string
   startYear: number
   startMonth: number
+  startDay: number
 }
 
 export type pageName = 'day' | 'year' | 'month'

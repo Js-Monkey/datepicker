@@ -26,9 +26,12 @@ function content(state: State): Node {
               return status
             }
           },
-          event(state: State, e: Event) {
-            console.log(state)
-            // const index = e
+          event(state: State) {
+            const data = state.startDayComponent[index]
+            const {text} = data
+            state.startDay = Number(text)
+            if (data.status === 'pre') state.startMonth -= 1
+            if (data.status === 'next') state.startMonth += 1
           },
           name: 'span'
         }

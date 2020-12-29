@@ -1,4 +1,3 @@
-import {getNextMonth, getPreMonth} from '../../utils/date'
 import {pageName, State} from '../../types/store'
 import {isNumber} from '../../utils/typeOf'
 
@@ -11,11 +10,11 @@ export function preYear(state: State): void {
 }
 
 export function nextMonth(state: State): void {
-  state.startMonth = getNextMonth(state.startMonth, nextYear.bind(null, state))
+  state.startMonth += 1
 }
 
 export function preMonth(state: State): void {
-  state.startMonth = getPreMonth(state.startMonth, null, preYear.bind(null, state))
+  state.startMonth -= 1
 }
 
 export function toMonthPage(state: State, idx: number): void {
@@ -33,9 +32,7 @@ export function toYearPage(state: State): void {
 }
 
 export function selectDate(day: number): void {
-  // const year = get('startYear')
-  // const month = get('startMonth')
-  // set('startDate', getDate(year, month, day))
+  //todo
 }
 
 export function toggleVisibility(page: pageName): string {

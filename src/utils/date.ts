@@ -20,7 +20,6 @@ export function daysInAMonth(year: number, month: number): number {
 
 export function monthFirstDay(year: number, month: number): number {
   let firstDate = new Date(`${year}/${month}/01`).getDay()
-  console.log(firstDate)
   if (firstDate === 0) firstDate = 7
   return firstDate
 }
@@ -33,26 +32,14 @@ export function transformDate(date: Date): string {
   return joinDate(getYear(date), getMonth(date), getDay(date))
 }
 
-export function getNextMonth(m: number, cb: () => void = () => null): number {
-  let month = ++m
-  if (month === 13) {
-    cb()
-    month = 1
-  }
-  return month
-}
-
-export function getPreMonth<T = number>(m: number, y?: number | null, cb: () => void = () => null): any {
+export function getPreMonth<T = number>(m: number, y: number): any {
   let month = --m
   if (month === 0) {
-    cb()
     month = 12
-    if (y) ++y
+    ++y
   }
-  return y
-    ? {
-        preMonth: month,
-        preYear: y
-      }
-    : month
+  return {
+    preMonth: month,
+    preYear: y
+  }
 }

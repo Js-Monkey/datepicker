@@ -1,4 +1,5 @@
-import createSVG, {addAttr, createEL, createElement, resetAttr, toggleCls} from '../../src/utils/element'
+import createSVG, {createEL, createElement} from '../../src/utils/element'
+import {addAttr, resetAttr, toggleCls} from '../../src/utils/attribute'
 
 function isNode(el: any) {
   expect(el.addEventListener).toBeDefined()
@@ -29,99 +30,6 @@ describe('element', () => {
     test('svg: left arrow', () => {
       const div = createSVG('left')
       expect(div).toMatchSnapshot()
-    })
-  })
-
-  describe('createElement', () => {
-    describe('support createElement', () => {
-      const tree = createElement({
-        name: 'span'
-      })
-      expect(tree.nodeName.toLowerCase()).toBe('span')
-      isNode(tree)
-    })
-    describe('support create svg', () => {
-      const tree = createElement({
-        name: 'svg'
-      })
-      expect(tree.nodeName.toLowerCase()).toBe('svg')
-    })
-    describe('support addEventListener', () => {
-      const fn = jest.fn()
-      const tree = createElement({
-        event: {
-          cb: [{name: 'click', handler: fn}]
-        }
-      }) as HTMLElement
-      tree.click()
-      expect(fn.mock.calls.length).toBe(1)
-    })
-
-    describe('support addEventListener: other', () => {
-      const fn = jest.fn()
-      const tree = createElement({
-        event: {
-          cb: fn
-        }
-      }) as HTMLElement
-      tree.click()
-      expect(fn.mock.calls.length).toBe(1)
-    })
-
-    describe('support addEventListener: focus', () => {
-      const fn = jest.fn()
-      const tree = createElement({
-        name: 'input',
-        event: {
-          cb: [{name: 'focus', handler: fn}]
-        }
-      }) as HTMLElement
-      tree.focus()
-      expect(fn.mock.calls.length).toBe(1)
-    })
-    describe('support set innerText', () => {
-      const tree = createElement({
-        text: 'just test'
-      }) as HTMLElement
-      expect(tree.innerText).toBe('just test')
-    })
-    describe('support set class', () => {
-      const tree = createElement({
-        class: ['wrapper', 'disabled']
-      }) as HTMLElement
-      expect(tree.getAttribute('class')).toEqual('wrapper disabled')
-    })
-    describe('support set style', () => {
-      const tree = createElement({
-        style: {
-          height: '100px'
-        }
-      }) as HTMLElement
-      expect(tree.getAttribute('style')).toEqual('height:100px')
-    })
-    describe('support append childrenNodes', () => {
-      const tree = createElement({
-        children: [{name: 'span'}, {name: 'div'}]
-      })
-      expect(tree.childNodes.length).toBe(2)
-      expect(tree.childNodes).toMatchSnapshot()
-    })
-    describe('children support append addEventListener', () => {
-      const fn = jest.fn()
-      const tree = createElement({
-        children: [
-          {
-            name: 'span',
-            event: {
-              cb: fn
-            }
-          }
-        ]
-      })
-      const children = tree.childNodes
-      expect(children.length).toBe(1)
-      ;(tree.childNodes[0] as HTMLElement).click()
-      expect(fn).toBeCalled()
     })
   })
 

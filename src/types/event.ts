@@ -19,5 +19,6 @@ export interface _Event {
     dataset: {
       view: 'next' | 'pre'
     }
+    parentNode: ParentNode
   }
 }

@@ -1,10 +1,13 @@
 import {stateDate} from '../../types/store'
-import {getMonth, getYear} from '../../utils/date'
+import {getDay, getMonth, getYear, joinDate} from '../../utils/date'
+
 export default function (): stateDate {
   const date = new Date()
+  const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), getDay(date)]
   return {
-    startDate: date,
-    startYear: getYear(date),
-    startMonth: getMonth(date)
+    startDate: joinDate(startYear, startMonth, startDay),
+    startYear,
+    startMonth,
+    startDay
   }
 }

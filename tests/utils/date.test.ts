@@ -6,7 +6,6 @@ import {
   monthFirstDay,
   joinDate,
   transformDate,
-  getNextMonth,
   getPreMonth
 } from '../../src/utils/date'
 
@@ -38,11 +37,6 @@ describe('date function', () => {
   })
   test('transformDate', () => {
     expect(transformDate(date)).toBe('2020/9/1')
-  })
-  test('getNextMonth', () => {
-    expect(getNextMonth(10)).toBe(11)
-    expect(getNextMonth(12)).toBe(1)
-    expect(getNextMonth(1)).toBe(2)
   })
   test('getPreMonth', () => {
     expect(getPreMonth(10)).toBe(9)
