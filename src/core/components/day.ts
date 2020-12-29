@@ -26,6 +26,10 @@ function content(state: State): Node {
               return status
             }
           },
+          event(state: State, e: Event) {
+            console.log(state)
+            // const index = e
+          },
           name: 'span'
         }
       })

@@ -26,7 +26,7 @@ const handler: Handler = {
     })
   },
   name: () => null,
-  text: (el, text, state: State) => {
+  text: (el, text) => {
     if (isString(text)) {
       el.innerText = text
     } else {

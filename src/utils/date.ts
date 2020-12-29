@@ -19,7 +19,8 @@ export function daysInAMonth(year: number, month: number): number {
 }
 
 export function monthFirstDay(year: number, month: number): number {
-  let firstDate = new Date(`${year},${month}, 01`).getDay()
+  let firstDate = new Date(`${year}/${month}/01`).getDay()
+  console.log(firstDate)
   if (firstDate === 0) firstDate = 7
   return firstDate
 }
