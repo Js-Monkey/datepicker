@@ -11,7 +11,6 @@ export function observe<T = State>(obj: T): T {
       defineReactive<T>(obj, key as keyof T, val)
     }
   })
-
   return obj
 }
 

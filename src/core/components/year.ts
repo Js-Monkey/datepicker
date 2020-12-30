@@ -2,6 +2,7 @@ import {createElement} from '../../utils/element'
 import {year} from '../../utils/classes'
 import {pageName, State} from '../../types/store'
 import {toMonthPage} from './utils'
+import {getMinInTen} from '../../utils/date'
 
 export function Year(state: State): Node {
   return createElement(
@@ -15,7 +16,7 @@ export function Year(state: State): Node {
           text: {
             key: ['startYear'],
             cb(year: number) {
-              return year + idx
+              return getMinInTen(year) + idx
             }
           }
         }

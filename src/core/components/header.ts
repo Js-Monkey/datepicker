@@ -2,7 +2,36 @@ import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
 import {header} from '../../utils/classes'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
-import {State} from '../../types/store'
+import {pageName, State} from '../../types/store'
+import {getMinInTen} from '../../utils/date'
+
+const type: HeaderType = 'main'
+
+function yearRange(state: State) {
+  const range = (year: number) => {
+    const min = getMinInTen(year)
+    const max = min + 9
+    return min + '年' + ' - ' + max + '年'
+  }
+  return createElement(
+    {
+      name: 'span',
+      style: {
+        padding: '0 4px'
+      },
+      text: {
+        key: ['startYear', 'startDayComponent'],
+        cb: (year: number) => range(year)
+      },
+      class: {
+        key: ['page'],
+        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
+      },
+      event: toYearPage
+    },
+    state
+  )
+}
 
 function year(state: State) {
   return createElement(
@@ -15,7 +44,11 @@ function year(state: State) {
         key: ['startYear', 'startDayComponent'],
         cb: year => year + '年'
       },
-      event: toYearPage
+      event: toYearPage,
+      class: {
+        key: ['page'],
+        cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
+      }
     },
     state
   )
@@ -117,7 +150,7 @@ function headerChildren(type: HeaderType) {
 
   return {
     left: [preYearSVG, preMonthSVG, year, month],
-    main: [preYearSVG, preMonthSVG, year, month, nextYearSVG, nextMonthSVG],
+    main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
     right: [year, month, nextYearSVG, nextMonthSVG]
   }
 }

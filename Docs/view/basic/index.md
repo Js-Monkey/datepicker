@@ -23,7 +23,9 @@ export default {
 <script>
 export default {
     mounted(){
-        let dp = new better(this.$refs.int.$el)
+        let dp = new better(this.$refs.int.$el,{
+        type:'date-range'
+})
     },
 
 }

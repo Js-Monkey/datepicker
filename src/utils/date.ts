@@ -18,6 +18,10 @@ export function daysInAMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
+export function getMinInTen(num: number): number {
+  return num - Number(num.toString().slice(-1))
+}
+
 export function monthFirstDay(year: number, month: number): number {
   let firstDate = new Date(`${year}/${month}/01`).getDay()
   if (firstDate === 0) firstDate = 7
