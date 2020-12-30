@@ -1,5 +1,6 @@
 import {State} from '../types/store'
 import initState from './state'
+import Options from '../types/options'
 
 const Store = (function () {
   let uid = 0
@@ -21,8 +22,8 @@ const Store = (function () {
   //   states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
   // }
 
-  function createState(): void {
-    states.push(initState())
+  function createState(options: Options): void {
+    states.push(initState(options))
     uid = states.length - 1
   }
 

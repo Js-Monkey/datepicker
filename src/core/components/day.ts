@@ -56,6 +56,7 @@ function bar(state: State): Node {
 }
 
 export function Day(state: State): Node {
+  console.log(state)
   return createElement(
     {
       children: [bar, content],

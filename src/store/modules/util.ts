@@ -1,12 +1,9 @@
 import {stateUtil} from '../../types/store'
+import Options from '../../types/options'
 
-export default function (): stateUtil {
+export default function (options: Options): stateUtil {
   return {
-    options: {
-      placement: 'bottom',
-      zIndex: 1000,
-      format: 'yyyy-mm-dd'
-    },
+    options,
     visible: false,
     page: 'day'
   }
