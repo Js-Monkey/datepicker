@@ -81,8 +81,8 @@ function preYearSVG(state: State) {
       name: 'svg',
       text: 'pre-year',
       style: {
-        float: 'left',
-        'margin-left': '10px'
+        position: 'absolute',
+        left: '30px'
       },
       event: preYear
     },
@@ -96,8 +96,8 @@ function preMonthSVG(state: State) {
       name: 'svg',
       text: 'pre-month',
       style: {
-        float: 'left',
-        'margin-left': '10px'
+        position: 'absolute',
+        left: '50px'
       },
       event: preMonth,
       class: {
@@ -115,8 +115,8 @@ function nextYearSVG(state: State) {
       name: 'svg',
       text: 'next-year',
       style: {
-        float: 'right',
-        'margin-right': '10px'
+        position: 'absolute',
+        right: '30px'
       },
       event: nextYear
     },
@@ -130,8 +130,8 @@ function nextMonthSVG(state: State) {
       name: 'svg',
       text: 'next-month',
       style: {
-        float: 'right',
-        'margin-right': '5px'
+        position: 'absolute',
+        right: '50px'
       },
       event: nextMonth,
       class: {
@@ -143,24 +143,26 @@ function nextMonthSVG(state: State) {
   )
 }
 
-function headerChildren(type: HeaderType) {
-  // function bind(cb: () => any) {
-  //   return cb.bind(null, state)
-  // }
-
-  return {
-    left: [preYearSVG, preMonthSVG, year, month],
-    main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
-    right: [year, month, nextYearSVG, nextMonthSVG]
-  }
+const headerChildren = {
+  left: [preYearSVG, preMonthSVG, year, month],
+  main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
+  right: [year, month, nextYearSVG, nextMonthSVG]
 }
 
 export function Header(state: State, type: HeaderType = 'main'): Node {
   return createElement(
     {
       class: [header],
-      children: headerChildren(type)[type]
+      children: headerChildren[type]
     },
     state
   )
+}
+
+export function HeaderLeft(state: State): Node {
+  return Header(state, 'left')
+}
+
+export function HeaderRight(state: State): Node {
+  return Header(state, 'right')
 }

@@ -1,7 +1,7 @@
-import Options from '../../types/options'
+import Options, {AcceptOptions} from '../../types/options'
 import {isArray, isNumber, isObject, isString} from '../../utils/typeOf'
 
-const acceptOptions: Options = {
+const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
   type: ['date', 'date-range'],
   unlinkPanels: [true, false],

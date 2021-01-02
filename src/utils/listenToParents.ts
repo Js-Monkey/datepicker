@@ -1,5 +1,5 @@
 import {getScrollParents} from './window'
-import {setPopoverLocation} from '../core/dom/create-popover'
+import {setPopoverLocation} from '../core/dom/popover-style'
 import {State} from '../types/store'
 
 export const listenToScrollParents = (el: HTMLElement, state: State) => {

@@ -49,6 +49,11 @@ export interface Style {
   'margin-top'?: string
   'margin-bottom'?: string
   padding?: string
+  position?: 'relative' | 'absolute'
+  left?: string
+  right?: string
+  top?: string
+  bottom?: string
 }
 
 export interface CreateElement {

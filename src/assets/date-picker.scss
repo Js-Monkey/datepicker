@@ -132,6 +132,7 @@ $border-color-2: #e7eaf1;
           top: 50%;
           transform: translate(-50%, -50%);
         }
+
         &:hover {
           color: white !important;
         }
@@ -203,4 +204,11 @@ $border-color-2: #e7eaf1;
 
 .better-datepicker-hidden {
   animation: hidden .3s forwards;
+}
+
+.better-datepicker-float {
+  float: left;
+  &:first-child {
+    border-right: 1px solid #e4e4e4;
+  }
 }
