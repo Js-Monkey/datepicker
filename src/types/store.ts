@@ -15,6 +15,7 @@ export interface stateComponent<T = null | HTMLElement> {
   reference: T
   popover: T
   startDayComponent: DayComponents[]
+  endDayComponent: DayComponents[]
 }
 
 export interface stateDate<T = Date> {
@@ -22,6 +23,10 @@ export interface stateDate<T = Date> {
   startYear: number
   startMonth: number
   startDay: number
+  endDate: string
+  endYear: number
+  endMonth: number
+  endDay: number
 }
 
 export type pageName = 'day' | 'year' | 'month'

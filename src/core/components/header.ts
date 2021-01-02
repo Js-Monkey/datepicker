@@ -4,8 +4,9 @@ import {header} from '../../utils/classes'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
 import {pageName, State} from '../../types/store'
 import {getMinInTen} from '../../utils/date'
+import {CreateElementOptions} from '../../types/utils'
 
-const type: HeaderType = 'main'
+let type: HeaderType = 'main'
 
 function yearRange(state: State) {
   const range = (year: number) => {
@@ -34,45 +35,42 @@ function yearRange(state: State) {
 }
 
 function year(state: State) {
-  return createElement(
-    {
-      name: 'span',
-      style: {
-        padding: '0 4px'
-      },
-      text: {
-        key: ['startYear', 'startDayComponent'],
-        cb: year => year + '年'
-      },
-      event: toYearPage,
-      class: {
-        key: ['page'],
-        cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
-      }
+  const opt: CreateElementOptions = {
+    name: 'span',
+    style: {
+      padding: '0 4px'
     },
-    state
-  )
+    text: {
+      key: ['startYear', 'startDayComponent'],
+      cb: year => year + '年'
+    },
+    event: toYearPage,
+    class: {
+      key: ['page'],
+      cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
+    }
+  }
+  if (type === 'right') opt.text!.key = ['endYear', 'endDayComponent']
+  return createElement(opt, state)
 }
 
 function month(state: State) {
-  return createElement(
-    {
-      name: 'span',
-      text: {
-        key: ['startMonth'],
-        cb: month => month + '月'
-      },
-      style: {
-        padding: '0 4px'
-      },
-      class: {
-        key: ['page'],
-        cb: toggleVisibility
-      },
-      event: toMonthPage
+  const opt: CreateElementOptions = {
+    name: 'span',
+    text: {
+      key: ['startMonth'],
+      cb: month => month + '月'
     },
-    state
-  )
+    style: {
+      padding: '0 4px'
+    },
+    event: toMonthPage,
+    class: {
+      key: ['page'],
+      cb: toggleVisibility
+    }
+  }
+  return createElement(opt, state)
 }
 
 function preYearSVG(state: State) {
@@ -144,12 +142,13 @@ function nextMonthSVG(state: State) {
 }
 
 const headerChildren = {
-  left: [preYearSVG, preMonthSVG, year, month],
+  left: [preYearSVG, preMonthSVG, yearRange, year, month],
   main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
-  right: [year, month, nextYearSVG, nextMonthSVG]
+  right: [year, month, nextYearSVG, yearRange, nextMonthSVG]
 }
 
-export function Header(state: State, type: HeaderType = 'main'): Node {
+export function Header(state: State, t: HeaderType = 'main'): Node {
+  type = t
   return createElement(
     {
       class: [header],

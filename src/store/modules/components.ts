@@ -13,6 +13,7 @@ export default function (): stateComponent {
   return {
     reference: null,
     popover: null,
-    startDayComponent: dayComponents()
+    startDayComponent: dayComponents(),
+    endDayComponent: dayComponents()
   }
 }
