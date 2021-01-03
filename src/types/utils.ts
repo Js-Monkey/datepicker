@@ -5,6 +5,10 @@ export interface UtilObject {
   [key: string]: any
 }
 
+export interface Fn {
+  (...arg: any): any
+}
+
 export interface Types {
   Number: string
   String: string
@@ -78,7 +82,7 @@ export interface CreateElementOptions {
 }
 
 interface HandlerCb<T> {
-  (el: HTMLElement, val: T, state: State): void
+  (el: HTMLElement, val: T, state: State, ...arg: any): void
 }
 
 export interface Handler<> {

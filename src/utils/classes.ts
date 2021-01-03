@@ -8,4 +8,4 @@ export const month = `${logo}-month`
 export const year = `${logo}-year`
 export const show = `${logo}-show`
 export const hidden = `${logo}-hidden`
-export const float = `${logo}-float`
+export const float = `${logo}-float `

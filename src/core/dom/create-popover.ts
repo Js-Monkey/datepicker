@@ -2,7 +2,7 @@ import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
 import {float, wrapper} from '../../utils/classes'
 import {Header, HeaderLeft, HeaderRight} from '../components/header'
-import {Day} from '../components/day'
+import {Day, endDay} from '../components/day'
 import {Month} from '../components/month'
 import {Year} from '../components/year'
 import {PopoverType} from '../../types/components'
@@ -16,7 +16,7 @@ const popoverType: PopoverType = {
     },
     {
       class: [float],
-      children: [HeaderRight, Day, Month, Year]
+      children: [HeaderRight, endDay, Month, Year]
     }
   ]
 }

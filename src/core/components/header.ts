@@ -5,6 +5,7 @@ import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, t
 import {pageName, State} from '../../types/store'
 import {getMinInTen} from '../../utils/date'
 import {CreateElementOptions} from '../../types/utils'
+import {Sub} from '../../types/observer'
 
 let type: HeaderType = 'main'
 
@@ -50,7 +51,7 @@ function year(state: State) {
       cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
     }
   }
-  if (type === 'right') opt.text!.key = ['endYear', 'endDayComponent']
+  if (type === 'right') (opt.text as Sub).key = ['endYear', 'endDayComponent']
   return createElement(opt, state)
 }
 
@@ -70,6 +71,7 @@ function month(state: State) {
       cb: toggleVisibility
     }
   }
+  if (type === 'right') (opt.text as Sub).key = ['endMonth']
   return createElement(opt, state)
 }
 
@@ -108,18 +110,17 @@ function preMonthSVG(state: State) {
 }
 
 function nextYearSVG(state: State) {
-  return createElement(
-    {
-      name: 'svg',
-      text: 'next-year',
-      style: {
-        position: 'absolute',
-        right: '30px'
-      },
-      event: nextYear
+  const opt: CreateElementOptions = {
+    name: 'svg',
+    text: 'next-year',
+    style: {
+      position: 'absolute',
+      right: '30px'
     },
-    state
-  )
+    event: nextYear
+  }
+  opt.event = type === 'right' ? nextYear : nextYear
+  return createElement(opt, state, type)
 }
 
 function nextMonthSVG(state: State) {
@@ -137,7 +138,8 @@ function nextMonthSVG(state: State) {
         cb: toggleVisibility
       }
     },
-    state
+    state,
+    type
   )
 }
 
