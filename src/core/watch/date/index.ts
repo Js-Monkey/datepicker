@@ -2,7 +2,7 @@ import {addWatch} from '../../../observer/watcher'
 import {State} from '../../../types/store'
 import {daysInAMonth, getPreMonth, joinDate, monthFirstDay} from '../../../utils/date'
 import Options from '../../../types/options'
-import {Bind} from '../../../utils/bind'
+import {Bind, isHas} from '../../../utils/helper'
 
 function updateDayComponents(month: number, year: number, state: State, type?: 'end'): void {
   const {preYear, preMonth} = getPreMonth(month, year)
@@ -17,28 +17,34 @@ function updateDayComponents(month: number, year: number, state: State, type?: '
   })
 }
 
+function monthYearLink(month: number, state: State, m: 'startMonth' = 'startMonth', y: 'startYear' = 'startYear') {
+  if (month === 13) {
+    state[m] = 1
+    state[y] += 1
+  }
+  if (month === 0) {
+    state[m] = 12
+    state[y] -= 1
+  }
+}
+
 export function watchDate(options: Options): void {
   addWatch({
     key: ['startMonth'],
-    cb(month: number, state: State): void {
-      if (month === 13) {
-        state.startMonth = 1
-        state.startYear += 1
-      }
-      if (month === 0) {
-        state.startMonth = 12
-        state.startYear -= 1
-      }
-    }
+    cb: monthYearLink
   })
   addWatch({
     key: ['startMonth', 'startYear'],
     cb: updateDayComponents
   })
-  if (options.type.indexOf('range') > -1) {
+  if (isHas(options.type, 'range')) {
     addWatch({
       key: ['endMonth', 'endYear'],
       cb: Bind(updateDayComponents, 'end')
+    })
+    addWatch({
+      key: ['endMonth'],
+      cb: Bind(monthYearLink, 'endMonth', 'endYear')
     })
   }
 }
