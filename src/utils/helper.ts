@@ -4,7 +4,6 @@ export function Bind(fn: Fn, ...arg: any): Fn {
   function proxyFn(...argument: any) {
     fn(...Array.from(argument).concat(arg))
   }
-
   return proxyFn
 }
 
