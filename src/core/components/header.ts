@@ -1,10 +1,10 @@
 import {HeaderType} from '../../types/components'
 import {createElement} from '../../utils/element'
-import {header} from '../../utils/classes'
+import {header, defaultCursor} from '../../utils/classes'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
 import {pageName, State} from '../../types/store'
 import {getMinInTen} from '../../utils/date'
-import {CreateElementOptions} from '../../types/utils'
+import {CreateElementOptions, updateOptions} from '../../types/utils'
 import {Sub} from '../../types/observer'
 
 let type: HeaderType = 'main'
@@ -45,13 +45,14 @@ function year(state: State) {
       key: ['startYear', 'startDayComponent'],
       cb: year => year + '年'
     },
-    event: toYearPage,
     class: {
       key: ['page'],
       cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
     }
   }
   if (type === 'right') (opt.text as Sub).key = ['endYear', 'endDayComponent']
+  if (type === 'main') opt.event = toYearPage
+  else (opt.class as updateOptions).static = [defaultCursor]
   return createElement(opt, state)
 }
 
@@ -65,13 +66,14 @@ function month(state: State) {
     style: {
       padding: '0 4px'
     },
-    event: toMonthPage,
     class: {
       key: ['page'],
       cb: toggleVisibility
     }
   }
   if (type === 'right') (opt.text as Sub).key = ['endMonth']
+  if (type === 'main') opt.event = toMonthPage
+  else (opt.class as updateOptions).static = [defaultCursor]
   return createElement(opt, state)
 }
 
@@ -119,7 +121,6 @@ function nextYearSVG(state: State) {
     },
     event: nextYear
   }
-  opt.event = type === 'right' ? nextYear : nextYear
   return createElement(opt, state, type)
 }
 
@@ -144,9 +145,9 @@ function nextMonthSVG(state: State) {
 }
 
 const headerChildren = {
-  left: [preYearSVG, preMonthSVG, yearRange, year, month],
+  left: [preYearSVG, preMonthSVG, year, month],
   main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
-  right: [year, month, nextYearSVG, yearRange, nextMonthSVG]
+  right: [year, month, nextYearSVG, nextMonthSVG]
 }
 
 export function Header(state: State, t: HeaderType = 'main'): Node {

@@ -28,6 +28,12 @@ function monthYearLink(month: number, state: State, m: 'startMonth' = 'startMont
   }
 }
 
+function endStartLink(em: number, ey: number, state: State): void {
+  const {preMonth, preYear} = getPreMonth(em, ey)
+  state.startMonth = preMonth
+  state.startYear = preYear
+}
+
 export function watchDate(options: Options): void {
   addWatch({
     key: ['startMonth'],
@@ -45,6 +51,10 @@ export function watchDate(options: Options): void {
     addWatch({
       key: ['endMonth'],
       cb: Bind(monthYearLink, 'endMonth', 'endYear')
+    })
+    addWatch({
+      key: ['endMonth', 'endYear'],
+      cb: endStartLink
     })
   }
 }

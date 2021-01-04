@@ -40,7 +40,7 @@ export function getPreMonth<T = number>(m: number, y: number): any {
   let month = --m
   if (month === 0) {
     month = 12
-    ++y
+    --y
   }
   return {
     preMonth: month,

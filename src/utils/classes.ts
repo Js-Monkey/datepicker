@@ -9,3 +9,4 @@ export const year = `${logo}-year`
 export const show = `${logo}-show`
 export const hidden = `${logo}-hidden`
 export const float = `${logo}-float `
+export const defaultCursor = `${logo}-default-cursor `

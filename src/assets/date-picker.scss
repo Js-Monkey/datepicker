@@ -212,3 +212,10 @@ $border-color-2: #e7eaf1;
     border-right: 1px solid #e4e4e4;
   }
 }
+
+.better-datepicker-default-cursor {
+  cursor: default !important;
+  &:hover{
+    color: inherit !important;
+  }
+}
