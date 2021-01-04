@@ -17,7 +17,6 @@ build/*
 commitlint.config.js
 tests/*
 .codecov.yml
-.prettierrc.js
 .eslintrc.js
 .eslintignore
 .editorconfig
