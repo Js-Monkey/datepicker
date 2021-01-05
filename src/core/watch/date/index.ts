@@ -16,7 +16,7 @@ function updateDayComponents(
   state: State,
   type?: "end"
 ): void {
-  const [preYear, preMonth] = getPre(month, year)
+  const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
   state[type ? "endDayComponent" : "startDayComponent"].forEach(
@@ -28,6 +28,7 @@ function updateDayComponents(
           : index < fd + days
           ? idx - fd
           : idx - fd - days
+      console.log(preDays, preMonth)
       item.text = String(day)
       item.status =
         index < fd

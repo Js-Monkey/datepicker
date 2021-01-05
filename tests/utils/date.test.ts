@@ -5,8 +5,7 @@ import {
   daysInAMonth,
   monthFirstDay,
   joinDate,
-  transformDate,
-  getPreMonth
+  transformDate
 } from '../../src/utils/date'
 
 describe('date function', () => {
