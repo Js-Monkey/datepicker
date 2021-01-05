@@ -14,7 +14,6 @@ yarn.lock
 .github/*
 .rpt2_cache/*
 build/*
-commitlint.config.js
 tests/*
 .codecov.yml
 .eslintrc.js

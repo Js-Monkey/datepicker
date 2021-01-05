@@ -1,5 +1,5 @@
-import { addWatch } from "../../../observer/watcher"
-import { State } from "../../../types/store"
+import {addWatch} from "../../../observer/watcher"
+import {State} from "../../../types/store"
 import {
   daysInAMonth,
   getNext,
@@ -8,7 +8,7 @@ import {
   monthFirstDay,
 } from "../../../utils/date"
 import Options from "../../../types/options"
-import { Bind, isHas } from "../../../utils/helper"
+import {Bind, isHas} from "../../../utils/helper"
 
 function updateDayComponents(
   month: number,
@@ -36,8 +36,8 @@ function updateDayComponents(
           : idx > fd + days
           ? "next"
           : joinDate(year, month, day) === state.startDate
-          ? "selected"
-          : ""
+            ? "selected"
+            : ""
     }
   )
 }
