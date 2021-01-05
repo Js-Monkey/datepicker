@@ -7,13 +7,13 @@ import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
 
 const handler: Handler = {
-  event(el, listener, state, type: string) {
-    if (isArray<{name: eventType; handler: eventHandler}>(listener)) {
+  event(el, listener, state) {
+    if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
       listener.forEach(e => {
-        on(el, e.handler, e.name, state, type)
+        on(el, e.handler, e.name, state)
       })
     } else {
-      on(el, listener, 'click', state, type)
+      on(el, listener, 'click', state)
     }
   },
   class: (el, cls) => {
@@ -47,11 +47,11 @@ export default function createSVG(name: string): Element {
   return svg
 }
 
-export function createElement<T = HTMLElement>(opt: CreateElementOptions, state: State, ...arg: any): Node {
+export function createElement<T = HTMLElement>(opt: CreateElementOptions, state: State): Node {
   if (isFunc<Node>(opt)) return opt(state)
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], state, ...arg)
+    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], state)
   })
   return el
 }

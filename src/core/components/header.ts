@@ -6,6 +6,7 @@ import {pageName, State} from '../../types/store'
 import {getMinInTen} from '../../utils/date'
 import {CreateElementOptions, updateOptions} from '../../types/utils'
 import {Sub} from '../../types/observer'
+import {Bind} from "../../utils/helper";
 
 let type: HeaderType = 'main'
 
@@ -119,9 +120,9 @@ function nextYearSVG(state: State) {
       position: 'absolute',
       right: '30px'
     },
-    event: nextYear
+    event: Bind(nextYear, type)
   }
-  return createElement(opt, state, type)
+  return createElement(opt, state)
 }
 
 function nextMonthSVG(state: State) {
@@ -133,14 +134,13 @@ function nextMonthSVG(state: State) {
         position: 'absolute',
         right: '50px'
       },
-      event: nextMonth,
+      event: Bind(nextMonth, type),
       class: {
         key: ['page'],
         cb: toggleVisibility
       }
     },
-    state,
-    type
+    state
   )
 }
 

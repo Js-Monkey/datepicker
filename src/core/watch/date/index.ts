@@ -28,7 +28,6 @@ function updateDayComponents(
           : index < fd + days
           ? idx - fd
           : idx - fd - days
-      console.log(preDays, preMonth)
       item.text = String(day)
       item.status =
         index < fd

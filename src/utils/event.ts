@@ -2,14 +2,14 @@ import {eventType, Handler} from '../types/event'
 import {State} from '../types/store'
 
 export function on(
-  el: HTMLElement,
+  el: HTMLElement | Window,
   handler: Handler,
   eventName: eventType = 'click',
   state?: State,
   ...arg: any
 ): void {
-  const listener = function (e: Event) {
-    const params: unknown[] = [...arg, e]
+  const listener = function () {
+    const params: unknown[] = arg || []
     if (state) params.unshift(state)
     handler(...params)
   }

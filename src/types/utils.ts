@@ -82,7 +82,7 @@ export interface CreateElementOptions {
 }
 
 interface HandlerCb<T> {
-  (el: HTMLElement, val: T, state: State, ...arg: any): void
+  (el: HTMLElement, val: T, state: State): void
 }
 
 export interface Handler<> {

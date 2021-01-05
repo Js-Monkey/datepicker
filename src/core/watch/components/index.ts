@@ -9,13 +9,14 @@ import Options from '../../../types/options'
 import {isInBody} from '../../../utils/isInBody'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/popover-style'
+import {Bind} from "../../../utils/helper";
 
 export function watchComponents(): void {
   addWatch({
     key: ['reference'],
     cb(ref: HTMLElement, state: State): void {
       on(ref, () => (state.visible = true))
-      on(document.body, clickOutside.bind(null, state as any))
+      document.body.addEventListener('click', Bind(clickOutside, state))
       listenToScrollParents(ref, state)
       set('popover', createPopover(state))
     }
