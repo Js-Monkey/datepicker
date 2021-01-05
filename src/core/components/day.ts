@@ -9,20 +9,25 @@ import {Bind} from "../../utils/helper";
 
 let type = 'start'
 
-
-const eventType = {
-  date(state: State, index: number) {
-    console.log()
-    const data = state.startDayComponent[index]
-    const {text} = data
-    state.startDay = Number(text)
-    if (data.status === 'pre') state.startMonth -= 1
-    if (data.status === 'next') state.startMonth += 1
-    state.startDate = joinDate(state.startYear, state.startMonth, state.startDay)
-    state.visible = false
-  },
-  'date-range'(state: State, index: number) {
-    console.log(1)
+function EventType(index: number){
+  return {
+    date(state: State) {
+      const data = state.startDayComponent[index]
+      const {text} = data
+      state.startDay = Number(text)
+      if (data.status === 'pre') state.startMonth -= 1
+      if (data.status === 'next') state.startMonth += 1
+      state.startDate = joinDate(state.startYear, state.startMonth, state.startDay)
+      state.visible = false
+    },
+    'date-range': [
+      {
+        name: 'click',
+        handler(state: State) {
+          console.log(index)
+        }
+      }
+    ]
   }
 }
 
@@ -42,7 +47,7 @@ function content(state: State): Node {
         key: ['status'],
         cb: (status: ComponentStatus) => status
       },
-      event: Bind(eventType[state.options.type], index),
+      event: EventType(index)[state.options.type] as any,
       name: 'span'
     }
   })

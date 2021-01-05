@@ -16,9 +16,7 @@ const handler: Handler = {
       on(el, listener, 'click', state)
     }
   },
-  class: (el, cls) => {
-    update(el, cls, 'cls')
-  },
+  class: (el, cls) => update(el, cls, 'cls'),
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
   children(el, children, state) {
     children.forEach(child => {
