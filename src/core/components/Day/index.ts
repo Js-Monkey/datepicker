@@ -8,8 +8,10 @@ import {dayEvent} from "./event";
 
 let type = 'start'
 
+type Key = 'startDayComponent' | 'endDayComponent'
+
 function content(state: State): Node {
-  const key = type === 'start' ? 'startDayComponent' : 'endDayComponent'
+  const key = type + 'DayComponent' as Key
   const children: CreateElementOptions[] = Array.from({length: 42}).map((d, index) => {
     return {
       text: {
@@ -24,7 +26,7 @@ function content(state: State): Node {
         key: ['status'],
         cb: (status: ComponentStatus) => status
       },
-      event: dayEvent(index, key)[state.options.type] as any,
+      event: dayEvent(index, type)[state.options.type] as any,
       name: 'span'
     }
   })

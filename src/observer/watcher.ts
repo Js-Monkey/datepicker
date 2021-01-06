@@ -12,7 +12,6 @@ export default class Watcher {
     updateView(this.watcher, state)
     clearTarget()
   }
-
   addDep(dep: Dep): void {
     dep.addSub(this)
   }
