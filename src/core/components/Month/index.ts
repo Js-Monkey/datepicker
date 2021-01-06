@@ -1,8 +1,8 @@
-import {createElement} from '../../utils/element'
-import {monthNames} from '../i18n'
-import {month} from '../../utils/classes'
-import {toDayPage} from './utils'
-import {State} from '../../types/store'
+import {createElement} from '../../../utils/element'
+import {monthNames} from '../../i18n'
+import {month} from '../../../utils/classes'
+import {toDayPage} from '../utils'
+import {State} from '../../../types/store'
 
 export function Month(state: State): Node {
   return createElement(

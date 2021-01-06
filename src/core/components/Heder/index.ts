@@ -1,12 +1,12 @@
-import {HeaderType} from '../../types/components'
-import {createElement} from '../../utils/element'
-import {header, defaultCursor} from '../../utils/classes'
-import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from './utils'
-import {pageName, State} from '../../types/store'
-import {getMinInTen} from '../../utils/date'
-import {CreateElementOptions, updateOptions} from '../../types/utils'
-import {Sub} from '../../types/observer'
-import {Bind} from "../../utils/helper";
+import {HeaderType} from '../../../types/components'
+import {createElement} from '../../../utils/element'
+import {header, defaultCursor} from '../../../utils/classes'
+import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from '../utils'
+import {pageName, State} from '../../../types/store'
+import {getMinInTen} from '../../../utils/date'
+import {CreateElementOptions, updateOptions} from '../../../types/utils'
+import {Sub} from '../../../types/observer'
+import {Bind} from "../../../utils/helper";
 
 let type: HeaderType = 'main'
 

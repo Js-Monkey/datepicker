@@ -1,10 +1,10 @@
 import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
 import {float, wrapper} from '../../utils/classes'
-import {Header, HeaderLeft, HeaderRight} from '../components/header'
-import {Day, endDay} from '../components/day'
-import {Month} from '../components/month'
-import {Year} from '../components/year'
+import {Header, HeaderLeft, HeaderRight} from '../components/Heder'
+import {Day, endDay} from '../components/Day'
+import {Month} from '../components/Month'
+import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
 
 const popoverType: PopoverType = {

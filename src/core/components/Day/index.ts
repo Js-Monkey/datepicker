@@ -1,35 +1,12 @@
-import {createElement} from '../../utils/element'
-import {day, dayBar, dayContent} from '../../utils/classes'
-import {dayBarNames} from '../i18n'
-import {ComponentStatus, State} from '../../types/store'
-import {toggleVisibility} from './utils'
-import {joinDate} from '../../utils/date'
-import {CreateElementOptions} from '../../types/utils'
-import {Bind} from "../../utils/helper";
+import {createElement} from '../../../utils/element'
+import {day, dayBar, dayContent} from '../../../utils/classes'
+import {dayBarNames} from '../../i18n'
+import {ComponentStatus, State} from '../../../types/store'
+import {toggleVisibility} from '../utils'
+import {CreateElementOptions} from '../../../types/utils'
+import {dayEvent} from "./event";
 
 let type = 'start'
-
-function EventType(index: number){
-  return {
-    date(state: State) {
-      const data = state.startDayComponent[index]
-      const {text} = data
-      state.startDay = Number(text)
-      if (data.status === 'pre') state.startMonth -= 1
-      if (data.status === 'next') state.startMonth += 1
-      state.startDate = joinDate(state.startYear, state.startMonth, state.startDay)
-      state.visible = false
-    },
-    'date-range': [
-      {
-        name: 'click',
-        handler(state: State) {
-          console.log(index)
-        }
-      }
-    ]
-  }
-}
 
 function content(state: State): Node {
   const key = type === 'start' ? 'startDayComponent' : 'endDayComponent'
@@ -47,7 +24,7 @@ function content(state: State): Node {
         key: ['status'],
         cb: (status: ComponentStatus) => status
       },
-      event: EventType(index)[state.options.type] as any,
+      event: dayEvent(index)[state.options.type] as any,
       name: 'span'
     }
   })
