@@ -2,7 +2,7 @@ import {State} from "../../../types/store";
 import {joinDate} from "../../../utils/date";
 import {DayEvent} from "../../../types/components";
 
-export function dayEvent(index: number): DayEvent {
+export function dayEvent(index: number, key: 'startDayComponent'| 'endDayComponent'): DayEvent {
   return {
     date(state: State) {
       const data = state.startDayComponent[index]
@@ -17,7 +17,9 @@ export function dayEvent(index: number): DayEvent {
       {
         name: 'click',
         handler(state: State) {
-          console.log(index)
+          // if(state.rangeStatus==='none'){
+          //   state.rangeBegin =
+          // }
         }
       }
     ]

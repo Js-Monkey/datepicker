@@ -26,7 +26,10 @@ export interface stateDate<T = Date> {
   endDate: string
   endYear: number
   endMonth: number
-  endDay: number
+  endDay: number | null
+  rangeBegin: null | string
+  rangeEnd: null | string
+  rangeStatus: 'none' | 'complete' | 'selecting'
 }
 
 export type pageName = 'day' | 'year' | 'month'

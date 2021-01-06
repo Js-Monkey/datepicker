@@ -4,7 +4,7 @@ import {getDay, getMonth, getYear, joinDate} from '../../utils/date'
 export default function (): stateDate {
   const date = new Date()
   const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), getDay(date)]
-  const [endYear, endMonth, endDay] = [getYear(date), getMonth(date), getDay(date)]
+  const [endYear, endMonth, endDay] = [getYear(date), getMonth(date), null]
   return {
     startDate: joinDate(startYear, startMonth, startDay),
     startYear,
@@ -13,6 +13,9 @@ export default function (): stateDate {
     endDate: joinDate(endYear, endMonth, endDay),
     endYear,
     endMonth,
-    endDay
+    endDay,
+    rangeBegin: null,
+    rangeEnd: null,
+    rangeStatus: 'none'
   }
 }

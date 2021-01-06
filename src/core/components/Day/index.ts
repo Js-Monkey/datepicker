@@ -24,7 +24,7 @@ function content(state: State): Node {
         key: ['status'],
         cb: (status: ComponentStatus) => status
       },
-      event: dayEvent(index)[state.options.type] as any,
+      event: dayEvent(index, key)[state.options.type] as any,
       name: 'span'
     }
   })
