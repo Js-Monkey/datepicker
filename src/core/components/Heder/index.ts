@@ -4,11 +4,10 @@ import {header, defaultCursor} from '../../../utils/classes'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from '../utils'
 import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
-import {CreateElementOptions, updateOptions} from '../../../types/utils'
-import {Sub} from '../../../types/observer'
+import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/helper";
 
-let type: HeaderType = 'main'
+let type: HeaderType = 'start'
 
 function yearRange(state: State) {
   const range = (year: number) => {
@@ -23,7 +22,10 @@ function yearRange(state: State) {
         padding: '0 4px'
       },
       text: {
-        key: ['startYear', 'startDayComponent'],
+        key: {
+          name: 'start',
+          childKey: ['year', 'components']
+        },
         cb: (year: number) => range(year)
       },
       class: {
@@ -37,45 +39,45 @@ function yearRange(state: State) {
 }
 
 function year(state: State) {
-  const opt: CreateElementOptions = {
+  return createElement({
     name: 'span',
     style: {
       padding: '0 4px'
     },
     text: {
-      key: ['startYear', 'startDayComponent'],
+      key: {
+        name: type,
+        childKey: ['year', 'components']
+      },
       cb: year => year + '年'
     },
+    event: toYearPage,
     class: {
       key: ['page'],
       cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
     }
-  }
-  if (type === 'right') (opt.text as Sub).key = ['endYear', 'endDayComponent']
-  if (type === 'main') opt.event = toYearPage
-  else (opt.class as updateOptions).static = [defaultCursor]
-  return createElement(opt, state)
+  }, state)
 }
 
 function month(state: State) {
-  const opt: CreateElementOptions = {
+  return createElement({
     name: 'span',
     text: {
-      key: ['startMonth'],
+      key: {
+        name: type,
+        childKey: ['month']
+      },
       cb: month => month + '月'
     },
     style: {
       padding: '0 4px'
     },
+    event: toMonthPage,
     class: {
       key: ['page'],
       cb: toggleVisibility
     }
-  }
-  if (type === 'right') (opt.text as Sub).key = ['endMonth']
-  if (type === 'main') opt.event = toMonthPage
-  else (opt.class as updateOptions).static = [defaultCursor]
-  return createElement(opt, state)
+  }, state)
 }
 
 function preYearSVG(state: State) {
@@ -145,26 +147,24 @@ function nextMonthSVG(state: State) {
 }
 
 const headerChildren = {
-  left: [preYearSVG, preMonthSVG, year, month],
+  start: [preYearSVG, preMonthSVG, year, month],
   main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
-  right: [year, month, nextYearSVG, nextMonthSVG]
+  end: [year, month, nextYearSVG, nextMonthSVG]
 }
 
-export function Header(state: State, t: HeaderType = 'main'): Node {
-  type = t
-  return createElement(
-    {
-      class: [header],
-      children: headerChildren[type]
-    },
-    state
-  )
+export function Header(state: State, t?: HeaderType): Node {
+  const opt = {
+    class: [header],
+    children: headerChildren[t || 'main']
+  }
+  type = t || 'start'
+  return createElement(opt, state)
 }
 
 export function HeaderLeft(state: State): Node {
-  return Header(state, 'left')
+  return Header(state, 'start')
 }
 
 export function HeaderRight(state: State): Node {
-  return Header(state, 'right')
+  return Header(state, 'end')
 }

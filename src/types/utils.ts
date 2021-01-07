@@ -64,17 +64,13 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface updateOptions {
-  key: (keyof State | keyof DayComponents)[]
-  cb: (...arg: any) => string
+export interface updateOptions extends Sub<string>{
   static?: string[]
-  childKey?: keyof State
-  childIdx?: number
 }
 
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
-  text?: string | Sub
+  text?: string | Sub<string>
   class?: updateOptions | string[]
   event?: eventHandler | EventListener[]
   style?: Style

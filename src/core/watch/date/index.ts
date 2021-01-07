@@ -8,7 +8,6 @@ import {
   monthFirstDay,
 } from "../../../utils/date"
 import Options from "../../../types/options"
-import {Bind, isHas} from "../../../utils/helper"
 
 function updateDayComponents(
   month: number,
@@ -19,7 +18,8 @@ function updateDayComponents(
   const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
-  state[type ? "endDayComponent" : "startDayComponent"].forEach(
+  if (!type) type = 'start'
+  state.components.forEach(
     (item, index) => {
       const idx = index + 1
       const day =
@@ -34,7 +34,7 @@ function updateDayComponents(
           ? "pre"
           : idx > fd + days
           ? "next"
-          : joinDate(year, month, day) === state.startDate
+          : joinDate(year, month, day) === state.date
             ? "selected"
             : ""
     }
@@ -47,31 +47,34 @@ function monthYearLink(
   m: "startMonth" = "startMonth",
   y: "startYear" = "startYear"
 ) {
-  if (month === 13) {
-    state[m] = 1
-    state[y] += 1
-  }
-  if (month === 0) {
-    state[m] = 12
-    state[y] -= 1
-  }
+  // if (month === 13) {
+  //   state[m] = 1
+  //   state[y] += 1
+  // }
+  // if (month === 0) {
+  //   state[m] = 12
+  //   state[y] -= 1
+  // }
 }
 
 function endStartLink(em: number, ey: number, state: State): void {
-  [state.startMonth, state.startYear] = getPre(em, ey)
+  //[state.month, state.year] = getPre(em, ey)
 }
 
 function startEndLink(em: number, ey: number, state: State): void {
-  [state.endMonth, state.endYear] = getNext(em, ey)
+  // [state.month, state.year] = getNext(em, ey)
 }
 
 export function watchDate(options: Options): void {
+  // addWatch({
+  //   key: ["startMonth"],
+  //   cb: monthYearLink,
+  // })
   addWatch({
-    key: ["startMonth"],
-    cb: monthYearLink,
-  })
-  addWatch({
-    key: ["startMonth", "startYear"],
+    key: {
+      name: 'start',
+      childKey: ["month", "year"]
+    },
     cb() {
       updateDayComponents(
         ...((arguments as unknown) as [number, number, State, "end"])
@@ -79,18 +82,27 @@ export function watchDate(options: Options): void {
       startEndLink(...((arguments as unknown) as [number, number, State]))
     },
   })
-  if (isHas(options.type, "range")) {
-    addWatch({
-      key: ["endMonth", "endYear"],
-      cb: Bind(updateDayComponents, "end"),
-    })
-    addWatch({
-      key: ["endMonth"],
-      cb: Bind(monthYearLink, "endMonth", "endYear"),
-    })
-    addWatch({
-      key: ["endMonth", "endYear"],
-      cb: endStartLink,
-    })
-  }
+  // if (isHas(options.type, "range")) {
+  //   addWatch({
+  //     key: {
+  //       name: 'end',
+  //       childKey: ["month", "year"]
+  //     },
+  //     cb: Bind(updateDayComponents, "end"),
+  //   })
+  //   addWatch({
+  //     key: {
+  //       name: 'end',
+  //       childKey: ["month"]
+  //     },
+  //     cb: Bind(monthYearLink, "endMonth", "endYear"),
+  //   })
+  //   addWatch({
+  //     key: {
+  //       name: 'end',
+  //       childKey: ["month", "year"]
+  //     },
+  //     cb: endStartLink,
+  //   })
+  // }
 }

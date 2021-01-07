@@ -1,30 +1,30 @@
 import {pageName, State} from '../../types/store'
-import {isNumber} from '../../utils/typeOf'
+import {isString} from '../../utils/typeOf'
 import {HeaderType} from '../../types/components'
 
 export function nextYear(state: State, type: HeaderType): void {
-  state[type === 'right' ? 'endYear' : 'startYear'] += 1
+   state[type].year += 1
 }
 
 export function preYear(state: State): void {
-  state.startYear -= 1
+  state.start.year -= 1
 }
 
 export function nextMonth(state: State, type: HeaderType): void {
-  state[type === 'right' ? 'endMonth' : 'startMonth'] += 1
+  state[type].month += 1
 }
 
 export function preMonth(state: State): void {
-  state.startMonth -= 1
+  state.start.month -= 1
 }
 
-export function toMonthPage(state: State, idx: number): void {
+export function toMonthPage(state: State, text: string): void {
   state.page = 'month'
-  if (isNumber(idx)) state.startYear += idx
+  if (isString(text)) state.start.year = Number(text)
 }
 
 export function toDayPage(state: State, month: number): void {
-  state.startMonth = month
+  state.start.month = month
   state.page = 'day'
 }
 

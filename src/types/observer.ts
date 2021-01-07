@@ -11,14 +11,23 @@ export interface keyIsArray {
   index: number
 }
 
+export interface SubKey {
+  name: string
+  childKey: SubKey | string[]
+  idx?: number
+}
+
 export interface Sub<T = void> {
-  key: any[]
+  key: SubKey | string[]
   cb: (...arg: any) => T
-  childKey?: keyof State
-  childIdx?: number
+}
+
+export interface ReWriteSub<T = void> {
+  key: string[]
+  cb: (...arg: any) => T
 }
 
 export interface Watcher {
   addDep(dep: Dep): void
-  watcher: Sub
+  watcher: ReWriteSub
 }

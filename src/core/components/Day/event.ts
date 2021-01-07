@@ -2,32 +2,25 @@ import {State} from "../../../types/store";
 import {joinDate} from "../../../utils/date";
 import {DayEvent} from "../../../types/components";
 
-export function dayEvent(index: number, type: string): DayEvent {
-  const year = type + 'Year' as 'startYear'
-  const month = type + 'Month' as 'startMonth'
-  const day = type + 'Day' as 'startDay'
-  const date = type + 'Date' as 'startDate'
-  const component = type + 'DayComponent' as 'startDayComponent'
+export function dayEvent(index: number, type: 'start' | 'end'): DayEvent {
   return {
     date(state: State) {
-      const data = state[component][index]
+      const obj = state[type]
+      const data = obj.components[index]
       const {text} = data
-      state[day] = Number(text)
-      if (data.status === 'pre') state[month] -= 1
-      if (data.status === 'next') state[month] += 1
-      state[date] = joinDate(state[year], state[month], state[day])
+      obj.day = Number(text)
+      if (data.status === 'pre') obj.month -= 1
+      if (data.status === 'next') obj.month += 1
+      obj.date = joinDate(obj.year, obj.month, obj.day)
       state.visible = false
     },
     'date-range': [
       {
         name: 'click',
         handler(state: State) {
+          const obj = state[type]
           if(state.rangeStatus==='none'){
-            const data = state[component][index]
-            const {text} = data
-            state[day] = Number(text)
-            state.rangeBegin = joinDate(state[year], state[month], state[day])
-            console.log(state.rangeBegin)
+
           }
         }
       }

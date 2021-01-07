@@ -2,7 +2,7 @@ import {State} from './store'
 import {CreateElement, CreateElementOptions} from './utils'
 import {EventListener} from "./utils";
 
-export type HeaderType = 'left' | 'right' | 'main'
+export type HeaderType = 'start' | 'end'
 
 export type Components = (state: State, ...arg: any) => Node
 

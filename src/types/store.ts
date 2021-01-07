@@ -14,22 +14,26 @@ export interface DayComponents {
 export interface stateComponent<T = null | HTMLElement> {
   reference: T
   popover: T
-  startDayComponent: DayComponents[]
-  endDayComponent: DayComponents[]
 }
 
 export interface stateDate<T = Date> {
-  startDate: string
-  startYear: number
-  startMonth: number
-  startDay: number
-  endDate: string
-  endYear: number
-  endMonth: number
-  endDay: number | null
   rangeBegin: null | string
   rangeEnd: null | string
   rangeStatus: 'none' | 'complete' | 'selecting'
+  start: {
+    date: string
+    year: number
+    month: number
+    day: number
+    components: DayComponents[]
+  }
+  end: {
+    date: string
+    year: number
+    month: number
+    day: number | null
+    components: DayComponents[]
+  }
 }
 
 export type pageName = 'day' | 'year' | 'month'
@@ -55,4 +59,5 @@ export interface utilWatchers<T = utilWatcher> {
   page: T
 }
 
-export interface State extends stateComponent, stateUtil, stateDate {}
+export interface State extends stateComponent, stateUtil, stateDate {
+}

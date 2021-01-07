@@ -1,4 +1,4 @@
-import {eventType, Handler} from '../types/event'
+import {_Event, eventType, Handler} from '../types/event'
 import {State} from '../types/store'
 
 export function on(
@@ -8,8 +8,8 @@ export function on(
   state?: State,
   ...arg: any
 ): void {
-  const listener = function () {
-    const params: unknown[] = arg || []
+  const listener = function (e: Event) {
+    const params: unknown[] = (arg || []).concat(e)
     if (state) params.unshift(state)
     handler(...params)
   }
