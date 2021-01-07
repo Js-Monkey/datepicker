@@ -16,7 +16,7 @@ export function watchComponents(): void {
     key: ['reference'],
     cb(ref: HTMLElement, state: State): void {
       on(ref, () => (state.visible = true))
-      document.body.addEventListener('click', Bind(clickOutside, state))
+      on(document.body, Bind(clickOutside, state))
       listenToScrollParents(ref, state)
       set('popover', createPopover(state))
     }

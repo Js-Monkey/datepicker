@@ -5,18 +5,20 @@ import {ComponentStatus, State} from '../../../types/store'
 import {toggleVisibility} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event";
+import {HeaderType} from "../../../types/components";
 
-let type: 'start' | 'end' = 'start'
+let type: HeaderType = 'start'
 
 function content(state: State): Node {
-  const children: CreateElementOptions[] = Array.from({length: 42}).map((d, index) => {
+  console.log(state)
+  const children: CreateElementOptions[] = Array.from({length: 42}).map((d, idx) => {
     return {
       text: {
         key: {
           name: type,
           childKey: {
             name: 'components',
-            idx: index,
+            idx,
             childKey: ['text']
           }
         },
@@ -27,13 +29,13 @@ function content(state: State): Node {
           name: type,
           childKey: {
             name: 'components',
-            childKey: ['status'],
-            idx: index
+            idx,
+            childKey: ['status']
           }
         },
         cb: (status: ComponentStatus) => status
       },
-      event: dayEvent(index, type)[state.options.type] as any,
+      event: dayEvent(idx, type)[state.options.type],
       name: 'span'
     }
   })
@@ -58,7 +60,7 @@ function bar(state: State): Node {
   )
 }
 
-export function Day(state: State, t = 'start'): Node {
+export function Day(state: State, t: HeaderType = 'start'): Node {
   type = t
   return createElement(
     {

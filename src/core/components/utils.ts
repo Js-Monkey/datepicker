@@ -11,6 +11,7 @@ export function preYear(state: State): void {
 }
 
 export function nextMonth(state: State, type: HeaderType): void {
+  console.log(arguments)
   state[type].month += 1
 }
 

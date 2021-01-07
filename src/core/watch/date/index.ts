@@ -1,5 +1,5 @@
 import {addWatch} from "../../../observer/watcher"
-import {State} from "../../../types/store"
+import {DateData, State} from "../../../types/store"
 import {
   daysInAMonth,
   getNext,
@@ -12,13 +12,12 @@ import Options from "../../../types/options"
 function updateDayComponents(
   month: number,
   year: number,
-  state: State,
-  type?: "end"
+  state: DateData
 ): void {
   const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
-  if (!type) type = 'start'
+  console.log(state)
   state.components.forEach(
     (item, index) => {
       const idx = index + 1
@@ -77,7 +76,7 @@ export function watchDate(options: Options): void {
     },
     cb() {
       updateDayComponents(
-        ...((arguments as unknown) as [number, number, State, "end"])
+        ...((arguments as unknown) as [number, number, DateData])
       )
       startEndLink(...((arguments as unknown) as [number, number, State]))
     },

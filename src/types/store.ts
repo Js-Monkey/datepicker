@@ -16,24 +16,20 @@ export interface stateComponent<T = null | HTMLElement> {
   popover: T
 }
 
+export interface DateData {
+  date: string
+  year: number
+  month: number
+  day: number | null
+  components: DayComponents[]
+}
+
 export interface stateDate<T = Date> {
   rangeBegin: null | string
   rangeEnd: null | string
   rangeStatus: 'none' | 'complete' | 'selecting'
-  start: {
-    date: string
-    year: number
-    month: number
-    day: number
-    components: DayComponents[]
-  }
-  end: {
-    date: string
-    year: number
-    month: number
-    day: number | null
-    components: DayComponents[]
-  }
+  start: DateData
+  end: DateData
 }
 
 export type pageName = 'day' | 'year' | 'month'
