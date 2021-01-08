@@ -13,6 +13,7 @@ import {isHas} from "../../../utils/helper";
 function updateDayComponents(
   month: number,
   year: number,
+  date: string,
   state: DateData
 ): void {
   const [preMonth, preYear] = getPre(month, year)
@@ -33,7 +34,7 @@ function updateDayComponents(
           ? "pre"
           : idx > fd + days
           ? "next"
-          : joinDate(year, month, day) === state.date
+          : joinDate(year, month, day) === date
             ? "selected"
             : ""
     }
@@ -54,7 +55,7 @@ function monthYearLink(
   }
 }
 
-function endStartLink(em: number, ey: number, state: State): void {
+function endStartLink(this: State, em: number, ey: number): void {
   const data = this.start
   ;[data.month, data.year] = getPre(em, ey)
 }
@@ -74,7 +75,7 @@ export function watchDate(options: Options): void {
   addWatch({
     key: {
       name: 'start',
-      childKey: ['month', 'year']
+      childKey: ['month', 'year', 'date']
     },
     cb: updateDayComponents,
   })
@@ -82,9 +83,12 @@ export function watchDate(options: Options): void {
     addWatch({
       key: {
         name: 'end',
-        childKey: ["month", "year"]
+        childKey: ["month", "year", 'date']
       },
-      cb: updateDayComponents,
+      cb(this: State) {
+        updateDayComponents(...(arguments as unknown as [number, number, string,DateData]))
+        endStartLink.call(this, ...(arguments as unknown as [number, number]))
+      },
     })
 
     addWatch({

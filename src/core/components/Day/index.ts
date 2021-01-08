@@ -32,7 +32,10 @@ function content(state: State): Node {
             childKey: ['status']
           }
         },
-        cb: (status: ComponentStatus) => status
+        cb: (status: ComponentStatus) => {
+          console.log(12)
+            return status
+        }
       },
       event: dayEvent(idx, type)[state.options.type],
       name: 'span'

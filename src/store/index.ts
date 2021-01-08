@@ -18,10 +18,6 @@ const Store = (function () {
     states[uid][key] = val
   }
 
-  // function removeNull(): void {
-  //   states = states.filter(state => Object.keys(state).length > 0) //state滤除空对象
-  // }
-
   function createState(options: Options): void {
     states.push(initState(options))
     uid = states.length - 1

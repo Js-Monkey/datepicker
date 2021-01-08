@@ -152,7 +152,7 @@ const headerChildren = {
   end: [year, month, nextYearSVG, nextMonthSVG]
 }
 
-export function Header(state: State, t?: HeaderType): Node {
+  export function Header(state: State, t?: HeaderType): Node {
   const opt = {
     class: [header],
     children: headerChildren[t || 'main']

@@ -84,7 +84,7 @@
             <a href="https://github.com/jumodada/date-picker" target="_blank">
                 <f-icon :color="fColor"
                         :font-size="35"
-                        :class="atHome?'Heder-angle-icon-home':'Heder-angle-icon-other'" name="github1">
+                        :class="atHome?'Header-angle-icon-home':'Header-angle-icon-other'" name="github1">
                 </f-icon>
             </a>
         </div>

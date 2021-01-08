@@ -33,8 +33,7 @@ export default function ObserveState (state: State): State{
       }
     })
   }
-
+  console.log(state)
   return observe(state)
 }
-
 
