@@ -1,4 +1,4 @@
-import {setTarget, clearTarget, updateView} from './deps'
+import {setTarget, updateView} from './deps'
 import {ReWriteSub, Dep, SubKey, Sub} from '../types/observer'
 import {getState} from '../store'
 import {isArray, isNumber} from '../utils/typeOf'
@@ -10,7 +10,6 @@ export default class Watcher {
     this.watcher = watcher
     setTarget(this)
     updateView(this.watcher, state, obj)
-    clearTarget()
   }
 
   addDep(dep: Dep): void {

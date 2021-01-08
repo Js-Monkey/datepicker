@@ -8,7 +8,7 @@ import {
   monthFirstDay,
 } from "../../../utils/date"
 import Options from "../../../types/options"
-import {Bind, isHas} from "../../../utils/helper";
+import {isHas} from "../../../utils/helper";
 
 function updateDayComponents(
   month: number,
@@ -54,10 +54,9 @@ function monthYearLink(
   }
 }
 
-function endStartLink(em: number, ey: number, state: DateData): void {
-
+function endStartLink(em: number, ey: number, state: State): void {
   const data = this.start
-  ;[this.start.month, this.start.year] = getPre(em, ey)
+  ;[data.month, data.year] = getPre(em, ey)
 }
 
 function startEndLink(em: number, ey: number, state: DateData): void {
@@ -85,10 +84,7 @@ export function watchDate(options: Options): void {
         name: 'end',
         childKey: ["month", "year"]
       },
-      cb(...arg: [number, number, DateData]){
-        updateDayComponents.call(this, ...arg)
-        endStartLink.call(this, ...arg)
-      },
+      cb: updateDayComponents,
     })
 
     addWatch({
@@ -98,6 +94,12 @@ export function watchDate(options: Options): void {
       },
       cb: monthYearLink,
     })
-
+    addWatch({
+      key: {
+        name: 'end',
+        childKey: ['month', 'year']
+      },
+      cb: endStartLink,
+    })
   }
 }
