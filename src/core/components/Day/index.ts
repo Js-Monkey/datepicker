@@ -10,7 +10,6 @@ import {HeaderType} from "../../../types/components";
 let type: HeaderType = 'start'
 
 function content(state: State): Node {
-  console.log(state)
   const children: CreateElementOptions[] = Array.from({length: 42}).map((d, idx) => {
     return {
       text: {

@@ -8,6 +8,7 @@ import {
   monthFirstDay,
 } from "../../../utils/date"
 import Options from "../../../types/options"
+import {Bind, isHas} from "../../../utils/helper";
 
 function updateDayComponents(
   month: number,
@@ -17,7 +18,6 @@ function updateDayComponents(
   const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
-  console.log(state)
   state.components.forEach(
     (item, index) => {
       const idx = index + 1
@@ -42,66 +42,62 @@ function updateDayComponents(
 
 function monthYearLink(
   month: number,
-  state: State,
-  m: "startMonth" = "startMonth",
-  y: "startYear" = "startYear"
+  state: DateData
 ) {
-  // if (month === 13) {
-  //   state[m] = 1
-  //   state[y] += 1
-  // }
-  // if (month === 0) {
-  //   state[m] = 12
-  //   state[y] -= 1
-  // }
+  if (month === 13) {
+    state.month = 1
+    state.year += 1
+  }
+  if (month === 0) {
+    state.month = 12
+    state.year -= 1
+  }
 }
 
-function endStartLink(em: number, ey: number, state: State): void {
-  //[state.month, state.year] = getPre(em, ey)
+function endStartLink(em: number, ey: number, state: DateData): void {
+
+  const data = this.start
+  ;[this.start.month, this.start.year] = getPre(em, ey)
 }
 
-function startEndLink(em: number, ey: number, state: State): void {
-  // [state.month, state.year] = getNext(em, ey)
+function startEndLink(em: number, ey: number, state: DateData): void {
+  //  [state.month, state.year] = getNext(em, ey)
 }
 
 export function watchDate(options: Options): void {
-  // addWatch({
-  //   key: ["startMonth"],
-  //   cb: monthYearLink,
-  // })
   addWatch({
     key: {
       name: 'start',
-      childKey: ["month", "year"]
+      childKey: ['month']
     },
-    cb() {
-      updateDayComponents(
-        ...((arguments as unknown) as [number, number, DateData])
-      )
-      startEndLink(...((arguments as unknown) as [number, number, State]))
-    },
+    cb: monthYearLink
   })
-  // if (isHas(options.type, "range")) {
-  //   addWatch({
-  //     key: {
-  //       name: 'end',
-  //       childKey: ["month", "year"]
-  //     },
-  //     cb: Bind(updateDayComponents, "end"),
-  //   })
-  //   addWatch({
-  //     key: {
-  //       name: 'end',
-  //       childKey: ["month"]
-  //     },
-  //     cb: Bind(monthYearLink, "endMonth", "endYear"),
-  //   })
-  //   addWatch({
-  //     key: {
-  //       name: 'end',
-  //       childKey: ["month", "year"]
-  //     },
-  //     cb: endStartLink,
-  //   })
-  // }
+  addWatch({
+    key: {
+      name: 'start',
+      childKey: ['month', 'year']
+    },
+    cb: updateDayComponents,
+  })
+  if (isHas(options.type, "range")) {
+    addWatch({
+      key: {
+        name: 'end',
+        childKey: ["month", "year"]
+      },
+      cb(...arg: [number, number, DateData]){
+        updateDayComponents.call(this, ...arg)
+        endStartLink.call(this, ...arg)
+      },
+    })
+
+    addWatch({
+      key: {
+        name: 'end',
+        childKey: ["month"]
+      },
+      cb: monthYearLink,
+    })
+
+  }
 }

@@ -28,9 +28,9 @@ export default function (): stateDate {
     },
     end: {
       date: joinDate(endYear, endMonth, endDay),
-      year: endYear,
-      month: endMonth,
-      day: endDay,
+      year: 2021,
+      month: 2,
+      day: 8,
       components: dayComponents(),
     }
   }

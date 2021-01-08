@@ -46,6 +46,7 @@ export function getPre<T = number>(m: number, y: number): [number, number] {
     month = 12
     --y
   }
+  console.log(month)
   return [month, y]
 }
 
