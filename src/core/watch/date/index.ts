@@ -60,8 +60,9 @@ function endStartLink(this: State, em: number, ey: number): void {
   ;[data.month, data.year] = getPre(em, ey)
 }
 
-function startEndLink(em: number, ey: number, state: DateData): void {
-  //  [state.month, state.year] = getNext(em, ey)
+function startEndLink(this: State, em: number, ey: number, state: DateData): void {
+  const data = this.end
+  ;[data.month, data.year] = getNext(em, ey)
 }
 
 export function watchDate(options: Options): void {
@@ -86,7 +87,7 @@ export function watchDate(options: Options): void {
         childKey: ["month", "year", 'date']
       },
       cb(this: State) {
-        updateDayComponents(...(arguments as unknown as [number, number, string,DateData]))
+        updateDayComponents(...(arguments as unknown as [number, number, string, DateData]))
         endStartLink.call(this, ...(arguments as unknown as [number, number]))
       },
     })
@@ -104,6 +105,13 @@ export function watchDate(options: Options): void {
         childKey: ['month', 'year']
       },
       cb: endStartLink,
+    })
+    addWatch({
+      key: {
+        name: 'start',
+        childKey: ['month', 'year']
+      },
+      cb: startEndLink,
     })
   }
 }

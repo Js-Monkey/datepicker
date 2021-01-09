@@ -8,6 +8,9 @@ import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/helper";
 
 let type: HeaderType = 'start'
+const style = {
+  padding: '0 4px'
+}
 
 function yearRange(state: State) {
   const range = (year: number) => {
@@ -18,9 +21,7 @@ function yearRange(state: State) {
   return createElement(
     {
       name: 'span',
-      style: {
-        padding: '0 4px'
-      },
+      style,
       text: {
         key: {
           name: 'start',
@@ -41,9 +42,7 @@ function yearRange(state: State) {
 function year(state: State) {
   return createElement({
     name: 'span',
-    style: {
-      padding: '0 4px'
-    },
+    style,
     text: {
       key: {
         name: type,
@@ -69,9 +68,7 @@ function month(state: State) {
       },
       cb: month => month + '月'
     },
-    style: {
-      padding: '0 4px'
-    },
+    style,
     event: toMonthPage,
     class: {
       key: ['page'],
@@ -80,7 +77,26 @@ function month(state: State) {
   }, state)
 }
 
-function preYearSVG(state: State) {
+function date(state: State) {
+  return createElement({
+    name: 'span',
+    text: {
+      key: {
+        name: type,
+        childKey: ['month' ,'year']
+      },
+      cb: (month ,year) => year + '年 ' + month + '月'
+    },
+    style,
+    class: {
+      key: ['page'],
+      cb: toggleVisibility,
+      static: [defaultCursor]
+    }
+  }, state)
+}
+
+function preYearIcon(state: State) {
   return createElement(
     {
       name: 'svg',
@@ -95,7 +111,7 @@ function preYearSVG(state: State) {
   )
 }
 
-function preMonthSVG(state: State) {
+function preMonthIcon(state: State) {
   return createElement(
     {
       name: 'svg',
@@ -114,7 +130,7 @@ function preMonthSVG(state: State) {
   )
 }
 
-function nextYearSVG(state: State) {
+function nextYearIcon(state: State) {
   const opt: CreateElementOptions = {
     name: 'svg',
     text: 'next-year',
@@ -127,7 +143,7 @@ function nextYearSVG(state: State) {
   return createElement(opt, state)
 }
 
-function nextMonthSVG(state: State) {
+function nextMonthIcon(state: State) {
   return createElement(
     {
       name: 'svg',
@@ -147,9 +163,9 @@ function nextMonthSVG(state: State) {
 }
 
 const headerChildren = {
-  start: [preYearSVG, preMonthSVG, year, month],
-  main: [preYearSVG, preMonthSVG, yearRange, year, month, nextYearSVG, nextMonthSVG],
-  end: [year, month, nextYearSVG, nextMonthSVG]
+  start: [preYearIcon, preMonthIcon, date],
+  main: [preYearIcon, preMonthIcon, yearRange, year, month, nextYearIcon, nextMonthIcon],
+  end: [date, nextYearIcon, nextMonthIcon]
 }
 
   export function Header(state: State, t?: HeaderType): Node {

@@ -16,9 +16,11 @@ export default function (): stateDate {
   const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), getDay(date)]
   const [endYear, endMonth, endDay] = [getYear(date), getMonth(date), null]
   return {
-    rangeBegin: null,
-    rangeEnd: null,
-    rangeStatus: 'none',
+    range:{
+      start: null,
+      end: null,
+      status: 'none',
+    },
     start: {
       date: joinDate(startYear, startMonth, startDay),
       year: startYear,

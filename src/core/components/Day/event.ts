@@ -1,14 +1,17 @@
-import {State} from "../../../types/store";
-import {joinDate} from "../../../utils/date";
-import {DayEvent} from "../../../types/components";
+import {DateData, DayComponents, State} from "../../../types/store"
+import {joinDate} from "../../../utils/date"
+import {DayEvent, HeaderType} from "../../../types/components"
 
-export function dayEvent(index: number, type: 'start' | 'end'): DayEvent {
+export function dayEvent(index: number, type: HeaderType): DayEvent {
+  function filterState(state: State): [DateData, DayComponents] {
+    const obj = state[type]
+    return [obj, obj.components[index]]
+  }
+
   return {
     date(state: State) {
-      const obj = state[type]
-      const data = obj.components[index]
-      const {text} = data
-      obj.day = Number(text)
+      const [obj, data] = filterState(state)
+      obj.day = Number(data.text)
       if (data.status === 'pre') obj.month -= 1
       if (data.status === 'next') obj.month += 1
       obj.date = joinDate(obj.year, obj.month, obj.day)
@@ -17,10 +20,12 @@ export function dayEvent(index: number, type: 'start' | 'end'): DayEvent {
     'date-range': [
       {
         name: 'click',
-        handler(state: State) {
-          const obj = state[type]
-          if(state.rangeStatus==='none'){
-
+        handler: function (state: State) {
+          const [obj, data] = filterState(state)
+          if (state.rangeBegin) {
+            state.rangeBegin = joinDate(obj.year, obj.month, obj.day)
+          } else {
+            state.rangeEnd = joinDate(obj.year, obj.month, obj.day)
           }
         }
       }
