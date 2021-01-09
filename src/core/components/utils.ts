@@ -3,11 +3,13 @@ import {isString} from '../../utils/typeOf'
 import {HeaderType} from '../../types/components'
 
 export function nextYear(state: State, type: HeaderType): void {
-   state[type].year += 1
+  const num = state.page === 'year' ? 10 : 1
+  state[type].year += num
 }
 
 export function preYear(state: State): void {
-  state.start.year -= 1
+  const num = state.page === 'year' ? 10 : 1
+  state.start.year -= num
 }
 
 export function nextMonth(state: State, type: HeaderType): void {
