@@ -26,7 +26,7 @@ export interface DateData {
 export interface Range {
   start: string | null
   end: string | null
-  status:'none' | 'complete' | 'selecting'
+  status: 'complete' | 'selecting'
 }
 
 export interface stateDate<T = Date> {

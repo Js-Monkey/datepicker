@@ -40,6 +40,11 @@ export function transformDate(date: Date): string {
   return joinDate(getYear(date), getMonth(date), getDay(date))
 }
 
+export function dateDiff(source: string | null, target: string | null): boolean {
+  if (!source || !target) return false
+  return Date.parse(source) > Date.parse(target)
+}
+
 export function getPre<T = number>(m: number, y: number): [number, number] {
   let month = --m
   if (month === 0) {

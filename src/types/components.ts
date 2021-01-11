@@ -15,3 +15,14 @@ export interface DayEvent {
   date: (state: State) => void
   'date-range': EventListener[]
 }
+
+export interface RangeClickEvent {
+  complete:{
+    plt: HeaderType
+    status: 'selecting'
+  }
+  selecting:{
+    plt: HeaderType
+    status: 'complete'
+  }
+}

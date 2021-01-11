@@ -1,6 +1,7 @@
 import {addWatch} from "../../../observer/watcher"
-import {DateData, State} from "../../../types/store"
+import {DateData, Range, State} from "../../../types/store"
 import {
+  dateDiff,
   daysInAMonth,
   getNext,
   getPre,
@@ -8,7 +9,7 @@ import {
   monthFirstDay,
 } from "../../../utils/date"
 import Options from "../../../types/options"
-import {isHas} from "../../../utils/helper";
+import {isHas} from "../../../utils/helper"
 
 function updateDayComponents(
   month: number,
@@ -22,21 +23,10 @@ function updateDayComponents(
   state.components.forEach(
     (item, index) => {
       const idx = index + 1
-      const day =
-        index < fd
-          ? preDays - fd + idx
-          : index < fd + days
-          ? idx - fd
-          : idx - fd - days
+      const currentIdx = idx - fd
+      const day = index < fd ? preDays + currentIdx : index < fd + days ? currentIdx : currentIdx - days
       item.text = String(day)
-      item.status =
-        index < fd
-          ? "pre"
-          : idx > fd + days
-          ? "next"
-          : joinDate(year, month, day) === date
-            ? "selected"
-            : ""
+      item.status = index < fd ? "pre" : idx > fd + days ? "next" : joinDate(year, month, day) === date ? "selected" : ""
     }
   )
 }
@@ -65,6 +55,64 @@ function startEndLink(this: State, em: number, ey: number, state: DateData): voi
   ;[data.month, data.year] = getNext(em, ey)
 }
 
+function watchRange(): void {
+  addWatch({
+    key: {
+      name: 'end',
+      childKey: ["month", "year", 'date']
+    },
+    cb(this: State) {
+      updateDayComponents(...(arguments as unknown as [number, number, string, DateData]))
+      endStartLink.call(this, ...(arguments as unknown as [number, number]))
+    },
+  })
+
+  addWatch({
+    key: {
+      name: 'end',
+      childKey: ["month"]
+    },
+    cb: monthYearLink,
+  })
+  addWatch({
+    key: {
+      name: 'end',
+      childKey: ['month', 'year']
+    },
+    cb: endStartLink,
+  })
+  addWatch({
+    key: {
+      name: 'start',
+      childKey: ['month', 'year']
+    },
+    cb: startEndLink,
+  })
+  addWatch({
+    key: {
+      name: 'range',
+      childKey: ['start', 'end']
+    },
+    cb(start: string, end: string, range: Range) {
+      if(dateDiff(start, end)){
+       range.start = end
+       range.end = start
+      }
+    },
+  })
+  addWatch({
+    key: {
+      name: 'range',
+      childKey: ['status']
+    },
+    cb(status: string, range: Range) {
+      if(status === 'selecting'){
+        range.end = null
+      }
+    },
+  })
+}
+
 export function watchDate(options: Options): void {
   addWatch({
     key: {
@@ -81,37 +129,6 @@ export function watchDate(options: Options): void {
     cb: updateDayComponents,
   })
   if (isHas(options.type, "range")) {
-    addWatch({
-      key: {
-        name: 'end',
-        childKey: ["month", "year", 'date']
-      },
-      cb(this: State) {
-        updateDayComponents(...(arguments as unknown as [number, number, string, DateData]))
-        endStartLink.call(this, ...(arguments as unknown as [number, number]))
-      },
-    })
-
-    addWatch({
-      key: {
-        name: 'end',
-        childKey: ["month"]
-      },
-      cb: monthYearLink,
-    })
-    addWatch({
-      key: {
-        name: 'end',
-        childKey: ['month', 'year']
-      },
-      cb: endStartLink,
-    })
-    addWatch({
-      key: {
-        name: 'start',
-        childKey: ['month', 'year']
-      },
-      cb: startEndLink,
-    })
+    watchRange()
   }
 }

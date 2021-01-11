@@ -19,7 +19,7 @@ export default function (): stateDate {
     range:{
       start: null,
       end: null,
-      status: 'none',
+      status: 'complete',
     },
     start: {
       date: joinDate(startYear, startMonth, startDay),
