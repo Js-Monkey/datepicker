@@ -6,6 +6,7 @@ import {State} from '../types/store'
 
 export default class Watcher {
   watcher: ReWriteSub
+
   constructor(watcher: ReWriteSub, state: State, obj: any) {
     this.watcher = watcher
     setTarget(this)
@@ -17,7 +18,7 @@ export default class Watcher {
   }
 }
 
-function deepSearch<T>(state: State, sub: ReWriteSub<T>) {
+function deepSearch<T>(state: State, sub: Sub<T>): ReWriteSub {
   function search(obj: any, key: SubKey | string[]): any {
     if (isArray(key)) {
       sub.key = key
@@ -33,8 +34,17 @@ function deepSearch<T>(state: State, sub: ReWriteSub<T>) {
   return search(state, sub.key)
 }
 
-export function addWatch<T>(sub: Sub<T>): void {
+function watch<T>(sub: Sub<T>, state: State) {
+  const _sub = Object.assign({}, sub)
+  new Watcher(_sub as ReWriteSub, state, deepSearch(state, _sub))
+}
+
+export function addWatch<T>(subs: Sub<T> | Sub<T>[]): void {
   const state = getState()
-  new Watcher(sub as ReWriteSub, state, deepSearch(state, sub as ReWriteSub))
+  if (isArray(subs)) {
+    subs.forEach(sub => watch(sub, state))
+  } else {
+    watch(subs, state)
+  }
 }
 

@@ -19,7 +19,7 @@ export interface SubKey {
 
 export interface Sub<T = void> {
   key: SubKey | string[]
-  cb: (...arg: any) => T
+  cb: (this: State, ...arg: any) => T
 }
 
 export interface ReWriteSub<T = void> {

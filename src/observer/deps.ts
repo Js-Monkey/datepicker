@@ -6,7 +6,6 @@ let uid = 0
 export function updateView<T = State>(sub: ReWriteSub, state: T, obj: any): void {
   const params: unknown[] = sub.key.map(key => obj[key as keyof T])
   clearTarget()
-  if (params.findIndex(name => name === null) > -1) return
   params.push(obj)
   sub.cb.call(state, ...params)
 }

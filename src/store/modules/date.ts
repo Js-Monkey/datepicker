@@ -6,7 +6,8 @@ const dayComponents = (): DayComponents[] =>
     return {
       text: '',
       status: '',
-      class: ''
+      class: '',
+      date: ''
     }
   })
 

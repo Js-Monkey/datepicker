@@ -45,6 +45,12 @@ export function dateDiff(source: string | null, target: string | null): boolean 
   return Date.parse(source) > Date.parse(target)
 }
 
+export function isInRange<T = number>(max: string, min: string, date: string): string {
+  if (dateDiff(max, date)&& dateDiff(date, min)) return 'in-range'
+  return ''
+}
+
+
 export function getPre<T = number>(m: number, y: number): [number, number] {
   let month = --m
   if (month === 0) {

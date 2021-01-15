@@ -55,7 +55,6 @@ $border-color-2: #e7eaf1;
     span {
       cursor: pointer;
       transition: $transition;
-
       &:hover {
         color: $blue;
       }
@@ -72,9 +71,7 @@ $border-color-2: #e7eaf1;
     padding: 5px 20px;
 
     span {
-      transition: $transition;
       cursor: pointer;
-
       &:hover {
         color: $blue;
       }
@@ -133,6 +130,27 @@ $border-color-2: #e7eaf1;
           transform: translate(-50%, -50%);
         }
 
+        &:hover {
+          color: white !important;
+        }
+      }
+      .inRange {
+        background: #e5f4fd;
+      }
+      .range-start{
+        color: white;
+        background-color: $blue;
+        border-top-left-radius: 18px;
+        border-bottom-left-radius: 18px;
+        &:hover {
+          color: white !important;
+        }
+      }
+      .range-end{
+        color: white;
+        background-color: $blue;
+        border-top-right-radius: 18px;
+        border-bottom-right-radius: 18px;
         &:hover {
           color: white !important;
         }

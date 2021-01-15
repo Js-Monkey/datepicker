@@ -4,8 +4,8 @@ import {dayBarNames} from '../../i18n'
 import {ComponentStatus, State} from '../../../types/store'
 import {toggleVisibility} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
-import {dayEvent} from "./event";
-import {HeaderType} from "../../../types/components";
+import {dayEvent} from "./event"
+import {HeaderType} from "../../../types/components"
 
 let type: HeaderType = 'start'
 

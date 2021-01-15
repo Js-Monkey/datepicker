@@ -1,47 +1,46 @@
 import {DateData, DayComponents, State} from "../../../types/store"
 import {joinDate} from "../../../utils/date"
 import {DayEvent, HeaderType, RangeClickEvent} from "../../../types/components"
-import {Bind} from "../../../utils/helper";
+import {Bind} from "../../../utils/helper"
 
 const rangeClickEvent: RangeClickEvent = {
   complete: {
     plt: 'start',
     status: 'selecting'
   },
-  selecting:{
+  selecting: {
     plt: 'end',
     status: 'complete'
   }
 }
 
 export function dayEvent(index: number, type: HeaderType): DayEvent {
-  function filterState(state: State): [DateData, DayComponents] {
+  function filterState(state: State): [DayComponents,DateData] {
     const obj = state[type]
-    return [obj, obj.components[index]]
+    return [obj.components[index], obj]
   }
 
-  function rangeHandler(state: State, type: 'click'| 'mouseenter' = 'click'){
-    const [obj, data] = filterState(state)
-    obj.day = Number(data.text)
+  function rangeHandler(state: State, eventType: 'click' | 'mouseenter') {
+    const [data] = filterState(state)
     const {range} = state
     const handler = {
-      click(){
+      click() {
         const current = rangeClickEvent[range.status]
         range.status = current.status
-        state.range[current.plt] = joinDate(obj.year, obj.month, obj.day)
+        state.range[current.plt] = data.date
       },
-      mouseenter(){
-        if(range.status==='selecting'){
-          range.end = joinDate(obj.year, obj.month, obj.day)
+      mouseenter() {
+        if (range.status === 'selecting') {
+          range.end = data.date
         }
       }
     }
-    handler[type]()
+    handler[eventType]()
   }
 
   return {
     date(state: State) {
-      const [obj, data] = filterState(state)
+      const [data, obj] = filterState(state)
       obj.day = Number(data.text)
       if (data.status === 'pre') obj.month -= 1
       if (data.status === 'next') obj.month += 1
@@ -51,7 +50,7 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
     'date-range': [
       {
         name: 'click',
-        handler: rangeHandler
+        handler: Bind(rangeHandler, 'click')
       },
       {
         name: 'mouseenter',
