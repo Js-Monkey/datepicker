@@ -1,8 +1,10 @@
-import {ComponentStatus, DateData} from "../../../types/store"
-import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../utils/date"
-
+import {ComponentStatus, DateData, State} from "../../../types/store"
+import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../utils/date"
+import {dateRangeStatus} from "./type/date-range"
+import {dateStatus} from "./type/date"
 
 export function updateComponents(
+  this: State,
   year: number,
   month: number,
   date: string,
@@ -27,29 +29,20 @@ export function updateComponents(
       }
       item.status = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
       ;[item.text, item.date] = newDate[item.status]()
+      if (item.status === 'other') item.status = otherStatus(this, item.date)
     }
   )
 }
 
-export function otherStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
-  let [min, max] = [rangeStart, rangeEnd]
-  if (dateDiff(rangeStart, rangeEnd)) {
-    min = rangeEnd
-    max = rangeStart
+export function otherStatus(self: State, date: string): ComponentStatus {
+  const typeStatus = {
+    date: () => dateStatus(self.start.date, date),
+    'date-range'() {
+      const {start, end} = self.range
+      return dateRangeStatus(start, end, date)
+    }
   }
-  const isMin = date === min
-  const isMax = date === max
-  if (dateDiff(max, date) && dateDiff(date, min)) {
-    return 'inRange'
-  } else if (isMax && isMin) {
-    return 'range-start range-end'
-  } else if (isMin) {
-    return 'range-start'
-  } else if (isMax) {
-    return 'range-end'
-  } else {
-    return ''
-  }
+  return typeStatus[self.options.type]()
 }
 
 export function monthYearLink(
