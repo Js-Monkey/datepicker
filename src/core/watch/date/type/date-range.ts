@@ -5,12 +5,12 @@ import {Sub} from "../../../../types/observer"
 
 function endStartLink(this: State, em: number, ey: number): void {
   const data = this.start
-  ;[data.month, data.year] = getPre(em, ey)
+  ;[data.year, data.month] = getPre(ey, em)
 }
 
-function startEndLink(this: State, em: number, ey: number, state: DateData): void {
+function startEndLink(this: State, em: number, ey: number): void {
   const data = this.end
-  ;[data.month, data.year] = getNext(em, ey)
+  ;[data.year, data.month] = getNext(ey, em)
 }
 
 export const endComponents: Sub = {

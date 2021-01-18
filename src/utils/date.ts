@@ -29,9 +29,9 @@ export function monthFirstDay(year: number, month: number): number {
 }
 
 export function joinDate<T = number, U = string>(
-  year: T | U,
-  month: T | U,
-  day: T | U
+  year?: T | U,
+  month?: T | U,
+  day?: T | U
 ): string {
   return year + "/" + month + "/" + day
 }
@@ -46,25 +46,24 @@ export function dateDiff(source: string | null, target: string | null): boolean 
 }
 
 export function isInRange<T = number>(max: string, min: string, date: string): string {
-  if (dateDiff(max, date)&& dateDiff(date, min)) return 'in-range'
-  return ''
+  return dateDiff(max, date) && dateDiff(date, min) ? 'in-range' : ''
 }
 
 
-export function getPre<T = number>(m: number, y: number): [number, number] {
+export function getPre<T = number>(y: number, m: number): [number, number] {
   let month = --m
   if (month === 0) {
     month = 12
     --y
   }
-  return [month, y]
+  return [y, month]
 }
 
-export function getNext<T = number>(m: number, y: number): [number, number] {
+export function getNext<T = number>(y: number, m: number): [number, number] {
   let month = ++m
   if (month === 13) {
     month = 1
     ++y
   }
-  return [month, y]
+  return [y, month]
 }

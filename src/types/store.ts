@@ -4,7 +4,7 @@ type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, 
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
 type utilWatcher = (target: stateUtil, key: keyof utilWatchers, value: unknown) => void
 
-export type ComponentStatus = '' | 'pre' | 'next' | 'selected' | 'inRange' | 'range-start' | 'range-end'
+export type ComponentStatus = 'other' | 'pre' | 'next' | 'selected' | 'inRange' | 'range-start' | 'range-end'
 
 export interface DayComponents {
   text: string
