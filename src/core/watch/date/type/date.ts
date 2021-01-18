@@ -6,6 +6,6 @@ export const startLink = {
 }
 
 export const startComponents = {
-  key: {name: 'start', childKey: ['month', 'year', 'date']},
+  key: {name: 'start', childKey: ['year', 'month', 'date']},
   cb: updateComponents,
 }

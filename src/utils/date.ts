@@ -50,20 +50,20 @@ export function isInRange<T = number>(max: string, min: string, date: string): s
 }
 
 
-export function getPre<T = number>(y: number, m: number): [number, number] {
+export function getPre<T = number>(m: number,y: number): [number, number] {
   let month = --m
   if (month === 0) {
     month = 12
     --y
   }
-  return [y, month]
+  return [month, y]
 }
 
-export function getNext<T = number>(y: number, m: number): [number, number] {
+export function getNext<T = number>(m: number, y: number): [number, number] {
   let month = ++m
   if (month === 13) {
     month = 1
     ++y
   }
-  return [y, month]
+  return [month, y]
 }
