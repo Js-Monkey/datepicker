@@ -2,6 +2,7 @@ import {Style, UtilObject} from '../types/utils'
 import {isObject} from './typeOf'
 
 export function resetAttr(el: HTMLElement | Element, val: string, name = 'class'): void {
+  if(!val)return el.removeAttribute(name)
   el.setAttribute(name, val)
 }
 
