@@ -23,7 +23,7 @@ export default function (): stateDate {
       status: 'complete',
     },
     start: {
-      date: joinDate(startYear, startMonth, ),
+      date: joinDate(startYear, startMonth, startDay),
       year: startYear,
       month: startMonth,
       day: null,
@@ -36,6 +36,6 @@ export default function (): stateDate {
       day: null,
       components: dayComponents(),
     },
-    today: joinDate(endYear, endMonth, getDay(date))
+    today: joinDate(startYear, startMonth, getDay(date))
   }
 }

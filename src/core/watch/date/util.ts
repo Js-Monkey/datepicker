@@ -34,6 +34,7 @@ export function updateComponents(
         }
       ;[item.text, item.date] = newDate[status]()
       item.status = status
+    console.log(this)
     }
   )
 }
