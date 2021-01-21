@@ -10,7 +10,7 @@ export default class Watcher {
   constructor(watcher: ReWriteSub, state: State, obj: any) {
     this.watcher = watcher
     setTarget(this)
-    updateView(this.watcher, state, obj)
+    updateView(watcher, state, obj, !watcher.notImmediate)
   }
 
   addDep(dep: Dep): void {

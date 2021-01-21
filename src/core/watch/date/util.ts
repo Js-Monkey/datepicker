@@ -33,8 +33,12 @@ export function updateComponents(
           }
         }
       ;[item.text, item.date] = newDate[status]()
+      if (index === 25) {
+        console.log(status)
+        console.log(item, item.status)
+        console.log(this)
+      }
       item.status = status
-    console.log(this)
     }
   )
 }
@@ -53,7 +57,7 @@ export function otherStatus(self: State, date: string): ComponentStatus {
   }
   let newStatus = typeStatus[self.options.type]()
   if (isToday(self, date)) {
-    newStatus += 'today'
+    newStatus += ' today'
   }
   return newStatus as ComponentStatus
 }

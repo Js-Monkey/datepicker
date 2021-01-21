@@ -1,6 +1,6 @@
 import {ComponentStatus, DateData, Range, State} from "../../../../types/store"
 import {dateDiff, getNext, getPre} from "../../../../utils/date"
-import {monthYearLink, updateComponents} from "../util"
+import {monthYearLink, otherStatus, updateComponents} from "../util"
 import {Sub} from "../../../../types/observer"
 import {month} from "../../../../utils/classes";
 
@@ -42,11 +42,13 @@ export const startLinkEnd: Sub = {
 
 export const hoverDay: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
-  cb(start: string, end: string) {
+  cb() {
     (['start','end'] as ['start','end']).forEach(name=>{
-      this[name].components.filter(item => !['pre','next'].includes(item.status)).forEach(item => item.status = dateRangeStatus(start, end, item.date))
+      this[name].components.filter(item => !['pre','next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
     })
-  }
+    console.log(1)
+  },
+  notImmediate: true
 }
 
 export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {

@@ -3,11 +3,11 @@ import {State} from '../types/store'
 
 let uid = 0
 
-export function updateView<T = State>(sub: ReWriteSub, state: T, obj: any): void {
+export function updateView<T = State>(sub: ReWriteSub, state: T, obj: any, immediate = true): void {
   const params: unknown[] = sub.key.map(key => obj[key as keyof T])
   clearTarget()
   params.push(obj)
-  sub.cb.call(state, ...params)
+  if (immediate) sub.cb.call(state, ...params)
 }
 
 export default class Dep<T = State> {

@@ -20,11 +20,13 @@ export interface SubKey {
 export interface Sub<T = void> {
   key: SubKey | string[]
   cb: (this: State, ...arg: any) => T
+  notImmediate?: boolean
 }
 
 export interface ReWriteSub<T = void> {
   key: string[]
   cb: (...arg: any) => T
+  notImmediate?: boolean
 }
 
 export interface Watcher {
