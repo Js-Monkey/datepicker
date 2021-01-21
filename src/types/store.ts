@@ -35,6 +35,7 @@ export interface stateDate<T = Date> {
   range: Range
   start: DateData
   end: DateData
+  today: string
 }
 
 export type pageName = 'day' | 'year' | 'month'

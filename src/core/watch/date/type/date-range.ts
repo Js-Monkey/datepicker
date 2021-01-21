@@ -49,8 +49,8 @@ export const hoverDay: Sub = {
 }
 
 export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
-  const range = [rangeStart, rangeEnd]
-  const [min, max] = dateDiff(...range as [string, string]) ? range.reverse() : range
+  const range = [rangeStart, rangeEnd] as [string, string]
+  const [min, max] = dateDiff(...range) ? range.reverse() : range
   const isMin = date === min
   const isMax = date === max
   const isInRange = dateDiff(max, date) && dateDiff(date, min)

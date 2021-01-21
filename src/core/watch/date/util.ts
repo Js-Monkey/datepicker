@@ -25,13 +25,20 @@ export function updateComponents(
           const day = currentIdx - days
           return [String(day), joinDate(...getNext(month, year), day)]
         },
-        other: () => [String(currentIdx), joinDate(year, month, currentIdx)]
+        other: () => {
+          const date = joinDate(year, month, currentIdx)
+          item.status = otherStatus(this, date)
+          return [String(currentIdx), date]
+        }
       }
       item.status = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
       ;[item.text, item.date] = newDate[item.status]()
-      if (item.status === 'other') item.status = otherStatus(this, item.date)
     }
   )
+}
+
+function isToday(self: State, date: string) {
+  return Date.parse(self.today) === Date.parse(date)
 }
 
 export function otherStatus(self: State, date: string): ComponentStatus {
@@ -42,7 +49,10 @@ export function otherStatus(self: State, date: string): ComponentStatus {
       return dateRangeStatus(start, end, date)
     }
   }
-  return typeStatus[self.options.type]()
+  let newStatus = typeStatus[self.options.type]()
+  if (isToday(self, date)) newStatus += 'today'
+  console.log(newStatus)
+  return newStatus as ComponentStatus
 }
 
 export function monthYearLink(

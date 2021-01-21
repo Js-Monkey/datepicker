@@ -14,7 +14,7 @@ const dayComponents = (): DayComponents[] =>
 
 export default function (): stateDate {
   const date = new Date()
-  const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), getDay(date)]
+  const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), null]
   const [endYear, endMonth, endDay] = [getYear(date), getMonth(date), null]
   return {
     range:{
@@ -26,15 +26,16 @@ export default function (): stateDate {
       date: joinDate(startYear, startMonth, startDay),
       year: startYear,
       month: startMonth,
-      day: startDay,
+      day: null,
       components: dayComponents(),
     },
     end: {
       date: joinDate(endYear, endMonth, endDay),
       year: endYear,
       month: endMonth,
-      day: endDay,
+      day: null,
       components: dayComponents(),
-    }
+    },
+    today: joinDate(endYear, endMonth, getDay(date))
   }
 }
