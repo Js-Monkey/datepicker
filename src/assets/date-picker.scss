@@ -1,10 +1,10 @@
-$blue: #00acff;
+$theme-color: #2ECC71;
 $text-color: rgba(0, 0, 0, 0.52);
 $text-color-fade-1: rgba(0, 0, 0, 0.42);
 $text-color-fade-2: rgba(0, 0, 0, 0.22);
 $background-color-light: rgba(0, 0, 0, 0.05);
 $background-color-dark: rgba(0, 0, 0, 0.12);
-$transition: .37s all ease;
+$transition: .3s all ease;
 $border-color-1: #dde0e7;
 $border-color-2: #e7eaf1;
 
@@ -37,7 +37,7 @@ $border-color-2: #e7eaf1;
       transition: $transition;
 
       &:hover {
-        fill: $blue;
+        fill: $theme-color;
       }
     }
   }
@@ -56,7 +56,7 @@ $border-color-2: #e7eaf1;
       cursor: pointer;
       transition: $transition;
       &:hover {
-        color: $blue;
+        color: $theme-color;
       }
     }
 
@@ -73,7 +73,7 @@ $border-color-2: #e7eaf1;
     span {
       cursor: pointer;
       &:hover {
-        color: $blue;
+        color: $theme-color;
       }
     }
   }
@@ -81,10 +81,10 @@ $border-color-2: #e7eaf1;
   &-day {
     span {
       display: inline-block;
-      line-height: 30px;
+      line-height: 24px;
       padding: 5px;
       width: 41px;
-      height: 41px;
+      height: 35px;
     }
 
     &-bar {
@@ -110,6 +110,7 @@ $border-color-2: #e7eaf1;
       }
 
       span {
+        margin: 4px 0;
         position: relative;
       }
 
@@ -120,7 +121,7 @@ $border-color-2: #e7eaf1;
           display: block;
           content: '';
           border-radius: 50%;
-          background-color: $blue;
+          background-color: $theme-color;
           position: absolute;
           z-index: -1;
           width: 28px;
@@ -135,22 +136,22 @@ $border-color-2: #e7eaf1;
         }
       }
       .inRange {
-        background: #e5f4fd;
+        background: #e8f8ef;
       }
       .range-start{
         color: white;
-        background-color: $blue;
-        border-top-left-radius: 18px;
-        border-bottom-left-radius: 18px;
+        background-color: $theme-color;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         &:hover {
           color: white !important;
         }
       }
       .range-end{
         color: white;
-        background-color: $blue;
-        border-top-right-radius: 18px;
-        border-bottom-right-radius: 18px;
+        background-color: $theme-color;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
         &:hover {
           color: white !important;
         }
@@ -229,6 +230,10 @@ $border-color-2: #e7eaf1;
   &:first-child {
     border-right: 1px solid #e4e4e4;
   }
+}
+
+.better-datepicker-today {
+  color: $theme-color;
 }
 
 .better-datepicker-default-cursor {

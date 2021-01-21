@@ -1,6 +1,6 @@
-import {ComponentStatus, DateData, Range, State} from "../../../../types/store"
-import {dateDiff, getNext, getPre} from "../../../../utils/date"
-import {monthYearLink, otherStatus, updateComponents} from "../util"
+import {DateData, Range, State} from "../../../../types/store"
+import {getNext, getPre} from "../../../../utils/date"
+import {monthYearLink, otherStatus, updateComponents} from "../public"
 import {Sub} from "../../../../types/observer"
 import {month} from "../../../../utils/classes";
 
@@ -46,27 +46,8 @@ export const hoverDay: Sub = {
     (['start','end'] as ['start','end']).forEach(name=>{
       this[name].components.filter(item => !['pre','next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
     })
-    console.log(1)
   },
   notImmediate: true
-}
-
-export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
-  const range = [rangeStart, rangeEnd] as [string, string]
-  const [min, max] = dateDiff(...range) ? range.reverse() : range
-  const isMin = date === min
-  const isMax = date === max
-  const isInRange = dateDiff(max, date) && dateDiff(date, min)
-  if (isInRange) return 'inRange'
-  if (isMax && isMin) {
-    return 'range-start range-end'
-  } else if (isMin) {
-    return 'range-start'
-  } else if (isMax) {
-    return 'range-end'
-  } else {
-    return ''
-  }
 }
 
 export const handleSelecting = {

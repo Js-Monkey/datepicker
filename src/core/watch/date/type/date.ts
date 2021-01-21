@@ -1,10 +1,4 @@
-import {monthYearLink, updateComponents} from "../util"
-import {ComponentStatus} from "../../../../types/store"
-
-
-export function dateStatus(startDate: string, date: string): ComponentStatus {
-  return startDate === date ? 'selected' : ''
-}
+import {monthYearLink, updateComponents} from "../public"
 
 export const startLink = {
   key: {name: 'start', childKey: ['month']},

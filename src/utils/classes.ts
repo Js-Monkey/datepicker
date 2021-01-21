@@ -10,3 +10,4 @@ export const show = `${name}-show`
 export const hidden = `${name}-hidden`
 export const float = `${name}-float `
 export const defaultCursor = `${name}-default-cursor `
+export const today = `${name}-today`

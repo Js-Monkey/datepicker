@@ -26,14 +26,14 @@ $green-5:darken($green,10);
 $green-6:darken($green,20);
 $green-7:darken($green,30);
 
-$blue:#26acee;
-$blue-1:lighten($blue,30);
-$blue-2:lighten($blue,20);
-$blue-3:lighten($blue,10);
-$blue-4:lighten($blue,0);
-$blue-5:darken($blue,10);
-$blue-6:darken($blue,20);
-$blue-7:darken($blue,30);
+$theme-color:#26acee;
+$theme-color-1:lighten($theme-color,30);
+$theme-color-2:lighten($theme-color,20);
+$theme-color-3:lighten($theme-color,10);
+$theme-color-4:lighten($theme-color,0);
+$theme-color-5:darken($theme-color,10);
+$theme-color-6:darken($theme-color,20);
+$theme-color-7:darken($theme-color,30);
 
 $grey:#c2c5cb;
 $grey-1:lighten($grey,30);

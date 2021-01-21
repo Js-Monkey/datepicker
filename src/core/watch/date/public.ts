@@ -1,7 +1,6 @@
 import {ComponentStatus, DateData, State} from "../../../types/store"
-import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../utils/date"
-import {dateRangeStatus} from "./type/date-range"
-import {dateStatus} from "./type/date"
+import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../utils/date"
+import {today} from "../../../utils/classes"
 
 export function updateComponents(
   this: State,
@@ -33,18 +32,19 @@ export function updateComponents(
           }
         }
       ;[item.text, item.date] = newDate[status]()
-      if (index === 25) {
-        console.log(status)
-        console.log(item, item.status)
-        console.log(this)
-      }
       item.status = status
     }
   )
 }
 
 function isToday(self: State, date: string) {
-  return Date.parse(self.today) === Date.parse(date)
+  return Date.parse(self.today) === Date.parse(date) ? today : ''
+}
+
+const statusLists: any[] = [isToday]
+
+function addStatus(self: State, date: string, status: ComponentStatus): ComponentStatus {
+  return statusLists.reduce((cur, handler) => cur + ' ' + handler(self, date), status)
 }
 
 export function otherStatus(self: State, date: string): ComponentStatus {
@@ -55,11 +55,31 @@ export function otherStatus(self: State, date: string): ComponentStatus {
       return dateRangeStatus(start, end, date)
     }
   }
-  let newStatus = typeStatus[self.options.type]()
-  if (isToday(self, date)) {
-    newStatus += ' today'
+  const status = typeStatus[self.options.type]()
+  return addStatus(self, date, status)
+}
+
+export function dateStatus(startDate: string, date: string): ComponentStatus {
+  return startDate === date ? 'selected' : ''
+}
+
+
+export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
+  const range = [rangeStart, rangeEnd] as [string, string]
+  const [min, max] = dateDiff(...range) ? range.reverse() : range
+  const isMin = date === min
+  const isMax = date === max
+  const isInRange = dateDiff(max, date) && dateDiff(date, min)
+  if (isInRange) return 'inRange'
+  if (isMax && isMin) {
+    return 'range-start range-end'
+  } else if (isMin) {
+    return 'range-start'
+  } else if (isMax) {
+    return 'range-end'
+  } else {
+    return ''
   }
-  return newStatus as ComponentStatus
 }
 
 export function monthYearLink(
