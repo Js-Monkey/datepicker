@@ -2,7 +2,7 @@ import Dep from './deps'
 import {State} from '../types/store'
 import {isArray, isObject} from '../utils/typeOf'
 
-export default function ObserveState (state: State): State{
+export default function ObserveState(state: State): State {
   function observe<T = State>(obj: T): T {
     Object.keys(obj).forEach(key => {
       const val = obj[key as keyof T]
@@ -33,5 +33,6 @@ export default function ObserveState (state: State): State{
       }
     })
   }
+
   return observe(state)
 }

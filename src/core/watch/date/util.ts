@@ -5,34 +5,35 @@ import {dateStatus} from "./type/date"
 
 export function updateComponents(
   this: State,
-  year: number,
   month: number,
+  year: number,
   date: string,
   state: DateData
 ): void {
-  const [preYear, preMonth] = getPre(month, year)
+  const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
   state.components.forEach((item, index) => {
       const idx = index + 1
       const currentIdx = idx - fd
+      let status: ComponentStatus = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
       const newDate = {
-        pre() {
-          const day = preDays + currentIdx
-          return [String(day), joinDate(...getPre(month, year), day)]
-        },
-        next() {
-          const day = currentIdx - days
-          return [String(day), joinDate(...getNext(month, year), day)]
-        },
-        other: () => {
-          const date = joinDate(year, month, currentIdx)
-          item.status = otherStatus(this, date)
-          return [String(currentIdx), date]
+          pre() {
+            const day = preDays + currentIdx
+            return [String(day), joinDate(...getPre(month, year), day)]
+          },
+          next() {
+            const day = currentIdx - days
+            return [String(day), joinDate(...getNext(month, year), day)]
+          },
+          other: () => {
+            const date = joinDate(year, month, currentIdx)
+            status = otherStatus(this, date)
+            return [String(currentIdx), date]
+          }
         }
-      }
-      item.status = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
-      ;[item.text, item.date] = newDate[item.status]()
+      ;[item.text, item.date] = newDate[status]()
+      item.status = status
     }
   )
 }
@@ -52,7 +53,6 @@ export function otherStatus(self: State, date: string): ComponentStatus {
   let newStatus = typeStatus[self.options.type]()
   if (isToday(self, date)) {
     newStatus += 'today'
-   debugger
   }
   return newStatus as ComponentStatus
 }

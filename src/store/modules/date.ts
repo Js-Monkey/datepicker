@@ -1,5 +1,5 @@
 import {DayComponents, stateDate} from '../../types/store'
-import {getDay, getMonth, getYear, joinDate} from '../../utils/date'
+import {getDay, getMonth, getNext, getYear, joinDate} from '../../utils/date'
 
 const dayComponents = (): DayComponents[] =>
   Array.from({length: 42}).map((_: unknown) => {
@@ -15,22 +15,22 @@ const dayComponents = (): DayComponents[] =>
 export default function (): stateDate {
   const date = new Date()
   const [startYear, startMonth, startDay] = [getYear(date), getMonth(date), null]
-  const [endYear, endMonth, endDay] = [getYear(date), getMonth(date), null]
+  const [endMonth, endYear] = getNext(startMonth, startYear)
   return {
-    range:{
+    range: {
       start: null,
       end: null,
       status: 'complete',
     },
     start: {
-      date: joinDate(startYear, startMonth, startDay),
+      date: joinDate(startYear, startMonth, ),
       year: startYear,
       month: startMonth,
       day: null,
       components: dayComponents(),
     },
     end: {
-      date: joinDate(endYear, endMonth, endDay),
+      date: joinDate(endYear, endMonth, null),
       year: endYear,
       month: endMonth,
       day: null,

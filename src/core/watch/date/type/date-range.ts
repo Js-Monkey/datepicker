@@ -2,13 +2,14 @@ import {ComponentStatus, DateData, Range, State} from "../../../../types/store"
 import {dateDiff, getNext, getPre} from "../../../../utils/date"
 import {monthYearLink, updateComponents} from "../util"
 import {Sub} from "../../../../types/observer"
+import {month} from "../../../../utils/classes";
 
-function endStartLink(this: State, ey: number, em: number): void {
+function endStartLink(this: State, em: number, ey: number): void {
   const data = this.start
   ;[data.month, data.year] = getPre(em, ey)
 }
 
-function startEndLink(this: State, ey: number, em: number): void {
+function startEndLink(this: State, em: number, ey: number): void {
   const data = this.end
   ;[data.month, data.year] = getNext(em, ey)
 }
@@ -16,7 +17,7 @@ function startEndLink(this: State, ey: number, em: number): void {
 export const endComponents: Sub = {
   key: {
     name: 'end',
-    childKey: ["year", "month", 'date']
+    childKey: ["month", "year", 'date']
   },
   cb() {
     updateComponents.call(this, ...(arguments as unknown as [number, number, string, DateData]))
@@ -30,12 +31,12 @@ export const endLink: Sub = {
 }
 
 export const endLinkStart: Sub = {
-  key: {name: 'end', childKey: ['year', 'month']},
+  key: {name: 'end', childKey: ['month', 'year']},
   cb: endStartLink,
 }
 
 export const startLinkEnd: Sub = {
-  key: {name: 'start', childKey: ['year', 'month']},
+  key: {name: 'start', childKey: ['month', 'year']},
   cb: startEndLink,
 }
 
