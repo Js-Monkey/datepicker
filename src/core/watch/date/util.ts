@@ -50,7 +50,10 @@ export function otherStatus(self: State, date: string): ComponentStatus {
     }
   }
   let newStatus = typeStatus[self.options.type]()
-  if (isToday(self, date)) newStatus += 'today'
+  if (isToday(self, date)) {
+    newStatus += 'today'
+   debugger
+  }
   return newStatus as ComponentStatus
 }
 
