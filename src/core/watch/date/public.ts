@@ -59,7 +59,7 @@ export function otherStatus(self: State, date: string): ComponentStatus {
   return addStatus(self, date, status)
 }
 
-export function dateStatus(startDate: string, date: string): ComponentStatus {
+export function dateStatus(startDate: string | null, date: string): ComponentStatus {
   return startDate === date ? 'selected' : ''
 }
 

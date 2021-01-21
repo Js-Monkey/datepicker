@@ -18,7 +18,7 @@ export interface stateComponent<T = null | HTMLElement> {
 }
 
 export interface DateData {
-  date: string
+  date: string | null
   year: number
   month: number
   day: number | null

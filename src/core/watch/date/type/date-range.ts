@@ -43,18 +43,26 @@ export const startLinkEnd: Sub = {
 export const hoverDay: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
   cb() {
-    (['start','end'] as ['start','end']).forEach(name=>{
-      this[name].components.filter(item => !['pre','next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
+    (['start', 'end'] as ['start', 'end']).forEach(name => {
+      this[name].components.filter(item => !['pre', 'next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
     })
   },
   notImmediate: true
 }
 
-export const handleSelecting = {
+export const handleSelecting: Sub= {
   key: {name: 'range', childKey: ['status']},
   cb(status: string, range: Range) {
     if (status === 'selecting') {
       range.end = null
+    } else {
+      finishSelect(this)
     }
   },
+}
+
+function finishSelect(self: State) {
+  self.visible = false
+  self.start.date = self.range.start
+  self.end.date = self.range.end
 }

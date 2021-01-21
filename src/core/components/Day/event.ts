@@ -1,5 +1,4 @@
 import {DateData, DayComponents, State} from "../../../types/store"
-import {joinDate} from "../../../utils/date"
 import {DayEvent, HeaderType, RangeClickEvent} from "../../../types/components"
 import {Bind} from "../../../utils/helper"
 
@@ -15,13 +14,12 @@ const rangeClickEvent: RangeClickEvent = {
 }
 
 export function dayEvent(index: number, type: HeaderType): DayEvent {
-  function filterState(state: State): [DayComponents,DateData] {
-    const obj = state[type]
-    return [obj.components[index], obj]
+  function filterState(state: State): DayComponents {
+    return state[type].components[index]
   }
 
   function rangeHandler(state: State, eventType: 'click' | 'mouseenter') {
-    const [data] = filterState(state)
+    const data = filterState(state)
     const {range} = state
     const handler = {
       click() {
@@ -40,11 +38,8 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
 
   return {
     date(state: State) {
-      const [data, obj] = filterState(state)
-      obj.day = Number(data.text)
-      if (data.status === 'pre') obj.month -= 1
-      if (data.status === 'next') obj.month += 1
-      obj.date = joinDate(obj.year, obj.month, obj.day)
+      const data = filterState(state)
+      state.start.date = data.date
       state.visible = false
     },
     'date-range': [
