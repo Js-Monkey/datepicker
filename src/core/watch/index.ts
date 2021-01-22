@@ -1,4 +1,4 @@
-import {watchComponents} from './components'
+import {watchComponents} from './picker'
 import {watchDate} from './date'
 import Options from '../../types/options'
 

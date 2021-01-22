@@ -11,7 +11,7 @@ const views = viewFiles.keys().reduce((views, path) => {
     if (isNotErrorPage&&isNotCompass) {
         let name = value.__file.match(/view\/(\S*)\/index/)[1]
         views.push({
-            path: '/components/' + name,
+            path: '/picker/' + name,
             meta:{
               type:'component'
             },
@@ -33,10 +33,10 @@ export default [
         children: []
     },
     {
-        path: '/components',
+        path: '/picker',
         name: 'components',
         component: Content,
-        redirect: '/components/install',
+        redirect: '/picker/install',
         children: views
     },
     {

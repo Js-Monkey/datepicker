@@ -1,6 +1,6 @@
 export default [
     {
-        path: '/components/install',
+        path: '/picker/install',
         name: '安装',
         meta: {
             type:'compass'
@@ -8,7 +8,7 @@ export default [
         component: () => import('../view/install/index.md')
     },
     {
-        path: '/components/start',
+        path: '/picker/start',
         name: '开始',
         meta: {
             type:'compass'

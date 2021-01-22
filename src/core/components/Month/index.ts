@@ -11,16 +11,12 @@ export function Month(state: State): Node {
         return {
           name: 'span',
           text: item,
-          event: (state: State) => {
-            toDayPage(state, idx + 1)
-          }
+          event: (state: State) => toDayPage(state, idx + 1)
         }
       }),
       class: {
         key: ['page'],
-        cb(page) {
-          return page === 'month' ? 'show' : 'hidden'
-        },
+        cb: (page) => page === 'month' ? 'show' : 'hidden',
         static: [month]
       }
     },

@@ -73,8 +73,8 @@ export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?:
   addWatch(
     {
       key,
-      cb(...arg: any): void {
-        const res = cb.apply(this, arg)
+      cb(): void {
+        const res = cb.apply(this, arguments as any)
         updateCb(res)
       }
     }

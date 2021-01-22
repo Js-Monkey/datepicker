@@ -10,7 +10,7 @@ export function Year(state: State): Node {
       children: Array.from({length: 10}).map((_, idx) => {
         return {
           name: 'span',
-          event(state: State,e) {
+          event(state: State, e) {
             toMonthPage(state, e.target.innerText)
           },
           text: {
@@ -18,9 +18,7 @@ export function Year(state: State): Node {
               name: 'start',
               childKey: ['year']
             },
-            cb(year: number) {
-              return String(getMinInTen(year) + idx)
-            }
+            cb: (year: number) => String(getMinInTen(year) + idx)
           }
         }
       }),

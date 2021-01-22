@@ -1,7 +1,7 @@
 import {createElement} from '../../../utils/element'
 import {day, dayBar, dayContent} from '../../../utils/classes'
 import {dayBarNames} from '../../i18n'
-import {ComponentStatus, State} from '../../../types/store'
+import {State} from '../../../types/store'
 import {toggleVisibility} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
@@ -9,31 +9,25 @@ import {HeaderType} from "../../../types/components"
 
 let type: HeaderType = 'start'
 
+function config(idx: number, name: 'text' | 'status') {
+  return {
+    key: {
+      name: type,
+      childKey: {
+        name: 'components',
+        idx,
+        childKey: [name]
+      }
+    },
+    cb: (val: string) => val
+  }
+}
+
 function content(state: State): Node {
   const children: CreateElementOptions[] = Array.from({length: 42}).map((d, idx) => {
     return {
-      text: {
-        key: {
-          name: type,
-          childKey: {
-            name: 'components',
-            idx,
-            childKey: ['text']
-          }
-        },
-        cb: (text: string) => text
-      },
-      class: {
-        key: {
-          name: type,
-          childKey: {
-            name: 'components',
-            idx,
-            childKey: ['status']
-          }
-        },
-        cb: (status: ComponentStatus) => status
-      },
+      text: config(idx, 'text'),
+      class: config(idx, 'status'),
       event: dayEvent(idx, type)[state.options.type],
       name: 'span'
     }

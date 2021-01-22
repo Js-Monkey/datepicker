@@ -1,5 +1,5 @@
 import date from './modules/date'
-import components from './modules/components'
+import components from './modules/picker'
 import utils from './modules/util'
 import {State} from '../types/store'
 import ObserveState from '../observer'
