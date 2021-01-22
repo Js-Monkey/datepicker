@@ -21,7 +21,6 @@ export interface DateData {
   date: string | null
   year: number
   month: number
-  day: number | null
   components: DayComponents[]
 }
 

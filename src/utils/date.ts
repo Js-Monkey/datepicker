@@ -10,6 +10,11 @@ export function getDay(date: Date = new Date()): number {
   return date.getDate()
 }
 
+export function getYearAndMonth(date: string): number[] {
+  return date.split('/') as unknown as number[]
+}
+
+
 export function getDate(year: number, month: number, day: number): Date {
   return new Date(joinDate(month, year, day))
 }
