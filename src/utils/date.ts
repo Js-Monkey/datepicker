@@ -11,7 +11,7 @@ export function getDay(date: Date = new Date()): number {
 }
 
 export function getYearAndMonth(date: string): number[] {
-  return date.split('/') as unknown as number[]
+  return date.split('/').map(str => Number(str))
 }
 
 
@@ -55,7 +55,7 @@ export function isInRange<T = number>(max: string, min: string, date: string): s
 }
 
 
-export function getPre<T = number>(m: number,y: number): [number, number] {
+export function getPre<T = number>(m: number, y: number): [number, number] {
   let month = --m
   if (month === 0) {
     month = 12
