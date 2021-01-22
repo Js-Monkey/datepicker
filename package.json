@@ -76,7 +76,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "path": "^0.12.7",
     "progress-bar-webpack-plugin": "^1.12.1",
-    "rollup": "^0.68.0",
+    "rollup": "^2.37.1",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",

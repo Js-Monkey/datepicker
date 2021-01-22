@@ -1,3 +1,4 @@
+
 import {HeaderType} from '../../../types/components'
 import {createElement} from '../../../utils/element'
 import {header, defaultCursor} from '../../../utils/classes'
@@ -9,12 +10,7 @@ import {Bind} from "../../../utils/helper";
 
 let type: HeaderType = 'start'
 
-const yearCLass = {
-  key: ['page'],
-  cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
-}
-
-const dayPageShow = {
+const togglePage = {
   key: ['page'],
   cb: toggleVisibility
 }
@@ -35,7 +31,10 @@ function yearRange(state: State) {
         },
         cb: (year: number) => range(year)
       },
-      class: yearCLass,
+      class: {
+        key: ['page'],
+        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
+      },
       event: toYearPage
     },
     state
@@ -53,7 +52,10 @@ function year(state: State) {
       cb: year => year + '年'
     },
     event: toYearPage,
-    class: yearCLass
+    class: {
+      key: ['page'],
+      cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
+    }
   }, state)
 }
 
@@ -68,7 +70,7 @@ function month(state: State) {
       cb: month => month + '月'
     },
     event: toMonthPage,
-    class: dayPageShow
+    class: togglePage
   }, state)
 }
 
@@ -78,13 +80,14 @@ function date(state: State) {
     text: {
       key: {
         name: type,
-        childKey: ['month', 'year']
+        childKey: ['month' ,'year']
       },
-      cb: (month, year) => year + '年 ' + month + '月'
+      cb: (month ,year) => year + '年 ' + month + '月'
     },
     class: {
-      ...dayPageShow,
-      static:[defaultCursor]
+      key: ['page'],
+      cb: toggleVisibility, //解构写法，打包更大？
+      static: [defaultCursor]
     }
   }, state)
 }
@@ -114,7 +117,7 @@ function preMonthIcon(state: State) {
         left: '50px'
       },
       event: preMonth,
-      class: dayPageShow
+      class: togglePage
     },
     state
   )
@@ -143,7 +146,7 @@ function nextMonthIcon(state: State) {
         right: '50px'
       },
       event: Bind(nextMonth, type),
-      class: dayPageShow
+      class: togglePage
     },
     state
   )
