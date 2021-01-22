@@ -26,7 +26,7 @@ export function updateComponents(
             return [String(day), joinDate(...getNext(month, year), day)]
           },
           other: () => {
-            const date = joinDate(year, month, currentIdx)
+            const date = joinDate(month, year, currentIdx)
             status = otherStatus(this, date)
             return [String(currentIdx), date]
           }

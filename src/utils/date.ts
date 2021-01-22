@@ -11,7 +11,7 @@ export function getDay(date: Date = new Date()): number {
 }
 
 export function getDate(year: number, month: number, day: number): Date {
-  return new Date(joinDate(year, month, day))
+  return new Date(joinDate(month, year, day))
 }
 
 export function daysInAMonth(year: number, month: number): number {
@@ -29,15 +29,15 @@ export function monthFirstDay(year: number, month: number): number {
 }
 
 export function joinDate<T = number, U = string>(
-  year?: T | U,
   month?: T | U,
+  year?: T | U,
   day?: T | U
 ): string {
   return year + "/" + month + "/" + day
 }
 
 export function transformDate(date: Date): string {
-  return joinDate(getYear(date), getMonth(date), getDay(date))
+  return joinDate(getMonth(date), getYear(date), getDay(date))
 }
 
 export function dateDiff(source: string | null, target: string | null): boolean {
