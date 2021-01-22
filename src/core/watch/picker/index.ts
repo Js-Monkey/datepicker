@@ -14,33 +14,33 @@ import {Bind} from "../../../utils/helper"
 const reference = {
   key: ['reference'],
   cb(ref: HTMLElement, state: State): void {
-    if (!ref) return
     on(ref, () => (state.visible = true))
     on(document.body, Bind(clickOutside, state))
     listenToScrollParents(ref, state)
     set('popover', createPopover(state))
-  }
+  },
+  notImmediate: true
 }
 
 const popoverOpt = {
   key: ['popover', 'options'],
   cb(pop: HTMLElement, options: Options): void {
-    if (!pop) return
     if (!isInBody(pop)) {
       appendChild(pop as Element)
       const {zIndex} = options
       setPopoverStyle(pop as HTMLElement, zIndex as number)
     }
-  }
+  },
+  notImmediate: true
 }
 
 
 const popoverVisible = {
   key: ['popover', 'visible'],
   cb(pop: HTMLElement, show: boolean, state: State): void {
-    if (!pop) return
     updatePopover(pop, show, state)
-  }
+  },
+  notImmediate: true
 }
 
 export function watchComponents(): void {
