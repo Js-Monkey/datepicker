@@ -2,7 +2,7 @@ import {DateData, Range, State} from "../../../../types/store"
 import {getNext, getPre} from "../../../../utils/date"
 import {monthYearLink, otherStatus, updateComponents} from "../public"
 import {Sub} from "../../../../types/observer"
-import {month} from "../../../../utils/classes";
+import {month} from "../../../../utils/classes"
 
 function endStartLink(this: State, em: number, ey: number): void {
   const data = this.start
@@ -20,8 +20,8 @@ export const endComponents: Sub = {
     childKey: ["month", "year", 'date']
   },
   cb() {
-    updateComponents.call(this, ...(arguments as unknown as [number, number, string, DateData]))
-    endStartLink.call(this, ...(arguments as unknown as [number, number]))
+    updateComponents.apply(this, (arguments as unknown as [number, number, string, DateData]))
+    endStartLink.apply(this, (arguments as unknown as [number, number]))
   },
 }
 
@@ -50,7 +50,7 @@ export const hoverDay: Sub = {
   notImmediate: true
 }
 
-export const handleSelecting: Sub= {
+export const handleSelecting: Sub = {
   key: {name: 'range', childKey: ['status']},
   cb(status: string, range: Range) {
     if (status === 'selecting') {

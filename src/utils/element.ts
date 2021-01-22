@@ -74,7 +74,7 @@ export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?:
     {
       key,
       cb(...arg: any): void {
-        const res = cb.call(this, ...arg)
+        const res = cb.apply(this, arg)
         updateCb(res)
       }
     }

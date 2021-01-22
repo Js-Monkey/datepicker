@@ -7,7 +7,7 @@ export function updateView<T = State>(sub: ReWriteSub, state: T, obj: any, immed
   const params: unknown[] = sub.key.map(key => obj[key as keyof T])
   clearTarget()
   params.push(obj)
-  if (immediate) sub.cb.call(state, ...params)
+  if (immediate) sub.cb.apply(state, params)
 }
 
 export default class Dep<T = State> {
