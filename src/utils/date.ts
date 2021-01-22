@@ -34,10 +34,11 @@ export function monthFirstDay(year: number, month: number): number {
 }
 
 export function joinDate<T = number, U = string>(
-  month?: T | U,
-  year?: T | U,
-  day?: T | U
+  month?: number | string,
+  year?:number | string,
+  day?: number | string
 ): string {
+  if(!day) day = 1
   return year + "/" + month + "/" + day
 }
 
