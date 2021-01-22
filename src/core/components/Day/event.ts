@@ -1,6 +1,5 @@
-import {DateData, DayComponents, State} from "../../../types/store"
+import {DayComponents, State} from "../../../types/store"
 import {DayEvent, HeaderType, RangeClickEvent} from "../../../types/components"
-import {Bind} from "../../../utils/helper"
 
 const rangeClickEvent: RangeClickEvent = {
   complete: {
@@ -18,24 +17,6 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
     return state[type].components[index]
   }
 
-  function rangeHandler(state: State, eventType: 'click' | 'mouseenter') {
-    const data = filterState(state)
-    const {range} = state
-    const handler = {
-      click() {
-        const current = rangeClickEvent[range.status]
-        range.status = current.status
-        state.range[current.plt] = data.date
-      },
-      mouseenter() {
-        if (range.status === 'selecting') {
-          range.end = data.date
-        }
-      }
-    }
-    handler[eventType]()
-  }
-
   return {
     date(state: State) {
       const data = filterState(state)
@@ -45,11 +26,23 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
     'date-range': [
       {
         name: 'click',
-        handler: Bind(rangeHandler, 'click')
+        handler(state: State){
+          const data = filterState(state)
+          const {range} = state
+          const current = rangeClickEvent[range.status]
+          range.status = current.status
+          range[current.plt] = data.date
+        }
       },
       {
         name: 'mouseenter',
-        handler: Bind(rangeHandler, 'mouseenter')
+        handler(state: State){
+          const data = filterState(state)
+          const {range} = state
+          if (range.status === 'selecting') {
+            range.end = data.date
+          }
+        }
       }
     ]
   }

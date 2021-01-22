@@ -11,8 +11,22 @@ const types: Types = {
 const toString = Object.prototype.toString
 const typeOf = (val: unknown, typeName: keyof Types) => toString.call(val) === types[typeName]
 
-export const isNumber = (val: unknown): val is number => typeOf(val, 'Number') && !Number.isNaN(val)
-export const isObject = (val: unknown): val is UtilObject => typeOf(val, 'Object')
-export const isFunc = <T = string>(val: unknown): val is (...arg: any) => T => typeOf(val, 'Function')
-export const isString = (val: unknown): val is string => typeOf(val, 'String')
-export const isArray = <T = unknown>(val: unknown): val is T[] => typeOf(val, 'Array')
+export function isNumber(val: unknown): val is number {
+  return typeOf(val, 'Number') && !Number.isNaN(val)
+}
+
+export function isObject(val: unknown): val is UtilObject {
+  return typeOf(val, 'Object')
+}
+
+export function isFunc<T = string>(val: unknown): val is (...arg: any) => T {
+  return typeOf(val, 'Function')
+}
+
+export function isString(val: unknown): val is string {
+  return typeOf(val, 'String')
+}
+
+export function isArray<T = unknown>(val: unknown): val is T[] {
+  return typeOf(val, 'Array')
+}

@@ -1,8 +1,8 @@
 import {getScrollParents} from './window'
 import {setPopoverLocation} from '../core/dom/popover-style'
 import {State} from '../types/store'
-import {Bind} from "./helper";
-import {on} from "./event";
+import {Bind} from "./helper"
+import {on} from "./event"
 
 export function listenToScrollParents(el: HTMLElement, state: State): void {
   const scrollParents = getScrollParents(el)

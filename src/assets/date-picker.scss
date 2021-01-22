@@ -54,6 +54,7 @@ $border-color-2: #e7eaf1;
 
     span {
       cursor: pointer;
+      padding: 0 4px;
       transition: $transition;
       &:hover {
         color: $theme-color;

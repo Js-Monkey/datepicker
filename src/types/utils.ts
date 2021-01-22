@@ -58,6 +58,7 @@ export interface Style {
   right?: string
   top?: string
   bottom?: string
+  cursor?: 'default' | 'pointer'
 }
 
 export interface CreateElement {

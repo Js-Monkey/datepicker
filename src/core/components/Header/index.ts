@@ -8,8 +8,15 @@ import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/helper";
 
 let type: HeaderType = 'start'
-const style = {
-  padding: '0 4px'
+
+const yearCLass = {
+  key: ['page'],
+  cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
+}
+
+const dayPageShow = {
+  key: ['page'],
+  cb: toggleVisibility
 }
 
 function yearRange(state: State) {
@@ -21,7 +28,6 @@ function yearRange(state: State) {
   return createElement(
     {
       name: 'span',
-      style,
       text: {
         key: {
           name: 'start',
@@ -29,10 +35,7 @@ function yearRange(state: State) {
         },
         cb: (year: number) => range(year)
       },
-      class: {
-        key: ['page'],
-        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
-      },
+      class: yearCLass,
       event: toYearPage
     },
     state
@@ -42,7 +45,6 @@ function yearRange(state: State) {
 function year(state: State) {
   return createElement({
     name: 'span',
-    style,
     text: {
       key: {
         name: type,
@@ -51,10 +53,7 @@ function year(state: State) {
       cb: year => year + '年'
     },
     event: toYearPage,
-    class: {
-      key: ['page'],
-      cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
-    }
+    class: yearCLass
   }, state)
 }
 
@@ -68,12 +67,8 @@ function month(state: State) {
       },
       cb: month => month + '月'
     },
-    style,
     event: toMonthPage,
-    class: {
-      key: ['page'],
-      cb: toggleVisibility
-    }
+    class: dayPageShow
   }, state)
 }
 
@@ -83,15 +78,13 @@ function date(state: State) {
     text: {
       key: {
         name: type,
-        childKey: ['month' ,'year']
+        childKey: ['month', 'year']
       },
-      cb: (month ,year) => year + '年 ' + month + '月'
+      cb: (month, year) => year + '年 ' + month + '月'
     },
-    style,
     class: {
-      key: ['page'],
-      cb: toggleVisibility,
-      static: [defaultCursor]
+      ...dayPageShow,
+      static:[defaultCursor]
     }
   }, state)
 }
@@ -121,10 +114,7 @@ function preMonthIcon(state: State) {
         left: '50px'
       },
       event: preMonth,
-      class: {
-        key: ['page'],
-        cb: toggleVisibility
-      }
+      class: dayPageShow
     },
     state
   )
@@ -153,10 +143,7 @@ function nextMonthIcon(state: State) {
         right: '50px'
       },
       event: Bind(nextMonth, type),
-      class: {
-        key: ['page'],
-        cb: toggleVisibility
-      }
+      class: dayPageShow
     },
     state
   )
@@ -168,7 +155,7 @@ const headerChildren = {
   end: [date, nextYearIcon, nextMonthIcon]
 }
 
-  export function Header(state: State, t?: HeaderType): Node {
+export function Header(state: State, t?: HeaderType): Node {
   const opt = {
     class: [header],
     children: headerChildren[t || 'main']
