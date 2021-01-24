@@ -1,3 +1,0 @@
-describe('Bind',()=>{
-  test('supports')
-})

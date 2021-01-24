@@ -11,7 +11,7 @@ export function on(
   const listener = function (e: Event) {
     const params: unknown[] = (arg || []).concat(e)
     if (state) params.unshift(state)
-    handler(...params)
+    return handler(...params)
   }
   el.addEventListener(eventName, listener)
 }

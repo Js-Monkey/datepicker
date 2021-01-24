@@ -10,12 +10,7 @@ export function Bind(fn: Fn, ...arg: any): Fn {
     }else{
       _arguments.push(last)
     }
-    fn(..._arguments.concat(_arg))
+    return  fn(..._arguments.concat(_arg))
   }
-
   return proxyFn
-}
-
-export function isHas(str: string, name: string): boolean {
-  return str.indexOf(name) > -1
 }
