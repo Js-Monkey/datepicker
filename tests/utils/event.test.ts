@@ -17,7 +17,7 @@ describe('on', () => {
     test('supports passing in eventName parameter', () => {
       on(div, listener, 'click')
       div.click()
-      expect(listener.mock.calls.length).toBeCalled()
+      expect(listener).toBeCalled()
     })
   })
 })
