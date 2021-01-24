@@ -1,37 +1,43 @@
 import {pageName, State} from '../../types/store'
-import {isString} from '../../utils/typeOf'
 import {HeaderType} from '../../types/components'
+import {_Event} from "../../types/event"
 
-export function nextYear(state: State, type: HeaderType): void {
-  const num = state.page === 'year' ? 10 : 1
-  state[type].year += num
+export function nextYear(this: State, type: HeaderType): void {
+  const num = this.page === 'year' ? 10 : 1
+  this[type].year += num
 }
 
-export function preYear(state: State): void {
-  const num = state.page === 'year' ? 10 : 1
-  state.start.year -= num
+export function preYear(this: State): void {
+  const num = this.page === 'year' ? 10 : 1
+  this.start.year -= num
 }
 
-export function nextMonth(state: State, type: HeaderType): void {
-  state[type].month += 1
+export function nextMonth(this: State, type: HeaderType): void {
+  this[type].month += 1
 }
 
-export function preMonth(state: State): void {
-  state.start.month -= 1
+export function preMonth(this: State): void {
+  this.start.month -= 1
 }
 
-export function toMonthPage(state: State, text: string): void {
-  state.page = 'month'
-  if (isString(text)) state.start.year = Number(text)
+export function toMonthPage(this: State): void {
+  this.page = 'month'
 }
 
-export function toDayPage(state: State, month: number): void {
-  state.start.month = month
-  state.page = 'day'
+export function selectYear(this: State, e: _Event): void {
+  const text = e.target.innerText
+  this.start.year = Number(text)
+  this.page = 'month'
 }
 
-export function toYearPage(state: State): void {
-  state.page = 'year'
+
+export function toDayPage(this: State, month: number): void {
+  this.start.month = month
+  this.page = 'day'
+}
+
+export function toYearPage(this: State): void {
+  this.page = 'year'
 }
 
 export function toggleVisibility(page: pageName): 'show' | 'hidden' {

@@ -9,9 +9,7 @@ import {mergeClasses} from './merge'
 const handler: Handler = {
   event(el, listener, state) {
     if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
-      listener.forEach(e => {
-        on(el, e.handler, e.name, state)
-      })
+      listener.forEach(e => on(el, e.handler, e.name, state))
     } else {
       on(el, listener, 'click', state)
     }

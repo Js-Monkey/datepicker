@@ -18,17 +18,17 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
   }
 
   return {
-    date(state: State) {
-      const data = filterState(state)
-      state.start.date = data.date
-      state.visible = false
+    date(this: State) {
+      const data = filterState(this)
+      this.start.date = data.date
+      this.visible = false
     },
     'date-range': [
       {
         name: 'click',
-        handler(state: State){
-          const data = filterState(state)
-          const {range} = state
+        handler(this: State){
+          const data = filterState(this)
+          const {range} = this
           const current = rangeClickEvent[range.status]
           range.status = current.status
           range[current.plt] = data.date
@@ -36,9 +36,9 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
       },
       {
         name: 'mouseenter',
-        handler(state: State){
-          const data = filterState(state)
-          const {range} = state
+        handler(this: State){
+          const data = filterState(this)
+          const {range} = this
           if (range.status === 'selecting') {
             range.end = data.date
           }

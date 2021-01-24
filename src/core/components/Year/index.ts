@@ -1,7 +1,7 @@
 import {createElement} from '../../../utils/element'
 import {year} from '../../../utils/classes'
 import {pageName, State} from '../../../types/store'
-import {toMonthPage} from '../utils'
+import {selectYear} from '../utils'
 import {getMinInTen} from '../../../utils/date'
 
 export function Year(state: State): Node {
@@ -10,9 +10,7 @@ export function Year(state: State): Node {
       children: Array.from({length: 10}).map((_, idx) => {
         return {
           name: 'span',
-          event(state: State, e) {
-            toMonthPage(state, e.target.innerText)
-          },
+          event: selectYear,
           text: {
             key: {
               name: 'start',

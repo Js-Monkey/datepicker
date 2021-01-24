@@ -1,4 +1,3 @@
-
 import {HeaderType} from '../../../types/components'
 import {createElement} from '../../../utils/element'
 import {header, defaultCursor} from '../../../utils/classes'

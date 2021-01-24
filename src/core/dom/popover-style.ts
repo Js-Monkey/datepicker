@@ -10,8 +10,8 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-export function updatePopover(popover: HTMLElement, vis: boolean, state: State): void {
-  if (vis) setPopoverLocation(state)
+export function updatePopover(this: State, popover: HTMLElement, vis: boolean): void {
+  if (vis) setPopoverLocation.call(this)
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
 
@@ -23,8 +23,8 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
   addAttr(el, style, 'style')
 }
 
-export function setPopoverLocation(state: State): void {
-  const {popover, reference, options} = state
+export function setPopoverLocation(this: State): void {
+  const {popover, reference, options} = this
   const {placement} = options
   const rect = reference?.getBoundingClientRect()
   setPosition(popover as HTMLElement, placement as 'left', rect as DOMRect)
@@ -40,7 +40,7 @@ export function setPosition(el: HTMLElement, plt: 'top' | 'left' | 'bottom' | 'r
   Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[plt][attr] + 'px'))
 }
 
-export function getPosition({top, left, height, width}: Rect): Transform<{left: number; top: number}> {
+export function getPosition({top, left, height, width}: Rect): Transform<{ left: number; top: number }> {
   const _tTop = top + window.scrollY
   const _bTop = top + height + window.scrollY + 7
   const _tLeft = left + window.scrollX
