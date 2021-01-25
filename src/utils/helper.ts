@@ -1,7 +1,7 @@
 import {Fn} from '../types/utils'
 
 export function Bind(fn: Fn, ...arg: any): Fn {
-  function proxyFn(this: any) {
+  function proxyFn() {
     const _arguments = Array.from(arguments)
     let _arg = arg
     const last = _arguments.pop()

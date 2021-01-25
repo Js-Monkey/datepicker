@@ -12,7 +12,7 @@ export interface PopoverType {
 }
 
 export interface DayEvent {
-  date: (state: State) => void
+  date: (this: State) => void
   'date-range': EventListener[]
 }
 

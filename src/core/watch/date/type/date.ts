@@ -10,7 +10,6 @@ export const startLink = {
 export const dateLink: Sub = {
   key: {name: 'start', childKey: ['date']},
   cb(date: string) {
-    if (!date) return
     const {start} = this
     ;[start.year, start.month] = getYearAndMonth(date)
   },

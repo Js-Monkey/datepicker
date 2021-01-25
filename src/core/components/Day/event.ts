@@ -1,4 +1,4 @@
-import {DayComponents, State} from "../../../types/store"
+import {DayComponents, RangeStatus, State} from "../../../types/store"
 import {DayEvent, HeaderType, RangeClickEvent} from "../../../types/components"
 
 const rangeClickEvent: RangeClickEvent = {
@@ -18,29 +18,26 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
   }
 
   return {
-    date(this: State) {
-      const data = filterState(this)
-      this.start.date = data.date
+    date() {
+      this.start.date = filterState(this).date
       this.visible = false
     },
     'date-range': [
       {
         name: 'click',
-        handler(this: State){
-          const data = filterState(this)
+        handler() {
           const {range} = this
-          const current = rangeClickEvent[range.status]
+          const current = rangeClickEvent[range.status as RangeStatus]
           range.status = current.status
-          range[current.plt] = data.date
+          range[current.plt] = filterState(this).date
         }
       },
       {
         name: 'mouseenter',
-        handler(this: State){
-          const data = filterState(this)
+        handler() {
           const {range} = this
           if (range.status === 'selecting') {
-            range.end = data.date
+            range.end = filterState(this).date
           }
         }
       }

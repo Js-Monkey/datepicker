@@ -1,4 +1,4 @@
-import {DayComponents, State} from './store'
+import {State} from './store'
 import {Sub} from './observer'
 
 export interface UtilObject {
@@ -65,7 +65,7 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface updateOptions extends Sub<string>{
+export interface updateOptions extends Sub<string> {
   static?: string[]
 }
 

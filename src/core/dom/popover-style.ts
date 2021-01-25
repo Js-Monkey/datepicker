@@ -10,7 +10,7 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-export function updatePopover(this: State, popover: HTMLElement, vis: boolean): void {
+export function updatePopover(popover: HTMLElement, vis: boolean): void {
   if (vis) setPopoverLocation.call(this)
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
@@ -23,7 +23,7 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
   addAttr(el, style, 'style')
 }
 
-export function setPopoverLocation(this: State): void {
+export function setPopoverLocation(): void {
   const {popover, reference, options} = this
   const {placement} = options
   const rect = reference?.getBoundingClientRect()

@@ -4,12 +4,12 @@ import {monthYearLink, otherStatus, updateComponents} from "../public"
 import {Sub} from "../../../../types/observer"
 import {month} from "../../../../utils/classes"
 
-function endStartLink(this: State, em: number, ey: number): void {
+function endStartLink(em: number, ey: number): void {
   const data = this.start
   ;[data.month, data.year] = getPre(em, ey)
 }
 
-function startEndLink(this: State, em: number, ey: number): void {
+function startEndLink(em: number, ey: number): void {
   const data = this.end
   ;[data.month, data.year] = getNext(em, ey)
 }
