@@ -1,6 +1,5 @@
 import {Rect, Transform} from '../../types/utils'
 import {hidden, show} from '../../utils/classes'
-import {State} from '../../types/store'
 import {addAttr, toggleCls} from '../../utils/attribute'
 
 const transform: Transform = {

@@ -1,13 +1,14 @@
 import clickOutside from '../../src/utils/clickoutside'
 import Better from '../../src'
 import {getState} from '../../src/store'
+
 describe('click-outside', () => {
   const ref = document.createElement('input')
   const outsideNode = document.createElement('div')
   new Better(ref)
 
   test('click input element to open popover', () => {
-    console.log(getState())
+    //todo
   })
   // test('click outside to close popover', () => {
   //   const rec = {
