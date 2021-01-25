@@ -1,5 +1,5 @@
 import {ComponentStatus, DateData, State} from "../../../types/store"
-import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../utils/date"
+import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeSort} from "../../../utils/date"
 import {today} from "../../../utils/classes"
 
 export function updateComponents(
@@ -66,7 +66,7 @@ export function dateStatus(startDate: string | null, date: string): ComponentSta
 
 export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
   const range = [rangeStart, rangeEnd] as [string, string]
-  const [min, max] = dateDiff(...range) ? range.reverse() : range
+  const [min, max] = rangeSort(...range)
   const isMin = date === min
   const isMax = date === max
   const isInRange = dateDiff(max, date) && dateDiff(date, min)

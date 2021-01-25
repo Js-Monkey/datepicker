@@ -35,10 +35,10 @@ export function monthFirstDay(year: number, month: number): number {
 
 export function joinDate<T = number, U = string>(
   month?: number | string,
-  year?:number | string,
+  year?: number | string,
   day?: number | string
 ): string {
-  if(!day) day = 1
+  if (!day) day = 1
   return year + "/" + month + "/" + day
 }
 
@@ -50,6 +50,12 @@ export function dateDiff(source: string | null, target: string | null): boolean 
   if (!source || !target) return false
   return Date.parse(source) > Date.parse(target)
 }
+
+export function rangeSort(min: string | null, max: string | null): (string | null)[] {
+  const range = [min, max]
+  return dateDiff(min, max) ? range.reverse() : range
+}
+
 
 export function isInRange<T = number>(max: string, min: string, date: string): string {
   return dateDiff(max, date) && dateDiff(date, min) ? 'in-range' : ''

@@ -1,5 +1,5 @@
 import {DateData, Range, State} from "../../../../types/store"
-import {getNext, getPre} from "../../../../utils/date"
+import {getNext, getPre, rangeSort} from "../../../../utils/date"
 import {monthYearLink, otherStatus, updateComponents} from "../public"
 import {Sub} from "../../../../types/observer"
 import {month} from "../../../../utils/classes"
@@ -63,6 +63,6 @@ export const handleSelecting: Sub = {
 
 function finishSelect(self: State) {
   self.visible = false
-  self.start.date = self.range.start
-  self.end.date = self.range.end
+  const {start, end} = self.range
+  ;[self.start.date, self.end.date] = rangeSort(start, end)
 }
