@@ -9,7 +9,7 @@ const acceptOptions: AcceptOptions = {
   zIndex: (val: unknown) => isNumber(val)
 }
 
-const checkLists: (keyof Options)[] = ['placement', 'type', 'format']
+const checkLists = Object.keys(acceptOptions) as (keyof Options)[]
 
 function checkFormat(name: keyof Options, opt: Options) {
   const optionVal = acceptOptions[name] as any

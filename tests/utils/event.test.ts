@@ -59,7 +59,6 @@ describe('Event: on', () => {
         })
         on(div, listener, 'click', state, website)
         div.click()
-        console.log(listener.mock.results)
         expect(listener.mock.results[0].value[0]).toBe(website)
         expect(isMouseEvent(listener.mock.results[0].value[1])).toBeTruthy()
       })

@@ -9,7 +9,8 @@
 export default {
     mounted(){
         let dp = new better(this.$refs.int.$el,{
-        type:'date-range'
+        type:'date-range',
+        unlinkPanels: 1000
 })
     },
 

@@ -4,11 +4,11 @@ export type datepickerType = 'date' | 'date-range'
 export default interface Options {
   placement: Placement
   type: datepickerType
-  unlinkPanels?: boolean
-  offset?: number
-  zIndex?: number
-  format?: string
-  disabled?: (date: Date) => boolean
+  unlinkPanels: boolean
+  offset: number
+  zIndex: number
+  format: string
+  disabled: (date: Date) => boolean
 }
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
