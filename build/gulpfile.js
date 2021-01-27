@@ -1,7 +1,7 @@
 'use strict'
 
 const {series, src, dest} = require('gulp')
-const sass = require('gulp-sass')
+const sass = require('gulp-dart-sass')
 const cssmin = require('gulp-cssmin')
 const rename = require('gulp-rename')
 
