@@ -13,5 +13,8 @@ module.exports = {
       statements: 1
     }
   },
+  moduleNameMapper: {
+    'svg': '<rootDir>/tests/src/mock-svg.js',
+  },
   collectCoverageFrom: ['src/*.{ts}', 'src/**/*.{js,ts}']
 }
