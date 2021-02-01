@@ -1,6 +1,14 @@
 import {addWatch} from "../../../observer/watcher"
 import Options from "../../../types/options"
-import {endComponents, endLink, endLinkStart, startLinkEnd, hoverDay, handleSelecting} from "./type/date-range"
+import {
+  endComponents,
+  endLink,
+  endLinkStart,
+  startLinkEnd,
+  hoverDay,
+  handleSelecting,
+  endLinkToStart
+} from "./type/date-range"
 import {dateLink, startComponents, startLink} from "./type/date"
 
 const type = {
@@ -13,7 +21,8 @@ const type = {
     startLinkEnd,
     hoverDay,
     handleSelecting,
-    dateLink
+    dateLink,
+    endLinkToStart
   ],
   date: [startLink, startComponents, dateLink]
 }

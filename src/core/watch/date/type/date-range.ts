@@ -1,8 +1,7 @@
-import {DateData, Range, State} from "../../../../types/store"
+import {Range, State} from "../../../../types/store"
 import {getNext, getPre, rangeSort} from "../../../../utils/date"
 import {monthYearLink, otherStatus, updateComponents} from "../public"
 import {Sub} from "../../../../types/observer"
-import {month} from "../../../../utils/classes"
 
 function endStartLink(em: number, ey: number): void {
   const data = this.start
@@ -14,15 +13,19 @@ function startEndLink(em: number, ey: number): void {
   ;[data.month, data.year] = getNext(em, ey)
 }
 
+const watchEndDate = {
+  name: 'end',
+  childKey: ["month", "year", 'date']
+}
+
 export const endComponents: Sub = {
-  key: {
-    name: 'end',
-    childKey: ["month", "year", 'date']
-  },
-  cb() {
-    updateComponents.apply(this, (arguments as unknown as [number, number, string, DateData]))
-    endStartLink.apply(this, (arguments as unknown as [number, number]))
-  },
+  key: watchEndDate,
+  cb: updateComponents
+}
+
+export const endLinkToStart: Sub = {
+  key: watchEndDate,
+  cb: endStartLink
 }
 
 export const endLink: Sub = {
