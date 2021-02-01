@@ -1,5 +1,5 @@
 name:  code-test
- 
+
 on:
   push:
     branches:
@@ -8,12 +8,12 @@ on:
     # Runs at 12am UTC
     - cron: '0 0 * * *'
 
- 
+
 jobs:
   build:
- 
+
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@master
     - name: Use Node.js 12.x
@@ -22,3 +22,6 @@ jobs:
       run: |
         npm i
         npm run test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
