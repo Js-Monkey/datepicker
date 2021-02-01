@@ -13,13 +13,13 @@ const rangeClickEvent: RangeClickEvent = {
 }
 
 export function dayEvent(index: number, type: HeaderType): DayEvent {
-  function filterState(state: State): DayComponents {
-    return state[type].components[index]
+  function getDate(state: State): string {
+    return state[type].components[index].date
   }
 
   return {
     date() {
-      this.start.date = filterState(this).date
+      this.start.date = getDate(this)
       this.visible = false
     },
     'date-range': [
@@ -29,7 +29,7 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
           const {range} = this
           const current = rangeClickEvent[range.status as RangeStatus]
           range.status = current.status
-          range[current.plt] = filterState(this).date
+          range[current.plt] = getDate(this)
         }
       },
       {
@@ -37,7 +37,7 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
         handler() {
           const {range} = this
           if (range.status === 'selecting') {
-            range.end = filterState(this).date
+            range.end = getDate(this)
           }
         }
       }
