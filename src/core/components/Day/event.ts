@@ -28,8 +28,8 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
         handler() {
           const {range} = this
           const current = rangeClickEvent[range.status as RangeStatus]
-          range.status = current.status
           range[current.plt] = getDate(this)
+          range.status = current.status
         }
       },
       {

@@ -13,18 +13,18 @@ function startEndLink(em: number, ey: number): void {
   ;[data.month, data.year] = getNext(em, ey)
 }
 
-const watchEndDate = {
+const watchEnd = {
   name: 'end',
   childKey: ["month", "year", 'date']
 }
 
 export const endComponents: Sub = {
-  key: watchEndDate,
+  key: watchEnd,
   cb: updateComponents
 }
 
 export const endLinkToStart: Sub = {
-  key: watchEndDate,
+  key: watchEnd,
   cb: endStartLink
 }
 
