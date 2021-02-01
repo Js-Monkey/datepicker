@@ -5,7 +5,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   testRegex: '/tests/.*\\.(test|spec)\\.(ts)$',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
-  coveragePathIgnorePatterns: ['/node_modules/'],
+  coveragePathIgnorePatterns: ['/node_modules/','/src/svg'],
   coverageThreshold: {
     global: {
       functions: 2,
