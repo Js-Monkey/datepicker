@@ -7,3 +7,5 @@ jobs:
       name: test
       script: yarn test
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
