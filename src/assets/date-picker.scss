@@ -41,36 +41,36 @@ $border-color-2: #e7eaf1;
   }
 
   &-header {
-    height: 30px;
-    line-height: 30px;
-    margin: 12px;
+    height: 50px;
+    line-height: 26px;
+    padding: 12px 0;
+    margin: 0 12px;
     text-align: center;
     font-weight: 500;
     font-size: 16px;
     color: $text-color;
+    border-bottom: 1px solid $border-color-1;
 
     span {
       cursor: pointer;
-      padding: 0 4px;
       transition: $transition;
-
+      margin: 0 4px;
       &:hover {
         color: $theme-color;
       }
     }
 
     svg {
-      margin-top: 8px;
+      margin-top: 5px;
     }
   }
 
   &-day, &-month, &-year {
+    width: 320px;
     text-align: center;
     padding: 5px 20px;
-
     span {
       cursor: pointer;
-
       &:hover {
         color: $theme-color;
       }
@@ -85,7 +85,7 @@ $border-color-2: #e7eaf1;
       cursor: pointer;
       height: 40px;
       width: 40px;
-      padding: 4px 0 ;
+      padding: 3px 0 ;
       text-align: center;
       div{
         height: 36px;
@@ -93,7 +93,11 @@ $border-color-2: #e7eaf1;
       }
     }
     td{
+      position: relative;
       cursor: pointer;
+    }
+    th{
+      font-weight: 400;
     }
     .pre, .next {
       opacity: .3;
@@ -164,14 +168,13 @@ $border-color-2: #e7eaf1;
 
   &-year {
     text-align: start;
-
     span {
       text-align: center;
       display: inline-block;
       line-height: 60px;
       padding: 5px;
-      width: 77px;
-      height: 70px;
+      width: 70px;
+      height: 60px;
     }
   }
 }

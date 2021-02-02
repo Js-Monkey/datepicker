@@ -95,7 +95,7 @@ function preYearIcon(state: State) {
   return createElement(
     {
       name: 'svg',
-      text: 'pre-year',
+      text: 'year',
       style: {
         position: 'absolute',
         left: '30px'
@@ -110,7 +110,7 @@ function preMonthIcon(state: State) {
   return createElement(
     {
       name: 'svg',
-      text: 'pre-month',
+      text: 'month',
       style: {
         position: 'absolute',
         left: '50px'
@@ -125,10 +125,11 @@ function preMonthIcon(state: State) {
 function nextYearIcon(state: State) {
   const opt: CreateElementOptions = {
     name: 'svg',
-    text: 'next-year',
+    text: 'year',
     style: {
       position: 'absolute',
-      right: '30px'
+      right: '30px',
+      transform: 'rotate(180deg)'
     },
     event: Bind(nextYear, type)
   }
@@ -139,10 +140,11 @@ function nextMonthIcon(state: State) {
   return createElement(
     {
       name: 'svg',
-      text: 'next-month',
+      text: 'month',
       style: {
         position: 'absolute',
-        right: '50px'
+        right: '50px',
+        transform: 'rotate(180deg)'
       },
       event: Bind(nextMonth, type),
       class: togglePage

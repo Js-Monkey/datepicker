@@ -3,8 +3,6 @@
 exports[`classes className 1`] = `
 Object {
   "day": "better-datepicker-day",
-  "dayBar": "better-datepicker-day-bar",
-  "dayContent": "better-datepicker-day-content",
   "defaultCursor": "better-datepicker-default-cursor ",
   "float": "better-datepicker-float ",
   "header": "better-datepicker-header",
