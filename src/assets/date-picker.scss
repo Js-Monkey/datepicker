@@ -12,14 +12,12 @@ $border-color-2: #e7eaf1;
   * {
     box-sizing: border-box;
   }
-
   &-wrapper {
     margin: 0;
     padding: 0;
     color: $text-color;
     font-size: 14px;
     list-style: none;
-    min-width: 320px;
     min-height: 200px;
     background-color: #ffffff;
     box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
@@ -43,7 +41,6 @@ $border-color-2: #e7eaf1;
   }
 
   &-header {
-    width: 320px;
     height: 30px;
     line-height: 30px;
     margin: 12px;
@@ -56,6 +53,7 @@ $border-color-2: #e7eaf1;
       cursor: pointer;
       padding: 0 4px;
       transition: $transition;
+
       &:hover {
         color: $theme-color;
       }
@@ -67,12 +65,12 @@ $border-color-2: #e7eaf1;
   }
 
   &-day, &-month, &-year {
-    width: 350px;
     text-align: center;
     padding: 5px 20px;
 
     span {
       cursor: pointer;
+
       &:hover {
         color: $theme-color;
       }
@@ -80,82 +78,76 @@ $border-color-2: #e7eaf1;
   }
 
   &-day {
-    span {
-      display: inline-block;
-      line-height: 24px;
-      padding: 5px;
-      width: 41px;
-      height: 35px;
-    }
-
-    &-bar {
-      border-bottom: 1px solid $border-color-2;
-
-      span {
-        cursor: inherit;
-
-        &:hover {
-          color: inherit;
-        }
+    width: 100%;
+    border-collapse: collapse;
+    td, th{
+      border: none;
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      padding: 4px 0 ;
+      text-align: center;
+      div{
+        height: 36px;
+        line-height: 36px;
       }
     }
+    td{
+      cursor: pointer;
+    }
+    .pre, .next {
+      opacity: .3;
 
-    &-content {
-
-      .pre, .next {
-        opacity: .3;
-
-        &:hover {
-          color: inherit;
-        }
+      &:hover {
+        color: inherit;
       }
+    }
 
-      span {
-        margin: 4px 0;
-        position: relative;
-      }
+    .selected {
+      color: white;
 
-      .selected {
-        color: white;
-
-        &:after {
-          display: block;
-          content: '';
-          border-radius: 50%;
-          background-color: $theme-color;
-          position: absolute;
-          z-index: -1;
-          width: 28px;
-          height: 28px;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
-
-        &:hover {
-          color: white !important;
-        }
-      }
-      .inRange {
-        background: #e8f8ef;
-      }
-      .range-start{
-        color: white;
+      &:after {
+        display: block;
+        content: '';
+        border-radius: 50%;
         background-color: $theme-color;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        &:hover {
-          color: white !important;
-        }
+        position: absolute;
+        z-index: -1;
+        width: 28px;
+        height: 28px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
-      .range-end{
-        color: white;
-        background-color: $theme-color;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        &:hover {
-          color: white !important;
-        }
+
+      &:hover {
+        color: white !important;
+      }
+    }
+
+    .inRange {
+      background: #e8f8ef;
+    }
+
+    .range-start {
+      color: white;
+      background-color: $theme-color;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+
+      &:hover {
+        color: white !important;
+      }
+    }
+
+    .range-end {
+      color: white;
+      background-color: $theme-color;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+
+      &:hover {
+        color: white !important;
       }
     }
   }
@@ -228,6 +220,7 @@ $border-color-2: #e7eaf1;
 
 .better-datepicker-float {
   float: left;
+
   &:first-child {
     border-right: 1px solid #e4e4e4;
   }
@@ -239,7 +232,8 @@ $border-color-2: #e7eaf1;
 
 .better-datepicker-default-cursor {
   cursor: default !important;
-  &:hover{
+
+  &:hover {
     color: inherit !important;
   }
 }

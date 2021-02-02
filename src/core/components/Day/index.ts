@@ -1,5 +1,5 @@
 import {createElement} from '../../../utils/element'
-import {day, dayBar, dayContent} from '../../../utils/classes'
+import {day} from '../../../utils/classes'
 import {dayBarNames} from '../../i18n'
 import {State} from '../../../types/store'
 import {toggleVisibility} from '../utils'
@@ -34,20 +34,25 @@ function tBody(state: State): Node {
       }
     })
   }
+
   function td(rc: number): CreateElementOptions[] {
     return Array.from({length: colsCount}).map((_, cc) => {
       const idx = rc * 7 + cc
       return {
-        text: config(idx, 'text'),
-        class: config(idx, 'status'),
-        event: dayEvent(idx, type)[state.options.type],
-        name: 'td'
+        name: 'td',
+        children: [
+          {
+            text: config(idx, 'text'),
+            class: config(idx, 'status')
+          }
+        ],
+        event: dayEvent(idx, type)[state.options.type]
       }
     })
   }
+
   return createElement(
     {
-      class: [dayContent],
       children: tr(),
       name: 'tbody'
     },
@@ -59,7 +64,6 @@ function bar(state: State): Node {
   return createElement(
     {
       name: 'thead',
-      class: [dayBar],
       children: dayBarNames.map(name => {
         return {text: name, name: 'th'}
       })
