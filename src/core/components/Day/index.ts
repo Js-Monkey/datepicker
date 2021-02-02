@@ -8,6 +8,8 @@ import {dayEvent} from "./event"
 import {HeaderType} from "../../../types/components"
 
 let type: HeaderType = 'start'
+const rowsCount = 6
+const colsCount = 7
 
 function config(idx: number, name: 'text' | 'status') {
   return {
@@ -23,19 +25,31 @@ function config(idx: number, name: 'text' | 'status') {
   }
 }
 
-function content(state: State): Node {
-  const children: CreateElementOptions[] = Array.from({length: 42}).map((d, idx) => {
-    return {
-      text: config(idx, 'text'),
-      class: config(idx, 'status'),
-      event: dayEvent(idx, type)[state.options.type],
-      name: 'span'
-    }
-  })
+function tBody(state: State): Node {
+  function tr(): CreateElementOptions[] {
+    return Array.from({length: rowsCount}).map((_, rc) => {
+      return {
+        name: 'tr',
+        children: td(rc)
+      }
+    })
+  }
+  function td(rc: number): CreateElementOptions[] {
+    return Array.from({length: colsCount}).map((_, cc) => {
+      const idx = rc * 7 + cc
+      return {
+        text: config(idx, 'text'),
+        class: config(idx, 'status'),
+        event: dayEvent(idx, type)[state.options.type],
+        name: 'td'
+      }
+    })
+  }
   return createElement(
     {
       class: [dayContent],
-      children
+      children: tr(),
+      name: 'tbody'
     },
     state
   )
@@ -44,9 +58,10 @@ function content(state: State): Node {
 function bar(state: State): Node {
   return createElement(
     {
+      name: 'thead',
       class: [dayBar],
       children: dayBarNames.map(name => {
-        return {text: name, name: 'span'}
+        return {text: name, name: 'th'}
       })
     },
     state
@@ -57,7 +72,8 @@ export function Day(state: State, t: HeaderType = 'start'): Node {
   type = t
   return createElement(
     {
-      children: [bar, content],
+      name: 'table',
+      children: [bar, tBody],
       class: {
         key: ['page'],
         cb: toggleVisibility,

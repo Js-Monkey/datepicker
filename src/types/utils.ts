@@ -70,7 +70,7 @@ export interface updateOptions extends Sub<string> {
 }
 
 export interface CreateElementOptions {
-  name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg'
+  name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody'
   text?: string | Sub<string>
   class?: updateOptions | string[]
   event?: eventHandler | EventListener[]

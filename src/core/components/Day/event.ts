@@ -1,4 +1,4 @@
-import {DayComponents, RangeStatus, State} from "../../../types/store"
+import {RangeStatus, State} from "../../../types/store"
 import {DayEvent, HeaderType, RangeClickEvent} from "../../../types/components"
 
 const rangeClickEvent: RangeClickEvent = {
