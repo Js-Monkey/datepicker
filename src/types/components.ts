@@ -1,27 +1,22 @@
 import {State} from './store'
 import {CreateElement, CreateElementOptions} from './utils'
-import {EventListener} from "./utils";
+import {EventListener} from "./utils"
+import {DatepickerType} from "./options"
 
 export type HeaderType = 'start' | 'end'
 
 export type Components = (state: State, ...arg: any) => Node
 
-export interface PopoverType {
-  date: (CreateElementOptions | CreateElement)[]
-  'date-range': (CreateElementOptions | CreateElement)[]
-}
+export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>
 
-export interface DayEvent {
-  date: (this: State) => void
-  'date-range': EventListener[]
-}
+export type DayEvent = DatepickerType<(this: State) => void, EventListener[]>
 
 export interface RangeClickEvent {
-  complete:{
+  complete: {
     plt: HeaderType
     status: 'selecting'
   }
-  selecting:{
+  selecting: {
     plt: HeaderType
     status: 'complete'
   }

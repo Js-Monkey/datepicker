@@ -46,7 +46,7 @@ function tBody(state: State): Node {
             class: config(idx, 'status')
           }
         ],
-        event: dayEvent(idx, type)[state.options.type]
+        event: dayEvent(idx, type)[state.type]
       }
     })
   }

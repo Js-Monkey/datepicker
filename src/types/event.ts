@@ -22,15 +22,3 @@ export interface _Event {
     parentNode: ParentNode
   }
 }
-
-export interface Res{
-  code: 200 | 401
-  status: 0
-  data:{
-    total: number
-    page_num: number
-    data:{
-
-    }
-  }
-}

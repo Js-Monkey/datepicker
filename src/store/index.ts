@@ -19,7 +19,9 @@ const Store = (function () {
   }
 
   function createState(options: Options): void {
-    states.push(initState(options))
+    const state = initState(options)
+    state.type = options.type
+    states.push(state)
     uid = states.length - 1
   }
 

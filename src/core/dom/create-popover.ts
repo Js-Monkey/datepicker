@@ -18,14 +18,15 @@ const popoverType: PopoverType = {
       class: [float],
       children: [HeaderRight, endDay, Month, Year]
     }
-  ]
+  ],
+  month: [Header, Month]
 }
 
 export function createPopover(state: State): Node {
   return createElement(
     {
       class: [wrapper],
-      children: popoverType[state.options.type]
+      children: popoverType[state.type]
     },
     state
   )

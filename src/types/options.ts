@@ -1,9 +1,15 @@
 export type Placement = 'top' | 'left' | 'bottom' | 'right'
-export type datepickerType = 'date' | 'date-range'
+
+export interface DatepickerType <T = unknown, U = any>{
+  date: T
+  'date-range': T | U
+  month: T
+}
+
 
 export default interface Options {
   placement: Placement
-  type: datepickerType
+  type: keyof DatepickerType
   unlinkPanels: boolean
   offset: number
   zIndex: number
@@ -13,7 +19,7 @@ export default interface Options {
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
   placement?: Placement[]
-  type?: datepickerType[]
+  type?: (keyof DatepickerType)[]
   unlinkPanels?: boolean[]
   offset?: number
   zIndex?: T

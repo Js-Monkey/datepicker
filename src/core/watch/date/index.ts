@@ -24,7 +24,8 @@ const type = {
     dateLink,
     endLinkToStart
   ],
-  date: [startLink, startComponents, dateLink]
+  date: [startLink, startComponents, dateLink],
+  month: [startLink]
 }
 
 export function watchDate(options: Options): void {

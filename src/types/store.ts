@@ -1,4 +1,4 @@
-import Options from './options'
+import Options, {DatepickerType} from './options'
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
@@ -73,4 +73,5 @@ export interface utilWatchers<T = utilWatcher> {
 }
 
 export interface State extends stateComponent, stateUtil, stateDate {
+  type: keyof DatepickerType
 }

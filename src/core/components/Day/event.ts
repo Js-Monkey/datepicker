@@ -41,6 +41,9 @@ export function dayEvent(index: number, type: HeaderType): DayEvent {
           }
         }
       }
-    ]
+    ],
+    month() {
+      //todo
+    }
   }
 }
