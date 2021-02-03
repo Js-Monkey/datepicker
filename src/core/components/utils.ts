@@ -30,6 +30,10 @@ export function selectYear(e: _Event): void {
   this.page = 'month'
 }
 
+export function selectMonth(month: number): void {
+  this.start.month = month
+}
+
 
 export function toDayPage(month: number): void {
   this.start.month = month

@@ -19,7 +19,7 @@ const popoverType: PopoverType = {
       children: [HeaderRight, endDay, Month, Year]
     }
   ],
-  month: [Header, Month]
+  month: [Header, Month , Year]
 }
 
 export function createPopover(state: State): Node {
