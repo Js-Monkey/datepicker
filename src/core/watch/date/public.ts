@@ -54,8 +54,9 @@ export function otherStatus(self: State, date: string): ComponentStatus {
       const {start, end} = self.range
       return dateRangeStatus(start, end, date)
     },
-    month() {
-     //todo
+    month(): 'selected' {
+      //todo
+      return 'selected'
     }
   }
   const status = typeStatus[self.type]()

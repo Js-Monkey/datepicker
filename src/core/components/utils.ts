@@ -1,6 +1,7 @@
 import {pageName} from '../../types/store'
 import {HeaderType} from '../../types/components'
 import {_Event} from "../../types/event"
+import {joinDate} from "../../utils/date";
 
 export function nextYear(type: HeaderType): void {
   const num = this.page === 'year' ? 10 : 1
@@ -32,6 +33,9 @@ export function selectYear(e: _Event): void {
 
 export function selectMonth(month: number): void {
   this.start.month = month
+  const {year} = this.start
+  this.start.date = joinDate(month, year, 1)
+  this.visible = false
 }
 
 
