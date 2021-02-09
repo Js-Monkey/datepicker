@@ -47,7 +47,7 @@ export const hoverDay: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
   cb() {
     (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name].components.filter(item => !['pre', 'next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
+      this[name]._day.filter(item => !['pre', 'next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
     })
   },
   notImmediate: true

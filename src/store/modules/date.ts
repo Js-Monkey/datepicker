@@ -1,12 +1,19 @@
-import {DayComponents, stateDate} from '../../types/store'
+import {DateComponents, MonthComponents, stateDate} from '../../types/store'
 import {getDay, getMonth, getNext, getYear, joinDate} from '../../utils/date'
 
-const dayComponents = (): DayComponents[] =>
+const dayComponents = (): DateComponents[] =>
   Array.from({length: 42}).map((_: unknown) => {
     return {
       text: '',
       status: '',
-      class: '',
+      date: ''
+    }
+  })
+
+const monthComponents = (): MonthComponents[] =>
+  Array.from({length: 12}).map(() => {
+    return {
+      status: '',
       date: ''
     }
   })
@@ -26,13 +33,15 @@ export default function (): stateDate {
       date: null,
       year: startYear,
       month: startMonth,
-      components: dayComponents(),
+      _day: dayComponents(),
+      _month: monthComponents()
     },
     end: {
       date: null,
       year: endYear,
       month: endMonth,
-      components: dayComponents(),
+      _day: dayComponents(),
+      _month: monthComponents()
     },
     today: joinDate(startMonth, startYear, getDay(date))
   }

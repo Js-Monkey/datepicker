@@ -16,7 +16,7 @@ function config(idx: number, name: 'text' | 'status') {
     key: {
       name: type,
       childKey: {
-        name: 'components',
+        name: '_day',
         idx,
         childKey: [name]
       }

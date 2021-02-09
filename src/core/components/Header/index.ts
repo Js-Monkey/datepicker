@@ -26,7 +26,7 @@ function yearRange(state: State) {
       text: {
         key: {
           name: 'start',
-          childKey: ['year', 'components']
+          childKey: ['year', '_day']
         },
         cb: (year: number) => range(year)
       },
@@ -46,7 +46,7 @@ function year(state: State) {
     text: {
       key: {
         name: type,
-        childKey: ['year', 'components']
+        childKey: ['year', '_day']
       },
       cb: year => year + '年'
     },

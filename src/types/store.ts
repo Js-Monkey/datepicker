@@ -16,11 +16,18 @@ export type ComponentStatus =
   | 'range-start range-end'
   | 'today'
 
-export interface DayComponents {
+export interface DateComponents {
   text: string
   status: ComponentStatus
   date: string
 }
+
+export interface MonthComponents {
+  status: ComponentStatus
+  date: string
+}
+
+
 
 export interface stateComponent<T = null | HTMLElement> {
   reference: T
@@ -31,7 +38,8 @@ export interface DateData {
   date: string | null
   year: number
   month: number
-  components: DayComponents[]
+  _day: DateComponents[]
+  _month: MonthComponents[]
 }
 
 export type RangeStatus = 'complete' | 'selecting'
