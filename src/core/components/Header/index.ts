@@ -5,7 +5,7 @@ import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, t
 import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
-import {Bind} from "../../../utils/helper"
+import {Bind} from "../../../utils/bind"
 
 let type: HeaderType = 'start'
 

@@ -9,7 +9,7 @@ import Options from '../../../types/options'
 import {isInBody} from '../../../utils/isInBody'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/popover-style'
-import {Bind} from "../../../utils/helper"
+import {Bind} from "../../../utils/bind"
 
 const reference = {
   key: ['reference'],

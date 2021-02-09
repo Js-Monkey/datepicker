@@ -3,7 +3,7 @@ import {monthNames} from '../../i18n'
 import {month} from '../../../utils/classes'
 import {selectMonth, toDayPage} from '../utils'
 import {State} from '../../../types/store'
-import {Bind} from "../../../utils/helper"
+import {Bind} from "../../../utils/bind"
 
 export function Month(state: State): Node {
   const eventHandler = state.type === 'month' ? selectMonth : toDayPage

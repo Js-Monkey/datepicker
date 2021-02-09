@@ -1,7 +1,7 @@
 import clickOutside from '../../src/utils/clickoutside'
 import Better from '../../src'
 import {getState} from '../../src/store'
-import {Bind} from "../../src/utils/helper"
+import {Bind} from "../../src/utils/bind"
 
 
 describe('click-outside', () => {
