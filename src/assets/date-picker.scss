@@ -39,7 +39,6 @@ $border-color: #dde0e7;
   }
 
   &-header {
-    width: 296px;
     height: 50px;
     line-height: 26px;
     padding: 12px 0;
@@ -65,9 +64,6 @@ $border-color: #dde0e7;
   }
 
   &-day, &-month, &-year {
-    width: 320px;
-    text-align: center;
-    padding: 5px 20px;
     span {
       cursor: pointer;
       &:hover {
@@ -82,9 +78,6 @@ $border-color: #dde0e7;
     td, th{
       border: none;
       cursor: pointer;
-      height: 40px;
-      width: 40px;
-      padding: 3px 0 ;
       text-align: center;
       div{
         height: 36px;
@@ -178,13 +171,6 @@ $border-color: #dde0e7;
   }
 }
 
-.show {
-  display: inline-block;
-}
-
-.hidden {
-  display: none;
-}
 
 @keyframes show {
   0% {

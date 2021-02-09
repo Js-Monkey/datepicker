@@ -5,6 +5,7 @@ import {State} from '../types/store'
 import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
+import {UpdateCbType} from "../types/components"
 
 const handler: Handler = {
   event(el, listener, state) {
@@ -17,18 +18,17 @@ const handler: Handler = {
   class: (el, cls) => update(el, cls, 'cls'),
   style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
   children(el, children, state) {
-    children.forEach(child => {
-      el.appendChild(createElement(child, state))
-    })
+    children.forEach(child => el.appendChild(createElement(child, state)))
   },
   name: () => null,
-  text: (el, text) => {
+  text(el, text) {
     if (isString(text)) {
       el.innerText = text
     } else {
       update(el, text)
     }
-  }
+  },
+  visible: (el, vis) => update<boolean>(el, vis, 'sty')
 }
 
 export function createEL(tagName = 'div'): HTMLElement {
@@ -36,8 +36,9 @@ export function createEL(tagName = 'div'): HTMLElement {
 }
 
 export default function createSVG(name: string): Element {
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
+  const url = 'http://www.w3.org/2000/svg'
+  const svg = document.createElementNS(url, 'svg')
+  const use = document.createElementNS(url, 'use')
   use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#icon-${name}`)
   svg.appendChild(use)
   return svg
@@ -60,20 +61,21 @@ export function appendChild(children: Element | Element[], parent: Element = doc
   }
 }
 
-export function update<T>(el: HTMLElement, opt: updateOptions | string[], type?: 'cls'): void {
+export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], type: keyof UpdateCbType = 'text'): void {
   if (isArray(opt)) return el.setAttribute('class', opt.join(' '))
   const {key, cb} = opt
-  const updateCb =
-    type === 'cls'
-      ? (res: string) => resetAttr(el, mergeClasses(res, opt.static))
-      : (res: string) => el.innerText = res
+  const callbacks: UpdateCbType = {
+    cls: (res: string) => resetAttr(el, mergeClasses(res, opt.static)),
+    text: (res: string) => el.innerText = res,
+    sty: (vis: boolean) => el.style.display = vis ? 'inline-block' : 'none'
+  }
 
   addWatch(
     {
       key,
       cb(): void {
-        const res = cb.apply(this, arguments as any)
-        updateCb(res)
+        const res = cb.apply(this, arguments as any) as never
+        callbacks[type](res)
       }
     }
   )

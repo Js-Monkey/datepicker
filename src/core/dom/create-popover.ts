@@ -12,14 +12,14 @@ const popoverType: PopoverType = {
   'date-range': [
     {
       class: [float],
-      children: [HeaderLeft, Day, Month, Year]
+      children: [HeaderLeft, Day]
     },
     {
       class: [float],
-      children: [HeaderRight, endDay, Month, Year]
+      children: [HeaderRight, endDay]
     }
   ],
-  month: [Header, Month , Year]
+  month: [Header, Month, Year]
 }
 
 export function createPopover(state: State): Node {

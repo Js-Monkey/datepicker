@@ -2,7 +2,7 @@ import {createElement} from '../../../utils/element'
 import {day} from '../../../utils/classes'
 import {dayBarNames} from '../../i18n'
 import {State} from '../../../types/store'
-import {toggleVisibility} from '../utils'
+import {toggleVisibility, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
 import {HeaderType} from "../../../types/components"
@@ -10,6 +10,13 @@ import {HeaderType} from "../../../types/components"
 let type: HeaderType = 'start'
 const rowsCount = 6
 const colsCount = 7
+
+
+const tableStyle = {
+  height: '40px',
+  width: '40px',
+  padding: '3px 0'
+}
 
 function config(idx: number, name: 'text' | 'status') {
   return {
@@ -46,6 +53,7 @@ function tBody(state: State): Node {
             class: config(idx, 'status')
           }
         ],
+        style: tableStyle,
         event: dayEvent(idx, type)[state.type]
       }
     })
@@ -65,7 +73,7 @@ function bar(state: State): Node {
     {
       name: 'thead',
       children: dayBarNames.map(name => {
-        return {text: name, name: 'th'}
+        return {text: name, name: 'th', style: tableStyle}
       })
     },
     state
@@ -78,10 +86,11 @@ export function Day(state: State, t: HeaderType = 'start'): Node {
     {
       name: 'table',
       children: [bar, tBody],
-      class: {
+      class: [day],
+      style: utilStyle,
+      visible: {
         key: ['page'],
-        cb: toggleVisibility,
-        static: [day]
+        cb: toggleVisibility
       }
     },
     state

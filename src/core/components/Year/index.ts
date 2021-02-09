@@ -1,7 +1,7 @@
 import {createElement} from '../../../utils/element'
 import {year} from '../../../utils/classes'
 import {pageName, State} from '../../../types/store'
-import {selectYear} from '../utils'
+import {selectYear, utilStyle} from '../utils'
 import {getMinInTen} from '../../../utils/date'
 
 export function Year(state: State): Node {
@@ -20,10 +20,11 @@ export function Year(state: State): Node {
           }
         }
       }),
-      class: {
+      class: [year],
+      style: utilStyle,
+      visible: {
         key: ['page'],
-        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden'),
-        static: [year]
+        cb: (page: pageName) => page === 'year'
       }
     },
     state

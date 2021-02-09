@@ -1,7 +1,13 @@
 import {pageName} from '../../types/store'
 import {HeaderType} from '../../types/components'
 import {_Event} from "../../types/event"
-import {joinDate} from "../../utils/date";
+import {joinDate} from "../../utils/date"
+
+export const utilStyle = {
+  'text-align': 'center',
+  padding: '5px 20px',
+  width: '320px'
+}
 
 export function nextYear(type: HeaderType): void {
   const num = this.page === 'year' ? 10 : 1
@@ -48,6 +54,6 @@ export function toYearPage(): void {
   this.page = 'year'
 }
 
-export function toggleVisibility(page: pageName): 'show' | 'hidden' {
-  return page === 'day' ? 'show' : 'hidden'
+export function toggleVisibility(page: pageName): boolean {
+  return page === 'day'
 }

@@ -60,13 +60,14 @@ export interface Style {
   bottom?: string
   cursor?: 'default' | 'pointer'
   transform?: string
+  'text-align'?: string
 }
 
 export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface updateOptions extends Sub<string> {
+export interface updateOptions<T = string> extends Sub<T> {
   static?: string[]
 }
 
@@ -77,6 +78,7 @@ export interface CreateElementOptions {
   event?: eventHandler | EventListener[]
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
+  visible?: updateOptions<boolean>
 }
 
 interface HandlerCb<T> {
@@ -84,10 +86,11 @@ interface HandlerCb<T> {
 }
 
 export interface Handler<> {
-  event: HandlerCb<eventHandler | EventListener[]>
-  class: HandlerCb<updateOptions | string[]>
-  style: HandlerCb<Style>
-  children: HandlerCb<CreateElementOptions[]>
   name: () => void
   text: HandlerCb<Sub<string> | string>
+  class: HandlerCb<updateOptions | string[]>
+  event: HandlerCb<eventHandler | EventListener[]>
+  style: HandlerCb<Style>
+  children: HandlerCb<CreateElementOptions[]>
+  visible: HandlerCb<updateOptions<boolean>>
 }

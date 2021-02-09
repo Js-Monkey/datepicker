@@ -1,7 +1,7 @@
 import {createElement} from '../../../utils/element'
 import {monthNames} from '../../i18n'
 import {month} from '../../../utils/classes'
-import {selectMonth, toDayPage} from '../utils'
+import {selectMonth, toDayPage, utilStyle} from '../utils'
 import {State} from '../../../types/store'
 import {Bind} from "../../../utils/bind"
 
@@ -16,10 +16,11 @@ export function Month(state: State): Node {
           event: Bind(eventHandler, idx + 1)
         }
       }),
-      class: {
+      class: [month],
+      style: utilStyle,
+      visible: {
         key: ['page'],
-        cb: (page) => page === 'month' ? 'show' : 'hidden',
-        static: [month]
+        cb: (page) => page === 'month'
       }
     },
     state

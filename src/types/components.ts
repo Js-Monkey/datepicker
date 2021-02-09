@@ -5,6 +5,13 @@ import {DatepickerType} from "./options"
 
 export type HeaderType = 'start' | 'end'
 
+
+export interface UpdateCbType {
+  text: (res: string)=> void
+  cls: (res: string)=> void
+  sty: (res: boolean)=> void
+}
+
 export type Components = (state: State, ...arg: any) => Node
 
 export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>

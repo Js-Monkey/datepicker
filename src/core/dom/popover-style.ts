@@ -11,6 +11,7 @@ const transform: Transform = {
 
 export function updatePopover(popover: HTMLElement, vis: boolean): void {
   if (vis) setPopoverLocation.call(this)
+  popover.style.display = vis ? 'inline-block' : 'none'
   toggleCls(popover as HTMLElement, [show, hidden], vis)
 }
 

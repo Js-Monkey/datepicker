@@ -30,9 +30,9 @@ function yearRange(state: State) {
         },
         cb: (year: number) => range(year)
       },
-      class: {
+      visible: {
         key: ['page'],
-        cb: (page: pageName) => (page === 'year' ? 'show' : 'hidden')
+        cb: (page: pageName) => page === 'year'
       },
       event: toYearPage
     },
@@ -51,9 +51,9 @@ function year(state: State) {
       cb: year => year + '年'
     },
     event: toYearPage,
-    class: {
+    visible: {
       key: ['page'],
-      cb: (page: pageName) => (page === 'year' ? 'hidden' : 'show')
+      cb: (page: pageName) => page !== 'year'
     }
   }, state)
 }
@@ -69,7 +69,7 @@ function month(state: State) {
       cb: month => month + '月'
     },
     event: toMonthPage,
-    class: togglePage
+    visible: togglePage
   }, state)
 }
 
@@ -79,15 +79,12 @@ function date(state: State) {
     text: {
       key: {
         name: type,
-        childKey: ['month' ,'year']
+        childKey: ['month', 'year']
       },
-      cb: (month ,year) => year + '年 ' + month + '月'
+      cb: (month, year) => year + '年 ' + month + '月'
     },
-    class: {
-      key: ['page'],
-      cb: toggleVisibility, //解构写法，打包更大？
-      static: [defaultCursor]
-    }
+    class: [defaultCursor],
+    visible: togglePage
   }, state)
 }
 
@@ -98,7 +95,9 @@ function preYearIcon(state: State) {
       text: 'year',
       style: {
         position: 'absolute',
-        left: '30px'
+        left: '30px',
+        width: '14px',
+        height: '14px',
       },
       event: preYear
     },
@@ -113,10 +112,12 @@ function preMonthIcon(state: State) {
       text: 'month',
       style: {
         position: 'absolute',
-        left: '50px'
+        left: '50px',
+        width: '14px',
+        height: '14px',
       },
       event: preMonth,
-      class: togglePage
+      visible: togglePage
     },
     state
   )
@@ -129,7 +130,9 @@ function nextYearIcon(state: State) {
     style: {
       position: 'absolute',
       right: '30px',
-      transform: 'rotate(180deg)'
+      transform: 'rotate(180deg)',
+      width: '14px',
+      height: '14px',
     },
     event: Bind(nextYear, type)
   }
@@ -144,10 +147,12 @@ function nextMonthIcon(state: State) {
       style: {
         position: 'absolute',
         right: '50px',
-        transform: 'rotate(180deg)'
+        transform: 'rotate(180deg)',
+        width: '14px',
+        height: '14px',
       },
       event: Bind(nextMonth, type),
-      class: togglePage
+      visible: togglePage
     },
     state
   )
@@ -162,7 +167,11 @@ const headerChildren = {
 export function Header(state: State, t?: HeaderType): Node {
   const opt = {
     class: [header],
-    children: headerChildren[t || 'main']
+    children: headerChildren[t || 'main'],
+    style: {
+      width: '298px',
+      'text-align': 'center'
+    }
   }
   type = t || 'start'
   return createElement(opt, state)
