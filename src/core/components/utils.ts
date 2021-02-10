@@ -37,10 +37,10 @@ export function selectYear(e: _Event): void {
   this.page = 'month'
 }
 
-export function selectMonth(month: number): void {
-  this.start.month = month
-  const {year} = this.start
-  this.start.date = joinDate(month, year, 1)
+export function selectMonth(idx: number): void {
+  this.start.month = idx + 1
+  this.start.date = this.start._month[idx].date
+  console.log(this.start.date)
   this.visible = false
 }
 

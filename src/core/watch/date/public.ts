@@ -3,7 +3,6 @@ import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeS
 import {today} from "../../../utils/classes"
 
 export function updateDays(
-  this: State,
   month: number,
   year: number,
   date: string,
@@ -37,6 +36,13 @@ export function updateDays(
   )
 }
 
+export function updateMonth(year: number, date: string, state: DateData): void {
+  state._month.forEach((item, idx) => {
+    item.date = joinDate(idx + 1, year, 1)
+  })
+}
+
+
 function isToday(self: State, date: string) {
   return Date.parse(self.today) === Date.parse(date) ? today : ''
 }
@@ -53,13 +59,9 @@ export function otherStatus(self: State, date: string): ComponentStatus {
     'date-range'() {
       const {start, end} = self.range
       return dateRangeStatus(start, end, date)
-    },
-    month(): 'selected' {
-      //todo
-      return 'selected'
     }
   }
-  const status = typeStatus[self.type]()
+  const status = typeStatus[self.type as 'date']()
   return addStatus(self, date, status)
 }
 
@@ -86,10 +88,7 @@ export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | nu
   }
 }
 
-export function monthYearLink(
-  month: number,
-  state: DateData
-): void {
+export function monthYearLink(month: number, state: DateData): void {
   if (month === 13) {
     state.month = 1
     state.year += 1

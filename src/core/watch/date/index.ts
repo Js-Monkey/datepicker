@@ -9,12 +9,12 @@ import {
   handleSelecting,
   endLinkToStart
 } from "./type/date-range"
-import {dateLink, startComponents, startLink} from "./type/date"
+import {dateLink, startDays, startLink, startMonth} from "./type/date"
 
 const type = {
   'date-range': [
     startLink,
-    startComponents,
+    startDays,
     endComponents,
     endLink,
     endLinkStart,
@@ -24,8 +24,8 @@ const type = {
     dateLink,
     endLinkToStart
   ],
-  date: [startLink, startComponents, dateLink],
-  month: [startLink]
+  date: [startLink, startDays, startMonth, dateLink],
+  month: [startLink, startMonth]
 }
 
 export function watchDate(options: Options): void {
