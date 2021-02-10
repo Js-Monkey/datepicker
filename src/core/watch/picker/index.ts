@@ -8,7 +8,7 @@ import {createPopover} from '../../dom/create-popover'
 import Options from '../../../types/options'
 import {isInBody} from '../../../utils/isInBody'
 import {appendChild} from '../../../utils/element'
-import {setPopoverStyle, updatePopover} from '../../dom/popover-style'
+import {setPopoverStyle, updatePopover} from '../../dom/updatePopover'
 import {Bind} from "../../../utils/bind"
 
 const reference = {

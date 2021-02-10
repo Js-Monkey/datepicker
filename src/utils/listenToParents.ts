@@ -1,5 +1,5 @@
 import {getScrollParents} from './window'
-import {setPopoverLocation} from '../core/dom/popover-style'
+import {setPopoverLocation} from '../core/dom/updatePopover'
 import {State} from '../types/store'
 import {on} from "./event"
 

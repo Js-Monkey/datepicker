@@ -1,6 +1,5 @@
 import {Rect, Transform} from '../../types/utils'
-import {hidden, show} from '../../utils/classes'
-import {addAttr, toggleCls} from '../../utils/attribute'
+import {addAttr} from '../../utils/attribute'
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -9,10 +8,27 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
+const sheetRuleStatus = {
+  true: {
+    animation: 'show .3s',
+    rule: '@keyframes show { 0% {display: block;opacity: 0;transform: scaleY(0.8);} 100% {display: block;opacity: 1;transform: scaleY(1);} }'
+  },
+  false: {
+    animation: 'hidden .3s',
+    rule: '@keyframes hidden { 0% {opacity: 1;transform: scaleY(1);} 100% {opacity: 0;visibility: hidden;transform: scaleY(.8);} }'
+  }
+}
+
+const ss = document.styleSheets[0]
+
 export function updatePopover(popover: HTMLElement, vis: boolean): void {
-  if (vis) setPopoverLocation.call(this)
-  popover.style.display = vis ? 'inline-block' : 'none'
-  toggleCls(popover as HTMLElement, [show, hidden], vis)
+  if (vis) {
+    popover.style.display = 'inline-block'
+    setPopoverLocation.call(this)
+  }
+  const {animation, rule} = sheetRuleStatus[vis as unknown as 'false']
+  popover.style.animation = animation
+  ss.insertRule(rule, 0)
 }
 
 export function setPopoverStyle(el: HTMLElement, zx: number): void {

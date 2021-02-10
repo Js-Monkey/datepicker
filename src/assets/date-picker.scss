@@ -10,6 +10,7 @@ $border-color: #dde0e7;
   * {
     box-sizing: border-box;
   }
+
   &-wrapper {
     margin: 0;
     padding: 0;
@@ -53,6 +54,7 @@ $border-color: #dde0e7;
       cursor: pointer;
       transition: $transition;
       margin: 0 4px;
+
       &:hover {
         color: $theme-color;
       }
@@ -66,6 +68,7 @@ $border-color: #dde0e7;
   &-day, &-month, &-year {
     span {
       cursor: pointer;
+
       &:hover {
         color: $theme-color;
       }
@@ -75,22 +78,27 @@ $border-color: #dde0e7;
   &-day {
     width: 100%;
     border-collapse: collapse;
-    td, th{
+
+    td, th {
       border: none;
       cursor: pointer;
       text-align: center;
-      div{
+
+      div {
         height: 36px;
         line-height: 36px;
       }
     }
-    td{
+
+    td {
       position: relative;
       cursor: pointer;
     }
-    th{
+
+    th {
       font-weight: 400;
     }
+
     .pre, .next {
       opacity: .3;
 
@@ -159,7 +167,8 @@ $border-color: #dde0e7;
   }
 
   &-year {
-    text-align: start;
+    text-align: start !important;
+
     span {
       text-align: center;
       display: inline-block;
@@ -168,49 +177,6 @@ $border-color: #dde0e7;
       width: 70px;
       height: 60px;
     }
-  }
-}
-
-
-@keyframes show {
-  0% {
-    display: block;
-    opacity: 0;
-    transform: scaleY(0.8);
-  }
-  100% {
-    display: block;
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-@keyframes hidden {
-  0% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    transform: scaleY(.8);
-  }
-}
-
-
-.better-datepicker-show {
-  animation: show .3s;
-}
-
-.better-datepicker-hidden {
-  animation: hidden .3s forwards;
-}
-
-.better-datepicker-float {
-  float: left;
-
-  &:first-child {
-    border-right: 1px solid #e4e4e4;
   }
 }
 

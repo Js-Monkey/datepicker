@@ -61,6 +61,7 @@ export interface Style {
   cursor?: 'default' | 'pointer'
   transform?: string
   'text-align'?: string
+  display?: 'inline-block' | 'none' | 'block'
 }
 
 export interface CreateElement {
