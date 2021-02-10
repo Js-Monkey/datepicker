@@ -1,4 +1,4 @@
-import {monthYearLink, updateComponents} from "../public"
+import {monthYearLink, updateDays} from "../public"
 import {getYearAndMonth} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 
@@ -18,5 +18,5 @@ export const dateLink: Sub = {
 
 export const startComponents = {
   key: {name: 'start', childKey: ['month', 'year', 'date']},
-  cb: updateComponents,
+  cb: updateDays,
 }

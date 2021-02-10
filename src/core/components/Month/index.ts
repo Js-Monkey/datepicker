@@ -13,7 +13,21 @@ export function Month(state: State): Node {
         return {
           name: 'span',
           text: item,
-          event: Bind(eventHandler, idx + 1)
+          event: Bind(eventHandler, idx + 1),
+          class: {
+            key: {
+              name: 'start',
+              childKey: {
+                name: '_month',
+                idx,
+                childKey: ['status']
+              }
+            },
+            cb(val: string){
+              console.log(this)
+              return ''
+            }
+          }
         }
       }),
       class: [month],

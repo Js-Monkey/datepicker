@@ -1,6 +1,6 @@
 import {Range, State} from "../../../../types/store"
 import {getNext, getPre, rangeSort} from "../../../../utils/date"
-import {monthYearLink, otherStatus, updateComponents} from "../public"
+import {monthYearLink, otherStatus, updateDays} from "../public"
 import {Sub} from "../../../../types/observer"
 
 function endStartLink(em: number, ey: number): void {
@@ -20,7 +20,7 @@ const watchEnd = {
 
 export const endComponents: Sub = {
   key: watchEnd,
-  cb: updateComponents
+  cb: updateDays
 }
 
 export const endLinkToStart: Sub = {

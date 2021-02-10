@@ -4,11 +4,8 @@ exports[`classes className 1`] = `
 Object {
   "day": "better-datepicker-day",
   "defaultCursor": "better-datepicker-default-cursor ",
-  "float": "better-datepicker-float ",
   "header": "better-datepicker-header",
-  "hidden": "better-datepicker-hidden",
   "month": "better-datepicker-month",
-  "show": "better-datepicker-show",
   "today": "better-datepicker-today",
   "wrapper": "better-datepicker-wrapper",
   "year": "better-datepicker-year",

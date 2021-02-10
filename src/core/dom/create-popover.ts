@@ -35,8 +35,9 @@ const popoverType: PopoverType = {
 function listenToAnimation(pop: HTMLElement) {
   pop.addEventListener('animationend', (e) => {
     pop.style.display = e.animationName === 'hidden' ? 'none' : 'inline-block'
-    const {name} = document.styleSheets[0].rules[0] as any
-    if (['show', 'hidden'].indexOf(name) > -1) document.styleSheets[0].deleteRule(0)
+    const sheet = document.styleSheets[0]
+    const {name, type} = sheet.rules[0] as any
+    if (['show', 'hidden'].indexOf(name) > -1 && type === 7) sheet.deleteRule(0)
   })
 }
 

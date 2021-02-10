@@ -2,7 +2,7 @@ import {ComponentStatus, DateData, State} from "../../../types/store"
 import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeSort} from "../../../utils/date"
 import {today} from "../../../utils/classes"
 
-export function updateComponents(
+export function updateDays(
   this: State,
   month: number,
   year: number,

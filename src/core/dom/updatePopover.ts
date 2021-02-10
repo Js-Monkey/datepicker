@@ -19,16 +19,19 @@ const sheetRuleStatus = {
   }
 }
 
-const ss = document.styleSheets[0]
-
 export function updatePopover(popover: HTMLElement, vis: boolean): void {
+  const ss = document.styleSheets[0]
   if (vis) {
     popover.style.display = 'inline-block'
     setPopoverLocation.call(this)
   }
   const {animation, rule} = sheetRuleStatus[vis as unknown as 'false']
   popover.style.animation = animation
-  ss.insertRule(rule, 0)
+  if (ss) {
+    ss.insertRule(rule, 0)
+  } else {
+    popover.style.display = vis ? 'inline-block' : 'none'
+  }
 }
 
 export function setPopoverStyle(el: HTMLElement, zx: number): void {
