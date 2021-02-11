@@ -1,5 +1,5 @@
-import createSVG, {createEL, createElement} from '../../src/utils/element'
-import {addAttr, resetAttr, toggleCls} from '../../src/utils/attribute'
+import createSVG, {createEL} from '../../src/utils/element'
+import {addAttr, resetAttr} from '../../src/utils/attribute'
 
 function isNode(el: any) {
   expect(el.addEventListener).toBeDefined()
@@ -81,26 +81,5 @@ describe('element', () => {
     //   const elStyle = 'position:absolute;display:flex'
     //   expect(elStyle).toEqual(style)
     // })
-  })
-  describe('toggleCls', () => {
-    test('toggle class', () => {
-      const el = createEL()
-      Array.from({length: 5}).forEach((_, idx) => {
-        const even = idx & 1
-        toggleCls(el, ['classA', 'classB'], even)
-        expect(el.getAttribute('class')?.trim()).toEqual(even ? 'classA' : 'classB')
-      })
-    })
-
-    test('not affect other classes', () => {
-      const el = createEL()
-      el.setAttribute('class', 'classC classD')
-      Array.from({length: 2}).forEach((_, idx) => {
-        const even = idx & 1
-        toggleCls(el, ['classA', 'classB'], even)
-        expect(el.getAttribute('class')).toContain('classC')
-        expect(el.getAttribute('class')).toContain('classD')
-      })
-    })
   })
 })

@@ -51,6 +51,14 @@ export function dateDiff(source: string | null, target: string | null): boolean 
   return Date.parse(source) > Date.parse(target)
 }
 
+
+export function monthDiff(source: string | null, target: string | null): boolean {
+  if (!source || !target) return false
+  const [sourceYear,sourceMonth] = source.split('/')
+  const [targetYear,targetMonth] = target.split('/')
+  return sourceYear === targetYear && sourceMonth === targetMonth
+}
+
 export function rangeSort(min: string | null, max: string | null): (string | null)[] {
   const range = [min, max]
   return dateDiff(min, max) ? range.reverse() : range

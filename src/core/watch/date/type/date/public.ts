@@ -1,6 +1,6 @@
-import {ComponentStatus, DateData, State} from "../../../types/store"
-import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeSort} from "../../../utils/date"
-import {today} from "../../../utils/classes"
+import {ComponentStatus, DateData, State} from "../../../../../types/store"
+import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeSort} from "../../../../../utils/date"
+import {today} from "../../../../../utils/classes"
 
 export function updateDays(
   month: number,
@@ -36,13 +36,6 @@ export function updateDays(
   )
 }
 
-export function updateMonth(year: number, date: string, state: DateData): void {
-  state._month.forEach((item, idx) => {
-    item.date = joinDate(idx + 1, year, 1)
-  })
-}
-
-
 function isToday(self: State, date: string) {
   return Date.parse(self.today) === Date.parse(date) ? today : ''
 }
@@ -68,7 +61,6 @@ export function otherStatus(self: State, date: string): ComponentStatus {
 export function dateStatus(startDate: string | null, date: string): ComponentStatus {
   return startDate === date ? 'selected' : ''
 }
-
 
 export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
   const range = [rangeStart, rangeEnd] as [string, string]

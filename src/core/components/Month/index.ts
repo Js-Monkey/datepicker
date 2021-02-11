@@ -23,9 +23,7 @@ export function Month(state: State): Node {
                 childKey: ['status']
               }
             },
-            cb(val: string) {
-              return ''
-            }
+            cb: (val: string) => val
           }
         }
       }),

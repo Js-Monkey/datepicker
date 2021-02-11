@@ -8,8 +8,9 @@ import {
   hoverDay,
   handleSelecting,
   endLinkToStart
-} from "./type/date-range"
-import {dateLink, startDays, startLink, startMonth} from "./type/date"
+} from "./type/date/date-range"
+import {dateLink, startDays, startLink} from "./type/date/date"
+import {startMonth} from "./type/moth/month"
 
 const type = {
   'date-range': [

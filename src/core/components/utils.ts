@@ -40,13 +40,12 @@ export function selectYear(e: _Event): void {
 export function selectMonth(idx: number): void {
   this.start.month = idx + 1
   this.start.date = this.start._month[idx].date
-  console.log(this.start.date)
   this.visible = false
 }
 
 
 export function toDayPage(month: number): void {
-  this.start.month = month
+  this.start.month = month + 1
   this.page = 'day'
 }
 
