@@ -52,9 +52,7 @@ function tBody(state: State): Node {
               'line-height': '32px',
               padding: '6px'
             },
-            children: [{
-              text
-            }]
+            children: [{text}]
           }
         ],
         event: monthEvent(idx, type)[state.type as 'date']

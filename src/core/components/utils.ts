@@ -1,13 +1,47 @@
-import {pageName} from '../../types/store'
-import {HeaderType} from '../../types/components'
+import {pageName, RangeStatus, State} from '../../types/store'
+import {HeaderType, RangeClickEvent} from '../../types/components'
 import {_Event} from "../../types/event"
-import {joinDate} from "../../utils/date"
 
 export const utilStyle = {
   'text-align': 'center',
   padding: '5px 20px',
   width: '320px'
 }
+
+const rangeClickEvent: RangeClickEvent = {
+  complete: {
+    plt: 'start',
+    status: 'selecting'
+  },
+  selecting: {
+    plt: 'end',
+    status: 'complete'
+  }
+}
+
+export function handleRange(fn: (self: State) => string): any {
+  return [
+    {
+      name: 'click',
+      handler() {
+        const {range} = this
+        const current = rangeClickEvent[range.status as RangeStatus]
+        range[current.plt] = fn(this)
+        range.status = current.status
+      }
+    },
+    {
+      name: 'mouseenter',
+      handler() {
+        const {range} = this
+        if (range.status === 'selecting') {
+          range.end = fn(this)
+        }
+      }
+    }
+  ]
+}
+
 
 export function nextYear(type: HeaderType): void {
   const num = this.page === 'year' ? 10 : 1
