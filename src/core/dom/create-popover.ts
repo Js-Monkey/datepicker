@@ -3,7 +3,7 @@ import {createElement} from '../../utils/element'
 import {wrapper} from '../../utils/classes'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Day'
-import {Month} from '../components/Month'
+import {endMonth, Month} from '../components/Month'
 import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
 
@@ -16,7 +16,7 @@ function rangeComponent(type: 'month' | 'day') {
     },
     month: {
       start: [HeaderLeft, Month],
-      end: [HeaderRight, Month]
+      end: [HeaderRight, endMonth]
     }
   }
   return [

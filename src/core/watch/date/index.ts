@@ -2,32 +2,32 @@ import {addWatch} from "../../../observer/watcher"
 import Options from "../../../types/options"
 import {
   updateDayDom,
-  endLink,
-  endLinkStart,
-  startLinkEnd,
+  rangeEndMonthYearLink,
+  endLinkStartToMonth,
+  startLinkEndToMonth,
   hoverDay,
-  handleSelecting,
   rangeLinkPrecisionToDay
 } from "./type/day/date-range"
 import {dateLink, startDays, startLink} from "./type/day/date"
-import {startMonth} from "./type/month"
+import {endLinkStartToYear, startLinkEndToYear, updateStartMonth, updateEndMonth, hoverMonth} from "./type/month"
+import {handleSelecting} from './type/public'
 
 const type = {
   'date-range': [
     startLink,
     startDays,
     updateDayDom,
-    endLink,
-    endLinkStart,
-    startLinkEnd,
+    rangeEndMonthYearLink,
+    endLinkStartToMonth,
+    startLinkEndToMonth,
     hoverDay,
     handleSelecting,
     dateLink,
     rangeLinkPrecisionToDay
   ],
-  date: [startLink, startDays, startMonth, dateLink],
-  month: [startLink, startMonth],
-  'month-range': [startLink, startMonth],
+  date: [startLink, startDays, updateStartMonth, dateLink],
+  month: [startLink, updateStartMonth],
+  'month-range': [startLink, updateStartMonth, endLinkStartToYear, startLinkEndToYear, updateEndMonth, handleSelecting, hoverMonth],
 }
 
 export function watchDate(options: Options): void {

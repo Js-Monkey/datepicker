@@ -77,7 +77,6 @@ $border-color: #dde0e7;
 
   &-day {
     width: 100%;
-    border-collapse: collapse;
 
     td, th {
       border: none;
@@ -156,6 +155,10 @@ $border-color: #dde0e7;
     }
   }
 
+  &-day, &-month {
+    border-collapse: collapse;
+  }
+
   &-month {
     span {
       display: inline-block;
@@ -164,9 +167,49 @@ $border-color: #dde0e7;
       width: 70px;
       height: 70px;
     }
+
     .selected {
       color: $theme-color;
     }
+
+    .inRange, .range-start, .range-end {
+      > div {
+        background: #e8f8ef;
+      }
+    }
+
+    .range-start {
+      > div {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        div {
+          color: white;
+          background-color: $theme-color;
+          border-radius: 20px;
+
+          &:hover {
+            color: white !important;
+          }
+        }
+      }
+    }
+
+    .range-end {
+      > div {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        div {
+          color: white;
+          background-color: $theme-color;
+          border-radius: 20px;
+
+          &:hover {
+            color: white !important;
+          }
+        }
+      }
+    }
+
   }
 
   &-year {

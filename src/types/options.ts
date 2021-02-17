@@ -2,6 +2,7 @@ export type Placement = 'top' | 'left' | 'bottom' | 'right'
 
 
 export interface MonthType<T = unknown, U = any> {
+  date: T
   month: T
   'month-range': T | U
 }

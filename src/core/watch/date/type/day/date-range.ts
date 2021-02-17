@@ -1,5 +1,4 @@
-import {Range, State} from "../../../../../types/store"
-import {getNext, getPre, rangeSort} from "../../../../../utils/date"
+import {getNext, getPre} from "../../../../../utils/date"
 import {monthYearLink, otherStatus, updateDays} from "./public"
 import {Sub} from "../../../../../types/observer"
 
@@ -28,17 +27,17 @@ export const rangeLinkPrecisionToDay: Sub = {
   cb: updateRangeStartMonth
 }
 
-export const endLink: Sub = {
+export const rangeEndMonthYearLink: Sub = {
   key: {name: 'end', childKey: ["month"]},
   cb: monthYearLink,
 }
 
-export const endLinkStart: Sub = {
+export const endLinkStartToMonth: Sub = {
   key: {name: 'end', childKey: ['month', 'year']},
   cb: updateRangeStartMonth,
 }
 
-export const startLinkEnd: Sub = {
+export const startLinkEndToMonth: Sub = {
   key: {name: 'start', childKey: ['month', 'year']},
   cb: updateRangeEndMonth,
 }
@@ -51,21 +50,4 @@ export const hoverDay: Sub = {
     })
   },
   notImmediate: true
-}
-
-export const handleSelecting: Sub = {
-  key: {name: 'range', childKey: ['status']},
-  cb(status: string, range: Range) {
-    if (status === 'selecting') {
-      range.end = null
-    } else {
-      finishSelect(this)
-    }
-  },
-}
-
-function finishSelect(self: State) {
-  self.visible = false
-  const {start, end} = self.range
-  ;[self.start.date, self.end.date] = rangeSort(start, end)
 }

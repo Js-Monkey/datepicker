@@ -1,6 +1,7 @@
 import {ComponentStatus, DateData, State} from "../../../../../types/store"
-import {dateDiff, daysInAMonth, getNext, getPre, joinDate, monthFirstDay, rangeSort} from "../../../../../utils/date"
+import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../../../utils/date"
 import {today} from "../../../../../utils/classes"
+import {rangeStatus} from "../public"
 
 export function updateDays(
   month: number,
@@ -49,10 +50,7 @@ function addStatus(self: State, date: string, status: ComponentStatus): Componen
 export function otherStatus(self: State, date: string): ComponentStatus {
   const typeStatus = {
     date: () => dateStatus(self.start.date, date),
-    'date-range'() {
-      const {start, end} = self.range
-      return dateRangeStatus(start, end, date)
-    }
+    'date-range': () => rangeStatus(self, date)
   }
   const status = typeStatus[self.type as 'date']()
   return addStatus(self, date, status)
@@ -60,24 +58,6 @@ export function otherStatus(self: State, date: string): ComponentStatus {
 
 export function dateStatus(startDate: string | null, date: string): ComponentStatus {
   return startDate === date ? 'selected' : ''
-}
-
-export function dateRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): ComponentStatus {
-  const range = [rangeStart, rangeEnd] as [string, string]
-  const [min, max] = rangeSort(...range)
-  const isMin = date === min
-  const isMax = date === max
-  const isInRange = dateDiff(max, date) && dateDiff(date, min)
-  if (isInRange) return 'inRange'
-  if (isMax && isMin) {
-    return 'range-start range-end'
-  } else if (isMin) {
-    return 'range-start'
-  } else if (isMax) {
-    return 'range-end'
-  } else {
-    return ''
-  }
 }
 
 export function monthYearLink(month: number, state: DateData): void {
