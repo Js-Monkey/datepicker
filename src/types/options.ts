@@ -1,9 +1,22 @@
 export type Placement = 'top' | 'left' | 'bottom' | 'right'
 
-  export interface DatepickerType <T = unknown, U = any>{
+
+export interface MonthType<T = unknown, U = any> {
+  month: T
+  'month-range': T | U
+}
+
+export interface DateType<T = unknown, U = any> {
+  date: T
+  'date-range': T | U
+}
+
+
+export interface DatepickerType<T = unknown, U = any> extends DateType, MonthType {
   date: T
   'date-range': T | U
   month: T
+  'month-range': T | U
 }
 
 

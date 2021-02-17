@@ -6,7 +6,7 @@ const options = {
   key: ['options'],
   cb(options: Options) {
     const {type} = options
-    if (type === 'month') this.page = 'month'
+    if (type.indexOf('month') > -1) this.page = 'month'
   }
 }
 

@@ -7,9 +7,19 @@ import {Month} from '../components/Month'
 import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
 
-const popoverType: PopoverType = {
-  date: [Header, Day, Month, Year],
-  'date-range': [
+
+function rangeComponent(type: 'month' | 'day') {
+  const componentType = {
+    day: {
+      start: [HeaderLeft, Day],
+      end: [HeaderRight, endDay]
+    },
+    month: {
+      start: [HeaderLeft, Month],
+      end: [HeaderRight, Month]
+    }
+  }
+  return [
     {
       style: {
         width: '646px'
@@ -19,17 +29,23 @@ const popoverType: PopoverType = {
           display: 'inline-block',
           'border-right': '1px solid #e4e4e4'
         },
-        children: [HeaderLeft, Day]
+        children: componentType[type].start
       },
         {
           style: {
             display: 'inline-block'
           },
-          children: [HeaderRight, endDay]
+          children: componentType[type].end
         }]
     }
-  ],
-  month: [Header, Month, Year]
+  ]
+}
+
+const popoverType: PopoverType = {
+  date: [Header, Day, Month, Year],
+  'date-range': rangeComponent('day'),
+  month: [Header, Month, Year],
+  'month-range': rangeComponent('month')
 }
 
 function listenToAnimation(pop: HTMLElement) {

@@ -54,7 +54,7 @@ function tBody(state: State): Node {
           }
         ],
         style: tableStyle,
-        event: dayEvent(idx, type)[state.type]
+        event: dayEvent(idx, type)[state.type as 'date']
       }
     })
   }

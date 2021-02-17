@@ -3,12 +3,12 @@ import {getNext, getPre, rangeSort} from "../../../../../utils/date"
 import {monthYearLink, otherStatus, updateDays} from "./public"
 import {Sub} from "../../../../../types/observer"
 
-function endStartLink(em: number, ey: number): void {
+function updateRangeStartMonth(em: number, ey: number): void {
   const data = this.start
   ;[data.month, data.year] = getPre(em, ey)
 }
 
-function startEndLink(em: number, ey: number): void {
+function updateRangeEndMonth(em: number, ey: number): void {
   const data = this.end
   ;[data.month, data.year] = getNext(em, ey)
 }
@@ -18,14 +18,14 @@ const watchEnd = {
   childKey: ["month", "year", 'date']
 }
 
-export const endComponents: Sub = {
+export const updateDayDom: Sub = {
   key: watchEnd,
   cb: updateDays
 }
 
-export const endLinkToStart: Sub = {
+export const rangeLinkPrecisionToDay: Sub = {
   key: watchEnd,
-  cb: endStartLink
+  cb: updateRangeStartMonth
 }
 
 export const endLink: Sub = {
@@ -35,12 +35,12 @@ export const endLink: Sub = {
 
 export const endLinkStart: Sub = {
   key: {name: 'end', childKey: ['month', 'year']},
-  cb: endStartLink,
+  cb: updateRangeStartMonth,
 }
 
 export const startLinkEnd: Sub = {
   key: {name: 'start', childKey: ['month', 'year']},
-  cb: startEndLink,
+  cb: updateRangeEndMonth,
 }
 
 export const hoverDay: Sub = {

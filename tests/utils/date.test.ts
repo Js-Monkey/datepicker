@@ -8,7 +8,7 @@ import {
   transformDate, getYearAndMonth, monthDiff
 } from '../../src/utils/date'
 
-describe('date function', () => {
+describe('day function', () => {
   const date = new Date('1999-9-1')
   const today = new Date()
 
@@ -74,13 +74,13 @@ describe('date function', () => {
     })
   })
   describe('transformDate', () => {
-    test('transform date to string', () => {
+    test('transform day to string', () => {
       expect(transformDate(date)).toBe('1999/9/1')
     })
-    test('transform date to string', () => {
+    test('transform day to string', () => {
       expect(transformDate(new Date('2099/10/1'))).toBe('2099/10/1')
     })
-    test('transform date to string', () => {
+    test('transform day to string', () => {
       expect(transformDate(new Date('2009/1/18'))).toBe('2009/1/18')
     })
   })

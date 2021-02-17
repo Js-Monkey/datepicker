@@ -9,18 +9,16 @@ export function updateMonth(year: number, date: string, state: DateData): void {
 }
 
 export function getStatus(self: State, date: string): ComponentStatus {
-  const notRange = monthStatus(self.start.date, date)
   const typeStatus = {
-    month: notRange,
-    date: notRange
+    month: monthStatus,
+    date: monthStatus,
+    'month-range': monthRangeStatus
   }
-  return typeStatus[self.type as 'month']()
+  return typeStatus[self.type as 'month'](self.start.date, date)
 }
 
 export function monthStatus(startDate: string | null, date: string): any {
-  return function (): ComponentStatus {
-    return monthDiff(startDate, date) ? 'selected' : ''
-  }
+  return monthDiff(startDate, date) ? 'selected' : ''
 }
 
 export function monthRangeStatus(rangeStart: string | null, rangeEnd: string | null, date: string): any {

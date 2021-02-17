@@ -3,7 +3,7 @@ import {isArray, isNumber, isObject, isString} from '../../utils/typeOf'
 
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
-  type: ['date', 'date-range', 'month'],
+  type: ['date', 'date-range', 'month', 'month-range'],
   unlinkPanels: [true, false],
   format: (val: unknown) => isString(val),
   zIndex: (val: unknown) => isNumber(val)

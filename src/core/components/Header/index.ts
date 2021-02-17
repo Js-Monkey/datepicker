@@ -6,6 +6,7 @@ import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
+import {Sub} from "../../../types/observer";
 
 let type: HeaderType = 'start'
 
@@ -74,17 +75,26 @@ function month(state: State) {
 }
 
 function date(state: State) {
+  const showMonth: Sub<string> = {
+    key: {
+      name: type,
+      childKey: ['year']
+    },
+    cb: (year) => year + '年 '
+  }
+
+  const showDate: Sub<string> = {
+    key: {
+      name: type,
+      childKey: ['month', 'year']
+    },
+    cb: (month, year) => year + '年 ' + month + '月'
+  }
+  const isMonth = state.options.type.indexOf('month') > -1
   return createElement({
     name: 'span',
-    text: {
-      key: {
-        name: type,
-        childKey: ['month', 'year']
-      },
-      cb: (month, year) => year + '年 ' + month + '月'
-    },
-    class: [defaultCursor],
-    visible: togglePage
+    text: isMonth ? showMonth : showDate,
+    class: [defaultCursor]
   }, state)
 }
 

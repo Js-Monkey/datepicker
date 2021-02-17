@@ -62,6 +62,7 @@ export interface Style {
   transform?: string
   'text-align'?: string
   display?: 'inline-block' | 'none' | 'block'
+  'border-right'?: string
 }
 
 export interface CreateElement {
