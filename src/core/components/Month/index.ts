@@ -28,12 +28,6 @@ function tBody(state: State): Node {
       const text = monthNames[idx]
       return {
         name: 'td',
-        style: {
-          height: '50px',
-          width: '80px',
-          padding: '3px 0',
-          cursor: 'pointer'
-        },
         class: {
           key: {
             name: type,
@@ -47,11 +41,6 @@ function tBody(state: State): Node {
         },
         children: [
           {
-            style: {
-              height: '44px',
-              'line-height': '32px',
-              padding: '6px'
-            },
             children: [{text}]
           }
         ],
