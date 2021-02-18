@@ -8,9 +8,9 @@ import {
   hoverDay,
   rangeLinkPrecisionToDay
 } from "./type/day/date-range"
-import {dateLink, startDays, startLink} from "./type/day/date"
+import {startDays, startLink} from "./type/day/date"
 import {endLinkStartToYear, startLinkEndToYear, updateStartMonth, updateEndMonth, hoverMonth} from "./type/month"
-import {handleSelecting} from './type/public'
+import {handleSelecting, startDate} from './type/public'
 import {Listeners} from "../../../types/watch"
 
 const listeners: Listeners = {
@@ -24,12 +24,12 @@ const listeners: Listeners = {
     handleSelecting,
     rangeLinkPrecisionToDay
   ],
-  date: [ startDays, updateStartMonth],
+  date: [startDays, updateStartMonth],
   month: [updateStartMonth],
   'month-range': [updateStartMonth, endLinkStartToYear, startLinkEndToYear, updateEndMonth, handleSelecting, hoverMonth],
 }
 
-const publicListener = [startLink,dateLink]
+const publicListener = [startLink, startDate]
 
 export function watchDate(options: Options): void {
   addWatch(listeners[options.type].concat(publicListener))

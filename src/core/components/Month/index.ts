@@ -1,5 +1,5 @@
 import {createElement} from '../../../utils/element'
-import {monthNames} from '../../i18n'
+import {monthNames} from '../../util/i18n'
 import {month} from '../../../utils/classes'
 import {utilStyle} from '../utils'
 import {State} from '../../../types/store'

@@ -1,4 +1,4 @@
-import defaultOptions from '../../src/core/default-options'
+import defaultOptions from '../../src/core/util/default-options'
 
 describe('default-options', () => {
   test('default-options', () => {

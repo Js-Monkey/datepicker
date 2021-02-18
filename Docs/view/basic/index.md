@@ -97,7 +97,7 @@ return {
 ## 基本用法
 :::demo以在vue中使用为例
 ```html
-<Input width="300" ref="int" />
+<Input v-model="date" width="300" ref="int" />
 <f-button @click="getDate">获取</f-button>
 <script>
 export default {
@@ -105,11 +105,12 @@ export default {
          this.dp = new better(this.$refs.int.$el,{
         type:'month'
 })
-
+  this.dp.onChange((date)=> this.date = date)
     },
 data(){
 return {
-  dp: null
+  dp: null,
+  date: ''
 }
 },
     methods:{

@@ -1,4 +1,4 @@
-import {Placement, DatepickerType} from '../types/options'
+import {Placement, DatepickerType} from '../../types/options'
 
 class defaultOptions {
   placement: Placement

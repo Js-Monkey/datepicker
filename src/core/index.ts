@@ -1,13 +1,15 @@
 import Options from '../types/options'
 import validateOptions from './validator/options'
-import defaultOptions from './default-options'
+import defaultOptions from './util/default-options'
 import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
 import {createState} from '../store'
 import {mergeOptions} from '../utils/merge'
 import {watch} from './watch'
 import {State} from "../types/store"
-import {createPopover} from "./dom/create-popover";
+import {createPopover} from "./dom/create-popover"
+import {isFunc} from "../utils/typeOf"
+import {getDate} from "./util/hook"
 
 export default function Picker(): any {
   let state: State
@@ -29,18 +31,15 @@ export default function Picker(): any {
     }
 
     getDate() {
-      const isRange = state.options.type.indexOf('range') > -1
-      const startDate = state.start.date
-      const endDate = state.end.date
-      if (isRange) {
-        return [startDate, endDate]
-      } else {
-        return startDate
-      }
+      return getDate(state)
     }
 
     onChange(cb: (...arg: any) => any) {
-       //todo
+       if(isFunc(cb)){
+         state.onChange = cb
+       }else{
+         console.error('Invalid argument provided. They must be a Function')
+       }
     }
   }
 

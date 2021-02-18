@@ -1,4 +1,5 @@
 import Options, {DatepickerType} from './options'
+import {Fn} from "./utils"
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
@@ -28,10 +29,10 @@ export interface MonthComponents {
 }
 
 
-
-export interface stateComponent<T = null | HTMLElement> {
+export interface stateComponent<T = null | HTMLElement, U = null | Fn> {
   reference: T
   popover: T
+  onChange: U
 }
 
 export interface DateData {

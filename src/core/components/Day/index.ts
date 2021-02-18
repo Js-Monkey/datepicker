@@ -1,6 +1,6 @@
 import {createElement} from '../../../utils/element'
 import {day} from '../../../utils/classes'
-import {dayBarNames} from '../../i18n'
+import {dayBarNames} from '../../util/i18n'
 import {State} from '../../../types/store'
 import {toggleVisibility, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
