@@ -57,7 +57,7 @@ function listenToAnimation(pop: HTMLElement) {
   })
 }
 
-export function createPopover(state: State): Node {
+export function createPopover(state: State): HTMLElement {
   const pop = createElement(
     {
       class: [wrapper],
@@ -66,5 +66,5 @@ export function createPopover(state: State): Node {
     state
   ) as HTMLElement
   listenToAnimation(pop)
-  return pop as Node
+  return pop
 }

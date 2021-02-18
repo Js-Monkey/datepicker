@@ -3,8 +3,6 @@ import {State} from '../../../types/store'
 import {on} from '../../../utils/event'
 import clickOutside from '../../../utils/clickoutside'
 import {listenToScrollParents} from '../../../utils/listenToParents'
-import {set} from '../../../store'
-import {createPopover} from '../../dom/create-popover'
 import Options from '../../../types/options'
 import {isInBody} from '../../../utils/isInBody'
 import {appendChild} from '../../../utils/element'
@@ -17,7 +15,6 @@ const reference = {
     on(ref, () => (state.visible = true))
     on(document.body, Bind(clickOutside, state))
     listenToScrollParents(ref, state)
-    set('popover', createPopover(state))
   },
   notImmediate: true
 }

@@ -1,19 +1,19 @@
-import Better from './core'
+import BD from './core'
 import extend from './utils/extend'
 import Options from './types/options'
 import './svg'
-function createInstance(): typeof Better {
+import {BetterInstance} from "./types/core"
+
+function createInstance(): BetterInstance {
   return function (el: HTMLInputElement, options?: Options) {
+    const Better = BD()
     const context = new Better(el, options)
     const instance = Better
     extend(context, instance)
     return instance
-  } as never
+  }
 }
 
 const better = createInstance()
-better.create = function create(el: HTMLInputElement, options: Options) {
-  return Better.create.call(this, el, options)
-}
 
 export default better

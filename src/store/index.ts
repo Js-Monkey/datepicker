@@ -4,28 +4,21 @@ import Options from '../types/options'
 
 const Store = (function () {
   let uid = 0
-  const states = [] as any[]
-
-  function get(key: keyof State) {
-    return states[uid][key]
-  }
+  const states = [] as State[]
 
   function getState() {
     return states[uid]
   }
 
-  function set(key: keyof State, val: unknown) {
-    states[uid][key] = val
-  }
-
-  function createState(options: Options): void {
+  function createState(options: Options): State {
     const state = initState(options)
     state.type = options.type
     states.push(state)
     uid = states.length - 1
+    return state
   }
 
-  return {get, set, createState, getState}
+  return {createState, getState}
 })()
 
-export const {get, set, createState, getState} = Store
+export const {createState, getState} = Store
