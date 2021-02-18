@@ -35,17 +35,5 @@
         height: 100vh;
     }
 
-    .divide-line {
-        &::after {
-            content: '';
-            display: block;
-            position: relative;
-            border-radius: 0 100% 47% 53% / 0% 0% 100% 100%;
-            background-size: cover;
-            background-color: #313639;
-            height: 80px;
-            z-index: 100;
-        }
-    }
 
 </style>
