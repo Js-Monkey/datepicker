@@ -6,7 +6,7 @@ import {Bind} from "../../src/utils/bind"
 
 describe('click-outside', () => {
   const ref = document.createElement('input')
-  new Better(ref)
+  Better(ref)
   const state = getState()
   document.body.addEventListener('click', Bind(clickOutside, state))
   test('点击输入框会打开弹出框', () => {

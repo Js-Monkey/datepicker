@@ -8,7 +8,7 @@
 <script>
 export default {
     mounted(){
-         this.dp = new better(this.$refs.int.$el,{
+         this.dp = createPicker(this.$refs.int.$el,{
         type:'month-range'
 })
 
@@ -39,7 +39,7 @@ return {
 <script>
 export default {
     mounted(){
-         this.dp = new better(this.$refs.int.$el,{
+         this.dp =  createPicker(this.$refs.int.$el,{
         type:'date-range'
 })
 
@@ -70,7 +70,7 @@ return {
 <script>
 export default {
     mounted(){
-         this.dp = new better(this.$refs.int.$el,{
+         this.dp = createPicker(this.$refs.int.$el,{
         type:'month-range'
 })
 
@@ -102,7 +102,7 @@ return {
 <script>
 export default {
     mounted(){
-         this.dp = new better(this.$refs.int.$el,{
+         this.dp =  createPicker(this.$refs.int.$el,{
         type:'month'
 })
   this.dp.onChange((date)=> this.date = date)
@@ -134,7 +134,7 @@ return {
 <script>
 export default {
     mounted(){
-         this.dp = new better(this.$refs.int.$el,{
+         this.dp = createPicker(this.$refs.int.$el,{
         type:'date'
 })
 
