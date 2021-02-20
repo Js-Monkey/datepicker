@@ -10,18 +10,20 @@ import {State} from "../types/store"
 import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
 import {getDate} from "./util/hook"
+import {BetterPicker} from "../types/core"
 
-export default function Picker(): any {
+export default function Picker(): BetterPicker {
   let state: State
 
   class better {
+    options: Options
 
     constructor(el: HTMLInputElement, options?: Options) {
-      const opt = mergeOptions(new defaultOptions(), options) as Options
-      this.create(el, opt)
+      this.options = mergeOptions(new defaultOptions(), options) as Options
+      better.create(el, this.options)
     }
 
-    create(el: HTMLInputElement, options: Options): void {
+    static create(el: HTMLInputElement, options: Options): void {
       const input = findInputElement(el)
       if (!isInputElement(input) || !validateOptions(options)) return
       state = createState(options)
@@ -35,11 +37,11 @@ export default function Picker(): any {
     }
 
     onChange(cb: (...arg: any) => any) {
-       if(isFunc(cb)){
-         state.onChange = cb
-       }else{
-         console.error('Invalid argument provided. They must be a Function')
-       }
+      if (isFunc(cb)) {
+        state.onChange = cb
+      } else {
+        console.error('Invalid argument provided. They must be a Function')
+      }
     }
   }
 

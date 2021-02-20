@@ -1,9 +1,10 @@
 import Options from "./options"
 
-export interface Better {
-  (el: HTMLInputElement, options?: Options): void
+export interface BetterPicker {
+  new(el: HTMLInputElement, options?: Options): BetterPickerInstance
 }
 
-export interface BetterInstance {
-  (el: HTMLInputElement, options?: Options): Better
+
+export interface BetterPickerInstance {
+  options: Options
 }
