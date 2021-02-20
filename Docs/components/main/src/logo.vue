@@ -1,6 +1,6 @@
 <template>
     <div class="better-logo">
-        <f-icon width="23rem" name="better"></f-icon>
+        <f-icon width="23rem" name="better1"></f-icon>
         <div>
             <f-button @click="toStart" class="better-logo-enter" type="warn"> 快速上手 →</f-button>
         </div>

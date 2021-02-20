@@ -4,8 +4,8 @@ import Options from './types/options'
 import './svg'
 import {BetterInstance} from "./types/core"
 
-function createInstance(): BetterInstance {
-  return function (el: HTMLInputElement, options?: Options) {
+function createInstance(): any {
+  return function(el: HTMLInputElement, options?: Options): BetterInstance {
     const Better = BD()
     const context = new Better(el, options)
     const instance = Better

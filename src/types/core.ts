@@ -5,5 +5,5 @@ export interface Better {
 }
 
 export interface BetterInstance {
-  (el: HTMLInputElement, options?: Options): Better
+  new (el: HTMLInputElement, options?: Options): Better
 }
