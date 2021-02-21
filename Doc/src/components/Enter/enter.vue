@@ -15,8 +15,10 @@ name: "Enter",
 <style scoped lang="scss">
 @import "../../assets/style/global";
   .enter{
+    min-height: calc(100vh - 66px);
     background: $bg-2;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 </style>

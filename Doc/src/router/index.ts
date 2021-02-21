@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from "vue-router"
 import Enter from '../components/Enter'
-import Document from '../components/Document.vue'
+import Document from '../components/Document'
 
 const history = createWebHashHistory()
 const router = createRouter({

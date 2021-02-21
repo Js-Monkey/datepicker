@@ -154,18 +154,16 @@
             "
             ref="button"
             @click="onClick"
-            @focus="focusOn"
-            @blur="blurIt"
 
     >
         <b-icon :name="icon"
-                :color="color"
+                :fill="fill"
                 :font-size="iconSize"
                 :class="{'b-button-loading':loading}"
                 v-if="icon">
         </b-icon>
         <b-icon name="loading"
-                :color="color"
+                :fill="fill"
                 :font-size="iconSize"
                 class="b-button-loading-icon"
                 :class="{loading:loading}"
@@ -232,15 +230,9 @@
             return ['big', 'medium', 'small', 'mini'].indexOf(val) > -1
           }
         },
-        color: {
+        fill: {
           type: String,
-          default() {
-            if (this.type) {
-              return 'white'
-            } else {
-              return 'black'
-            }
-          }
+          default: '#ffffff'
         },
 
         loading: {
