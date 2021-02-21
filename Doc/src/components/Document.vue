@@ -1,10 +1,10 @@
 <template>
-123
+  123
 </template>
 
 <script>
 export default {
-name: "Document"
+  name: "Document"
 }
 </script>
 

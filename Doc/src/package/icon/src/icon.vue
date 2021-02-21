@@ -7,6 +7,7 @@
 <script lang="ts">
 import '../../../assets/svg/svg'
 import {defineComponent, toRefs} from 'vue'
+import {isNumber} from "../../../../../src/utils/typeOf";
 
 export default defineComponent({
   name: 'b-icon',
@@ -16,7 +17,6 @@ export default defineComponent({
       default: ''
     },
     fontSize: {
-      type: Number,
       default: 20
     },
     fill: {
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup(props) {
     let {size} = toRefs(props)
-    size += 'px'
+    if (isNumber(size)) size += 'px'
     return {
       size
     }
