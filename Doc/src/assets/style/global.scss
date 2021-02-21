@@ -1,4 +1,4 @@
-@import "color/color";
+@import "./color";
 
 
 $text:$grey-7;
@@ -16,6 +16,9 @@ $link-3:$theme-color-6;
 $disabled-text:$grey-3;
 $disabled-bg:$grey-6;
 
+
+
+
 $border-color:$grey-3;
 $border-hover-color:$grey-7;
 $border-radius: 4px;
@@ -24,29 +27,13 @@ $border-solid:1px solid $border-color;
 
 $bg-color-1:$grey-1;
 
-$primary-1:$theme-color;
-$primary-2:$theme-color-5;
-$error-1:$red;
-$error-2:$red-5;
-$success-1:$green;
-$success-2:$green-5;
-$warn-1:$orange;
-$warn-2:$orange-5;
-$info-1:$grey;
-$info-2:$grey-5;
 
 $shadow-color:$grey-5;
-$shadow-focus-light-color:$theme-color;
-$shadow-focus-dark-color:$theme-color-7;
 
 $shadow-up: 0 -1px 5px $shadow-color;
 $shadow-down: 0 1px 5px $shadow-color;
 $shadow-left: -1px 0 5px $shadow-color;
 $shadow-right: 1px 0 5px $shadow-color;
-$shadow-hover-1: 0 0 3px 1px $theme-color-5;
-$shadow-hover-2:0 0 3px 1px $theme-color;
-$shadow-focus-1: 0 0 10px 1px $theme-color-5, 0 0 1px $theme-color-6;
-$shadow-focus-2:0 0 3px 1px $theme-color, 0 0 1px $theme-color-6;
 
 $button-active-bg: #ffffff;
 $button-bg: $grey-1;
@@ -60,6 +47,6 @@ $font-size-large:16px;
 $font-size:14px;
 $font-size-small:12px;
 
-$animation-duration:.45s;
+$animation-duration:.32s;
 
 

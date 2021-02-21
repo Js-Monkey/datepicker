@@ -26,15 +26,6 @@ $green-5:darken($green,10);
 $green-6:darken($green,20);
 $green-7:darken($green,30);
 
-$theme-color:#26acee;
-$theme-color-1:lighten($theme-color,30);
-$theme-color-2:lighten($theme-color,20);
-$theme-color-3:lighten($theme-color,10);
-$theme-color-4:lighten($theme-color,0);
-$theme-color-5:darken($theme-color,10);
-$theme-color-6:darken($theme-color,20);
-$theme-color-7:darken($theme-color,30);
-
 $grey:#c2c5cb;
 $grey-1:lighten($grey,30);
 $grey-2:lighten($grey,20);
@@ -43,3 +34,13 @@ $grey-4:lighten($grey,0);
 $grey-5:darken($grey,10);
 $grey-6:darken($grey,20);
 $grey-7:darken($grey,30);
+
+
+$black:#13181b;
+$black-1:lighten($black,30);
+$black-2:lighten($black,20);
+$black-3:lighten($black,10);
+$black-4:lighten($black,0);
+$black-5:darken($black,10);
+$black-6:darken($black,20);
+$black-7:darken($black,30);

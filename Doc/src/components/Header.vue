@@ -1,32 +1,23 @@
 <template>
-
+  <div class="header">
+    <b-icon name="better1"></b-icon>
+  </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import {ref, defineComponent} from 'vue'
+
 export default defineComponent({
-  name: 'Header',
-  setup: () => {
-    const count = ref(0)
-    return { count }
-  }
+  name: 'Header'
 })
 </script>
 
-<style scoped>
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+@import "./Doc/src/assets/style/color";
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
+$header-bg: $black;
+.header {
+  height: 66px;
+  background: $header-bg;
 }
 </style>
