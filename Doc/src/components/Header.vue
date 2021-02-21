@@ -15,7 +15,7 @@
     </div>
     <div class="header-github">
       <a href="https://github.com/Js-Monkey/better-datepicker" target="_blank">
-        <b-icon :font-size="30" name="github1"></b-icon>
+        <b-icon :font-size="23" name="github1"></b-icon>
       </a>
     </div>
   </div>
@@ -41,8 +41,9 @@ export default defineComponent({
 @import "../assets/style/global";
 
 $header-bg: $black;
+$header-height: 66px;
 .header {
-  height: 66px;
+  height: $header-height;
   display: flex;
   align-items: center;
   padding: $padding-left-more;
@@ -86,18 +87,20 @@ $header-bg: $black;
   }
 
   &-github {
-    width: 100px;
-    height: 100%;
-    transform: skewX(-135deg) translateX(100px);
-    background: $bg-2;
-
+    margin-left: 50px;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    a{
+      margin-top: 3px;
+      display: inline-block;
+    }
     svg {
       transition: .32s all;
       cursor: pointer;
-      transform: skewX(-45deg) rotate(45deg) translate(10px, -4px);
 
       &:hover {
-        transform: skewX(-45deg) rotate(53deg) translate(10px, -4px);
+        transform: rotate(8deg) ;
       }
     }
   }

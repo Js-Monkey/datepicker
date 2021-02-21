@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import Router from './router/index'
-import Icon from './package/icon'
+import {useComponent} from "./package";
 const app = createApp(App)
-app.use(Icon)
+useComponent(app)
 app.use(Router)
 app.mount('#app')
