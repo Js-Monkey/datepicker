@@ -1,5 +1,6 @@
 <template>
   <Header/>
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -21,6 +22,9 @@ export default defineComponent({
 body{
   margin: 0;
   padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 #app {
 
