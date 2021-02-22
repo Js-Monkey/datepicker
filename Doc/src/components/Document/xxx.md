@@ -1,9 +1,14 @@
+# 日期选择器
+
+## 基本用法
+::: 坑坑坑
 ```html
-<Input width="300" ref="int" />
+<b-button @click="getDate">获取</b-button>
 <script>
 export default {
     mounted(){
-           const name =123
+
+
     },
 data(){
 return {
@@ -12,14 +17,13 @@ return {
 },
     methods:{
     getDate(){
-        console.log('fuck')
+        console.log(this.dp.getDate())
     }
 
-},
-template:
-`<Input width="300" ref="int" />`
+}
 
 }
 </script>
 
 ```
+:::

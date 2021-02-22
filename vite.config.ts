@@ -1,5 +1,5 @@
 import Vue from '@vitejs/plugin-vue'
-import md from './Doc/plugins/md-loader'
+import md from './Doc/src/plugins/md-loader'
 console.log(md)
 export default {
   root: './Doc',
