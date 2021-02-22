@@ -5,7 +5,6 @@
 <script>
 import xxx from './xxx.md'
 
-console.log(xxx)
 export default {
   name: "Document",
   components:{xxx},
