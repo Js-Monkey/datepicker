@@ -1,7 +1,11 @@
 declare module '*.vue' {
-  import { App } from 'vue'
-  const component: {
-    install(app: App): void
-  }
-  export default component
+  import { ComponentOptions } from 'vue'
+  const Component: ComponentOptions
+  export default Component
+}
+
+declare module '*.md' {
+  import { ComponentOptions } from 'vue'
+  const Component: ComponentOptions
+  export default Component
 }

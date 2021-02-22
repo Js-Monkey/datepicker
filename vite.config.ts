@@ -1,7 +1,12 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-export default defineConfig({
+import Vue from '@vitejs/plugin-vue'
+import md from './Doc/plugins/md-loader'
+console.log(md)
+export default {
   root: './Doc',
-  plugins: [vue()],
-})
+  plugins: [
+    Vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    md()
+  ],
+}

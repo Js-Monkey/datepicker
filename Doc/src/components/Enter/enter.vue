@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Logo from './logo.vue'
 export default {
 name: "Enter",
