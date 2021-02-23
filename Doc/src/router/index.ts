@@ -8,7 +8,7 @@ const router = createRouter({
   history,
   routes:[
     {path:'/', component: Enter},
-    {path:'/doc', component: XX},
+    {path:'/doc', component: Document},
   ]
 })
 

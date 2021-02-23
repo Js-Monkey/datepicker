@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import xxx from './xxx.md'
+import xxx from './app.md'
 
 export default {
   name: "Document",

@@ -1,5 +1,5 @@
-import type { Plugin } from 'vite'
-import transformToVue from "./md-loader"
+import type {Plugin} from 'vite'
+import transformToVue from "./snippet"
 
 function MarkDownLoader(): Plugin {
 
@@ -7,8 +7,7 @@ function MarkDownLoader(): Plugin {
     name: 'vite-plugin-md',
     enforce: 'pre',
     transform(raw, id) {
-      if (id.endsWith('.md'))
-        return transformToVue(raw)
+      if (id.endsWith('.md')) return transformToVue(raw)
     },
   }
 }
