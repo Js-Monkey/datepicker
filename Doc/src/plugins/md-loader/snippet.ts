@@ -1,5 +1,6 @@
-import MarkdownIt from 'markdown-it'
 import toMd from "./markdown";
+import getRenderComponent from "./render";
+import {codeBlock, h2} from "./markdownTag";
 /**
  * name: markdown to vue component
  */
@@ -17,24 +18,23 @@ import toMd from "./markdown";
  */
 
 
-const h2 = '##'
-const codeBlock = ':::'
-
 export default function transformToVue(source: string): string {
   const snippet = source.split(h2)
   const title = toMd(snippet.shift())
   const snippetStr = snippet.join(h2)
   const componentsEndIdx = snippetStr.lastIndexOf(codeBlock) + codeBlock.length
   const components = snippetStr.slice(0, componentsEndIdx).split(h2)
-  console.log(components)
+  const {componentNames, componentsRender} = getRenderComponent(components)
   return `
  <template>
    ${title}
-
+   ${componentNames}
  </template>
- <script >
+ <script>
+ import {defineComponent} from 'vue'
  export default {
-
+     name: 'demo-card',
+     components: ${componentsRender}
  }
 </script>
 

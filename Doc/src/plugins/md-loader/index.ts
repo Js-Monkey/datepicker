@@ -4,7 +4,7 @@ import transformToVue from "./snippet"
 function MarkDownLoader(): Plugin {
 
   return {
-    name: 'vite-plugin-md',
+    name: 'vite-plugin-markdown-to-vue',
     enforce: 'pre',
     transform(raw, id) {
       if (id.endsWith('.md')) return transformToVue(raw)
