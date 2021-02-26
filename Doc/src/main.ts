@@ -6,6 +6,10 @@ const app = createApp(App)
 useComponent(app)
 import highlightJs from 'highlight.js'
 import './assets/style/hightlight.scss'
+
+highlightJs.configure({
+  languages: ['js']
+})
 Router.afterEach(() => {
   nextTick(()=>{
    document.querySelectorAll('pre code').forEach(block=>highlightJs.highlightBlock(block))
