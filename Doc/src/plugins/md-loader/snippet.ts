@@ -32,6 +32,7 @@ export default function transformToVue(source: string): string {
  </template>
  <script>
  import {defineComponent} from 'vue'
+ import * as Vue from 'vue'
  export default {
      name: 'demo-card',
      components: ${componentsRender}

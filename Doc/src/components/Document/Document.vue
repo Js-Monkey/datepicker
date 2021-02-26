@@ -7,7 +7,7 @@ import xxx from './app.md'
 
 export default {
   name: "Document",
-  components:{xxx},
+  components: {xxx},
   mounted() {
   }
 }

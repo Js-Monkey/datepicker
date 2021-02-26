@@ -1,18 +1,11 @@
-import {codeBlock, htmlBlock, scriptTag} from "./markdownTag";
-import toMd from "./markdown";
+import {codeBlock, htmlBlock, scriptTag} from "./markdownTag"
+import toMd from "./markdown"
+import {compileTemplate, SFCTemplateCompileOptions} from '@vue/compiler-sfc'
 
 interface VueComponents {
   componentNames: string
   componentsRender: string
 }
-
-
-function letStringToOneLine(str: string): string {
-  return str.replace(/\n/g, '')
-    .replace(/\r/gi, '').trim()
-
-}
-
 
 export default function getRenderComponent(demos: string[]): VueComponents {
   const componentNames = demos.map((_, idx) => '<component' + idx + '/>').join('')
@@ -23,14 +16,16 @@ export default function getRenderComponent(demos: string[]): VueComponents {
       demoCode = cut.join('')
       return snippet
     }
+
     const title = filterCode(codeBlock)
     const content = filterCode(htmlBlock)
     const html = filterCode(scriptTag)
     const script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script)
-
-    const template = letStringToOneLine(
-      `<div class=demo-card>
+    const options: SFCTemplateCompileOptions = {
+      id: String(Date.parse(new Date() as any)),
+      source: `
+     <div class=demo-card>
              <div class=demo>${html}</div>
              <div class=demo-description>
                <h2>${title}</h2>
@@ -38,14 +33,23 @@ export default function getRenderComponent(demos: string[]): VueComponents {
                <div class=highlight>${mdScript}</div>
              </div>
            </div>
-  `
-    )
-    return componentsCode + `"component${idx}":defineComponent({
-         template: "${template}",
-         mounted() {
-            ${script}
-         }
-      }),`
+      `,
+      filename: 'inline-component',
+      compilerOptions: {
+        mode: 'function',
+      },
+    }
+    const compiled = compileTemplate(options)
+    const renderFunction = `${(compiled.code)}`
+    return componentsCode + `component${idx}:(function (){
+            const render = (function(){  ${renderFunction}})()
+             return defineComponent({
+               render,
+               mounted(){
+                ${script}
+               }
+            })
+         })(),`
   }, '')
   const componentsRender = `{${_componentsCode}}`
   return {

@@ -7,7 +7,6 @@
 <script lang="ts">
 import Logo from './logo.vue'
 import {defineComponent} from 'vue'
-const a = 123
 export default {
   name: "Enter",
   components: {
