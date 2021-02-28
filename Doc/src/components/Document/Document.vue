@@ -1,13 +1,11 @@
 <template>
-  <xxx></xxx>
+  document
 </template>
 
 <script>
-import xxx from './app.md'
 
 export default {
   name: "Document",
-  components: {xxx},
   mounted() {
   }
 }

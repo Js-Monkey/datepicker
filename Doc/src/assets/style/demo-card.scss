@@ -1,0 +1,31 @@
+@import "./color";
+.demo{
+  margin-top: 80px;
+  width: 100vw;
+  font-family: Futura;
+  strong{
+    color: #c0392b  ;
+  }
+  &-title{
+    h1{
+      color: rgb(244, 224, 233);
+      text-align: center;
+      letter-spacing: 1px;
+      color: rgb(244, 224, 233);
+    }
+  }
+  &-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffb311;
+    code{
+      border-radius: 7px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    &-description{
+      width: 50vw;
+    }
+  }
+}

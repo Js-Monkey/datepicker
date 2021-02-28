@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="header-logo">
-      <b-icon name="better" :font-size="60"></b-icon>
+      <router-link :to="'/'">
+        <b-icon name="better" :font-size="60"></b-icon>
+      </router-link>
     </div>
     <div class="header-nav">
       <b-icon :font-size="14" name="left"></b-icon>
@@ -29,8 +31,8 @@ export default defineComponent({
   data() {
     return {
       routerItems: [
-        {name: '首页', value: ''},
-        {name: '安装', value: 'doc'},
+        {name: 'Home', value: ''},
+        {name: 'Document', value: 'doc'},
       ],
     }
   }
@@ -65,12 +67,12 @@ $header-height: 66px;
 
     &-item {
       margin: 0 9px;
-
+      position: relative;
       &::after {
         position: absolute;
         display: block;
         content: '';
-        width: 25px;
+        width: 100%;
         height: 2px;
         background-color: white;
         transition: all .2s;

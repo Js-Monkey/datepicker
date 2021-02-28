@@ -18,16 +18,16 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     }
 
     const title = filterCode(codeBlock)
-    const content = filterCode(htmlBlock)
+    const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
-    const script = filterCode('```').split('</script')[0]
+    let script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script)
     const options: SFCTemplateCompileOptions = {
       id: String(Date.parse(new Date() as any)),
       source: `
      <div class=demo-card>
-             <div class=demo>${html}</div>
-             <div class=demo-description>
+             <div class=demo-card-component>${html}</div>
+             <div class=demo-card-description>
                <h2>${title}</h2>
                <div class=des>${content}</div>
                <div class=highlight>${mdScript}</div>
@@ -41,12 +41,15 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     }
     const compiled = compileTemplate(options)
     const renderFunction = `${(compiled.code)}`
+    const filterImportField = script.split('import')
+    script = filterImportField[filterImportField.length -1 ]
+    console.log(script)
     return componentsCode + `component${idx}:(function (){
             const render = (function(){  ${renderFunction}})()
              return defineComponent({
                render,
                mounted(){
-                ${script}
+                 ${script}
                }
             })
          })(),`

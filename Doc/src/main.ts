@@ -5,10 +5,10 @@ import {useComponent} from "./package"
 const app = createApp(App)
 useComponent(app)
 import highlightJs from 'highlight.js'
-import './assets/style/hightlight.scss'
+import './assets/style/index.scss'
 
 highlightJs.configure({
-  languages: ['js']
+  languages: ['js', 'html']
 })
 Router.afterEach(() => {
   nextTick(()=>{
