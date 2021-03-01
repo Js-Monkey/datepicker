@@ -14,7 +14,7 @@
 <script lang="ts">
 import Logo from './components/logo.vue'
 import installCard from './components/install-card.vue'
-import importStyle from './Demo/importStyle/index.md'
+import importStyle from './Demo/start/index.md'
 export default {
   name: "Enter",
   components: {
@@ -40,7 +40,7 @@ export default {
     margin-top: 80px;
     background: #264b61;
     text-align: center;
-    color: #cceaf3;
+    color: #f9fdfe;
     padding: 9px;
     font-family: Menlo;
   }

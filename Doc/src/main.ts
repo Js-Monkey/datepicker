@@ -8,12 +8,12 @@ import highlightJs from 'highlight.js'
 import './assets/style/index.scss'
 
 highlightJs.configure({
-  languages: ['js', 'html']
+  languages: ['js', 'html'],
 })
-Router.afterEach(() => {
+document.addEventListener('DOMContentLoaded', (event) => {
   nextTick(()=>{
-   document.querySelectorAll('pre code').forEach(block=>highlightJs.highlightBlock(block))
- })
-})
+    document.querySelectorAll('pre code').forEach(block=>highlightJs.highlightBlock(block))
+  })
+});
 app.use(Router)
 app.mount('#app')

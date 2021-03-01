@@ -45,7 +45,14 @@ a{
 .hljs-attribute,
 .hljs-name,
 .hljs-variable {
-  color: #ecae2e;
+  color: #ffb311;
+}
+
+.hljs-attr{
+  color: #1ea83f;
+}
+.hljs-title{
+  color: #6ed766;
 }
 
 .hljs-params {
@@ -53,7 +60,7 @@ a{
 }
 
 .hljs-string {
-  color: #c62524;
+  color: #e84c3b;
 }
 
 .hljs-subst,
