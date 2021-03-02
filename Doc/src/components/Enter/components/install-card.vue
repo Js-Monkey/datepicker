@@ -19,8 +19,8 @@ export default {
       default: 'yarn'
     }
   },
-  setup(){
-    function copy(e: _Event){
+  methods: {
+    copy(e: _Event) {
       const transfer = document.createElement('input')
       document.body.appendChild(transfer)
       transfer.value = e.target.innerText
@@ -28,11 +28,9 @@ export default {
       if (document.execCommand) {
         document.execCommand('copy')
         console.log('复制成功')
+        this.$message('Copy succeeded')
       }
       document.body.removeChild(transfer)
-    }
-    return {
-      copy
     }
   }
 }

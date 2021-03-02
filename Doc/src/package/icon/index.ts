@@ -6,4 +6,4 @@ Icon.install = (app: App): void => {
   app.component(Icon.name, Icon)
 }
 
-export default Icon as VueComponent
+export default Icon as unknown as VueComponent

@@ -17,6 +17,7 @@ export default defineComponent({
       default: ''
     },
     fontSize: {
+      type: [String, Number],
       default: 20
     },
     fill: {
@@ -25,10 +26,9 @@ export default defineComponent({
     }
   },
   setup(props) {
-    let {size} = toRefs(props)
-    if (isNumber(size)) size += 'px'
+    let {fontSize} = toRefs(props)
     return {
-      size
+      fontSize
     }
   }
 })
