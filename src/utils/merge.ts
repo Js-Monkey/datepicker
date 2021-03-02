@@ -27,6 +27,6 @@ export function mergeOptions(source: UtilObject, target?: UtilObject): UtilObjec
   return mergeOpt
 }
 
-export function mergeClasses(...args: (string | string[] | undefined)[]): string {
+export function mergeClasses(...args: (string | undefined)[]): string {
   return args.reduce((classes: string, arg) => (!arg ? classes : classes + ' ' + (isArray(arg) ? arg.join(' ') : arg)), '').trim()
 }
