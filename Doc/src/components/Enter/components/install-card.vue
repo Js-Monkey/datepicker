@@ -48,11 +48,26 @@ export default {
     border-bottom-left-radius: 5px;
   }
   &-code{
+    position: relative;
     padding: 10px 15px;
     cursor: pointer;
     transition: background-color .31s ease;
-    &:hover{
-      background: #ffb311;
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: calc(100% - 30px);
+      height: 2px;
+      background-color: white;
+      transition: all .2s;
+      opacity: 0;
+    }
+
+    &:hover {
+      &::after {
+        transform: translateY(2px);
+        opacity: 1;
+      }
     }
   }
   background: #ffb311a6;
