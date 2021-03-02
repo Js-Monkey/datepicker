@@ -1,6 +1,7 @@
 import {h, render} from 'vue'
 import MessageComponent from './message.vue'
 import {DefineComponent} from 'vue'
+
 let timer = null
 const queue = []
 
@@ -11,20 +12,23 @@ const Message = function (message: string): void {
   render(vm, container)
   vm.component.ctx.toggleVisibility()
   document.body.appendChild(container)
-  queue.push(vm)
+  queue.push({vm, container})
   timer = setTimeout(() => {
-    closeMessage(vm)
+    clearQueue()
   }, 1500)
 }
 
 function clearQueue() {
   clearTimeout(timer)
+  console.log(queue)
   queue.forEach(vm => closeMessage(vm))
+  queue.length = 0
 }
 
-function closeMessage(vm) {
+function closeMessage({vm, container}) {
   vm.component.ctx.toggleVisibility()
-
+  vm = null
+  document.body.removeChild(container)
 }
 
 
