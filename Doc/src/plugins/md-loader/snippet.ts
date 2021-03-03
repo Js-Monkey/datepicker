@@ -1,6 +1,7 @@
 import getRenderComponent from "./render"
 import {codeBlock, h2} from "./markdownTag"
 import toMd from "./markdown"
+import Better from '../../../../src/xx'
 /**
  * name: markdown to vue component
  */
@@ -16,7 +17,6 @@ import toMd from "./markdown"
  *</script>
  *
  */
-
 
 export default function transformToVue(source: string): string {
   const snippet = source.split(h2)
@@ -37,6 +37,7 @@ export default function transformToVue(source: string): string {
  <script>
  import {defineComponent} from 'vue'
  import * as Vue from 'vue'
+
  export default {
      name: 'demo-card',
      components: ${componentsRender}

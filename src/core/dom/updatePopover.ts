@@ -45,7 +45,7 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
 export function setPopoverLocation(): void {
   const {popover, reference, options} = this
   const {placement} = options
-  const rect = reference?.getBoundingClientRect()
+  const rect = reference.getBoundingClientRect()
   setPosition(popover as HTMLElement, placement as 'left', rect as DOMRect)
   setTransform(popover as HTMLElement, placement as 'left')
 }

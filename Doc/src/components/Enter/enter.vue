@@ -2,8 +2,8 @@
   <div class="enter">
     <Logo></Logo>
     <div class="install">
-      <install-card icon="npm" text="npm i bettter-datepicker"></install-card>
-      <install-card icon="yarn" text="yarn add bettter-datepicker"></install-card>
+      <install-card icon="npm" text="npm i better-datepicker"></install-card>
+      <install-card icon="yarn" text="yarn add better-datepicker"></install-card>
     </div>
     <div class="code">
       <importStyle></importStyle>

@@ -55,7 +55,7 @@ export function createElement(opt: CreateElementOptions, state: State): Node {
 
 export function appendChild(children: Element | Element[], parent: Element = document.body): void {
   if (isArray(children)) {
-    children.forEach(child => parent?.appendChild(child))
+    children.forEach(child => parent.appendChild(child))
   } else {
     parent.appendChild(children)
   }
