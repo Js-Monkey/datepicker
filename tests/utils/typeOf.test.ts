@@ -1,14 +1,14 @@
 import {isString, isArray, isFunc, isNumber, isObject} from '../../src/utils/typeOf'
 
 describe('type-of', () => {
-  test('variable is number', () => {
+  it('should return whether value is Number, NaN is not a Number type here', () => {
     expect(isNumber(12)).toBeTruthy()
     expect(isNumber('123')).toBeFalsy()
     expect(isNumber(NaN)).toBeFalsy()
     expect(isNumber(Number('123'))).toBeTruthy()
   })
 
-  test('variable is Array', () => {
+  it('should return whether value  is Array', () => {
     expect(isArray(12)).toBeFalsy()
     expect(isArray([123])).toBeTruthy()
     expect(isArray(Array.from([123]))).toBeTruthy()
@@ -17,7 +17,7 @@ describe('type-of', () => {
     })()
   })
 
-  test('variable is Function', () => {
+  it('should return whether value is Function', () => {
     expect(isFunc(12)).toBeFalsy()
     expect(isFunc({})).toBeFalsy()
 
@@ -32,7 +32,7 @@ describe('type-of', () => {
     expect(isFunc(testFn)).toBeTruthy()
   })
 
-  test('variable is String', () => {
+  it('should return whether value is String', () => {
     expect(isString(12)).toBeFalsy()
     expect(isString('123')).toBeTruthy()
     expect(isString(Number('123'))).toBeFalsy()
@@ -42,7 +42,7 @@ describe('type-of', () => {
     expect(isString(testObj.toString())).toBeTruthy()
   })
 
-  test('variable is Object', () => {
+  it('should return whether value is Object', () => {
     expect(isObject({})).toBeTruthy()
     expect(isObject(Object.create(null))).toBeTruthy()
     expect(isObject([])).toBeFalsy()

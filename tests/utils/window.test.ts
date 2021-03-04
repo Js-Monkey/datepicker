@@ -17,13 +17,13 @@ describe('window', () => {
     level1.appendChild(level2)
     body.appendChild(level1)
   })
-  test('function getNodeName', () => {
+  it('should get HTMLElement nodeName', () => {
     expect(getNodeName(null)).toBeNull()
     expect(getNodeName(level1)).toEqual('div')
     expect(getNodeName(level2)).toEqual('span')
   })
 
-  test('function getParentNodeName', () => {
+  it('should get HTMLElement parentNode name', () => {
     expect(getParentNode(level2)).toEqual(level1)
     const body = document.body
     const html = document.querySelector('html')
@@ -31,21 +31,21 @@ describe('window', () => {
     expect(getParentNode(html as HTMLElement)).toEqual(html)
   })
 
-  test('function isBody', () => {
+  it('should return whether value is DomBody', () => {
     expect(isBody(body)).toBeTruthy()
     expect(isBody(level1)).toBeFalsy()
     expect(isBody(level2)).toBeFalsy()
     expect(isBody(html as HTMLElement)).toBeTruthy()
   })
 
-  test('function isNode', () => {
+  it('should return whether value is Node', () => {
     expect(isNode(body)).toBeTruthy()
     expect(isNode(level1)).toBeTruthy()
     expect(isNode(level2)).toBeTruthy()
     expect(isNode(svg)).toBeTruthy()
   })
 
-  test('function getScrollParents', () => {
+  it('should return all parentNodes that could be scroll', () => {
     expect(getScrollParents(level2)).toEqual([])
     level1.style.overflow = 'scroll'
     expect(getScrollParents(level2)).toEqual([level1])

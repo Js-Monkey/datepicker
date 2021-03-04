@@ -1,5 +1,5 @@
 import {ComponentStatus, Range, State} from "../../../../types/store"
-import {dateDiff, getYearAndMonth, rangeSort} from "../../../../utils/date"
+import {dateDiff, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange} from "../../../util/hook";
 
@@ -26,7 +26,7 @@ export const startDate: Sub = {
   key: {name: 'start', childKey: ['date']},
   cb(date: string) {
     const {start} = this
-    ;[start.year, start.month] = getYearAndMonth(date)
+    ;[start.year, start.month] = transformDateToArray(date)
     dispatchDateChange(this)
   },
   notImmediate: true

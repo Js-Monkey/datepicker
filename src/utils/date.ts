@@ -10,7 +10,7 @@ export function getDay(date: Date = new Date()): number {
   return date.getDate()
 }
 
-export function getYearAndMonth(date: string): number[] {
+export function transformDateToArray(date: string): number[] {
   return date.split('/').map(str => Number(str))
 }
 
