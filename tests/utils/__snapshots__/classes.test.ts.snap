@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`classes className 1`] = `
-Object {
-  "day": "better-datepicker-day",
-  "defaultCursor": "better-datepicker-default-cursor ",
-  "header": "better-datepicker-header",
-  "month": "better-datepicker-month",
-  "today": "better-datepicker-today",
-  "wrapper": "better-datepicker-wrapper",
-  "year": "better-datepicker-year",
-}
-`;
-
 exports[`classes produces classnames of the Datepicker 1`] = `
 Object {
   "day": "better-datepicker-day",
