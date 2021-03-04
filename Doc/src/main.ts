@@ -6,7 +6,8 @@ const app = createApp(App)
 useComponent(app)
 import highlightJs from 'highlight.js'
 import './assets/style/index.scss'
-
+import {createDatePicker} from '../../src'
+app.config.globalProperties.createDatePicker = createDatePicker
 highlightJs.configure({
   languages: ['js', 'html'],
 })

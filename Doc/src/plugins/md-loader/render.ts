@@ -10,32 +10,31 @@ interface VueComponents {
 export default function getRenderComponent(demos: string[]): VueComponents {
   const componentNames = demos.map((_, idx) => '<component' + idx + '/>').join('')
   const _componentsCode = demos.reduce((componentsCode, demoCode, idx) => {
-    function filterCode(name: string) {
+    function filterCode(name: string): string {
       const cut = demoCode.split(name)
       const snippet = cut.shift()
       demoCode = cut.join('')
-      return snippet
+      return snippet || ''
     }
 
     const title = filterCode(codeBlock)
     const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
     let script = filterCode('```').split('</script')[0]
-    const mdScript = toMd(script)
+    const mdScript = toMd(script).replace('this.','')
+    const source = `
+    <div class=demo-card>
+       <div class=demo-card-component>${html}</div>
+         <div class=demo-card-description>
+            <h2>${title}</h2>
+            <div class=des>${content}</div>
+            <div class=highlight>${mdScript}</div>
+         </div>
+   </div>
+    `
     const options: SFCTemplateCompileOptions = {
       id: String(Date.parse(new Date() as any)),
-      source: `
-<demo-card>
-      <div class=demo-card>
-         <div class=demo-card-component>${html}</div>
-           <div class=demo-card-description>
-              <h2>${title}</h2>
-              <div class=des>${content}</div>
-              <div class=highlight>${mdScript}</div>
-           </div>
-     </div>
-</demo-card>
-      `,
+      source,
       filename: 'inline-component',
       compilerOptions: {
         mode: 'function',
@@ -50,7 +49,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
              return defineComponent({
                render,
                mounted(){
-                 ${script}
+                    try{${script}}catch(err){}
                }
             })
          })(),`

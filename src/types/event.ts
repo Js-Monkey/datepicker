@@ -14,11 +14,5 @@ export interface _Event {
   offsetX: number
   offsetY: number
   path: any[]
-  target: {
-    innerText: string
-    dataset: {
-      view: 'next' | 'pre'
-    }
-    parentNode: ParentNode
-  }
+  target: HTMLElement
 }
