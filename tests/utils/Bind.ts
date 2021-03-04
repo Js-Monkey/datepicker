@@ -1,7 +1,7 @@
 import {Bind} from "../../src/utils/bind"
 
 describe('Bind', () => {
-  test('supports extends arguments ', () => {
+  test('should merge parameters ', () => {
     function testFn(name: string, age: number) {
       return name + ': ' + age
     }
