@@ -6,6 +6,6 @@ export default {
     Vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    md()
+    md(),
   ],
 }

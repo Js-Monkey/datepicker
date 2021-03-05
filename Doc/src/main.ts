@@ -12,8 +12,8 @@ highlightJs.configure({
   languages: ['js', 'html'],
 })
 document.addEventListener('DOMContentLoaded', (event) => {
-  nextTick(()=>{
-    document.querySelectorAll('pre code').forEach(block=>highlightJs.highlightBlock(block))
+  nextTick(() => {
+    document.querySelectorAll('pre code').forEach(block => highlightJs.highlightBlock(block))
   })
 });
 app.use(Router)
