@@ -6,7 +6,7 @@ function isMouseEvent(value: any) {
   return Object.prototype.toString.call(value) === '[object MouseEvent]'
 }
 
-describe('Event: on', () => {
+describe('Event', () => {
   let div: HTMLElement, listener: any
   beforeEach(() => {
     div = createEL()
@@ -17,20 +17,20 @@ describe('Event: on', () => {
     name: 'her name plz'
   } as unknown as any
 
-  const website = 'https://www.kornhub.cn'
-  describe('支持添加事件监听', () => {
-    test('第三个参数为事件名字', () => {
+  const website = 'https://www.test.cn'
+  describe('should add eventListener on element', () => {
+    it('third parameter is eventName', () => {
       on(div, listener, 'click')
       div.click()
       expect(listener).toBeCalled()
     })
-    test('如果不传第三个参数，则默认为click事件', () => {
+    it('if third parameter is null, eventName is `click`', () => {
       on(div, listener)
       div.click()
       expect(listener).toBeCalled()
     })
 
-    test('第四个参数是State，回调函数的this指向State', () => {
+    it('should bind `listener` to 4th parameter', () => {
       listener = jest.fn(function () {
         return this
       })
@@ -39,30 +39,14 @@ describe('Event: on', () => {
       expect(listener.mock.results[0].value).toBe(state)
     })
 
-    test('支持传入更多的参数，这些额外的参数会作为参数传入回调函数', () => {
-      listener = jest.fn(function (url: string) {
-        return url
+    it('should put the event target to last', () => {
+      listener = jest.fn(function (url: string, e: Event) {
+        return [url, e]
       })
-      on(div, listener, 'click', state as unknown as State, website)
+      on(div, listener, 'click', state, website)
       div.click()
-      expect(listener.mock.results[0].value).toBe(website)
+      expect(listener.mock.results[0].value[0]).toBe(website)
+      expect(isMouseEvent(listener.mock.results[0].value[1])).toBeTruthy()
     })
-    describe('传入回调函数的最后一个参数是事件对象', () => {
-      test('如果没有额外参数，那么事件对象是唯一的参数', () => {
-        on(div, listener, 'click')
-        div.click()
-        expect(isMouseEvent(listener.mock.results[0].value)).toBeTruthy()
-      })
-      test('事件对象在参数的最末尾', () => {
-        listener = jest.fn(function (url: string, e: Event) {
-          return [url, e]
-        })
-        on(div, listener, 'click', state, website)
-        div.click()
-        expect(listener.mock.results[0].value[0]).toBe(website)
-        expect(isMouseEvent(listener.mock.results[0].value[1])).toBeTruthy()
-      })
-    })
-
   })
 })

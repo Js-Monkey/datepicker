@@ -9,12 +9,12 @@ describe('clickOutside', () => {
   createDatePicker(ref)
   const state = getState()
   document.body.addEventListener( 'click', Bind(clickOutside, state))
-  test('when click InputElement,should open the popover', () => {
+  it('when click InputElement,should open the popover', () => {
     expect(state.visible).toBeFalsy()
     ref.click()
     expect(state.visible).toBeTruthy()
   })
-  test('when click outside,should close the popover', () => {
+  it('when click outside,should close the popover', () => {
     ref.click()
     expect(state.visible).toBeTruthy()
     document.body.click()

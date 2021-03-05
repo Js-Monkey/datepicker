@@ -60,7 +60,7 @@ describe('merge-options', () => {
     }
   })
 
-  it('has all default properties', () => {
+  it('should return an object that has all properties', () => {
     const options = mergeOptions(defaultOptions, curOptions)
     expect(options).toEqual({
       placement: 'top',
@@ -70,16 +70,8 @@ describe('merge-options', () => {
     })
   })
 
-  it('if target is undefined', () => {
-    const options = mergeOptions(defaultOptions)
-    expect(options).toEqual({
-      placement: 'top',
-      zIndex: 1000,
-      offset: 20
-    })
-  })
 
-  it('if target properties is undefined', () => {
+  it('if `target` property value  is undefined, extends original value', () => {
     const options = mergeOptions(defaultOptions, {
       zIndex: undefined
     })

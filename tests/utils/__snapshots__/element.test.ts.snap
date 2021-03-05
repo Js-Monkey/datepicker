@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`element createSvg svg: left arrow 1`] = `
-<svg>
-  <use
-    xlink:href="#icon-left"
-  />
-</svg>
-`;

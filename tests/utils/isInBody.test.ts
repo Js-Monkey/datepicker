@@ -7,7 +7,7 @@ describe('isInBody', () => {
     document.body.appendChild(div)
     expect(isInBody(div)).toBeTruthy()
   })
-
+  
   it('should return `false` if el is null', () => {
     expect(isInBody(null)).toBeFalsy()
   })

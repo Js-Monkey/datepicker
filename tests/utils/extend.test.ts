@@ -1,7 +1,7 @@
 import extend from '../../src/utils/extend'
 
 describe('extend', () => {
-  test('extends all properties: function', () => {
+  it('`target` should has all properties', () => {
     const target = () => 'target'
     const source = {
       times: 1,
