@@ -19,7 +19,7 @@ export default function Picker(): BetterPicker {
     options: Options
 
     constructor(el: HTMLInputElement, options?: Options) {
-      this.options = mergeOptions(new defaultOptions(), options) as Options
+      this.options = mergeOptions(defaultOptions(), options) as Options
       better.create(el, this.options)
     }
 

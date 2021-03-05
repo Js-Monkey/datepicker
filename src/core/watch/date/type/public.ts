@@ -34,9 +34,9 @@ export const startDate: Sub = {
 
 export const handleSelecting: Sub = {
   key: {name: 'range', childKey: ['status']},
-  cb(status: string, range: Range) {
+  cb(status: string) {
     if (status === 'selecting') {
-      range.end = null
+      this.range.end = null
     } else {
       finishSelect(this)
     }

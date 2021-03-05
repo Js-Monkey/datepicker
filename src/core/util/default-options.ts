@@ -1,17 +1,13 @@
-import {Placement, DatepickerType} from '../../types/options'
+import Options from '../../types/options'
 
-class defaultOptions {
-  placement: Placement
-  type: keyof DatepickerType
-  zIndex: number
-  unlinkPanels: boolean
-  format: string
-  constructor() {
-    this.placement = 'bottom'
-    this.type = 'date'
-    this.zIndex = 2000
-    this.unlinkPanels = false
-    this.format = 'yyyy/MM/dd'
+function defaultOptions(): Options {
+  return {
+    placement: 'bottom',
+    type: 'date',
+    zIndex: 2000,
+    unlinkPanels: false,
+    format: 'yyyy/MM/dd',
+    offset: 12
   }
 }
 

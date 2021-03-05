@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`default-options default-options 1`] = `[Function]`;
+exports[`default-options default-options 1`] = `
+Object {
+  "format": "yyyy/MM/dd",
+  "offset": 12,
+  "placement": "bottom",
+  "type": "date",
+  "unlinkPanels": false,
+  "zIndex": 2000,
+}
+`;
