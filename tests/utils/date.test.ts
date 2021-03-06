@@ -5,7 +5,7 @@ import {
   daysInAMonth,
   monthFirstDay,
   joinDate,
-  transformDate, transformDateToArray, monthDiff
+  transformDate, transformDateToArray, monthDiff, getDate, getPre, getNext, isInRange
 } from '../../src/utils/date'
 
 describe('Date', () => {
@@ -15,6 +15,30 @@ describe('Date', () => {
   it('should get year from Date', () => {
     expect(getYear()).toEqual(getYear(today))
     expect(getYear(date)).toBe(1999)
+  })
+
+  it('should get Date from string', () => {
+    expect(getDate(2020, 5, 1)).toEqual(new Date('2020/5/1'))
+    expect(getDate(1999, 2,21)).toEqual(new Date('1999/2/21'))
+  })
+
+
+  it('should get the date of the previous month', () => {
+    expect(getPre(1,2020)).toEqual([12,2019])
+    expect(getPre(2,2020)).toEqual([1,2020])
+  })
+
+  it('should get the date of the next month', () => {
+    expect(getNext(12,2020)).toEqual([1,2021])
+    expect(getNext(2,2020)).toEqual([3,2020])
+  })
+
+  describe('isInRange',()=>{
+    it('should return whether date is in range', () => {
+      expect(isInRange('2020/10/22','2020/9/22' , '2020/10/3')).toEqual('in-range')
+      expect(isInRange('2020/10/22','2020/9/22' , '2020/10/23')).toEqual('')
+      expect(isInRange('2020/10/22','2020/9/22' , '2020/2/23')).toEqual('')
+    })
   })
 
   it('should get month from Date', () => {

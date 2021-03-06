@@ -20,4 +20,7 @@ describe('findInputElement', () => {
     wrapper.appendChild(document.createElement('input'))
     expect(findInputElement(wrapper) instanceof window.HTMLElement).toBeTruthy()
   })
+  it('if parameter is null, return null', () => {
+    expect(findInputElement(null as unknown as HTMLElement)).toBeNull()
+  })
 })

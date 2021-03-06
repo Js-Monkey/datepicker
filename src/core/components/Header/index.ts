@@ -6,9 +6,9 @@ import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
-import {Sub} from "../../../types/observer";
+import {Sub} from "../../../types/observer"
 
-let type: HeaderType = 'start'
+let name: HeaderType = 'start'
 
 const togglePage = {
   key: ['page'],
@@ -46,7 +46,7 @@ function year(state: State) {
     name: 'span',
     text: {
       key: {
-        name: type,
+        name,
         childKey: ['year', '_day']
       },
       cb: year => year + '年'
@@ -64,7 +64,7 @@ function month(state: State) {
     name: 'span',
     text: {
       key: {
-        name: type,
+        name,
         childKey: ['month']
       },
       cb: month => month + '月'
@@ -77,7 +77,7 @@ function month(state: State) {
 function date(state: State) {
   const showMonth: Sub<string> = {
     key: {
-      name: type,
+      name,
       childKey: ['year']
     },
     cb: (year) => year + '年 '
@@ -85,7 +85,7 @@ function date(state: State) {
 
   const showDate: Sub<string> = {
     key: {
-      name: type,
+      name,
       childKey: ['month', 'year']
     },
     cb: (month, year) => year + '年 ' + month + '月'
@@ -144,7 +144,7 @@ function nextYearIcon(state: State) {
       width: '14px',
       height: '14px',
     },
-    event: Bind(nextYear, type)
+    event: Bind(nextYear, name)
   }
   return createElement(opt, state)
 }
@@ -161,7 +161,7 @@ function nextMonthIcon(state: State) {
         width: '14px',
         height: '14px',
       },
-      event: Bind(nextMonth, type),
+      event: Bind(nextMonth, name),
       visible: togglePage
     },
     state
@@ -183,7 +183,7 @@ export function Header(state: State, t?: HeaderType): Node {
       'text-align': 'center'
     }
   }
-  type = t || 'start'
+  name = t || 'start'
   return createElement(opt, state)
 }
 

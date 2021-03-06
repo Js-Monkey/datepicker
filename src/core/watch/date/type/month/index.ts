@@ -1,6 +1,5 @@
 import {getStatus, updateMonth} from "./public"
 import {Sub} from "../../../../../types/observer"
-import {otherStatus} from "../day/public";
 
 export const updateStartMonth = {
   key: {name: 'start', childKey: ['year', 'date']},
@@ -12,24 +11,19 @@ export const updateEndMonth = {
   cb: updateMonth,
 }
 
-
-function updateRangeStartYear(ey: number): void {
-  this.start.year = ey - 1
-}
-
-function updateRangeEndYear(sy: number): void {
-  this.end.year = sy + 1
-}
-
 export const endLinkStartToYear: Sub = {
   key: {name: 'end', childKey: ['year']},
-  cb: updateRangeStartYear,
+  cb(ey: number): void {
+    this.start.year = ey - 1
+  }
+  ,
 }
-
 
 export const startLinkEndToYear: Sub = {
   key: {name: 'start', childKey: ['year']},
-  cb: updateRangeEndYear,
+  cb(sy: number): void {
+    this.end.year = sy + 1
+  },
 }
 
 

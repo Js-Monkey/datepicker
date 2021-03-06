@@ -21,6 +21,11 @@ describe('rangeStatus', () => {
   it('if `value` === `max`, return `range-end`', () => {
     expect(rangeStatus(state, ed)).toEqual('range-end')
   })
+  it('if `value` === `max` && `value` === `min`, return `range-start range-end`', () => {
+    state.range.start = ed
+    state.range.end = ed
+    expect(rangeStatus(state, ed)).toEqual('range-start range-end')
+  })
 })
 
 
