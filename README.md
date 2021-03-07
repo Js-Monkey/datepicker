@@ -1,16 +1,9 @@
 <!-- <HEADER> // IGNORE IT -->
-<p align="center">
-<!-- <HEADER> // IGNORE IT -->
-  <img src="./Docs/LOGO.svg" alt="Popper" height="300px"/>
-</p>
 
 ![](https://camo.githubusercontent.com/b39d1e12ba779319ff9bab0f56ba7e41f108d898/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6a756d6f646164612f76756558696e2e737667)
 ![code-test](https://github.com/Js-Monkey/better-datepicker/workflows/code-test/badge.svg)
 ![](https://www.travis-ci.org/Js-Monkey/better-datepicker.svg?branch=master)
 ![](https://img.shields.io/codecov/c/github/js-monkey/better-datepicker/master.svg)
-<div align="center">
-  <h1>轻量灵活的datepicker</h1>
-</div>
 
 <br />
 <!-- </HEADER> // NOW BEGINS THE README -->

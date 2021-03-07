@@ -1,7 +1,6 @@
 import {codeBlock, htmlBlock, scriptTag} from "./markdownTag"
 import toMd from "./markdown"
 import {compileTemplate, SFCTemplateCompileOptions} from '@vue/compiler-sfc'
-import Better from '../../../../src'
 interface VueComponents {
   componentNames: string
   componentsRender: string
@@ -23,16 +22,19 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const len = html.length
     let script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script).replace('this.','')
-    console.log(len)
     const source = `
-    <div class=demo-card>
-       <div v-if="${len}>1" class=demo-card-component>${html}</div>
-         <div class=demo-card-description>
-            <h2>${title}</h2>
-            <div class=des>${content}</div>
-            <div class=highlight>${mdScript}</div>
-         </div>
-   </div>
+   <demo-card>
+     <div class=demo-card-description>
+         <h2>${title}</h2>
+         <div class=des>${content}</div>
+     </div>
+     <template v-slot:demo>
+         <div  class=demo-card-component>${html}</div>
+     </template>
+     <template v-slot:code>
+         <div class=highlight>${mdScript}</div>
+     </template>
+   </demo-card>
     `
     const options: SFCTemplateCompileOptions = {
       id: String(Date.parse(new Date() as any)),

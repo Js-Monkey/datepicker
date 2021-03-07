@@ -27,6 +27,20 @@
     import 'better-datepicker/style/index.css'
     const input = document.querySelector('#input')
     this.createDatePicker(input)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
 
 </script>
 
