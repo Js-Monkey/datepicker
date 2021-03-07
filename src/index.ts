@@ -1,7 +1,6 @@
 import BD from './core'
 import extend from './utils/extend'
 import Options from './types/options'
-import './svg'
 import {BetterPicker} from "./types/core"
 
 export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPicker {
@@ -10,4 +9,5 @@ export function createDatePicker(el: HTMLInputElement, options?: Options): Bette
   extend(context, picker)
   return picker
 }
+
 

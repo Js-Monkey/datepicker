@@ -22,7 +22,7 @@ describe('createEl', () => {
 
 describe('createSvg', () => {
   it('should get a svg', () => {
-    const div = createSVG('left')
+    const div = createSVG('month')
     expect(div.nodeName.toLowerCase()).toBe('svg')
   })
 })
@@ -35,7 +35,7 @@ describe('resetAttr', () => {
     const classes = el.getAttribute('style')
     expect(classes).toContain(style)
   })
-  it('if paramaeters is null, the attribute name is `class`', () => {
+  it('if parameters is null, the attribute name is `class`', () => {
     const el = createEL()
     const className = 'initial-class'
     resetAttr(el, className)
@@ -55,7 +55,7 @@ describe('addAttr', () => {
     expect(elStyle).toContain(initialStyle)
   })
 
-  it('if paramaeters is null, the attribute name is `class`', () => {
+  it('if parameters is null, the attribute name is `class`', () => {
     const el = createEL()
     const initialClass = 'initial-class'
     const newClasses = 'initial-class'

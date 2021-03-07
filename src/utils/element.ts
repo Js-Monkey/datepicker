@@ -6,6 +6,7 @@ import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
 import {UpdateCbType} from "../types/components"
+import {SvgName} from "../types/element";
 
 const handler: Handler = {
   event(el, listener, state) {
@@ -35,14 +36,26 @@ export function createEL(tagName = 'div'): HTMLElement {
   return document.createElement(tagName)
 }
 
+const svgName: SvgName ={
+  month: ['M721.9968 979.0208l47.0528-47.104-419.94752-419.98848 419.94752-419.90144-47.05792-47.04768-419.93216 419.89632h-0.00512l-47.104 47.09888 47.04768 47.04256z'],
+  year: [
+    'M176 513.7l392.73-395.44a32 32 0 0 0-45.41-45.1L108 491.3a32 32 0 0 0 0.16 45.25L523.48 949a32 32 0 1 0 45.1-45.41z',
+    'M525.23 513.7L918 118.26a32 32 0 1 0-45.41-45.1L457.27 491.3a32 32 0 0 0 0.16 45.25L872.7 949a32 32 0 0 0 45.1-45.41z'
+  ]
+}
+
 export default function createSVG(name: string): Element {
   const url = 'http://www.w3.org/2000/svg'
   const svg = document.createElementNS(url, 'svg')
-  const use = document.createElementNS(url, 'use')
-  use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#icon-${name}`)
-  svg.appendChild(use)
+  svg.setAttribute('viewBox','0 0 1024 1024')
+  svgName[name as 'month'].forEach((item: string)=>{
+    const path = document.createElementNS(url, 'path')
+    path.setAttribute( 'd', item)
+    svg.appendChild(path)
+  })
   return svg
 }
+
 
 export function createElement(opt: CreateElementOptions, state: State): Node {
   if (isFunc<Node>(opt)) return opt(state)

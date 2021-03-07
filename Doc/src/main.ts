@@ -1,4 +1,4 @@
-import { createApp, nextTick} from 'vue'
+import { createApp} from 'vue'
 import App from './App.vue'
 import Router from './router/index'
 import {useComponent} from "./package"
@@ -12,9 +12,7 @@ highlightJs.configure({
   languages: ['js', 'html'],
 })
 document.addEventListener('DOMContentLoaded', (event) => {
-  nextTick(() => {
-    document.querySelectorAll('pre code').forEach(block => highlightJs.highlightBlock(block))
-  })
+  document.querySelectorAll('pre code').forEach(block => highlightJs.highlightBlock(block))
 });
 app.use(Router)
 app.mount('#app')
