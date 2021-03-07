@@ -20,11 +20,13 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const title = filterCode(codeBlock)
     const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
+    const len = html.length
     let script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script).replace('this.','')
+    console.log(len)
     const source = `
     <div class=demo-card>
-       <div class=demo-card-component>${html}</div>
+       <div v-if="${len}>1" class=demo-card-component>${html}</div>
          <div class=demo-card-description>
             <h2>${title}</h2>
             <div class=des>${content}</div>
