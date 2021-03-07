@@ -103,13 +103,14 @@ export default defineComponent({
     &-codeBox {
       width: 50vw;
       height: 300px;
-      border: 1px solid #c0392b;
+      border: 1px solid #3498DB;
       overflow-y: auto;
       overflow-x: hidden;
       &-wrapper {
         button {
-          color: #c0392b !important;
-          border-color: #c0392b !important;
+          color: #3498DB !important;
+          border-color: #3498DB !important;
+          border-bottom: none !important;
           &:first-child{
             border-right: none;
             border-top-right-radius: 0 !important;
@@ -123,7 +124,7 @@ export default defineComponent({
             border-bottom-right-radius: 0 !important;
           }
           &.active{
-            background: #c0392b !important;
+            background: #3498DB !important;
             color: #ffffff !important;
           }
         }

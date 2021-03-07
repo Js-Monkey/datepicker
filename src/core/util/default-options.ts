@@ -7,7 +7,8 @@ function defaultOptions(): Options {
     zIndex: 2000,
     unlinkPanels: false,
     format: 'yyyy/MM/dd',
-    offset: 12
+    offset: 12,
+    popBody: true
   }
 }
 

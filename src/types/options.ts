@@ -28,6 +28,7 @@ export default interface Options {
   offset: number
   zIndex: number
   format: string
+  popBody: boolean
   disabled?: (date: Date) => boolean
 }
 
@@ -38,5 +39,6 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
   offset?: number
   zIndex?: T
   format?: T
+  popBody?: boolean
   disabled?: (date: Date) => boolean
 }
