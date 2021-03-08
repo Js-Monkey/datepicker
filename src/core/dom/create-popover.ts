@@ -49,6 +49,7 @@ const popoverType: PopoverType = {
 }
 
 function listenToAnimation(pop: HTMLElement) {
+  pop.style.display = 'none'
   pop.addEventListener('animationend', (e) => {
     pop.style.display = e.animationName === 'hidden' ? 'none' : 'inline-block'
     const sheet = document.styleSheets[0]

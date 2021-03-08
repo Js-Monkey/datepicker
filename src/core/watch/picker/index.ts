@@ -21,8 +21,8 @@ const reference = {
 const popoverOpt = {
   key: ['popover', 'options'],
   cb(pop: HTMLElement, options: Options): void {
-    const {popOuter} = this.options
-    appendChild(pop, popOuter ? undefined : this.reference.parentNode)
+    const {insertTo} = this.options
+    appendChild(pop, insertTo === 'body' ? undefined : this.reference.parentNode)
     const {zIndex} = options
     setPopoverStyle(pop as HTMLElement, zIndex as number)
   },

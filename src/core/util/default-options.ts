@@ -8,7 +8,7 @@ function defaultOptions(): Options {
     unlinkPanels: false,
     format: 'yyyy/MM/dd',
     offset: 12,
-    popOuter: true
+    insertTo: 'body'
   }
 }
 

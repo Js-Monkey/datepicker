@@ -1,5 +1,7 @@
 import {Rect, Transform} from '../../types/utils'
 import {addAttr} from '../../utils/attribute'
+import {isInBody} from "../../utils/isInBody"
+import {Placement} from "../../types/options"
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -11,7 +13,7 @@ const transform: Transform = {
 const sheetRuleStatus = {
   true: {
     animation: 'show .3s',
-    rule: '@keyframes show { 0% {display: block;opacity: 0;transform: scaleY(0.8);} 100% {display: block;opacity: 1;transform: scaleY(1);} }'
+    rule: '@keyframes show { 0% {display: block;opacity: 0} 100% {display: block;opacity: 1;transform: scaleY(1);} }'
   },
   false: {
     animation: 'hidden .3s',
@@ -43,20 +45,35 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
 }
 
 export function setPopoverLocation(): void {
+  function setTransform(): void {
+    popover.style.transform = transform[placement as 'left']
+  }
+
+  function setPosition(): void {
+    const position = getPosition(rect)
+    Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (popover.style[attr] = position[placement as 'left'][attr] + 'px'))
+  }
+
+  function closeToParent(): void {
+    popover.style.transform = setCloseToReference()
+  }
+
+  function setCloseToReference() {
+    const {offsetWidth,offsetHeight} = reference
+    const top = offsetHeight + options
+    return `translate(-${offsetWidth}px,${top}px)`
+  }
+
   const {popover, reference, options} = this
   const {placement} = options
   const rect = reference.getBoundingClientRect()
-  setPosition(popover as HTMLElement, placement as 'left', rect as DOMRect)
-  setTransform(popover as HTMLElement, placement as 'left')
-}
-
-export function setTransform(el: HTMLElement, plt: keyof Transform): void {
-  el.style.transform = transform[plt]
-}
-
-export function setPosition(el: HTMLElement, plt: 'top' | 'left' | 'bottom' | 'right', rect: DOMRect): void {
-  const position = getPosition(rect)
-  Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (el.style[attr] = position[plt][attr] + 'px'))
+  const popInBody = isInBody(popover)
+  if (popInBody) {
+    setPosition()
+    setTransform()
+  } else {
+    closeToParent()
+  }
 }
 
 export function getPosition({top, left, height, width}: Rect): Transform<{ left: number; top: number }> {

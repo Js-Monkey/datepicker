@@ -28,7 +28,7 @@ export default interface Options {
   offset: number
   zIndex: number
   format: string
-  popOuter: boolean
+  insertTo: 'body' | 'parent'
   disabled?: (date: Date) => boolean
 }
 
@@ -39,6 +39,6 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
   offset?: number
   zIndex?: T
   format?: T
-  popOuter?: boolean
+  insertTo?: 'body' | 'parent'
   disabled?: (date: Date) => boolean
 }

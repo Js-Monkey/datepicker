@@ -17,8 +17,8 @@
 :::
 
 
-##  TYPES
-::: Import styles, **you can customize theme colors** [here](#/doc)
+##  insertTo
+::: DatePicker pop up on body
 ```html
 <input id="input" type="text">
 <script>
@@ -27,7 +27,7 @@
     import 'better-datepicker/style/index.css'
     const input = document.querySelector('#input')
     this.createDatePicker(input,{
-        popOuter: true
+        insertTo: 'parent'
     })
     console.log(1)
     console.log(1)

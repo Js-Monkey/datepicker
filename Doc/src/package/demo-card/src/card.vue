@@ -90,8 +90,10 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffb311;
-
+    color: #D9ACA7;
+    h2{
+      color: #ffb311;
+    }
     &-description {
       width: 50vw;
     }
