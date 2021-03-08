@@ -4,7 +4,6 @@ import {on} from '../../../utils/event'
 import clickOutside from '../../../utils/clickoutside'
 import {listenToScrollParents} from '../../../utils/listenToParents'
 import Options from '../../../types/options'
-import {isInBody} from '../../../utils/isInBody'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/updatePopover'
 import {Bind} from "../../../utils/bind"
@@ -22,11 +21,10 @@ const reference = {
 const popoverOpt = {
   key: ['popover', 'options'],
   cb(pop: HTMLElement, options: Options): void {
-    if (!isInBody(pop)) {
-      appendChild(pop as Element)
-      const {zIndex} = options
-      setPopoverStyle(pop as HTMLElement, zIndex as number)
-    }
+    const {popOuter} = this.options
+    appendChild(pop, popOuter ? undefined : this.reference.parentNode)
+    const {zIndex} = options
+    setPopoverStyle(pop as HTMLElement, zIndex as number)
   },
   notImmediate: true
 }

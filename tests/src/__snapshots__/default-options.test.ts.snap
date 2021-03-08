@@ -5,7 +5,7 @@ Object {
   "format": "yyyy/MM/dd",
   "offset": 12,
   "placement": "bottom",
-  "popBody": true,
+  "popOuter": true,
   "type": "date",
   "unlinkPanels": false,
   "zIndex": 2000,

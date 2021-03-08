@@ -6,7 +6,7 @@
 
     import 'better-datepicker/style/index.css'
 
-    createDatePicker({
+    createDatePicker(document.querySelector('#input'),{
         type: 'date-range',
         fortmat: 'YYYY-MM-dd'
     })
@@ -26,7 +26,9 @@
 
     import 'better-datepicker/style/index.css'
     const input = document.querySelector('#input')
-    this.createDatePicker(input)
+    this.createDatePicker(input,{
+        popOuter: true
+    })
     console.log(1)
     console.log(1)
     console.log(1)
