@@ -48,13 +48,16 @@ const popoverType: PopoverType = {
   'month-range': rangeComponent('month')
 }
 
+export function deleteRules(sheet: any = document.styleSheets[0]): void{
+  const {name, type} = sheet.rules[0]  as any
+  if (['show', 'hidden'].indexOf(name) > -1 && type === 7)sheet.deleteRule(0)
+}
+
 function listenToAnimation(pop: HTMLElement) {
   pop.style.display = 'none'
   pop.addEventListener('animationend', (e) => {
     pop.style.display = e.animationName === 'hidden' ? 'none' : 'inline-block'
-    const sheet = document.styleSheets[0]
-    const {name, type} = sheet.rules[0] as any
-    if (['show', 'hidden'].indexOf(name) > -1 && type === 7) sheet.deleteRule(0)
+    deleteRules()
   })
 }
 

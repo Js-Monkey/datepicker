@@ -1,7 +1,7 @@
 import {Rect, Transform} from '../../types/utils'
 import {addAttr} from '../../utils/attribute'
 import {isInBody} from "../../utils/isInBody"
-import {Placement} from "../../types/options"
+import {deleteRules} from "./create-popover";
 
 const transform: Transform = {
   top: `translate(0,-100%)`,
@@ -13,26 +13,28 @@ const transform: Transform = {
 const sheetRuleStatus = {
   true: {
     animation: 'show .3s',
-    rule: '@keyframes show { 0% {display: block;opacity: 0} 100% {display: block;opacity: 1;transform: scaleY(1);} }'
+    rule: (orn: string) => `@keyframes show { 0% {display: block;opacity: 0;transform:scaleY(.8) ${orn};} 100% {display: block;opacity: 1;transform: scaleY(1) ${orn};} }`
   },
   false: {
     animation: 'hidden .3s',
-    rule: '@keyframes hidden { 0% {opacity: 1;transform: scaleY(1);} 100% {opacity: 0;visibility: hidden;transform: scaleY(.8);} }'
+    rule: (orn: string) => `@keyframes hidden { 0% {opacity: 1;transform: ${orn} scaleY(1);} 100% {opacity: 0;visibility: hidden;transform: ${orn} scaleY(.8);} }`
   }
 }
 
-export function updatePopover(popover: HTMLElement, vis: boolean): void {
+export function updatePopover(vis: boolean): void {
+  const el = this.popover
   const ss = document.styleSheets[0]
+  deleteRules(ss)
   if (vis) {
-    popover.style.display = 'inline-block'
+    el.style.display = 'inline-block'
     setPopoverLocation.call(this)
   }
   const {animation, rule} = sheetRuleStatus[vis as unknown as 'false']
-  popover.style.animation = animation
+  el.style.animation = animation
   if (ss) {
-    ss.insertRule(rule, 0)
+    ss.insertRule(rule(el.style.transform), 0)
   } else {
-    popover.style.display = vis ? 'inline-block' : 'none'
+    el.style.display = vis ? 'inline-block' : 'none'
   }
 }
 
@@ -59,8 +61,9 @@ export function setPopoverLocation(): void {
   }
 
   function setCloseToReference() {
-    const {offsetWidth,offsetHeight} = reference
-    const top = offsetHeight + options
+    console.log(0)
+    const {offsetWidth, offsetHeight} = reference
+    const top = offsetHeight + options.offset
     return `translate(-${offsetWidth}px,${top}px)`
   }
 

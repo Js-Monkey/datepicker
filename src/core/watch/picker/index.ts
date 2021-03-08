@@ -31,7 +31,7 @@ const popoverOpt = {
 
 
 const popoverVisible = {
-  key: ['popover', 'visible'],
+  key: ['visible'],
   cb: updatePopover,
   notImmediate: true
 }

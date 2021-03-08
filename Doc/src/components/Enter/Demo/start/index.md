@@ -29,20 +29,6 @@
     this.createDatePicker(input,{
         insertTo: 'parent'
     })
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
-    console.log(1)
 
 </script>
 
