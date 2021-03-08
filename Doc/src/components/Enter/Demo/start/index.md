@@ -27,8 +27,8 @@
     import 'better-datepicker/style/index.css'
     const input = document.querySelector('#input')
     this.createDatePicker(input,{
-        placement:'top',
-        offset: 12
+        insertTo: 'parent',
+        offset: 30
     })
 
 </script>

@@ -62,8 +62,26 @@ export function setPopoverLocation(): void {
 
   function setCloseToReference() {
     const {offsetWidth, offsetHeight} = reference
-    const top = offsetHeight + offset
-    return `translate(-${offsetWidth}px,${top}px)`
+    const transform = {
+      bottom: {
+        y: (offsetHeight + offset) + 'px',
+        x: - offsetWidth + 'px'
+      },
+      top: {
+        y: `calc(-100% - ${offset}px)`,
+        x: -offsetWidth + 'px'
+      },
+      left: {
+        y: offsetHeight + offset + 'px',
+        x: '-100%'
+      },
+      right: {
+        y: 0,
+        x: offset + 'px'
+      }
+    }
+    const {x, y} = transform[placement as 'top']
+    return `translate(${x},${y})`
   }
 
   const {popover, reference, options} = this

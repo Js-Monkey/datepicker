@@ -19,7 +19,8 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const title = filterCode(codeBlock)
     const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
-    const len = html.length
+    const htmlScript = `${html}`
+    console.log(htmlScript)
     let script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script).replace('this.','')
     const source = `
@@ -28,10 +29,13 @@ export default function getRenderComponent(demos: string[]): VueComponents {
          <h2>${title}</h2>
          <div class=des>${content}</div>
      </div>
-     <template v-slot:demo>
+     <template v-slot:HTML>
+        <div class=highlight>${htmlScript}</div>
+     </template>
+     <template v-slot:Result>
          <div  class=demo-card-component>${html}</div>
      </template>
-     <template v-slot:code>
+     <template v-slot:JS>
          <div class=highlight>${mdScript}</div>
      </template>
    </demo-card>

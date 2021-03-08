@@ -5,14 +5,19 @@
       <slot name="code"></slot>
     </div>
     <div v-show="!justCode" class="demo-card-codeBox-wrapper">
-      <b-button :class="{active: !isDemo}" @click="closeDemo">JS</b-button>
-      <b-button :class="{active: isDemo}" @click="openDemo">Result</b-button>
+      <b-button v-for="(item,index) in buttonGroup" :class="{active:index ===activeIndex}" @click="openActive(index)">{{
+          item
+        }}
+      </b-button>
       <div class="demo-card-codeBox">
-        <div v-show="isDemo">
-          <slot name="demo"></slot>
+        <div ref="code" v-show="activeIndex===0">
+          <slot name="JS"></slot>
         </div>
-        <div ref="code" v-show="!isDemo">
-          <slot name="code"></slot>
+        <div v-show="activeIndex===1">
+          <slot name="HTML"></slot>
+        </div>
+        <div v-show="activeIndex===2">
+          <slot name="Result"></slot>
         </div>
       </div>
     </div>
@@ -41,23 +46,26 @@ export default defineComponent({
   },
   data() {
     return {
-      justCode: true
+      justCode: true,
+      buttonGroup: [
+        'JS',
+        'HTML',
+        'Result'
+      ]
     }
   },
   setup(props) {
     let {fontSize} = toRefs(props)
-    const isDemo = ref(false)
-    const openDemo = () => isDemo.value = true
-    const closeDemo = () => isDemo.value = false
+    const activeIndex = ref(0)
+    const openActive = (idx: number) => activeIndex.value = idx
     return {
       fontSize,
-      isDemo,
-      openDemo,
-      closeDemo
+      activeIndex,
+      openActive,
     }
   },
   mounted() {
-    this.justCode = !this.$slots.demo()[0].children
+    this.justCode = !this.$slots.Result()[0].children
   }
 })
 </script>
@@ -91,9 +99,11 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     color: #D9ACA7;
-    h2{
+
+    h2 {
       color: #ffb311;
     }
+
     &-description {
       width: 50vw;
     }
@@ -108,28 +118,34 @@ export default defineComponent({
       border: 1px solid #3498DB;
       overflow-y: auto;
       overflow-x: hidden;
+      position: relative;
+
       &-wrapper {
         button {
           color: #3498DB !important;
           border-color: #3498DB !important;
           border-bottom: none !important;
-          &:first-child{
+
+          &:first-child {
             border-right: none;
-            border-top-right-radius: 0 !important;
-            border-bottom-right-radius: 0 !important;
-            border-bottom-left-radius: 0 !important;
+            border-radius: 5px 0 0 0 !important;
           }
-          &:nth-child(2){
-            border-left-color: white !important;
-            border-top-left-radius: 0 !important;
-            border-bottom-left-radius: 0 !important;
-            border-bottom-right-radius: 0 !important;
+
+          &:nth-child(2) {
+            border-right: none;
+            border-radius: 0 !important;
           }
-          &.active{
+
+          &:nth-child(3) {
+            border-radius: 0 5px 0 0 !important;
+          }
+
+          &.active {
             background: #3498DB !important;
             color: #ffffff !important;
           }
         }
+
         width: 50vw;
         position: relative;
       }
@@ -138,6 +154,7 @@ export default defineComponent({
 
   pre {
     margin: 0;
+
     code {
       width: calc(100% - 5px);
       border-radius: 7px;
