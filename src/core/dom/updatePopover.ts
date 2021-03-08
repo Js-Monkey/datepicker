@@ -52,7 +52,7 @@ export function setPopoverLocation(): void {
   }
 
   function setPosition(): void {
-    const position = getPosition(rect)
+    const position = getPosition(rect, offset)
     Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (popover.style[attr] = position[placement as 'left'][attr] + 'px'))
   }
 
@@ -62,11 +62,12 @@ export function setPopoverLocation(): void {
 
   function setCloseToReference() {
     const {offsetWidth, offsetHeight} = reference
-    const top = offsetHeight + options.offset
+    const top = offsetHeight + offset
     return `translate(-${offsetWidth}px,${top}px)`
   }
 
   const {popover, reference, options} = this
+  const offset = options.offset
   const {placement} = options
   const rect = reference.getBoundingClientRect()
   const popInBody = isInBody(popover)
@@ -78,9 +79,9 @@ export function setPopoverLocation(): void {
   }
 }
 
-export function getPosition({top, left, height, width}: Rect): Transform<{ left: number; top: number }> {
-  const _tTop = top + window.scrollY
-  const _bTop = top + height + window.scrollY + 7
+export function getPosition({top, left, height, width}: Rect, offset: number): Transform<{ left: number; top: number }> {
+  const _tTop = top + window.scrollY - offset
+  const _bTop = top + height + window.scrollY + offset
   const _tLeft = left + window.scrollX
   const _rLeft = left + width + window.scrollX
   return {
