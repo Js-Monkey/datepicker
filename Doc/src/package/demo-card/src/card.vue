@@ -154,11 +154,10 @@ export default defineComponent({
 
   pre {
     margin: 0;
-
+    padding: 0;
     code {
-      width: calc(100% - 5px);
+      width: 100%;
       border-radius: 7px;
-      height: inherit;
       padding: 10px;
       font-size: 16px;
       min-height: 400px;

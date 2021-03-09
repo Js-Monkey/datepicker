@@ -1,6 +1,7 @@
 import {codeBlock, htmlBlock, scriptTag} from "./markdownTag"
 import toMd from "./markdown"
 import {compileTemplate, SFCTemplateCompileOptions} from '@vue/compiler-sfc'
+import hljs from "highlight.js"
 interface VueComponents {
   componentNames: string
   componentsRender: string
@@ -19,10 +20,9 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const title = filterCode(codeBlock)
     const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
-    const htmlScript = `${html}`
-    console.log(htmlScript)
+    const htmlScript = hljs.highlight('html', html, true, undefined).value.trim()
     let script = filterCode('```').split('</script')[0]
-    const mdScript = toMd(script).replace('this.','')
+    const mdScript = toMd(script).replace('this.', '')
     const source = `
    <demo-card>
      <div class=demo-card-description>
@@ -30,7 +30,13 @@ export default function getRenderComponent(demos: string[]): VueComponents {
          <div class=des>${content}</div>
      </div>
      <template v-slot:HTML>
-        <div class=highlight>${htmlScript}</div>
+        <div class=highlight>
+          <pre class="hljs html">
+             <code style="display: flex;padding-top: 0">
+                ${htmlScript}
+             </code>
+          </pre>
+        </div>
      </template>
      <template v-slot:Result>
          <div  class=demo-card-component>${html}</div>
