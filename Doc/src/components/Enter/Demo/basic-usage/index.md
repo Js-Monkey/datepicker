@@ -10,7 +10,7 @@
     this.createDatePicker(input,{
         insertTo: 'parent',
         offset: 30,
-        placement: 'right'
+        placement: 'bottom'
     })
 
 </script>

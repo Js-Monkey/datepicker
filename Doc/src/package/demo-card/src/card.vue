@@ -107,6 +107,7 @@ export default defineComponent({
 
     &-result{
       width: 30vw;
+      overflow: auto;
       height: 430px;
       border:1px dashed;
       border-radius: 6px;
