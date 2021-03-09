@@ -100,7 +100,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     color: #f5e7cc;
-
+    line-height: 1.7;
     h2 {
       color: #ffb311;
     }

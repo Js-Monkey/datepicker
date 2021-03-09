@@ -27,7 +27,6 @@ export default {
       transfer.select()
       if (document.execCommand) {
         document.execCommand('copy')
-        console.log('复制成功')
         this.$message('Copy succeeded')
       }
       document.body.removeChild(transfer)

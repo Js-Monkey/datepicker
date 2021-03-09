@@ -3,6 +3,7 @@
     <input
       class="f-form-placeholder"
       :id="id"
+      :style="style"
       :autocomplete="autocomplete"
       :spellcheck="spellcheck"
       :wrap="wrap"
@@ -21,14 +22,18 @@
 
 <script lang="ts">
 import '../../../assets/svg/svg'
-import {defineComponent} from 'vue'
+import {defineComponent, toRefs} from 'vue'
+import {isNumber} from "../../../../../src/utils/typeOf";
 
 export default defineComponent({
   name: 'Input',
   props: {
     id: String,
     name: String,
-    width: [Number, String],
+    width: {
+      type:[Number, String],
+      default: 200
+    },
     value: String,
     maxLength: Number,
     placeholder: String,
@@ -83,7 +88,14 @@ export default defineComponent({
     },
   },
   setup(props) {
-
+    const {width} = toRefs(props)
+    let computedWidth  = width.value
+    if(isNumber(width.value)) computedWidth += 'px'
+    return {
+      style:{
+        width: computedWidth
+      }
+    }
   },
   methods: {
     handleInput(e: any) {

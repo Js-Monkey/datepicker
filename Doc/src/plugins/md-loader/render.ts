@@ -22,7 +22,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const title = filterCode(codeBlock)
     const content = toMd(filterCode(htmlBlock))
     const html = filterCode(scriptTag)
-    const htmlScript = hljs.highlight('html', html, true, undefined).value.trim()
+    const htmlScript = hljs.highlight('html', html, true, undefined).value
     let script = filterCode('```').split('</script')[0]
     const mdScript = toMd(script).replace('this.', '')
     const source = `
@@ -34,7 +34,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
      <template v-slot:HTML>
         <div class=highlight>
           <pre class="hljs html">
-             <code style="display: flex;padding-top: 0">
+             <code style="margin-top: -50px">
                 ${htmlScript}
              </code>
           </pre>

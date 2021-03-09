@@ -12,7 +12,6 @@ const reference = {
   key: ['reference'],
   cb(ref: HTMLElement, state: State): void {
     on(ref, () => {
-      console.log(ref)
       state.visible = true
     })
     on(document.body, Bind(clickOutside, state))
