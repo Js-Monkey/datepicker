@@ -1,13 +1,10 @@
 import BD from './core'
-import extend from './utils/extend'
 import Options from './types/options'
-import {BetterPicker} from "./types/core"
+import {BetterPickerInstance} from "./types/core"
 
-export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPicker {
+export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPickerInstance {
   const picker = BD()
-  const context = new picker(el, options)
-  extend(context, picker)
-  return picker
+  return picker(el, options)
 }
 
 

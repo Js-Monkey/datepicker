@@ -10,11 +10,12 @@
     import  {createDatePicker} from 'better-datepicker'
     import 'better-datepicker/style/index.css'
     const input = document.querySelector('#input')
-    this.createDatePicker(input,{
-        insertTo: 'parent',
-        offset: 30,
-        placement: 'bottom'
+    const a = this.createDatePicker(input,{
+         insertTo: 'parent',
+         offset: 30,
+         placement: 'bottom'
     })
+    console.log(a)
 
 </script>
 

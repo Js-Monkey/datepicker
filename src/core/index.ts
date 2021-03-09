@@ -10,41 +10,42 @@ import {State} from "../types/store"
 import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
 import {getDate} from "./util/hook"
-import {BetterPicker} from "../types/core"
+import {BetterPicker, Callback} from "../types/core"
 
 export default function Picker(): BetterPicker {
   let state: State
 
-  class better {
-    options: Options
+  function create(el: HTMLInputElement, options: Options): void {
+    const input = findInputElement(el)
+    if (!isInputElement(input) || !validateOptions(options)) return
+    state = createState(options)
+    watch(options)
+    state.reference = input
+    state.popover = createPopover(state)
+  }
 
-    constructor(el: HTMLInputElement, options?: Options) {
-      this.options = mergeOptions(defaultOptions(), options) as Options
-      better.create(el, this.options)
-    }
+  function getCurrentDate() {
+    return getDate(state)
+  }
 
-    static create(el: HTMLInputElement, options: Options): void {
-      const input = findInputElement(el)
-      if (!isInputElement(input) || !validateOptions(options)) return
-      state = createState(options)
-      watch(options)
-      state.reference = input
-      state.popover = createPopover(state)
-    }
-
-    getDate() {
-      return getDate(state)
-    }
-
-    onChange(cb: (...arg: any) => any) {
-      if (isFunc(cb)) {
-        state.onChange = cb
-      } else {
-        console.error('Invalid argument provided. They must be a Function')
-      }
+  function onChange(cb: Callback) {
+    if (isFunc(cb)) {
+      state.onChange = cb
+    } else {
+      console.error('Invalid argument provided. They must be a Function')
     }
   }
 
-  return better
+  return function (el: HTMLInputElement, options?: Options) {
+    const opt = mergeOptions(defaultOptions(), options) as Options
+    create(el, opt)
+    return {
+      options,
+      create,
+      getCurrentDate,
+      onChange
+    }
+  }
+
 }
 
