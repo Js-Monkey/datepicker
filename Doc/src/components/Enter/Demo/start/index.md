@@ -17,9 +17,10 @@
 <script>
      const input = document.querySelector('#input')
      createDatePicker(input,{
-           insertTo: 'parent',
-           offset: 30,
-           placement: 'top'
+              placement: 'bottom',
+              type: 'date',
+              zIndex: 2000,
+              format: 'yyyy/MM/dd',
      })
 
 </script>

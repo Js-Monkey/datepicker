@@ -1,22 +1,20 @@
 <template>
-  <label  class="b-input" :for="id">
-    <input
-      class="f-form-placeholder"
-      :id="id"
-      :autocomplete="autocomplete"
-      :spellcheck="spellcheck"
-      :wrap="wrap"
-      :value="value"
-      :disabled="disabled"
-      :readonly="readonly"
-      :maxlength="maxLength"
-      :placeholder="placeholder"
-      @input="handleInput"
-      @change="$emit('change',$event.target.value)"
-      @blur="$emit('blur',$event.target.value)"
-      @focus="$emit('focus',$event.target.value)"
-      type="text">
-  </label>
+  <input
+    class="f-form-placeholder"
+    :id="id"
+    :autocomplete="autocomplete"
+    :spellcheck="spellcheck"
+    :wrap="wrap"
+    :value="value"
+    :disabled="disabled"
+    :readonly="readonly"
+    :maxlength="maxLength"
+    :placeholder="placeholder"
+    @input="handleInput"
+    @change="$emit('change',$event.target.value)"
+    @blur="$emit('blur',$event.target.value)"
+    @focus="$emit('focus',$event.target.value)"
+    type="text">
 </template>
 
 <script lang="ts">

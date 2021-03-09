@@ -8,7 +8,10 @@
       <div class="demo-card-codeBox-button">
         <span :class="{active:index ===activeIndex}" @click="openActive(index)" v-for="(item,index) in buttonGroup">{{ item }}</span>
       </div>
-      <div class="demo-card-codeBox">
+      <div v-show="buttonGroup.length===0">
+        <slot name="JS"></slot>
+      </div>
+      <div v-show="buttonGroup.length===2" class="demo-card-codeBox">
         <div ref="code" v-show="activeIndex===0">
           <slot name="JS"></slot>
         </div>
@@ -74,7 +77,9 @@ export default defineComponent({
   margin-top: 80px;
   width: 100vw;
   font-family: Futura;
-
+  &:last-child{
+    margin-bottom: 90px;
+  }
   strong {
     color: #e84c3b;
   }

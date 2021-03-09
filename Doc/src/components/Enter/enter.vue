@@ -8,6 +8,12 @@
     <div class="start">
       <start></start>
     </div>
+    <div class="demo-bar">
+      USAGE
+    </div>
+    <div class="demo">
+      <basicUsage></basicUsage>
+    </div>
   </div>
 </template>
 
@@ -15,12 +21,14 @@
 import Logo from './components/logo.vue'
 import installCard from './components/install-card.vue'
 import start from './Demo/start/index.md'
+import basicUsage from './Demo/basic-usage/index.md'
 export default {
   name: "Enter",
   components: {
     Logo,
     start,
-    installCard
+    installCard,
+    basicUsage
   }
 }
 </script>
@@ -43,6 +51,14 @@ export default {
     color: #f9fdfe;
     padding: 9px;
     font-family: Menlo;
+  }
+  .demo-bar{
+    width: 100%;
+    padding: 5px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    background: #e84c3b;
   }
   .start{
     background: #112232;

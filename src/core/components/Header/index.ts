@@ -7,6 +7,7 @@ import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {Sub} from "../../../types/observer"
+import {monthNames} from "../../util/i18n";
 
 let name: HeaderType = 'start'
 
@@ -19,7 +20,7 @@ function yearRange(state: State) {
   const range = (year: number) => {
     const min = getMinInTen(year)
     const max = min + 9
-    return min + '年' + ' - ' + max + '年'
+    return min + ' - ' + max
   }
   return createElement(
     {
@@ -49,7 +50,7 @@ function year(state: State) {
         name,
         childKey: ['year', '_day']
       },
-      cb: year => year + '年'
+      cb: year => year
     },
     event: toYearPage,
     visible: {
@@ -67,7 +68,7 @@ function month(state: State) {
         name,
         childKey: ['month']
       },
-      cb: month => month + '月'
+      cb: idx => monthNames[idx - 1]
     },
     event: toMonthPage,
     visible: togglePage
@@ -80,7 +81,7 @@ function date(state: State) {
       name,
       childKey: ['year']
     },
-    cb: (year) => year + '年 '
+    cb: (year) => year
   }
 
   const showDate: Sub<string> = {
@@ -88,7 +89,7 @@ function date(state: State) {
       name,
       childKey: ['month', 'year']
     },
-    cb: (month, year) => year + '年 ' + month + '月'
+    cb: (month, year) => month + ' ' + year
   }
   const isMonth = state.options.type.indexOf('month') > -1
   return createElement({
@@ -170,7 +171,7 @@ function nextMonthIcon(state: State) {
 
 const headerChildren = {
   start: [preYearIcon, preMonthIcon, date],
-  main: [preYearIcon, preMonthIcon, yearRange, year, month, nextYearIcon, nextMonthIcon],
+  main: [preYearIcon, preMonthIcon, yearRange, month, year, nextYearIcon, nextMonthIcon],
   end: [date, nextYearIcon, nextMonthIcon]
 }
 

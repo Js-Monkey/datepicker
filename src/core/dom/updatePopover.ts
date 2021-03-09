@@ -56,32 +56,33 @@ export function setPopoverLocation(): void {
     Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (popover.style[attr] = position[placement as 'left'][attr] + 'px'))
   }
 
-  function closeToParent(): void {
-    popover.style.transform = setCloseToReference()
+  function fixReferencePosition() {
+    const {parentNode} = reference
+    if (parentNode && parentNode.style) parentNode.style.position = 'relative'
   }
 
   function setCloseToReference() {
     const {offsetWidth, offsetHeight} = reference
     const transform = {
       bottom: {
-        y: (offsetHeight + offset) + 'px',
-        x: - offsetWidth + 'px'
+        top: (offsetHeight + offset) + 'px',
+        left: 0
       },
       top: {
-        y: `calc(-100% - ${offset}px)`,
-        x: -offsetWidth + 'px'
+        top: `calc(-100% - ${offset}px)`,
+        left: 0
       },
       left: {
-        y: offsetHeight + offset + 'px',
-        x: '-100%'
+        top: 0,
+        right: offsetWidth + offset + 'px'
       },
       right: {
-        y: 0,
-        x: offset + 'px'
+        top: 0,
+        left: offsetWidth + offset + 'px'
       }
     }
-    const {x, y} = transform[placement as 'top']
-    return `translate(${x},${y})`
+    const tp = transform[placement as 'top']
+    Object.keys(tp).forEach(key=>popover.style[key] = tp[key as never])
   }
 
   const {popover, reference, options} = this
@@ -93,7 +94,8 @@ export function setPopoverLocation(): void {
     setPosition()
     setTransform()
   } else {
-    closeToParent()
+    setCloseToReference()
+    fixReferencePosition()
   }
 }
 
