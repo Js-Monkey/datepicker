@@ -1,24 +1,28 @@
-import {State} from '../types/store'
+import {State, States} from '../types/store'
 import initState from './state'
 import Options from '../types/options'
 
 const Store = (function () {
-  let uid = 0
-  const states = [] as State[]
+  let id = 0
+  const states: States = {}
 
   function getState() {
-    return states[uid]
+    return states[id]
+  }
+
+  function removeState(id: number) {
+    delete states[id]
   }
 
   function createState(options: Options): State {
     const state = initState(options)
     state.type = options.type
-    states.push(state)
-    uid = states.length - 1
+    state.id = ++id
+    states[id] = state
     return state
   }
 
-  return {createState, getState}
+  return {createState, getState, removeState}
 })()
 
-export const {createState, getState} = Store
+export const {createState, getState, removeState} = Store

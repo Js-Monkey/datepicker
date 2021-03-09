@@ -13,4 +13,6 @@ export interface BetterPickerInstance {
   create: (el: HTMLInputElement, options: Options) => void
   getCurrentDate: () => GetDateType
   onChange: (cb: Callback) => void
+  updateOptions: (options: Options)=> void
+  destroyed: ()=> void
 }

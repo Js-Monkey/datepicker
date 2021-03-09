@@ -7,6 +7,7 @@ import Options from '../../../types/options'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/updatePopover'
 import {Bind} from "../../../utils/bind"
+import {createPopover} from "../../dom/create-popover"
 
 const reference = {
   key: ['reference'],
@@ -21,8 +22,9 @@ const reference = {
 }
 
 const popoverOpt = {
-  key: ['popover', 'options'],
-  cb(pop: HTMLElement, options: Options): void {
+  key: ['options', 'popover'],
+  cb(options: Options, pop: HTMLElement): void | HTMLElement {
+    if (pop === null) return this.popover = createPopover(this)
     const {insertTo} = this.options
     appendChild(pop, insertTo === 'body' ? undefined : this.reference.parentNode)
     const {zIndex} = options

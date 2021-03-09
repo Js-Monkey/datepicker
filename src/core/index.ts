@@ -3,7 +3,7 @@ import validateOptions from './validator/options'
 import defaultOptions from './util/default-options'
 import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
-import {createState} from '../store'
+import {createState, removeState} from '../store'
 import {mergeOptions} from '../utils/merge'
 import {watch} from './watch'
 import {State} from "../types/store"
@@ -12,17 +12,13 @@ import {isFunc} from "../utils/typeOf"
 import {getDate} from "./util/hook"
 import {BetterPicker, Callback} from "../types/core"
 
+function checkOptions(pre: Options, cur?: Options) {
+  const opt = mergeOptions(pre, cur) as Options
+  return validateOptions(opt) ? opt : null
+}
+
 export default function Picker(): BetterPicker {
   let state: State
-
-  function create(el: HTMLInputElement, options: Options): void {
-    const input = findInputElement(el)
-    if (!isInputElement(input) || !validateOptions(options)) return
-    state = createState(options)
-    watch(options)
-    state.reference = input
-    state.popover = createPopover(state)
-  }
 
   function getCurrentDate() {
     return getDate(state)
@@ -36,14 +32,37 @@ export default function Picker(): BetterPicker {
     }
   }
 
+  function updateOptions(options: Options) {
+    const newOpt = checkOptions(state.options, options)
+    if (newOpt) {
+      state.options = newOpt
+      state.popover = null
+    }
+  }
+
+  function destroyed() {
+    removeState(state.id)
+  }
+
   return function (el: HTMLInputElement, options?: Options) {
-    const opt = mergeOptions(defaultOptions(), options) as Options
-    create(el, opt)
+    function create(): void {
+      const input = findInputElement(el)
+      const opt = checkOptions(defaultOptions(), options)
+      if (!isInputElement(input) || !opt) return
+      state = createState(opt)
+      watch(opt)
+      state.reference = input
+      state.popover = createPopover(state)
+    }
+
+    create()
     return {
       options,
       create,
       getCurrentDate,
-      onChange
+      onChange,
+      updateOptions,
+      destroyed
     }
   }
 
