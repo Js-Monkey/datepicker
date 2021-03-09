@@ -1,23 +1,19 @@
 <template>
   <div class="demo-card">
-    <slot></slot>
-    <div v-show="justCode">
-      <slot name="code"></slot>
+    <div v-show="buttonGroup.length===2" class="demo-card-result">
+      <slot name="Result"></slot>
     </div>
-    <div v-show="!justCode" class="demo-card-codeBox-wrapper">
-      <b-button v-for="(item,index) in buttonGroup" :class="{active:index ===activeIndex}" @click="openActive(index)">{{
-          item
-        }}
-      </b-button>
+    <div class="demo-card-codeBox-wrapper">
+      <slot></slot>
+      <div class="demo-card-codeBox-button">
+        <span :class="{active:index ===activeIndex}" @click="openActive(index)" v-for="(item,index) in buttonGroup">{{ item }}</span>
+      </div>
       <div class="demo-card-codeBox">
         <div ref="code" v-show="activeIndex===0">
           <slot name="JS"></slot>
         </div>
         <div v-show="activeIndex===1">
           <slot name="HTML"></slot>
-        </div>
-        <div v-show="activeIndex===2">
-          <slot name="Result"></slot>
         </div>
       </div>
     </div>
@@ -46,11 +42,9 @@ export default defineComponent({
   },
   data() {
     return {
-      justCode: true,
       buttonGroup: [
         'JS',
-        'HTML',
-        'Result'
+        'HTML'
       ]
     }
   },
@@ -65,7 +59,10 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.justCode = !this.$slots.Result()[0].children
+    if (!this.$slots.Result()[0].children) {
+      this.buttonGroup = []
+    }
+
   }
 })
 </script>
@@ -79,7 +76,7 @@ export default defineComponent({
   font-family: Futura;
 
   strong {
-    color: #c0392b;
+    color: #e84c3b;
   }
 
   &-title {
@@ -95,56 +92,51 @@ export default defineComponent({
     margin-top: 20px;
     margin-bottom: 30px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #D9ACA7;
+    color: #f5e7cc;
 
     h2 {
       color: #ffb311;
     }
 
-    &-description {
-      width: 50vw;
+    &-result{
+      width: 30vw;
+      height: 430px;
+      border:1px dashed;
+      border-radius: 6px;
+      margin-right: 30px;
+      background: #131b2e;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
     }
-
-    &-component {
-      text-align: center;
+    &-description{
+      p{
+        line-height: 1.75;
+      }
     }
 
     &-codeBox {
       width: 50vw;
       height: 300px;
-      border: 1px solid #3498DB;
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
 
-      &-wrapper {
-        button {
-          color: #3498DB !important;
-          border-color: #3498DB !important;
-          border-bottom: none !important;
+      &-button {
+        text-align: end;
 
-          &:first-child {
-            border-right: none;
-            border-radius: 5px 0 0 0 !important;
-          }
-
-          &:nth-child(2) {
-            border-right: none;
-            border-radius: 0 !important;
-          }
-
-          &:nth-child(3) {
-            border-radius: 0 5px 0 0 !important;
-          }
-
-          &.active {
-            background: #3498DB !important;
-            color: #ffffff !important;
+        span {
+          cursor: pointer;
+          margin-left: 10px;
+          &.active{
+            color: #c62524;
           }
         }
+      }
+
+      &-wrapper {
 
         width: 50vw;
         position: relative;
@@ -155,12 +147,13 @@ export default defineComponent({
   pre {
     margin: 0;
     padding: 0;
+
     code {
       width: 100%;
       border-radius: 7px;
       padding: 10px;
       font-size: 16px;
-      min-height: 400px;
+      min-height: 100px;
     }
   }
 

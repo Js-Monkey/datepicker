@@ -5,8 +5,8 @@
       <install-card icon="npm" text="npm i better-datepicker"></install-card>
       <install-card icon="yarn" text="yarn add better-datepicker"></install-card>
     </div>
-    <div class="code">
-      <importStyle></importStyle>
+    <div class="start">
+      <start></start>
     </div>
   </div>
 </template>
@@ -14,12 +14,12 @@
 <script lang="ts">
 import Logo from './components/logo.vue'
 import installCard from './components/install-card.vue'
-import importStyle from './Demo/start/index.md'
+import start from './Demo/start/index.md'
 export default {
   name: "Enter",
   components: {
     Logo,
-    importStyle,
+    start,
     installCard
   }
 }
@@ -44,7 +44,7 @@ export default {
     padding: 9px;
     font-family: Menlo;
   }
-  .code{
+  .start{
     background: #112232;
   }
 

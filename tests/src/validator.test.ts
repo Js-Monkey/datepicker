@@ -18,7 +18,7 @@ describe('should throw error if `options` not match the rule', () => {
   it('should return `true` if `options` is an empty object', () => {
     expect(validateOptions(Object.create(null))).toBeTruthy()
   })
-  it('`placement` should be one of `[left,right,top,bottom]`', () => {
+  it('`basic-usage` should be one of `[left,right,top,bottom]`', () => {
     Array.from(['top', 'left', 'right', 'bottom'] as ['top', 'left', 'right', 'bottom']).forEach(placement => {
       expect(validateOptions({placement} as Options)).toBeTruthy()
     })

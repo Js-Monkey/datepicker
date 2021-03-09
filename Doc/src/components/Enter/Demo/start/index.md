@@ -1,15 +1,9 @@
 ## START
-::: Import styles, **or you can customize theme colors** [here](#/doc)
+::: Import styles, **or you can customize theme colors** [Here](#/doc)
 ```html
 <script>
     import  {createDatePicker} from 'better-datepicker'
-
     import 'better-datepicker/style/index.css'
-
-    createDatePicker(document.querySelector('#input'),{
-        type: 'date-range',
-        fortmat: 'YYYY-MM-dd'
-    })
 
 </script>
 
@@ -17,22 +11,18 @@
 :::
 
 
-##  insertTo
-::: DatePicker pop up on body
+## OPTIONS
+::: **createDatePicker**接受两个参数，第一个是需要绑定的元素，第二个是配置项, 更多详细**Options 配置** [Here](#/doc)
 ```html
-<input id="input" type="text">
 <script>
-    import  {createDatePicker} from 'better-datepicker'
-
-    import 'better-datepicker/style/index.css'
-    const input = document.querySelector('#input')
-    this.createDatePicker(input,{
-        insertTo: 'parent',
-        offset: 30
-    })
+     const input = document.querySelector('#input')
+     createDatePicker(input,{
+           insertTo: 'parent',
+           offset: 30,
+           placement: 'top'
+     })
 
 </script>
 
 ```
 :::
-
