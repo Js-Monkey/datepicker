@@ -11,7 +11,10 @@ import {Bind} from "../../../utils/bind"
 const reference = {
   key: ['reference'],
   cb(ref: HTMLElement, state: State): void {
-    on(ref, () => (state.visible = true))
+    on(ref, () => {
+      console.log(ref)
+      state.visible = true
+    })
     on(document.body, Bind(clickOutside, state))
     listenToScrollParents(ref, state)
   },

@@ -1,5 +1,5 @@
 <template>
-  <label  class="b-input" :for="id">
+  <div  class="b-input" :for="id">
     <input
       class="f-form-placeholder"
       :id="id"
@@ -16,7 +16,7 @@
       @blur="$emit('blur',$event.target.value)"
       @focus="$emit('focus',$event.target.value)"
       type="text">
-  </label>
+  </div>
 </template>
 
 <script lang="ts">
