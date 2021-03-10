@@ -1,6 +1,6 @@
 import Options from '../types/options'
 import {findInputElement} from '../utils/findInputElement'
-import {isInputElement} from './validator/input-element'
+import {isInputElement} from '../utils/check-input-element'
 import {createState, removeState} from '../store'
 import {mergeOptions} from '../utils/merge'
 import {watch} from './watch'

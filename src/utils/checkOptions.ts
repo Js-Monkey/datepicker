@@ -1,5 +1,5 @@
-import Options, {AcceptOptions} from '../../types/options'
-import {isArray, isFunc, isNumber, isString} from '../../utils/typeOf'
+import Options, {AcceptOptions} from '../types/options'
+import {isArray, isFunc, isNumber, isString} from './typeOf'
 
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
@@ -12,7 +12,7 @@ const acceptOptions: AcceptOptions = {
   insertTo: ['body', 'parent']
 }
 
-export function checkFormat(key: keyof Options, val: unknown): boolean {
+export function checkOptions(key: keyof Options, val: unknown): boolean {
   const optionVal = acceptOptions[key] as any
   if (isArray(optionVal)) {
     return optionVal.indexOf(val) > -1

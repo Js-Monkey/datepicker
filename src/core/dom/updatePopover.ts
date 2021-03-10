@@ -10,7 +10,7 @@ const transform: Transform = {
   right: `translate(0,0)`
 }
 
-const sheetRuleStatus = {
+export const sheetRuleStatus = {
   true: {
     animation: 'show .3s',
     rule: (orn: string) => `@keyframes show { 0% {display: block;opacity: 0;transform:scaleY(.8) ${orn};} 100% {display: block;opacity: 1;transform: scaleY(1) ${orn};} }`
@@ -82,12 +82,11 @@ export function setPopoverLocation(): void {
       }
     }
     const tp = transform[placement as 'top']
-    Object.keys(tp).forEach(key=>popover.style[key] = tp[key as never])
+    Object.keys(tp).forEach(key => popover.style[key] = tp[key as never])
   }
 
   const {popover, reference, options} = this
-  const offset = options.offset
-  const {placement} = options
+  const {offset, placement} = options
   const rect = reference.getBoundingClientRect()
   const popInBody = isInBody(popover)
   if (popInBody) {

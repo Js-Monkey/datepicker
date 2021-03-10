@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sheetRuleStatus should match Snapshot 1`] = `
+Object {
+  "false": Object {
+    "animation": "hidden .3s",
+    "rule": [Function],
+  },
+  "true": Object {
+    "animation": "show .3s",
+    "rule": [Function],
+  },
+}
+`;

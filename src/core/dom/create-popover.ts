@@ -65,7 +65,6 @@ function listenToAnimation(pop: HTMLElement) {
 }
 
 export function createPopover(state: State): HTMLElement {
-  console.log(state)
   const pop = createElement(
     {
       class: [wrapper],
