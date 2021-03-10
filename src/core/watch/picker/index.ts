@@ -2,13 +2,12 @@ import {addWatch} from '../../../observer/watcher'
 import Options from '../../../types/options'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/updatePopover'
-import {createPopover} from "../../dom/create-popover"
 
 
 const popoverOpt = {
   key: ['options', 'popover'],
-  cb(options: Options, pop: HTMLElement): void | HTMLElement {
-    if (pop === null) return this.popover = createPopover(this)
+  cb(options: Options, pop: HTMLElement): void {
+    if (pop === null) return
     const {insertTo} = this.options
     appendChild(pop, insertTo === 'body' ? undefined : this.reference.parentNode)
     const {zIndex} = options

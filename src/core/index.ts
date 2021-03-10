@@ -47,11 +47,9 @@ export default function Picker(): BetterPicker {
   }
 
   function updateOptions(options: Options) {
-    const newOpt = mergeOptions(opt, options)
-    if (newOpt) {
-      state.options = newOpt
-      state.popover = null
-    }
+    state.options = mergeOptions(opt, options)
+    console.log(state.options)
+    state.popover = null
   }
 
   function destroyed() {

@@ -29,7 +29,7 @@ describe('deleteRules', () => {
 
 
 describe('createPopover', () => {
-  it('should match Snapshot', () => {
+  it('should add eventListener on animationend', () => {
     const state = createState(defaultOptions())
     const reference = document.createElement('input')
     state.popover =  createPopover(state)
