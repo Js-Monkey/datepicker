@@ -33,12 +33,12 @@ export default interface Options {
 }
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
-  placement?: Placement[]
-  type?: (keyof DatepickerType)[]
-  unlinkPanels?: boolean[]
-  offset?: number
-  zIndex?: T
-  format?: T
-  insertTo?: 'body' | 'parent'
-  disabled?: (date: Date) => boolean
+  placement: Placement[]
+  type: (keyof DatepickerType)[]
+  unlinkPanels: boolean[]
+  offset: T
+  zIndex: T
+  format: T
+  insertTo: ('body' | 'parent')[]
+  disabled: (date: Date) => boolean
 }

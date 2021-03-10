@@ -1,30 +1,18 @@
 import {isArray, isObject} from './typeOf'
-import {UtilObject} from '../types/utils'
-
-export default function deepMerge(...objs: UtilObject[]): UtilObject {
-  const target = Object.create(null)
-  objs.forEach(source => {
-    if (isObject(source)) {
-      Object.keys(source).forEach(key => {
-        const sourceVal = source[key]
-        const targetVal = target[key]
-        target[key] = isObject(sourceVal) ? deepMerge(sourceVal, targetVal) : sourceVal
-      })
-    }
-  })
-  return target
-}
-
-export function mergeOptions(source: UtilObject, target?: UtilObject): UtilObject {
-  const mergeOpt: UtilObject = deepMerge(Object.create(null), source)
-  if (target) {
-    for (const key in target) {
-      if (typeof target[key] !== 'undefined') {
-        mergeOpt[key] = target[key]
+import Options from "../types/options"
+import {checkFormat} from "../core/validator/options"
+export function mergeOptions(source: any, target?: any): Options {
+  if(isObject(target)){
+    for (const key in source) {
+      const val = target[key]
+      if (checkFormat(key as keyof Options, val)) {
+        source[key] = val
       }
     }
+  }else{
+    console.error('Invalid argument provided.Options must be an object')
   }
-  return mergeOpt
+  return source
 }
 
 export function mergeClasses(...args: (string | string[] | undefined)[]): string {

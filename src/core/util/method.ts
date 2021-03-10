@@ -19,3 +19,12 @@ export function dispatchDateChange(state: State): void{
     state.onChange(getDate(state))
   }
 }
+
+export function destroyHook(state: State): void{
+  const {popover} = state
+  if(!popover) return
+  const parent = popover.parentNode
+  if(parent&& parent.removeChild){
+    parent.removeChild(popover)
+  }
+}

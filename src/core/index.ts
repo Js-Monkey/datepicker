@@ -1,6 +1,4 @@
 import Options from '../types/options'
-import validateOptions from './validator/options'
-import defaultOptions from './util/default-options'
 import {findInputElement} from '../utils/findInputElement'
 import {isInputElement} from './validator/input-element'
 import {createState, removeState} from '../store'
@@ -9,16 +7,32 @@ import {watch} from './watch'
 import {State} from "../types/store"
 import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
-import {getDate} from "./util/hook"
+import {destroyHook, getDate} from "./util/method"
 import {BetterPicker, Callback} from "../types/core"
-
-function checkOptions(pre: Options, cur?: Options) {
-  const opt = mergeOptions(pre, cur) as Options
-  return validateOptions(opt) ? opt : null
-}
+import {on} from "../utils/event";
+import {listenToScrollParents} from "../utils/listenToParents"
+import clickOutside from "../utils/clickoutside"
+import {_Event} from "../types/event"
+import defaultOptions from "./util/default-options"
 
 export default function Picker(): BetterPicker {
   let state: State
+  let reference: HTMLElement
+  let opt: Options
+
+  function openPopover() {
+    state.visible = true
+  }
+
+  function clickOutsideClose(e: _Event) {
+    clickOutside(state, e)
+  }
+
+  function addListener() {
+    on(reference, openPopover)
+    on(document.body, clickOutsideClose)
+    listenToScrollParents(reference, state)
+  }
 
   function getCurrentDate() {
     return getDate(state)
@@ -33,7 +47,7 @@ export default function Picker(): BetterPicker {
   }
 
   function updateOptions(options: Options) {
-    const newOpt = checkOptions(state.options, options)
+    const newOpt = mergeOptions(opt, options)
     if (newOpt) {
       state.options = newOpt
       state.popover = null
@@ -42,19 +56,23 @@ export default function Picker(): BetterPicker {
 
   function destroyed() {
     removeState(state.id)
+    destroyHook(state)
   }
 
-  return function (el: HTMLInputElement, options?: Options) {
-    function create(): void {
-      const input = findInputElement(el)
-      const opt = checkOptions(defaultOptions(), options)
-      if (!isInputElement(input) || !opt) return
-      state = createState(opt)
-      watch(opt)
-      state.reference = input
-      state.popover = createPopover(state)
-    }
+  function create(): void {
+    const inputElement = findInputElement(reference)
+    if (!isInputElement(inputElement) || !opt) return
+    state = createState(opt)
+    watch(opt)
+    addListener()
+    state.reference = reference
+    state.popover = createPopover(state)
+  }
 
+
+  return function (el: HTMLInputElement, options?: Options) {
+    reference = el
+    opt = mergeOptions(defaultOptions(), options)
     create()
     return {
       options,

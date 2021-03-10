@@ -1,25 +1,9 @@
 import {addWatch} from '../../../observer/watcher'
-import {State} from '../../../types/store'
-import {on} from '../../../utils/event'
-import clickOutside from '../../../utils/clickoutside'
-import {listenToScrollParents} from '../../../utils/listenToParents'
 import Options from '../../../types/options'
 import {appendChild} from '../../../utils/element'
 import {setPopoverStyle, updatePopover} from '../../dom/updatePopover'
-import {Bind} from "../../../utils/bind"
 import {createPopover} from "../../dom/create-popover"
 
-const reference = {
-  key: ['reference'],
-  cb(ref: HTMLElement, state: State): void {
-    on(ref, () => {
-      state.visible = true
-    })
-    on(document.body, Bind(clickOutside, state))
-    listenToScrollParents(ref, state)
-  },
-  notImmediate: true
-}
 
 const popoverOpt = {
   key: ['options', 'popover'],
@@ -42,7 +26,6 @@ const popoverVisible = {
 
 export function watchComponents(): void {
   addWatch([
-    reference,
     popoverOpt,
     popoverVisible
   ])

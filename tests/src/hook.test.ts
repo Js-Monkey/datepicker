@@ -1,4 +1,4 @@
-import {getDate, dispatchDateChange} from '../../src/core/util/hook'
+import {getDate, dispatchDateChange} from '../../src/core/util/method'
 import defaultOptions from "../../src/core/util/default-options"
 import {createState} from "../../src/store"
 
