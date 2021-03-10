@@ -1,4 +1,4 @@
-import {ComponentStatus, Range, State} from "../../../../types/store"
+import {ComponentStatus, State} from "../../../../types/store"
 import {dateDiff, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange} from "../../../util/method";

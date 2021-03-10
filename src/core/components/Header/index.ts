@@ -89,7 +89,7 @@ function date(state: State) {
       name,
       childKey: ['month', 'year']
     },
-    cb: (month, year) => month + ' ' + year
+    cb: (idx, year) => monthNames[idx - 1] + ' ' + year
   }
   const isMonth = state.options.type.indexOf('month') > -1
   return createElement({

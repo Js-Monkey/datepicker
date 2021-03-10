@@ -76,7 +76,6 @@ export default function Picker(): BetterPicker {
     state.popover = createPopover(state)
   }
 
-
   return function (el: HTMLInputElement, options?: Options) {
     reference = el
     opt = mergeOptions(defaultOptions(), options)

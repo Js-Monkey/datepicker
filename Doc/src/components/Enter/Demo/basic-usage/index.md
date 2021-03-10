@@ -11,13 +11,13 @@
 <script>
     const input = document.querySelector('#input')
     const picker = this.createDatePicker(input,{
-         insertTo: 'parent',
+         type:'date-range',
          offset: 30,
          placement: 'bottom'
     })
-    this.insertToBody = ()=> picker.updateOptions({insertTo:'body'})
+    this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})
     this.insertToParent = ()=> picker.updateOptions({insertTo:'parent'})
-
+    console.log(picker)
 </script>
 
 ```

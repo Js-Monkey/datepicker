@@ -1,4 +1,4 @@
-import type {Plugin} from 'vite'
+  import type {Plugin} from 'vite'
 import transformToVue from "./snippet"
 
 function MarkDownLoader(): Plugin {
