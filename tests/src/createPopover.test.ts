@@ -1,7 +1,6 @@
 import {createPopover, deleteRules} from "../../src/core/dom/create-popover"
-import {createState} from "../../src/store";
-import defaultOptions from "../../src/core/util/default-options";
-import {setPopoverLocation} from "../../src/core/dom/updatePopover";
+import {createState} from "../../src/store"
+import defaultOptions from "../../src/core/util/default-options"
 
 
 function mockStyleSheets() {

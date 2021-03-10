@@ -1,3 +1,5 @@
+import {State} from "./store";
+
 export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'scroll' | 'resize' | 'focus' | 'blur'
 
 export interface Handler {
@@ -16,3 +18,13 @@ export interface _Event {
   path: any[]
   target: HTMLElement
 }
+
+export interface On {
+  (handler: Handler, state?: State): void
+}
+
+export interface Off {
+  (): void
+}
+
+export type _EventListener = [On,Off]

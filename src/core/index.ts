@@ -9,36 +9,41 @@ import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
 import {destroyHook, getDate} from "./util/method"
 import {BetterPicker, Callback} from "../types/core"
-import {on} from "../utils/event";
+import {getEventListener} from "../utils/event";
 import {listenToScrollParents} from "../utils/listenToParents"
 import clickOutside from "../utils/clickoutside"
-import {_Event} from "../types/event"
+import {Off} from "../types/event"
 import defaultOptions from "./util/default-options"
+import {Bind} from "../utils/bind"
+
+const destroyedMsg = 'The date-picker has been destroyed'
 
 export default function Picker(): BetterPicker {
-  let state: State
-  let reference: HTMLElement
-  let opt: Options
+  let state: State | null, reference: HTMLElement, opt: Options
+  let onRef, offRef: Off, onBody, offBody: Off
 
   function openPopover() {
-    state.visible = true
-  }
-
-  function clickOutsideClose(e: _Event) {
-    clickOutside(state, e)
+    if (state) state.visible = true
   }
 
   function addListener() {
-    on(reference, openPopover)
-    on(document.body, clickOutsideClose)
-    listenToScrollParents(reference, state)
+    [onRef, offRef] = getEventListener(reference)
+    ;[onBody, offBody] = getEventListener(document.body)
+    onRef(openPopover)
+    onBody(Bind(clickOutside, state))
+    if (state) listenToScrollParents(reference, state)
   }
 
   function getCurrentDate() {
+    if (!state) {
+      console.error(destroyedMsg)
+      return null
+    }
     return getDate(state)
   }
 
   function onChange(cb: Callback) {
+    if (!state) return
     if (isFunc(cb)) {
       state.onChange = cb
     } else {
@@ -47,14 +52,18 @@ export default function Picker(): BetterPicker {
   }
 
   function updateOptions(options: Options) {
-    state.options = mergeOptions(opt, options)
-    console.log(state.options)
-    state.popover = null
+    opt = mergeOptions(opt, options)
+    destroyed()
+    create()
   }
 
   function destroyed() {
-    removeState(state.id)
+    if (!state) return console.error(destroyedMsg)
     destroyHook(state)
+    offBody()
+    offRef()
+    removeState(state.id)
+    state = null
   }
 
   function create(): void {

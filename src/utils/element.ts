@@ -66,7 +66,7 @@ export function createElement(opt: CreateElementOptions, state: State): Node {
   return el
 }
 
-export function appendChild(children: Element | Element[], parent: Element = document.body): void {
+export function appendChild(children: Element | Element[], parent: HTMLElement | undefined = document.body): void {
   if (isArray(children)) {
     children.forEach(child => parent.appendChild(child))
   } else {
