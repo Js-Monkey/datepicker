@@ -34,7 +34,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
      <template v-slot:HTML>
         <div class=highlight>
           <pre class="hljs html">
-             <code style="margin-top: -50px">
+             <code>
                 ${htmlScript}
              </code>
           </pre>

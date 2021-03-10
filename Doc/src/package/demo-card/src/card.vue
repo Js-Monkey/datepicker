@@ -125,7 +125,6 @@ export default defineComponent({
 
     &-codeBox {
       width: 50vw;
-      height: 300px;
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
@@ -143,7 +142,6 @@ export default defineComponent({
       }
 
       &-wrapper {
-
         width: 50vw;
         position: relative;
       }
@@ -153,7 +151,8 @@ export default defineComponent({
   pre {
     margin: 0;
     padding: 0;
-
+    display: flex;
+    align-items: stretch;
     code {
       width: 100%;
       border-radius: 7px;
