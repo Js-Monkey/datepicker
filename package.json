@@ -10,7 +10,7 @@
     "serve": "vite preview",
     "build:css": "gulp build --gulpfile build/gulpfile.js",
     "prebp": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c build/rollup.config.js && npm run build:css",
+    "build": "tsc --module commonjs && rollup -c build/rollup.config.js && npm run build:css &&  rm -rf .rpt2_cache",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",

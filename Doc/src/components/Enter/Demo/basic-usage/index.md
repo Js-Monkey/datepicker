@@ -16,7 +16,6 @@
     })
     this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})
     this.insertToParent = ()=> picker.updateOptions({insertTo:'parent'})
-    console.log(picker)
 </script>
 
 ```
