@@ -30,7 +30,7 @@ export interface MonthComponents {
 
 
 export interface stateComponent<T = null | HTMLElement, U = null | Fn> {
-  reference: T
+  reference: HTMLInputElement | null
   popover: T
   onChange: U
 }

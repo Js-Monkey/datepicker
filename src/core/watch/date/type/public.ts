@@ -1,12 +1,12 @@
 import {ComponentStatus, State} from "../../../../types/store"
 import {dateDiff, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
-import {dispatchDateChange} from "../../../util/method";
+import {dispatchDateChange, getDate} from "../../../util/method"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
   const range = [start, end] as [string, string]
-  const [min, max] = rangeSort(...range)
+  const [max, min] = rangeSort(...range)
   const isMin = date === min
   const isMax = date === max
   const isInRange = dateDiff(max, date) && dateDiff(date, min)
@@ -46,5 +46,5 @@ export const handleSelecting: Sub = {
 function finishSelect(self: State) {
   self.visible = false
   const {start, end} = self.range
-  ;[self.start.date, self.end.date] = rangeSort(start, end)
+  ;[self.end.date, self.start.date] = rangeSort(start, end)
 }

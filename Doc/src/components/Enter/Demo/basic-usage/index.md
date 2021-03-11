@@ -11,7 +11,6 @@
 <script>
     const input = document.querySelector('#input')
     const picker = this.createDatePicker(input,{
-         type:'date-range',
          offset: 30,
          placement: 'bottom'
     })

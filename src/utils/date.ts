@@ -61,7 +61,7 @@ export function monthDiff(source: string | null, target: string | null): boolean
 
 export function rangeSort(min: string | null, max: string | null): (string | null)[] {
   const range = [min, max]
-  return dateDiff(min, max) ? range.reverse() : range
+  return dateDiff(min, max) ? range : range.reverse()
 }
 
 

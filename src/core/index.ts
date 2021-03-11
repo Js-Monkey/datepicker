@@ -19,7 +19,7 @@ import {Bind} from "../utils/bind"
 const destroyedMsg = 'The date-picker has been destroyed'
 
 export default function Picker(): BetterPicker {
-  let state: State | null, reference: HTMLElement, opt: Options
+  let state: State | null, reference: HTMLInputElement, opt: Options
   let onRef, offRef: Off, onBody, offBody: Off
 
   function openPopover() {
@@ -67,8 +67,7 @@ export default function Picker(): BetterPicker {
   }
 
   function create(): void {
-    const inputElement = findInputElement(reference)
-    if (!isInputElement(inputElement) || !opt) return
+    if(!reference) return
     state = createState(opt)
     watch(opt)
     addListener()
@@ -77,12 +76,13 @@ export default function Picker(): BetterPicker {
   }
 
   return function (el: HTMLInputElement, options?: Options) {
-    reference = el
+    const inputElement = findInputElement(el)
+    if (!isInputElement(inputElement)) return
+    reference = inputElement
     opt = mergeOptions(defaultOptions(), options)
     create()
     return {
       options,
-      create,
       getCurrentDate,
       onChange,
       updateOptions,

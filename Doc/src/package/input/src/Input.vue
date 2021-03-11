@@ -154,6 +154,7 @@ $input-small-height: 24px;
     border: $border-solid;
     border-radius: $border-radius;
     padding: 0 8px;
+    letter-spacing: 1px;
     font-size: inherit;
     transition: .23s box-shadow ease;
 

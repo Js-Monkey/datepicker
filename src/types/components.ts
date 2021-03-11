@@ -12,8 +12,6 @@ export interface UpdateCbType {
   sty: (res: boolean)=> void
 }
 
-export type Components = (state: State, ...arg: any) => Node
-
 export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>
 
 export type DayEvent = DateType<(this: State) => void, EventListener[]>

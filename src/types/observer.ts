@@ -6,10 +6,6 @@ export interface Dep {
   updateView: () => void
 }
 
-export interface keyIsArray {
-  name: keyof State
-  index: number
-}
 
 export interface SubKey {
   name: string

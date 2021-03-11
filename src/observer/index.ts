@@ -17,7 +17,7 @@ export default function ObserveState(state: State): State {
     return obj
   }
 
-  function defineReactive<T>(obj: T, key: keyof T, val: any) {
+  function defineReactive<T>(obj: T, key: keyof T, val: unknown) {
     const dep = new Dep(obj, state)
     Object.defineProperty(obj, key, {
       enumerable: true,

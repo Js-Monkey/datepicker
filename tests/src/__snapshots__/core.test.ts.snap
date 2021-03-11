@@ -2,7 +2,6 @@
 
 exports[`createDatePicker should match snapshot 1`] = `
 Object {
-  "create": [Function],
   "destroyed": [Function],
   "getCurrentDate": [Function],
   "onChange": [Function],
