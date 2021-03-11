@@ -15,3 +15,13 @@ export interface BetterPickerInstance {
   updateOptions: (options: Options)=> void
   destroyed: ()=> void
 }
+
+
+export interface Formats {
+  d: (date: Date) => number
+  dd: (date: Date) => string
+  M: (date: Date) => number
+  MM: (date: Date) => string
+  yy: (date: Date) => string
+  yyyy: (date: Date) => number
+}

@@ -1,3 +1,5 @@
+import {isArray} from "./typeOf";
+
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
 }
@@ -12,11 +14,6 @@ export function getDay(date: Date = new Date()): number {
 
 export function transformDateToArray(date: string): number[] {
   return date.split('/').map(str => Number(str))
-}
-
-
-export function getDate(year: number, month: number, day: number): Date {
-  return new Date(joinDate(month, year, day))
 }
 
 export function daysInAMonth(year: number, month: number): number {
@@ -54,8 +51,8 @@ export function dateDiff(source: string | null, target: string | null): boolean 
 
 export function monthDiff(source: string | null, target: string | null): boolean {
   if (!source || !target) return false
-  const [sourceYear,sourceMonth] = source.split('/')
-  const [targetYear,targetMonth] = target.split('/')
+  const [sourceYear, sourceMonth] = source.split('/')
+  const [targetYear, targetMonth] = target.split('/')
   return sourceYear === targetYear && sourceMonth === targetMonth
 }
 

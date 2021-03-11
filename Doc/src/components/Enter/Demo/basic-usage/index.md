@@ -12,7 +12,8 @@
     const input = document.querySelector('#input')
     const picker = this.createDatePicker(input,{
          offset: 30,
-         placement: 'bottom'
+         placement: 'bottom',
+         format:'yyyy年MM月dd日'
     })
     this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})
     this.insertToParent = ()=> picker.updateOptions({insertTo:'parent'})

@@ -1,7 +1,6 @@
 import {State} from "../../types/store"
 import {GetDateType} from "../../types/core"
-import {isArray} from "../../utils/typeOf";
-
+import {getFormatDate} from "./format"
 
 export function getDate(state: State): GetDateType {
   const isRange = state.options.type.indexOf('range') > -1
@@ -13,14 +12,11 @@ export function getDate(state: State): GetDateType {
   }
 }
 
-
 export function dispatchDateChange(state: State): void {
   const date = getDate(state)
-  if (state.onChange) {
-    state.onChange(date)
-  }
+  if (state.onChange) state.onChange(date)
   if (state.options.binding && state.reference) {
-    state.reference.value = (isArray(date) ? date.join(' - ') : date) as string
+    state.reference.value = getFormatDate(date as string, state.options.format)
   }
 }
 
