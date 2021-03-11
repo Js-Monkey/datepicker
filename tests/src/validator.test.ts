@@ -75,9 +75,9 @@ describe('checkOptions',()=>{
   })
   describe('KeyName: disabled',()=>{
     it('should return whether `value` is a Function', () => {
-      expect(checkOptions("disabled", ()=> 'i am a function')).toBeTruthy()
-      expect(checkOptions("disabled", undefined)).toBeFalsy()
-      expect(checkOptions("disabled", null)).toBeFalsy()
+      expect(checkOptions("disabled", ()=> 'i am a function')).toBeFalsy()
+      expect(checkOptions("disabled", true)).toBeTruthy()
+      expect(checkOptions("disabled", false)).toBeTruthy()
     })
   })
 })

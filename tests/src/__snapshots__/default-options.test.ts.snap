@@ -3,6 +3,8 @@
 exports[`default-options default-options 1`] = `
 Object {
   "binding": true,
+  "disabled": false,
+  "disabledDate": null,
   "format": "yyyy/MM/dd",
   "insertTo": "body",
   "offset": 12,
