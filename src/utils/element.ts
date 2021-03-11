@@ -8,35 +8,38 @@ import {mergeClasses} from './merge'
 import {UpdateCbType} from "../types/components"
 import {SvgName} from "../types/element";
 
-const handler: Handler = {
-  event(el, listener, state) {
-    if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
-      listener.forEach(e => on(el, e.handler, e.name, state))
-    } else {
-      on(el, listener, 'click', state)
-    }
-  },
-  class: (el, cls) => update(el, cls, 'cls'),
-  style: (el, sty) => resetAttr(el, transformStyle(sty), 'style'),
-  children(el, children, state) {
-    children.forEach(child => el.appendChild(createElement(child, state)))
-  },
-  name: () => null,
-  text(el, text) {
-    if (isString(text)) {
-      el.innerText = text
-    } else {
-      update(el, text)
-    }
-  },
-  visible: (el, vis) => update<boolean>(el, vis, 'sty')
+function handler(el: HTMLElement, val: any, state: State): Handler {
+  return {
+    event() {
+      if (isArray<{ name: eventType; handler: eventHandler }>(val)) {
+        val.forEach(e => on(el, e.handler, e.name, state))
+      } else {
+        on(el, val, 'click', state)
+      }
+    },
+    class: () => update(el, val, 'cls'),
+    style: () => resetAttr(el, transformStyle(val), 'style'),
+    children() {
+      val.forEach((child: CreateElementOptions) => el.appendChild(createElement(child, state)))
+    },
+    name: () => null,
+    text() {
+      if (isString(val)) {
+        el.innerText = val
+      } else {
+        update(el, val)
+      }
+    },
+    visible: () => update<boolean>(el, val, 'sty')
+  }
+
 }
 
 export function createEL(tagName = 'div'): HTMLElement {
   return document.createElement(tagName)
 }
 
-const svgName: SvgName ={
+const svgName: SvgName = {
   month: ['M721.9968 979.0208l47.0528-47.104-419.94752-419.98848 419.94752-419.90144-47.05792-47.04768-419.93216 419.89632h-0.00512l-47.104 47.09888 47.04768 47.04256z'],
   year: [
     'M176 513.7l392.73-395.44a32 32 0 0 0-45.41-45.1L108 491.3a32 32 0 0 0 0.16 45.25L523.48 949a32 32 0 1 0 45.1-45.41z',
@@ -47,10 +50,10 @@ const svgName: SvgName ={
 export default function createSVG(name: string): Element {
   const url = 'http://www.w3.org/2000/svg'
   const svg = document.createElementNS(url, 'svg')
-  svg.setAttribute('viewBox','0 0 1024 1024')
-  svgName[name as 'month'].forEach((item: string)=>{
+  svg.setAttribute('viewBox', '0 0 1024 1024')
+  svgName[name as 'month'].forEach((item: string) => {
     const path = document.createElementNS(url, 'path')
-    path.setAttribute( 'd', item)
+    path.setAttribute('d', item)
     svg.appendChild(path)
   })
   return svg
@@ -61,7 +64,7 @@ export function createElement(opt: CreateElementOptions, state: State): Node {
   if (isFunc<Node>(opt)) return opt(state)
   const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
   Object.keys(opt).forEach(key => {
-    handler[key as keyof CreateElementOptions](el as HTMLElement, (opt as any)[key], state)
+    handler(el as HTMLElement, opt[key as keyof Handler], state)[key as keyof Handler]()
   })
   return el
 }

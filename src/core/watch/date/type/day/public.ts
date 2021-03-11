@@ -48,6 +48,10 @@ function addStatus(self: State, date: string, status: ComponentStatus): Componen
 }
 
 export function otherStatus(self: State, date: string): ComponentStatus {
+  const {disabledDate} = self.options
+  if(disabledDate&& disabledDate(new Date(date))){
+    return 'disabled'
+  }
   const typeStatus = {
     date: () => dateStatus(self.start.date, date),
     'date-range': () => rangeStatus(self, date)

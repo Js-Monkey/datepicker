@@ -1,7 +1,7 @@
 import {ComponentStatus, State} from "../../../../types/store"
 import {dateDiff, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
-import {dispatchDateChange, getDate} from "../../../util/method"
+import {dispatchDateChange} from "../../../util/method"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
