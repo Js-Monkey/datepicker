@@ -6,7 +6,8 @@ const types: Types = {
   Array: '[object Array]',
   String: '[object String]',
   Number: '[object Number]',
-  Function: '[object Function]'
+  Function: '[object Function]',
+  Boolean: '[object Boolean]',
 }
 const toString = Object.prototype.toString
 const typeOf = (val: unknown, typeName: keyof Types) => toString.call(val) === types[typeName]
@@ -25,6 +26,10 @@ export function isFunc<T = string>(val: unknown): val is (...arg: any) => T {
 
 export function isString(val: unknown): val is string {
   return typeOf(val, 'String')
+}
+
+export function isBoolean(val: unknown): val is boolean {
+  return typeOf(val, 'Boolean')
 }
 
 export function isArray<T = unknown>(val: unknown): val is T[] {

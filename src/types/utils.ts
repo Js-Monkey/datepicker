@@ -16,6 +16,7 @@ export interface Types {
   Array: string
   Date: string
   Object: string
+  Boolean: string
 }
 
 export interface Rect<T = number> {

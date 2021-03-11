@@ -2,6 +2,7 @@
 
 exports[`default-options default-options 1`] = `
 Object {
+  "binding": true,
   "format": "yyyy/MM/dd",
   "insertTo": "body",
   "offset": 12,

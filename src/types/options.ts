@@ -29,16 +29,18 @@ export default interface Options {
   zIndex: number
   format: string
   insertTo: 'body' | 'parent'
+  binding: boolean
   disabled?: (date: Date) => boolean
 }
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
   placement: Placement[]
   type: (keyof DatepickerType)[]
-  unlinkPanels: boolean[]
+  unlinkPanels: T
   offset: T
   zIndex: T
   format: T
+  binding: T
   insertTo: ('body' | 'parent')[]
   disabled: (date: Date) => boolean
 }
