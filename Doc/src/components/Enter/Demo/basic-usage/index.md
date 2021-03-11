@@ -13,7 +13,11 @@
     const picker = this.createDatePicker(input,{
          offset: 30,
          placement: 'bottom',
-         format:'yyyy年MM月dd日'
+         format:'yyyy年MM月dd日',
+         disabledDate (date) {
+            const disabledDay = date.getDate()
+            return disabledDay === 15
+         }
     })
     this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})
     this.insertToParent = ()=> picker.updateOptions({insertTo:'parent'})

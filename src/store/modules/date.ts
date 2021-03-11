@@ -18,7 +18,6 @@ const monthComponents = (): MonthComponents[] =>
     }
   })
 
-
 export default function (): stateDate {
   const date = new Date()
   const [startYear, startMonth] = [getYear(date), getMonth(date)]

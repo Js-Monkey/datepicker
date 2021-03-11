@@ -1,5 +1,3 @@
-import {isArray} from "./typeOf";
-
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
 }

@@ -9,7 +9,9 @@ function defaultOptions(): Options {
     format: 'yyyy/MM/dd',
     offset: 12,
     insertTo: 'body',
-    binding: true
+    binding: true,
+    disabled: false,
+    disabledDate: null
   }
 }
 

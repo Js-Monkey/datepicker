@@ -12,7 +12,6 @@ export function getEventListener(el: HTMLElement | Window, eventName: eventType 
   }
 
   function _off(): void {
-    console.log(eventHandler)
     el.removeEventListener(eventName, eventHandler)
   }
 

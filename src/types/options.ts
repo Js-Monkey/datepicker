@@ -30,7 +30,8 @@ export default interface Options {
   format: string
   insertTo: 'body' | 'parent'
   binding: boolean
-  disabled?: (date: Date) => boolean
+  disabledDate?: ((date: Date) => boolean) | null
+  disabled: boolean
 }
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
@@ -42,5 +43,6 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
   format: T
   binding: T
   insertTo: ('body' | 'parent')[]
-  disabled: (date: Date) => boolean
+  disabledDate: (date: Date) => boolean
+  disabled: T
 }

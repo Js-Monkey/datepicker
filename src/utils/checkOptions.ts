@@ -7,7 +7,8 @@ const acceptOptions: AcceptOptions = {
   unlinkPanels: (val: unknown) => isBoolean(val),
   format: (val: unknown) => isString(val),
   zIndex: (val: unknown) => isNumber(val),
-  disabled: (val: unknown) => isFunc(val),
+  disabled: (val: unknown) => isBoolean(val),
+  disabledDate: (val: unknown) => isFunc(val),
   offset: (val: unknown) => isNumber(val),
   insertTo: ['body', 'parent'],
   binding: (val: unknown) => isBoolean(val)

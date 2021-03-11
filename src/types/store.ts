@@ -16,6 +16,7 @@ export type ComponentStatus =
   | ''
   | 'range-start range-end'
   | 'today'
+  | 'disabled'
 
 export interface DateComponents {
   text: string
