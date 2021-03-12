@@ -47,10 +47,10 @@ function tBody(state: State): Node {
         children: [
           {
             text: config(child, 'text'),
-            class: config(child)
           }
         ],
         style: tableStyle,
+        class: config(child),
         event: {
           listener: dayEvent(child)[state.type as 'date'],
           arg: child
