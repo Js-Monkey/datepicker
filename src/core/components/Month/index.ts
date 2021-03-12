@@ -62,7 +62,7 @@ export function Month(state: State, t: HeaderType = 'start'): Node {
       style: utilStyle,
       visible: {
         key: ['page'],
-        cb: (page) => page === 'month'
+        cb: (page: string) => page === 'month'
       }
     },
     state

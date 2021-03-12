@@ -15,8 +15,7 @@
          placement: 'bottom',
          format:'yyyy年MM月dd日',
          disabledDate (date) {
-            const disabledDay = date.getDate()
-            return disabledDay === 15
+            return date > Date.now()
          }
     })
     this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})

@@ -41,6 +41,11 @@ export interface EventListener {
   handler: eventHandler
 }
 
+export interface EventListenerHasArguments {
+  arg: any
+  listener: eventHandler | EventListener[]
+}
+
 export interface Style {
   height?: string
   width?: string
@@ -77,22 +82,22 @@ export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody' | 'i'
   text?: string | Sub<string>
   class?: updateOptions | string[]
-  event?: eventHandler | EventListener[]
+  event?: eventHandler | EventListener[] | EventListenerHasArguments
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
   visible?: updateOptions<boolean>
 }
 
-interface HandlerCb<T> {
+interface HandlerCb {
   (): void
 }
 
 export interface Handler<> {
   name: () => void
-  text: HandlerCb<Sub<string> | string>
-  class: HandlerCb<updateOptions | string[]>
-  event: HandlerCb<eventHandler | EventListener[]>
-  style: HandlerCb<Style>
-  children: HandlerCb<CreateElementOptions[]>
-  visible: HandlerCb<updateOptions<boolean>>
+  text: HandlerCb
+  class: HandlerCb
+  event: HandlerCb
+  style: HandlerCb
+  children: HandlerCb
+  visible: HandlerCb
 }

@@ -2,6 +2,8 @@ import {ComponentStatus, DateData, State} from "../../../../../types/store"
 import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../../../utils/date"
 import {today} from "../../../../../utils/classes"
 import {rangeStatus} from "../public"
+import {isDisabledDate} from "../../../../../utils/event"
+import {mergeClasses} from "../../../../../utils/merge"
 
 export function updateDays(
   month: number,
@@ -32,7 +34,7 @@ export function updateDays(
           }
         }
       ;[item.text, item.date] = newDate[status]()
-      item.status = status
+      item.status = mergeClasses(status, isDisabledDate(this, item.date)) as ''
     }
   )
 }
@@ -48,10 +50,6 @@ function addStatus(self: State, date: string, status: ComponentStatus): Componen
 }
 
 export function otherStatus(self: State, date: string): ComponentStatus {
-  const {disabledDate} = self.options
-  if(disabledDate&& disabledDate(new Date(date))){
-    return 'disabled'
-  }
   const typeStatus = {
     date: () => dateStatus(self.start.date, date),
     'date-range': () => rangeStatus(self, date)

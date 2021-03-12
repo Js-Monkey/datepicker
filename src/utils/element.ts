@@ -6,15 +6,22 @@ import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
 import {UpdateCbType} from "../types/components"
-import {SvgName} from "../types/element";
+import {SvgName} from "../types/element"
 
 function handler(el: HTMLElement, val: any, state: State): Handler {
+  function addListener(listener: any, arg?: unknown){
+    if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
+      listener.forEach(e => on(el, e.handler, e.name, state, arg))
+    } else {
+      on(el, listener, 'click', state, arg)
+    }
+  }
   return {
     event() {
-      if (isArray<{ name: eventType; handler: eventHandler }>(val)) {
-        val.forEach(e => on(el, e.handler, e.name, state))
-      } else {
-        on(el, val, 'click', state)
+      if('listener' in val){
+        addListener(val.listener, val.arg)
+      }else{
+        addListener(val)
       }
     },
     class: () => update(el, val, 'cls'),

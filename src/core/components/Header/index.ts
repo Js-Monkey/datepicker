@@ -7,7 +7,7 @@ import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {Sub} from "../../../types/observer"
-import {monthNames} from "../../util/i18n";
+import {monthNames} from "../../util/i18n"
 
 let name: HeaderType = 'start'
 

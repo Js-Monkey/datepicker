@@ -158,6 +158,10 @@ $border-color: #dde0e7;
         color: white !important;
       }
     }
+    .disabled{
+      opacity: .3;
+      cursor: not-allowed;
+    }
   }
 
   &-day, &-month {

@@ -17,7 +17,7 @@ describe('Event', () => {
     name: 'her name plz'
   } as unknown as any
 
-  const website = 'https://www.test.cn'
+
   describe('should add eventListener on element', () => {
     it('third parameter is eventName', () => {
       on(div, listener, 'click')
@@ -37,16 +37,6 @@ describe('Event', () => {
       on(div, listener, 'click', state)
       div.click()
       expect(listener.mock.results[0].value).toBe(state)
-    })
-
-    it('should put the event target to last', () => {
-      listener = jest.fn(function (url: string, e: Event) {
-        return [url, e]
-      })
-      on(div, listener, 'click', state, website)
-      div.click()
-      expect(listener.mock.results[0].value[0]).toBe(website)
-      expect(isMouseEvent(listener.mock.results[0].value[1])).toBeTruthy()
     })
   })
 })

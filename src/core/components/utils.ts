@@ -1,5 +1,6 @@
-import {pageName, RangeStatus} from '../../types/store'
+import {MonthComponents, pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
+import {EventListener} from "../../types/utils"
 import {_Event} from "../../types/event"
 
 export const utilStyle = {
@@ -19,7 +20,7 @@ const rangeClickEvent: RangeClickEvent = {
   }
 }
 
-export function handleRange(state: any): any {
+export function handleRange(state: MonthComponents): EventListener[] {
   return [
     {
       name: 'click',

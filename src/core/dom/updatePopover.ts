@@ -1,7 +1,7 @@
 import {Rect, Transform} from '../../types/utils'
 import {addAttr} from '../../utils/attribute'
 import {isInBody} from "../../utils/isInBody"
-import {deleteRules} from "./create-popover";
+import {deleteRules} from "./create-popover"
 
 const transform: Transform = {
   top: `translate(0,-100%)`,

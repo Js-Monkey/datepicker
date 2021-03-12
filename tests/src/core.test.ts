@@ -7,9 +7,6 @@ describe('createDatePicker', () => {
     expect(instance).toMatchSnapshot()
   })
 
-  it('should get current date', () => {
-    expect(instance?.getCurrentDate()).toBeNull()
-  })
   it('should do nothing if `value` is null', () => {
     expect(instance?.onChange(null as any)).toBeUndefined()
   })
@@ -26,5 +23,11 @@ describe('createDatePicker', () => {
 
   it('should update `state.options`', () => {
     expect(instance?.updateOptions({placement: "bottom"} as any)).toBeUndefined()
+  })
+
+  it('should get current date', () => {
+    expect(instance?.getCurrentDate()).toBeNull()
+    instance?.destroyed()
+    expect(instance?.getCurrentDate()).toBeNull()
   })
 })

@@ -23,12 +23,19 @@ export function on(
   handler: Handler,
   eventName: eventType = 'click',
   state?: State,
-  ...arg: any
+  arg?: any
 ): (e: Event) => unknown {
   function listener(e: Event) {
-    return handler.apply(state, arg.concat(e))
+    if(arg&&arg.date && state &&isDisabledDate(state, arg.date)) return
+    return handler.call(state, e)
   }
 
   el.addEventListener(eventName, listener)
   return listener
+}
+
+
+export function isDisabledDate(state: State, date: string): string{
+  const {disabledDate} = state.options
+  return (disabledDate && disabledDate(new Date(date)))? 'disabled': ''
 }

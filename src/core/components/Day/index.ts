@@ -18,7 +18,7 @@ const tableStyle = {
   padding: '3px 0'
 }
 
-function config(child: any, name: 'text' | 'status') {
+function config(child: any, name: 'text' | 'status' = 'status') {
   return {
     key: {
       name: [name],
@@ -47,11 +47,14 @@ function tBody(state: State): Node {
         children: [
           {
             text: config(child, 'text'),
-            class: config(child, 'status')
+            class: config(child)
           }
         ],
         style: tableStyle,
-        event: dayEvent(child)[state.type as 'date']
+        event: {
+          listener: dayEvent(child)[state.type as 'date'],
+          arg: child
+        }
       }
     })
   }

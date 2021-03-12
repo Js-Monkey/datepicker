@@ -22,7 +22,6 @@ function pad(val: string | number, len?: number) {
   return val
 }
 
-
 export function getFormatDate(date: string | string[], format: string): string {
   function formatParse(dateStr: string): string {
     return format.replace(token, val => formats[val as 'dd'](new Date(dateStr)))
