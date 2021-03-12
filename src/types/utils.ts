@@ -1,4 +1,3 @@
-import {State} from './store'
 import {Sub} from './observer'
 
 export interface UtilObject {

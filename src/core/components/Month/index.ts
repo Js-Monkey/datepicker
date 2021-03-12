@@ -25,26 +25,20 @@ function tBody(state: State): Node {
   function td(rc: number): CreateElementOptions[] {
     return Array.from({length: colsCount}).map((_, cc) => {
       const idx = rc * 4 + cc
-      const text = monthNames[idx]
+      const child = state[type]._month[idx]
       return {
         name: 'td',
         class: {
           key: {
-            name: type,
-            childKey: {
-              name: '_month',
-              idx,
-              childKey: ['status']
-            }
+            name: ['status'],
+            child
           },
           cb: (val: string) => val
         },
         children: [
-          {
-            children: [{text}]
-          }
+          {text: monthNames[idx]}
         ],
-        event: monthEvent(idx, type)[state.type as 'date']
+        event: monthEvent(idx,child)[state.type as 'date']
       }
     })
   }

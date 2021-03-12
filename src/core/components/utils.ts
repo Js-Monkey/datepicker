@@ -1,4 +1,4 @@
-import {pageName, RangeStatus, State} from '../../types/store'
+import {pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
 import {_Event} from "../../types/event"
 
@@ -19,14 +19,14 @@ const rangeClickEvent: RangeClickEvent = {
   }
 }
 
-export function handleRange(fn: (self: State) => string): any {
+export function handleRange(state: any): any {
   return [
     {
       name: 'click',
       handler() {
         const {range} = this
         const current = rangeClickEvent[range.status as RangeStatus]
-        range[current.plt] = fn(this)
+        range[current.plt] = state.date
         range.status = current.status
       }
     },
@@ -35,7 +35,7 @@ export function handleRange(fn: (self: State) => string): any {
       handler() {
         const {range} = this
         if (range.status === 'selecting') {
-          range.end = fn(this)
+          range.end = state.date
         }
       }
     }

@@ -7,7 +7,6 @@ import {
   selectYear, toDayPage, toggleVisibility,
   toMonthPage, toYearPage
 } from "../../src/core/components/utils"
-import {State} from "../../src/types/store"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 import {_Event} from "../../src/types/event"
@@ -16,13 +15,10 @@ const state = createState(defaultOptions())
 const date = '1999/10/1'
 state.start._day[0].date = date
 
-function getDate(state: State): string {
-  return state['start']._day[0].date
-}
 
 describe('handleRange', () => {
   it('`clickHandler` should changed range status and date', () => {
-    const clickHandler = handleRange(getDate)[0].handler.bind(state)
+    const clickHandler = handleRange(state.start._day[0])[0].handler.bind(state)
     clickHandler()
     expect(state.range.start).toEqual(date)
     expect(state.range.status).toEqual('selecting')
@@ -33,7 +29,7 @@ describe('handleRange', () => {
   })
 
   it('`mouseenter` should changed range end date if range status is `selecting`', () => {
-    const mouseenterHandler = handleRange(getDate)[1].handler.bind(state)
+    const mouseenterHandler = handleRange(state.start._day[0])[1].handler.bind(state)
     state.range.end = '2020/10/1'
     state.range.status = 'complete'
     mouseenterHandler()

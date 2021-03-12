@@ -7,7 +7,7 @@ const testDate = '2020/10/3'
 state.start._day[1].date = testDate
 describe('dayEvent', () => {
   it('date function should changed `state.visible`', () => {
-    const {date} = dayEvent(1, 'start')
+    const {date} = dayEvent(state.start._day[1])
     date.call(state)
     expect(state.visible).toBeFalsy()
     expect(state.start.date).toBe(testDate)

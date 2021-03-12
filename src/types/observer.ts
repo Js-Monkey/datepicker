@@ -7,14 +7,21 @@ export interface Dep {
 }
 
 
-export interface SubKey {
+export interface ChildKey {
   name: string
   childKey: SubKey | string[]
   idx?: number
 }
 
+export interface ChildKeyPad {
+  name: string[]
+  child: any
+}
+
+export type SubKey  = ChildKeyPad | ChildKey | string[]
+
 export interface Sub<T = void> {
-  key: SubKey | string[]
+  key: SubKey
   cb: (this: State, ...arg: any) => T
   notImmediate?: boolean
 }
@@ -27,5 +34,6 @@ export interface ReWriteSub<T = void> {
 
 export interface Watcher {
   addDep(dep: Dep): void
+
   watcher: ReWriteSub
 }

@@ -2,13 +2,13 @@ import {Style, UtilObject} from '../types/utils'
 import {isObject} from './typeOf'
 
 export function resetAttr(el: HTMLElement | Element, val: string, name = 'class'): void {
-  if(!val)return el.removeAttribute(name)
+  if (!val) return el.removeAttribute(name)
   el.setAttribute(name, val)
 }
 
 export function transformStyle(sty: Style): string {
   return Object.keys(sty)
-    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}`), [] as any[])
+    .reduce((acc, key) => acc.concat(`${key}:${sty[key as never]}`), [] as string[])
     .join(';')
 }
 

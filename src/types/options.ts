@@ -1,13 +1,13 @@
 export type Placement = 'top' | 'left' | 'bottom' | 'right'
 
 
-export interface MonthType<T = unknown, U = any> {
+export interface MonthType<T = unknown, U = unknown> {
   date: T
   month: T
   'month-range': T | U
 }
 
-export interface DateType<T = unknown, U = any> {
+export interface DateType<T = unknown, U = unknown> {
   date: T
   'date-range': T | U
 }

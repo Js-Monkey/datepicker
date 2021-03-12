@@ -1,17 +1,13 @@
-import {State} from "../../../types/store"
-import {DayEvent, HeaderType} from "../../../types/components"
+import {DayEvent} from "../../../types/components"
 import {handleRange} from "../utils"
+import {DateComponents} from "../../../types/store"
 
-export function dayEvent(index: number, type: HeaderType): DayEvent {
-  function getDate(state: State): string {
-    return state[type]._day[index].date
-  }
-
+export function dayEvent(state: DateComponents): DayEvent {
   return {
     date() {
-      this.start.date = getDate(this)
+      this.start.date = state.date
       this.visible = false
     },
-    'date-range': handleRange(getDate)
+    'date-range': handleRange(state)
   }
 }

@@ -1,30 +1,19 @@
 import {Formats} from "../../types/core"
-import {isArray} from "../../utils/typeOf";
+import {isArray} from "../../utils/typeOf"
+import {getDay, getMonth, getYear} from "../../utils/date"
 
 const token = /d{1,2}|M{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
+
 const formats: Formats = {
-  d(date: Date) {
-    return date.getDate()
-  },
-  dd(date: Date) {
-    return pad(date.getDate())
-  },
-  M(date: Date) {
-    return date.getMonth() + 1
-  },
-  MM(date: Date) {
-    return pad(date.getMonth() + 1)
-  },
+  d: (date: Date) => getDay(date),
+  dd: (date: Date) => pad(getDay(date)),
+  M: (date: Date) => getMonth(date),
+  MM: (date: Date) => pad(getMonth(date)),
+  yy: (date: Date) => String(getYear(date)).substr(2),
+  yyyy: (date: Date) => getYear(date)
+}
 
-  yy(date: Date) {
-    return String(date.getFullYear()).substr(2)
-  },
-  yyyy(date: Date) {
-    return date.getFullYear()
-  }
-};
-
-function pad(val: any, len?: number) {
+function pad(val: string | number, len?: number) {
   val = String(val)
   len = len || 2
   while (val.length < len) {
@@ -36,9 +25,7 @@ function pad(val: any, len?: number) {
 
 export function getFormatDate(date: string | string[], format: string): string {
   function formatParse(dateStr: string): string {
-    const date = new Date(dateStr)
-    return format.replace(token, val =>
-      formats[val as 'dd'](date))
+    return format.replace(token, val => formats[val as 'dd'](new Date(dateStr)))
   }
 
   if (isArray(date)) return date.map(d => formatParse(d)).join(' - ')

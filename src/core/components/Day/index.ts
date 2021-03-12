@@ -18,15 +18,11 @@ const tableStyle = {
   padding: '3px 0'
 }
 
-function config(idx: number, name: 'text' | 'status') {
+function config(child: any, name: 'text' | 'status') {
   return {
     key: {
-      name: type,
-      childKey: {
-        name: '_day',
-        idx,
-        childKey: [name]
-      }
+      name: [name],
+      child
     },
     cb: (val: string) => val
   }
@@ -45,16 +41,17 @@ function tBody(state: State): Node {
   function td(rc: number): CreateElementOptions[] {
     return Array.from({length: colsCount}).map((_, cc) => {
       const idx = rc * 7 + cc
+      const child = state[type]._day[idx]
       return {
         name: 'td',
         children: [
           {
-            text: config(idx, 'text'),
-            class: config(idx, 'status')
+            text: config(child, 'text'),
+            class: config(child, 'status')
           }
         ],
         style: tableStyle,
-        event: dayEvent(idx, type)[state.type as 'date']
+        event: dayEvent(child)[state.type as 'date']
       }
     })
   }
