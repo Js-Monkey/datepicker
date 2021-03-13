@@ -74,8 +74,8 @@ export default defineComponent({
 @import "./Doc/src/assets/style/color";
 
 .demo {
+  width: calc(100vw - 210px);
   margin-top: 80px;
-  width: 100vw;
   font-family: Futura;
   &:last-child{
     margin-bottom: 90px;

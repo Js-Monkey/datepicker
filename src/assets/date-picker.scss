@@ -198,7 +198,7 @@ $border-color: #dde0e7;
       color: $theme-color;
     }
     .disabled{
-      div{
+      >div{
         opacity: .3;
         cursor: not-allowed;
       }

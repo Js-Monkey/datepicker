@@ -8,27 +8,19 @@
     <div class="start">
       <start></start>
     </div>
-    <div class="demo-bar">
-      USAGE
-    </div>
-    <div class="demo">
-      <basicUsage></basicUsage>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Logo from './components/logo.vue'
 import installCard from './components/install-card.vue'
-import start from './Demo/start/index.md'
-import basicUsage from './Demo/basic-usage/index.md'
+import start from './start.md'
 export default {
   name: "Enter",
   components: {
     Logo,
     start,
-    installCard,
-    basicUsage
+    installCard
   }
 }
 </script>
