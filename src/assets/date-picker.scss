@@ -104,63 +104,75 @@ $border-color: #dde0e7;
     }
 
     .pre, .next {
-      opacity: .3;
+      div{
+        opacity: .3;
 
-      &:hover {
-        color: inherit;
+        &:hover {
+          color: inherit;
+        }
       }
     }
 
     .selected {
-      color: white;
+      div{
+        color: white;
 
-      &:after {
-        display: block;
-        content: '';
-        border-radius: 50%;
-        background-color: $theme-color;
-        position: absolute;
-        z-index: -1;
-        width: 28px;
-        height: 28px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+        &:after {
+          display: block;
+          content: '';
+          border-radius: 50%;
+          background-color: $theme-color;
+          position: absolute;
+          z-index: -1;
+          width: 28px;
+          height: 28px;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
 
-      &:hover {
-        color: white !important;
+        &:hover {
+          color: white !important;
+        }
       }
     }
 
     .inRange {
-      background: #e8f8ef;
+      div{
+        background: #e8f8ef;
+      }
     }
 
     .range-start {
-      color: white;
-      background-color: $theme-color;
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
+      div{
+        color: white;
+        background-color: $theme-color;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
 
-      &:hover {
-        color: white !important;
+        &:hover {
+          color: white !important;
+        }
       }
     }
 
     .range-end {
-      color: white;
-      background-color: $theme-color;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+     div{
+       color: white;
+       background-color: $theme-color;
+       border-top-right-radius: 20px;
+       border-bottom-right-radius: 20px;
 
-      &:hover {
-        color: white !important;
-      }
+       &:hover {
+         color: white !important;
+       }
+     }
     }
     .disabled{
-      opacity: .3;
-      cursor: not-allowed;
+      div{
+        opacity: .3;
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -184,6 +196,12 @@ $border-color: #dde0e7;
 
     .selected {
       color: $theme-color;
+    }
+    .disabled{
+      div{
+        opacity: .3;
+        cursor: not-allowed;
+      }
     }
 
     .inRange, .range-start, .range-end {

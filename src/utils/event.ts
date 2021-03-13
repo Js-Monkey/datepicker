@@ -1,5 +1,6 @@
 import {_EventListener, eventType, Handler} from '../types/event'
 import {State} from '../types/store'
+import {isDisabledDate} from "./date"
 
 export function getEventListener(el: HTMLElement | Window, eventName: eventType = 'click'): _EventListener {
   let eventHandler: (e: Event) => unknown
@@ -32,10 +33,4 @@ export function on(
 
   el.addEventListener(eventName, listener)
   return listener
-}
-
-
-export function isDisabledDate(state: State, date: string): string{
-  const {disabledDate} = state.options
-  return (disabledDate && disabledDate(new Date(date)))? 'disabled': ''
 }

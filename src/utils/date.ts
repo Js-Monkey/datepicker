@@ -1,3 +1,5 @@
+import {State} from "../types/store";
+
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
 }
@@ -81,4 +83,10 @@ export function getNext<T = number>(m: number, y: number): [number, number] {
     ++y
   }
   return [month, y]
+}
+
+
+export function isDisabledDate(state: State, date: string): string{
+  const {disabledDate} = state.options
+  return (disabledDate && disabledDate(new Date(date)))? 'disabled': ''
 }

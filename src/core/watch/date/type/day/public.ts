@@ -1,8 +1,7 @@
 import {ComponentStatus, DateData, State} from "../../../../../types/store"
-import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../../../utils/date"
+import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay, isDisabledDate} from "../../../../../utils/date"
 import {today} from "../../../../../utils/classes"
 import {rangeStatus} from "../public"
-import {isDisabledDate} from "../../../../../utils/event"
 import {mergeClasses} from "../../../../../utils/merge"
 
 export function updateDays(
@@ -17,7 +16,7 @@ export function updateDays(
   state._day.forEach((item, index) => {
       const idx = index + 1
       const currentIdx = idx - fd
-      let status: ComponentStatus = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
+      const status: ComponentStatus = index < fd ? 'pre' : fd + days <= index ? 'next' : 'other'
       const newDate = {
           pre() {
             const day = preDays + currentIdx
@@ -29,37 +28,26 @@ export function updateDays(
           },
           other: () => {
             const date = joinDate(month, year, currentIdx)
-            status = otherStatus(this, date)
             return [String(currentIdx), date]
           }
         }
       ;[item.text, item.date] = newDate[status]()
-      item.status = mergeClasses(status, isDisabledDate(this, item.date)) as ''
+      item.status = mergeClasses(status, otherStatus(this, item.date)) as ''
     }
   )
 }
 
-function isToday(self: State, date: string) {
-  return Date.parse(self.today) === Date.parse(date) ? today : ''
-}
-
-const statusLists: any[] = [isToday]
-
-function addStatus(self: State, date: string, status: ComponentStatus): ComponentStatus {
-  return statusLists.reduce((cur, handler) => cur + ' ' + handler(self, date), status)
-}
-
 export function otherStatus(self: State, date: string): ComponentStatus {
   const typeStatus = {
-    date: () => dateStatus(self.start.date, date),
+    date: () => self.start.date === date ? 'selected' : '',
     'date-range': () => rangeStatus(self, date)
   }
+  function isToday() {
+    return Date.parse(self.today) === Date.parse(date) ? today : ''
+  }
   const status = typeStatus[self.type as 'date']()
-  return addStatus(self, date, status)
-}
-
-export function dateStatus(startDate: string | null, date: string): ComponentStatus {
-  return startDate === date ? 'selected' : ''
+  const isDisabled = isDisabledDate(self, date)
+  return mergeClasses(status, isDisabled, isToday()) as ''
 }
 
 export function monthYearLink(month: number, state: DateData): void {

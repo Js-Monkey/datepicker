@@ -12,6 +12,7 @@
     const input = document.querySelector('#input')
     const picker = this.createDatePicker(input,{
          offset: 30,
+         type: 'month-range',
          placement: 'bottom',
          format:'yyyy年MM月dd日',
          disabledDate (date) {
