@@ -26,6 +26,6 @@ describe('hoverDay callback', () => {
   const state = createState(defaultOptions())
   it('should changed all `_day.status`', () => {
     hoverDay.cb.call(state)
-    expect(state.start._day[0].status).toBe(' ')
+    expect(state.start._day[0].status).toBe('')
   });
 })
