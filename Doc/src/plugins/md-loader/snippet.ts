@@ -1,6 +1,7 @@
 import getRenderComponent from "./render"
 import {codeBlock, h2} from "./markdownTag"
 import toMd from "./markdown"
+import mdPlugin from 'vite-plugin-md'
 /**
  * name: markdown to vue component
  */
@@ -18,6 +19,10 @@ import toMd from "./markdown"
  */
 
 export default function transformToVue(source: string): string {
+  if(source.substr(0,2) === '# '){
+    const plugin = mdPlugin() as any
+    return plugin.transform(source,'xxx.md') as string
+  }
   const snippet = source.split(h2)
   const title = snippet[0].slice(0, 2) === '# ' ? toMd(snippet.shift()) : ''
   const snippetStr = snippet.join(h2)

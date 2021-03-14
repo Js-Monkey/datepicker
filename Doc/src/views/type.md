@@ -1,4 +1,4 @@
-##  insertTo1123123
+##  TYPE
 ::: 指定弹出框渲染父节点，有**parent**和**body**选择，默认**body**
 ```html
 <div>

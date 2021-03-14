@@ -1,28 +1,15 @@
-##  Options
-::: 指定弹出框渲染父节点，有**parent**和**body**选择，默认**body**
-```html
-<div>
- <span style="cursor:pointer" @click="insertToBody">Body</span>
- <span @click="insertToParent" style="float: right;cursor:pointer">
-   parent
- </span>
-</div>
-<Input width="20vw" id="input">
-<script>
-    const input = document.querySelector('#input')
-    const picker = this.createDatePicker(input,{
-         offset: 30,
-         type: 'month-range',
-         placement: 'bottom',
-         format:'yyyy年MM月dd日',
-         disabledDate (date) {
-            return date > Date.now()
-         }
-    })
-    this.insertToBody = ()=> picker.updateOptions({insertTo:'body',type: 'date-range'})
-    this.insertToParent = ()=> picker.updateOptions({insertTo:'parent'})
-</script>
+#  Options
 
-```
-:::
 
+| Property     | Description | Type   | Optional value | Default |
+| ----------------- | -------------------------------- | --------------- | ------ | ------ |
+| type              |     type of picker     |   string     |   date/date-range/month/month-range/week     | date
+| unlinkPanels      |     Unlink between two panels    |   boolean     |                   -                         | false
+| format              |    To set the date format   |   string     |   -     | yyyy/MM/d
+| offset              |     Distance between Picker and inputElement    |   number     |   -    | 12
+| zIndex              |      z-index of Picker    |   number     |   -     | 2000
+| insertTo              |   Name of the node inserted    |   string     |   body/parent     | body
+| binding              |    Bind the value of the inputElement    |   boolean     |   -     | true
+| disabledDate              |   Specifies the date that cannot be selected , should return boolean     |   Function     |   -    | -
+| disabled              |    To set inputElement disabled    |   boolean     |   -    | false
+| placement              |     picker placement     |   string     |   top/bottom/right/left    | bottom
