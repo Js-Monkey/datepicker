@@ -4,6 +4,7 @@ import Document from '../components/Document'
 import Usage from '../views/theme.md'
 import options from '../views/options.md'
 import Type from '../views/type.md'
+import Start from '../views/start.md'
 
 //todo: use require context
 const history = createWebHashHistory()
@@ -14,7 +15,13 @@ const router = createRouter({
     {
       path: '/doc',
       component: Document,
+      redirect: '/doc/start',
       children: [
+        {
+          path: 'start',
+          name: 'start',
+          component: Start
+        },
         {
           path: 'theme',
           name: 'theme',

@@ -1,5 +1,5 @@
 ## START
-::: Import styles, **or you can customize theme colors** [Here](#/doc)
+::: Import styles, **or you can customize theme colors** [Here](#/doc/theme)
 ```html
 <script>
     import  {createDatePicker} from 'better-datepicker'
@@ -12,7 +12,7 @@
 
 
 ## OPTIONS
-::: **createDatePicker**接受两个参数，第一个是需要绑定的元素，第二个是配置项, 更多详细**Options 配置** [Here](#/doc)
+::: **createDatePicker**接受两个参数，第一个是需要绑定的元素，第二个是配置项, 更多详细**Options 配置** [Here](#/doc/options)
 ```html
 <script>
      const input = document.querySelector('#input')

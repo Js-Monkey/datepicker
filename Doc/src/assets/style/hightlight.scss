@@ -14,12 +14,28 @@ Darcula color scheme from the JetBrains family of IDEs
 a{
   color: #3498DB;
 }
-code{
- span{
-   display: inline-block;
- }
 
+pre {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  code {
+    width: 100%;
+    border-radius: 7px;
+    padding: 20px !important;
+    font-size: 16px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+    span{
+      display: inline-block;
+    }
+    p{
+      line-height: 1.75;
+    }
+  }
 }
+
 .hljs-strong,
 .hljs-emphasis {
   color: #a8a8a2;

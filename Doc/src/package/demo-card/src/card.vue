@@ -1,22 +1,20 @@
 <template>
   <div class="demo-card">
-    <div v-show="buttonGroup.length===2" class="demo-card-result">
-      <slot name="Result"></slot>
-    </div>
     <div class="demo-card-codeBox-wrapper">
       <slot></slot>
       <div class="demo-card-codeBox-button">
-        <span :class="{active:index ===activeIndex}" @click="openActive(index)" v-for="(item,index) in buttonGroup">{{ item }}</span>
+        <span :class="{active:index ===activeIndex}" @click="openActive(index)"
+              v-for="(item,index) in buttonGroup">{{ item }}</span>
       </div>
-      <div v-show="buttonGroup.length===0">
-        <slot name="JS"></slot>
-      </div>
-      <div v-show="buttonGroup.length===2" class="demo-card-codeBox">
+      <div :class="{fixedHeight: buttonGroup.length>1}" class="demo-card-codeBox">
         <div ref="code" v-show="activeIndex===0">
           <slot name="JS"></slot>
         </div>
         <div v-show="activeIndex===1">
           <slot name="HTML"></slot>
+        </div>
+        <div v-show="activeIndex===2" class="demo-card-result">
+          <slot name="Result"></slot>
         </div>
       </div>
     </div>
@@ -47,7 +45,8 @@ export default defineComponent({
     return {
       buttonGroup: [
         'JS',
-        'HTML'
+        'HTML',
+        'Result'
       ]
     }
   },
@@ -74,12 +73,14 @@ export default defineComponent({
 @import "./Doc/src/assets/style/color";
 
 .demo {
-  width: calc(100vw - 210px);
-  margin-top: 80px;
+  width: 100%;
+  margin-top: 20px;
   font-family: Futura;
-  &:last-child{
+
+  &:last-child {
     margin-bottom: 90px;
   }
+
   strong {
     color: #e84c3b;
   }
@@ -100,31 +101,33 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     color: #f5e7cc;
-    line-height: 1.7;
+
     h2 {
       color: #ffb311;
     }
 
-    &-result{
-      width: 30vw;
+    &-result {
       overflow: auto;
-      height: 430px;
-      border:1px dashed;
+      height: 300px;
+      border: 1px dashed;
       border-radius: 6px;
-      margin-right: 30px;
       background: #131b2e;
       display: flex;
       justify-content: center;
       padding: 30px;
     }
-    &-description{
-      p{
+
+    &-description {
+      p {
         line-height: 1.75;
       }
     }
 
-    &-codeBox {
-      width: 50vw;
+    .fixedHeight {
+      height: 300px;
+    }
+
+    &-codeBox {;
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
@@ -135,35 +138,22 @@ export default defineComponent({
         span {
           cursor: pointer;
           margin-left: 10px;
-          &.active{
+
+          &.active {
             color: #c62524;
           }
         }
       }
 
       &-wrapper {
-        width: 50vw;
+        width: 100%;
         position: relative;
       }
     }
   }
 
-  pre {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: stretch;
-    code {
-      width: 100%;
-      border-radius: 7px;
-      padding: 10px;
-      font-size: 16px;
-      min-height: 100px;
-    }
-  }
-
   .highlight {
-    width: 50vw;
+    width: 100%;
     display: inline-block;
   }
 }
