@@ -7,7 +7,7 @@
               v-for="(item,index) in buttonGroup">{{ item }}</span>
       </div>
       <div :class="{fixedHeight: buttonGroup.length>1}" class="demo-card-codeBox">
-        <div ref="code" v-show="activeIndex===0">
+        <div  ref="code" v-show="activeIndex===0">
           <slot name="JS"></slot>
         </div>
         <div v-show="activeIndex===1">
@@ -125,6 +125,9 @@ export default defineComponent({
 
     .fixedHeight {
       height: 300px;
+      pre{
+        min-height: 300px;
+      }
     }
 
     &-codeBox {;
@@ -149,6 +152,9 @@ export default defineComponent({
         width: 100%;
         position: relative;
       }
+    }
+    &:last-child{
+      padding-bottom: 90px;
     }
   }
 
