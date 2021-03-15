@@ -5,8 +5,7 @@ import {dispatchDateChange} from "../../../util/method"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
-  const range = [start, end] as [string, string]
-  const [max, min] = rangeSort(...range)
+  const [max, min] = rangeSort(start, end)
   const isMin = date === min
   const isMax = date === max
   const isInRange = dateDiff(max, date) && dateDiff(date, min)

@@ -20,11 +20,11 @@ export function updateDays(
       const newDate = {
           pre() {
             const day = preDays + currentIdx
-            return [String(day), joinDate(...getPre(month, year), day)]
+            return [String(day), joinDate(getPre(month, year), day)]
           },
           next() {
             const day = currentIdx - days
-            return [String(day), joinDate(...getNext(month, year), day)]
+            return [String(day), joinDate(getNext(month, year), day)]
           },
           other: () => {
             const date = joinDate(month, year, currentIdx)

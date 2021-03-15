@@ -1,4 +1,5 @@
 import {State} from "../types/store";
+import {isArray} from "./typeOf";
 
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
@@ -30,12 +31,10 @@ export function monthFirstDay(year: number, month: number): number {
   return firstDate
 }
 
-export function joinDate<T = number, U = string>(
-  month?: number | string,
-  year?: number | string,
-  day?: number | string
-): string {
-  if (!day) day = 1
+export function joinDate<T = (number | string)>(month?: T[] | T, year = 1, day= 1): string {
+  if (isArray(month)) {
+    return month.reverse().join('/') + "/" + year
+  }
   return year + "/" + month + "/" + day
 }
 
@@ -86,7 +85,7 @@ export function getNext<T = number>(m: number, y: number): [number, number] {
 }
 
 
-export function isDisabledDate(state: State, date: string): string{
+export function isDisabledDate(state: State, date: string): string {
   const {disabledDate} = state.options
-  return (disabledDate && disabledDate(new Date(date)))? 'disabled': ''
+  return (disabledDate && disabledDate(new Date(date))) ? 'disabled' : ''
 }
