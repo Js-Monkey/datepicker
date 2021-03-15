@@ -29,6 +29,7 @@ const listeners: Listeners = {
   'month-range': [updateStartMonth, endLinkStartToYear, startLinkEndToYear, updateEndMonth, handleSelecting, hoverMonth],
 }
 
+
 const publicListener = [startLink, startDate]
 
 export function watchDate(options: Options): void {
