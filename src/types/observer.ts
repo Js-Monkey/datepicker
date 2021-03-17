@@ -23,17 +23,16 @@ export type SubKey  = ChildKeyPad | ChildKey | string[]
 export interface Sub<T = void> {
   key: SubKey
   cb: (this: State, ...arg: any) => T
-  notImmediate?: boolean
 }
 
 export interface ReWriteSub<T = void> {
   key: string[]
   cb: (...arg: any) => T
-  notImmediate?: boolean
 }
 
 export interface Watcher {
   addDep(dep: Dep): void
-  update(state: State, obj: any): void
+  update(): void
+  getter(): void
   watcher: ReWriteSub
 }

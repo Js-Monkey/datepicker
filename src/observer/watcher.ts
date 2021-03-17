@@ -3,20 +3,29 @@ import {ReWriteSub, Dep, SubKey, Sub, ChildKey} from '../types/observer'
 import {getState} from '../store'
 import {isArray, isNumber} from '../utils/typeOf'
 import {State} from '../types/store'
+import {queueWatcher} from "./scheduler"
 
 export default class Watcher {
   watcher: ReWriteSub
-  constructor(watcher: ReWriteSub, state: State, obj: any) {
+  child: any
+  state: State
+
+  constructor(watcher: ReWriteSub, state: State, child: any) {
     this.watcher = watcher
+    this.state = state
+    this.child = child
     setTarget(this)
-    this.update(state, obj, !watcher.notImmediate)
+    this.update()
   }
 
-  update(state: State, child: any, immediate = true): void {
-    const params: unknown[] = this.watcher.key.map(key => child[key])
+  getter(): void {
+    const params = this.watcher.key.map(key => this.child[key]).concat(this.child)
     clearTarget()
-    params.push(child)
-    if (immediate) this.watcher.cb.apply(state, params)
+    this.watcher.cb.apply(this.state, params)
+  }
+
+  update(): void {
+    queueWatcher(this)
   }
 
   addDep(dep: Dep): void {

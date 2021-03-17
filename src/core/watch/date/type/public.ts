@@ -24,11 +24,11 @@ export function rangeStatus(state: State, date: string): ComponentStatus {
 export const startDate: Sub = {
   key: {name: 'start', childKey: ['date']},
   cb(date: string) {
+    dispatchDateChange(this)
+    if(!date) return
     const {start} = this
     ;[start.year, start.month] = transformDateToArray(date)
-    dispatchDateChange(this)
-  },
-  notImmediate: true
+  }
 }
 
 export const handleSelecting: Sub = {

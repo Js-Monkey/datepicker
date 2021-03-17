@@ -22,6 +22,7 @@ export function daysInAMonth(year: number, month: number): number {
 }
 
 export function getMinInTen(num: number): number {
+
   return num - Number(num.toString().slice(-1))
 }
 
@@ -31,7 +32,7 @@ export function monthFirstDay(year: number, month: number): number {
   return firstDate
 }
 
-export function joinDate<T = (number | string)>(month?: T[] | T, year = 1, day= 1): string {
+export function joinDate<T = (number | string)>(month?: T[] | T, year = 1, day = 1): string {
   if (isArray(month)) {
     return month.reverse().join('/') + "/" + year
   }

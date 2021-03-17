@@ -65,7 +65,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
              return defineComponent({
                render,
                mounted(){
-                    try{${script}}catch(err){}
+                    try{${script}}catch(err){console.error(err)}
                }
             })
          })(),`

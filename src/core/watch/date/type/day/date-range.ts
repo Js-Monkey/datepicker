@@ -48,6 +48,5 @@ export const hoverDay: Sub = {
     (['start', 'end'] as ['start', 'end']).forEach(name => {
       this[name]._day.filter(item => !['pre', 'next'].includes(item.status)).forEach(item => item.status = otherStatus(this, item.date))
     })
-  },
-  notImmediate: true
+  }
 }

@@ -23,6 +23,7 @@ export const sheetRuleStatus = {
 
 export function updatePopover(vis: boolean): void {
   const el = this.popover
+  if(!el) return
   const ss = document.styleSheets[0]
   deleteRules(ss)
   if (vis) {

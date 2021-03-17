@@ -33,6 +33,5 @@ export const hoverMonth: Sub = {
     (['start', 'end'] as ['start', 'end']).forEach(name => {
       this[name]._month.forEach(item => item.status = getStatus(this, item.date))
     })
-  },
-  notImmediate: true
+  }
 }

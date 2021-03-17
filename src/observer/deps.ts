@@ -10,11 +10,11 @@ export default class Dep<T = State> {
   state: State
   child: any
 
-  constructor(obj: any, state: State) {
+  constructor(child: any, state: State) {
     this.id = uid++
     this.subs = []
     this.state = state
-    this.child = obj
+    this.child = child
   }
 
   addSub(sub: Watcher): void {
@@ -29,7 +29,7 @@ export default class Dep<T = State> {
 
   notify(): void {
     this.subs.forEach(sub => {
-      sub.update(this.state, this.child)
+      sub.update()
     })
   }
 }
