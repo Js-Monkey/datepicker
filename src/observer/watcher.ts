@@ -1,4 +1,4 @@
-import {setTarget, updateView} from './deps'
+import {clearTarget, setTarget} from './deps'
 import {ReWriteSub, Dep, SubKey, Sub, ChildKey} from '../types/observer'
 import {getState} from '../store'
 import {isArray, isNumber} from '../utils/typeOf'
@@ -6,11 +6,17 @@ import {State} from '../types/store'
 
 export default class Watcher {
   watcher: ReWriteSub
-
   constructor(watcher: ReWriteSub, state: State, obj: any) {
     this.watcher = watcher
     setTarget(this)
-    updateView(watcher, state, obj, !watcher.notImmediate)
+    this.update(state, obj, !watcher.notImmediate)
+  }
+
+  update(state: State, child: any, immediate = true): void {
+    const params: unknown[] = this.watcher.key.map(key => child[key])
+    clearTarget()
+    params.push(child)
+    if (immediate) this.watcher.cb.apply(state, params)
   }
 
   addDep(dep: Dep): void {
@@ -19,20 +25,20 @@ export default class Watcher {
 }
 
 function deepSearch<T>(state: State, sub: Sub<T>): ReWriteSub {
-  function search(obj: any, key: SubKey):  ReWriteSub{
+  function search(child: any, key: SubKey): ReWriteSub {
     if (isArray(key)) {
       sub.key = key
-      return obj
+      return child
     }
-    if("child" in key){
+    if ("child" in key) {
       sub.key = key.name
       return key.child
     }
     const {name, idx, childKey} = key as ChildKey
-    if (name) obj = obj[name]
-    if (isNumber(idx) && isArray(obj)) obj = obj[idx]
-    if (childKey) obj = search(obj, childKey)
-    return obj
+    if (name) child = child[name]
+    if (isNumber(idx) && isArray(child)) child = child[idx]
+    if (childKey) child = search(child, childKey)
+    return child
   }
 
   return search(state, sub.key)

@@ -34,6 +34,6 @@ export interface ReWriteSub<T = void> {
 
 export interface Watcher {
   addDep(dep: Dep): void
-
+  update(state: State, obj: any): void
   watcher: ReWriteSub
 }

@@ -1,27 +1,20 @@
-import {ReWriteSub, Watcher} from '../types/observer'
+import {Watcher} from '../types/observer'
 import {State} from '../types/store'
 
 let uid = 0
-
-export function updateView<T = State>(sub: ReWriteSub, state: T, obj: any, immediate = true): void {
-  const params: unknown[] = sub.key.map(key => obj[key as keyof T])
-  clearTarget()
-  params.push(obj)
-  if (immediate) sub.cb.apply(state, params)
-}
 
 export default class Dep<T = State> {
   static target: any
   id: number
   subs: Watcher[]
-  state: T
-  obj: any
+  state: State
+  child: any
 
-  constructor(obj: any, state: T) {
+  constructor(obj: any, state: State) {
     this.id = uid++
     this.subs = []
     this.state = state
-    this.obj = obj
+    this.child = obj
   }
 
   addSub(sub: Watcher): void {
@@ -36,7 +29,7 @@ export default class Dep<T = State> {
 
   notify(): void {
     this.subs.forEach(sub => {
-      updateView(sub.watcher, this.state, this.obj)
+      sub.update(this.state, this.child)
     })
   }
 }
