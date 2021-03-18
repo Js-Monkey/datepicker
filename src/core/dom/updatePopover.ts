@@ -50,6 +50,7 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
 }
 
 export function setPopoverLocation(): void {
+  if(!this.visible) return
   function setTransform(): void {
     popover.style.transform = transform[placement as 'left']
   }

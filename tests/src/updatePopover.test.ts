@@ -20,6 +20,7 @@ describe('sheetRuleStatus', () => {
 describe('setPopover', () => {
   it('should set `popover` location when `popover` is in Body', () => {
     const state = createState(defaultOptions())
+    state.visible = true
     const reference = document.createElement('input')
     const popover = document.createElement('div')
     document.body.appendChild(popover)
@@ -32,6 +33,7 @@ describe('setPopover', () => {
   })
   it('should set `popover` location when `popover` is in ParentNode', () => {
     const state = createState(defaultOptions())
+    state.visible = true
     const reference = document.createElement('input')
     const parentNode = document.createElement('div')
     parentNode.appendChild(reference)
