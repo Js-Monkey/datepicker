@@ -6,6 +6,7 @@ import {Day, endDay} from '../components/Day'
 import {endMonth, Month} from '../components/Month'
 import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
+import has from "../../utils/has";
 
 
 function rangeComponent(type: 'month' | 'day') {
@@ -52,7 +53,7 @@ export function deleteRules(sheet: any = document.styleSheets[0]): void{
   const ruleSheet = sheet ? sheet.rules : null
   if(ruleSheet && ruleSheet.length>0){
     const {name, type} = ruleSheet[0]
-    if (['show', 'hidden'].indexOf(name) > -1 && type === 7)sheet.deleteRule(0)
+    if (has(['show', 'hidden'], name) && type === 7)sheet.deleteRule(0)
   }
 }
 

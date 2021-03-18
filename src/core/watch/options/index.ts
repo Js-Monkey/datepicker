@@ -1,12 +1,13 @@
 import {addWatch} from '../../../observer/watcher'
 import Options from "../../../types/options"
+import has from "../../../utils/has";
 
 
 const options = {
   key: ['options'],
   cb(options: Options) {
     const {type} = options
-    if (type.indexOf('month') > -1) this.page = 'month'
+    if (has(type, 'month')) this.page = 'month'
   }
 }
 

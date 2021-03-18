@@ -14,7 +14,7 @@ export const updateEndMonth = {
 export const endLinkStartToYear: Sub = {
   key: {name: 'end', childKey: ['year']},
   cb(ey: number): void {
-    this.start.year = ey - 1
+    this.start.year = --ey
   }
   ,
 }
@@ -22,7 +22,7 @@ export const endLinkStartToYear: Sub = {
 export const startLinkEndToYear: Sub = {
   key: {name: 'start', childKey: ['year']},
   cb(sy: number): void {
-    this.end.year = sy + 1
+    this.end.year = ++sy
   },
 }
 

@@ -57,6 +57,7 @@ export interface stateDate<T = Date> {
   start: DateData
   end: DateData
   today: string
+  date: (string | null) | (string | null)[]
 }
 
 export type pageName = 'day' | 'year' | 'month'

@@ -39,7 +39,7 @@ export default function Picker(): BetterPicker {
       console.error(destroyedMsg)
       return null
     }
-    return getDate(state)
+    return state.date
   }
 
   function onChange(cb: Callback) {

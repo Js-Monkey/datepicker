@@ -1,5 +1,6 @@
 import {Style, UtilObject} from '../types/utils'
 import {isObject} from './typeOf'
+import has from "./has";
 
 export function resetAttr(el: HTMLElement | Element, val: string, name = 'class'): void {
   if (!val) return el.removeAttribute(name)
@@ -17,6 +18,6 @@ export function addAttr(el: HTMLElement | Element, val: string | UtilObject, nam
   if (isObject(val)) {
     val = Object.keys(val).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
   }
-  if (attr && attr.indexOf(val) === -1) val += ' ' + attr
+  if (attr && has(attr, val)) val += ' ' + attr
   el.setAttribute(name, val)
 }

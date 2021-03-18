@@ -40,6 +40,7 @@ export default function (): stateDate {
     },
     start: rangeComponents(startMonth, startYear),
     end: rangeComponents(endMonth, endYear),
-    today: joinDate(startMonth, startYear, getDay(date))
+    today: joinDate(startMonth, startYear, getDay(date)),
+    date: null
   }
 }

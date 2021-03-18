@@ -8,6 +8,7 @@ import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {Sub} from "../../../types/observer"
 import {monthNames} from "../../util/i18n"
+import has from "../../../utils/has"
 
 let name: HeaderType = 'start'
 
@@ -91,7 +92,7 @@ function date(state: State) {
     },
     cb: (idx, year) => monthNames[idx - 1] + ' ' + year
   }
-  const isMonth = state.options.type.indexOf('month') > -1
+  const isMonth = has(state.options.type, 'month')
   return createElement({
     name: 'span',
     text: isMonth ? showMonth : showDate,

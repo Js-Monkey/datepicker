@@ -1,7 +1,7 @@
 import {ComponentStatus, State} from "../../../../types/store"
 import {dateDiff, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
-import {dispatchDateChange} from "../../../util/method"
+import {dispatchDateChange, getDate} from "../../../util/method"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
@@ -24,10 +24,18 @@ export function rangeStatus(state: State, date: string): ComponentStatus {
 export const startDate: Sub = {
   key: {name: 'start', childKey: ['date']},
   cb(date: string) {
-    dispatchDateChange(this)
     if(!date) return
     const {start} = this
     ;[start.year, start.month] = transformDateToArray(date)
+    this.date = getDate(this)
+  }
+}
+
+export const endDate: Sub = {
+  key: {name: 'end', childKey: ['date']},
+  cb(date: string) {
+    if(!date) return
+    this.date = getDate(this)
   }
 }
 
@@ -41,6 +49,12 @@ export const handleSelecting: Sub = {
     }
   },
 }
+
+export const date: Sub = {
+  key: ['date'],
+  cb: dispatchDateChange
+}
+
 
 function finishSelect(self: State) {
   self.visible = false

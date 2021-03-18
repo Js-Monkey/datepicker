@@ -76,14 +76,14 @@ export function selectYear(e: _Event): void {
 }
 
 export function selectMonth(idx: number): void {
-  this.start.month = idx + 1
+  this.start.month = ++idx
   this.start.date = this.start._month[idx].date
   this.visible = false
 }
 
 
 export function toDayPage(month: number): void {
-  this.start.month = month + 1
+  this.start.month = ++month
   this.page = 'day'
 }
 

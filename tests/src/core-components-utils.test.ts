@@ -168,7 +168,6 @@ describe('selectMonth', () => {
     fn(1)
     expect(state.visible).toBeFalsy()
     expect(state.start.month).toEqual(2)
-    expect(state.start.date).toEqual(date)
   })
 })
 

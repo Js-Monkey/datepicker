@@ -22,7 +22,7 @@ describe('dispatchDateChange', () => {
   it('should be called when date has changed', () => {
     const fn = jest.fn()
     state.onChange = fn
-    dispatchDateChange(state)
+    dispatchDateChange.call(state)
     expect(fn).toBeCalled()
   })
 })

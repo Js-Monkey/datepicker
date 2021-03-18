@@ -1,5 +1,5 @@
 // https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js
-import {isIE, isNative} from './env'
+import {isNative} from './env'
 const callbacks: any[] = []
 let pending = false
 
@@ -23,25 +23,6 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   timerFunc = () => {
     p.then(flushCallbacks)
   }
-} else if (
-  !isIE &&
-  typeof MutationObserver !== 'undefined' &&
-  (isNative(MutationObserver) || MutationObserver.toString() === '[object MutationObserverConstructor]')
-) {
-  let counter = 1
-  const observer = new MutationObserver(flushCallbacks)
-  const textNode = document.createTextNode(String(counter))
-  observer.observe(textNode, {
-    characterData: true
-  })
-  timerFunc = () => {
-    counter = (counter + 1) % 2
-    textNode.data = String(counter)
-  }
-} else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
-  timerFunc = () => {
-    setImmediate(flushCallbacks)
-  }
 } else {
   timerFunc = () => {
     setTimeout(flushCallbacks, 0)
@@ -49,16 +30,10 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
 }
 
 export default function nextTick(cb?: () => unknown): any {
-  let _resolve: (ctx: any) => void
   callbacks.push(cb)
   if (!pending) {
     pending = true
     timerFunc()
-  }
-  if (!cb && typeof Promise !== 'undefined') {
-    return new Promise(resolve => {
-      _resolve = resolve
-    })
   }
 }
 

@@ -1,5 +1,6 @@
 import Options, {AcceptOptions} from '../types/options'
 import {isArray, isBoolean, isFunc, isNumber, isString} from './typeOf'
+import has from "./has";
 
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
@@ -14,10 +15,10 @@ const acceptOptions: AcceptOptions = {
   binding: (val: unknown) => isBoolean(val)
 }
 
-export function checkOptions(key: keyof Options, val: unknown): boolean {
+export function checkOptions(key: keyof Options, val: string): boolean {
   const optionVal = acceptOptions[key] as any
-  if (isArray(optionVal)) {
-    return optionVal.indexOf(val) > -1
+  if (isArray<string>(optionVal)) {
+    return has(optionVal, val)
   } else {
     return optionVal(val)
   }
