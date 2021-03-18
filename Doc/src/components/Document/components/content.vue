@@ -28,58 +28,5 @@ export default {
     height: calc(100vh - 66px);
     overflow-y: auto;
   }
-
-  table {
-    width: 100%;
-    margin-top: 100px;
-    border-collapse: collapse;
-    font-family: Menlo;
-  }
-
-  h1 {
-    color: #ffb311;
-  }
-
-  h2 {
-    color: #eec15c;
-  }
-
-  h3 {
-    color: #eac674;
-  }
-
-  th {
-    color: #e84c3b;
-    text-align: start;
-    padding: 10px;
-  }
-
-  td {
-    font-size: 14px;
-
-    &:nth-child(odd) {
-      color: #eec15c;
-      font-size: 16px;
-    }
-
-    &:nth-child(3) {
-      color: #48f68d;
-      font-size: 16px;
-    }
-
-    &:nth-child(5) {
-      color: #8189f1;
-      font-size: 16px;
-    }
-
-    padding: 10px;
-  }
-
-  tr {
-    border-bottom: 1px solid #ffffff !important;
-  }
-  em{
-    color: #3498DB;
-  }
 }
 </style>

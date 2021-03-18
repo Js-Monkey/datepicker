@@ -100,7 +100,7 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f5e7cc;
+    color: #ccf5e5;
 
     h2 {
       color: #ffb311;
@@ -141,7 +141,7 @@ export default defineComponent({
         span {
           cursor: pointer;
           margin-left: 10px;
-
+          color: #ffffff;
           &.active {
             color: #c62524;
           }

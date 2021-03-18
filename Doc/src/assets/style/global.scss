@@ -29,10 +29,10 @@ $bg-color-1:$grey-1;
 
 $shadow-color:$grey-5;
 
-$shadow-up: 0 -1px 5px $shadow-color;
-$shadow-down: 0 1px 5px $shadow-color;
-$shadow-left: -1px 0 5px $shadow-color;
-$shadow-right: 1px 0 5px $shadow-color;
+$shadow-up: 0 -1px 5px $bg;
+$shadow-down: 0 1px 5px $bg;
+$shadow-left: -1px 3px 3px 3px $bg;
+$shadow-right: 1px 0 5px $bg;
 
 $padding-left-more: 0 30px 0 25px;
 $padding-right-more: 0 10px 0 30px;

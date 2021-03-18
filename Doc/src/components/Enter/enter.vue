@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../../assets/style/global";
 
 .enter {
@@ -56,5 +56,8 @@ export default {
     background: #112232;
   }
 
+
 }
+
+
 </style>

@@ -19,9 +19,9 @@ import mdPlugin from 'vite-plugin-md'
  */
 
 export default function transformToVue(source: string): string {
-  if(source.substr(0,2) === '# '){
+  if (source.indexOf(':::') === -1) {
     const plugin = mdPlugin() as any
-    return plugin.transform(source,'xxx.md') as string
+    return plugin.transform(source, 'xxx.md') as string
   }
   const snippet = source.split(h2)
   const title = snippet[0].slice(0, 2) === '# ' ? toMd(snippet.shift()) : ''
