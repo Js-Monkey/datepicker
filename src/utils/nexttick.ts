@@ -1,6 +1,7 @@
 // https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js
 import {isNative} from './env'
-const callbacks: any[] = []
+import {Callback} from "../types/core"
+const callbacks: Callback[] = []
 let pending = false
 
 export function flushCallbacks(): void {
@@ -29,7 +30,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   }
 }
 
-export default function nextTick(cb?: () => unknown): any {
+export default function nextTick(cb: Callback): void {
   callbacks.push(cb)
   if (!pending) {
     pending = true

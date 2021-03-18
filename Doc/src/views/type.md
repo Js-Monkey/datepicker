@@ -1,5 +1,5 @@
 ##  Date
-::: 默认为Date模式
+::: Date为默认模式
 ```html
 <Input width="20vw" id="dateInput">
 <script>
@@ -12,7 +12,8 @@
 
 
 ##  Date-range
-::: 默认为Date模式
+::: **date-range**模式可以选择选择开始时间和结束时间，返回的date是一个数组，为日期区间。
+默认两个区间面板是相互联动的，或者你可以使用*unlinkPanels*取消面板联动
 ```html
 <Input width="20vw" id="dateRangeInput">
 <script>
