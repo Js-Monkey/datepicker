@@ -95,7 +95,7 @@ describe('preMonth', () => {
     state.start.month = 1
     const fn = preMonth.bind(state)
     fn()
-    expect(state.start.month).toEqual(0)
+    expect(state.start.month).toEqual(12)
   })
 })
 
