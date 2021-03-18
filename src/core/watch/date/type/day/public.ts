@@ -50,14 +50,3 @@ export function otherStatus(self: State, date: string): ComponentStatus {
   const isDisabled = isDisabledDate(self, date)
   return mergeClasses(status, isDisabled, isToday()) as ''
 }
-
-export function monthYearLink(month: number, state: DateData): void {
-  if (month === 13) {
-    state.month = 1
-    state.year += 1
-  }
-  if (month === 0) {
-    state.month = 12
-    state.year -= 1
-  }
-}

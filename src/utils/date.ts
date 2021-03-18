@@ -1,5 +1,5 @@
-import {State} from "../types/store";
-import {isArray} from "./typeOf";
+import {DateData, State} from "../types/store";
+import {isArray, isObject} from "./typeOf";
 
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
@@ -67,22 +67,24 @@ export function isInRange<T = number>(max: string, min: string, date: string): s
 }
 
 
-export function getPre<T = number>(m: number, y: number): [number, number] {
+export function getPre<T = number>(m: number, y?: number): [number, number] {
+  if(isObject(m)) [m,y] = [m.month, m.year]
   let month = --m
   if (month === 0) {
     month = 12
-    --y
+    --(y as number)
   }
-  return [month, y]
+  return [month, y as number]
 }
 
-export function getNext<T = number>(m: number, y: number): [number, number] {
+export function getNext<T = number>(m: number | DateData, y?: number): [number, number] {
+  if(isObject(m)) [m,y] = [m.month, m.year]
   let month = ++m
   if (month === 13) {
     month = 1
-    ++y
+    ++(y as number)
   }
-  return [month, y]
+  return [month, y as number]
 }
 
 

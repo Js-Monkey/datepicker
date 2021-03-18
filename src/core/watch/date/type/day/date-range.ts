@@ -1,5 +1,5 @@
 import {getNext, getPre} from "../../../../../utils/date"
-import {monthYearLink, otherStatus, updateDays} from "./public"
+import {otherStatus, updateDays} from "./public"
 import {Sub} from "../../../../../types/observer"
 
 function updateRangeStartMonth(em: number, ey: number): void {
@@ -25,11 +25,6 @@ export const updateDayDom: Sub = {
 export const rangeLinkPrecisionToDay: Sub = {
   key: watchEnd,
   cb: updateRangeStartMonth
-}
-
-export const rangeEndMonthYearLink: Sub = {
-  key: {name: 'end', childKey: ["month"]},
-  cb: monthYearLink,
 }
 
 export const endLinkStartToMonth: Sub = {

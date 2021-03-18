@@ -2,6 +2,7 @@ import {MonthComponents, pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
 import {EventListener} from "../../types/utils"
 import {_Event} from "../../types/event"
+import {getNext, getPre} from "../../utils/date";
 
 export const utilStyle = {
   'text-align': 'center',
@@ -55,11 +56,13 @@ export function preYear(): void {
 }
 
 export function nextMonth(type: HeaderType): void {
-  this[type].month += 1
+  const child = this[type]
+  ;[child.month,child.year] = getNext(child)
 }
 
 export function preMonth(): void {
-  this.start.month -= 1
+  const child = this.start
+  ;[child.month,child.year] = getPre(child)
 }
 
 export function toMonthPage(): void {
