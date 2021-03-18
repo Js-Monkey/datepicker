@@ -15,10 +15,10 @@ const acceptOptions: AcceptOptions = {
   binding: (val: unknown) => isBoolean(val)
 }
 
-export function checkOptions(key: keyof Options, val: string): boolean {
+export function checkOptions(key: keyof Options, val: unknown): boolean {
   const optionVal = acceptOptions[key] as any
   if (isArray<string>(optionVal)) {
-    return has(optionVal, val)
+    return has(optionVal, val as string)
   } else {
     return optionVal(val)
   }
