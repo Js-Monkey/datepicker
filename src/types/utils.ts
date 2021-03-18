@@ -86,6 +86,7 @@ export interface CreateElementOptions {
   style?: Style
   children?: (CreateElementOptions | CreateElement)[]
   visible?: updateOptions<boolean>
+  hidden?: boolean
 }
 
 interface HandlerCb {
@@ -100,4 +101,5 @@ export interface Handler<> {
   style: HandlerCb
   children: HandlerCb
   visible: HandlerCb
+  hidden: HandlerCb
 }

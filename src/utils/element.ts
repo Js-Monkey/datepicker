@@ -9,18 +9,19 @@ import {UpdateCbType} from "../types/components"
 import {SvgName} from "../types/element"
 
 function handler(el: HTMLElement, val: any, state: State): Handler {
-  function addListener(listener: any, arg?: unknown){
+  function addListener(listener: any, arg?: unknown) {
     if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
       listener.forEach(e => on(el, e.handler, e.name, state, arg))
     } else {
       on(el, listener, 'click', state, arg)
     }
   }
+
   return {
     event() {
-      if('listener' in val){
+      if ('listener' in val) {
         addListener(val.listener, val.arg)
-      }else{
+      } else {
         addListener(val)
       }
     },
@@ -37,7 +38,8 @@ function handler(el: HTMLElement, val: any, state: State): Handler {
         update(el, val)
       }
     },
-    visible: () => update<boolean>(el, val, 'sty')
+    visible: () => update<boolean>(el, val, 'sty'),
+    hidden: () => hidden(el, val)
   }
 
 }
@@ -74,6 +76,11 @@ export function createElement(opt: CreateElementOptions, state: State): Node {
     handler(el as HTMLElement, opt[key as keyof Handler], state)[key as keyof Handler]()
   })
   return el
+}
+
+export function hidden(el: HTMLElement, vis: boolean): void {
+  if (!vis) return
+  el.style.display = 'none'
 }
 
 export function appendChild(children: Element | Element[], parent: HTMLElement | undefined = document.body): void {

@@ -21,15 +21,17 @@ export const sheetRuleStatus = {
   }
 }
 
-export function updatePopover(vis: boolean): void {
+  export function updatePopover(vis: boolean): void {
   const el = this.popover
   if(!el) return
   const ss = document.styleSheets[0]
+  const {zIndex} = this.options
   deleteRules(ss)
   if (vis) {
     el.style.display = 'inline-block'
     setPopoverLocation.call(this)
   }
+  setPopoverStyle(el, zIndex)
   const {animation, rule} = sheetRuleStatus[vis as unknown as 'false']
   el.style.animation = animation
   if (ss) {

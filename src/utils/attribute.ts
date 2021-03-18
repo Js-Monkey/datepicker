@@ -14,10 +14,10 @@ export function transformStyle(sty: Style): string {
 }
 
 export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name = 'class'): void {
-  const attr = el.getAttribute(name)
+  let attr = el.getAttribute(name) || ''
   if (isObject(val)) {
     val = Object.keys(val).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
   }
-  if (attr && has(attr, val)) val += ' ' + attr
-  el.setAttribute(name, val)
+  attr += ' ' + val
+  el.setAttribute(name, attr)
 }

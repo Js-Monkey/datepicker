@@ -6,7 +6,7 @@ import {Day, endDay} from '../components/Day'
 import {endMonth, Month} from '../components/Month'
 import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
-import has from "../../utils/has";
+import has from "../../utils/has"
 
 
 function rangeComponent(type: 'month' | 'day') {
@@ -69,7 +69,8 @@ export function createPopover(state: State): HTMLElement {
   const pop = createElement(
     {
       class: [wrapper],
-      children: popoverType[state.type]
+      children: popoverType[state.type],
+      hidden: true
     },
     state
   ) as HTMLElement
