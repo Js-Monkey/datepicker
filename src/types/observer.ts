@@ -31,6 +31,7 @@ export interface ReWriteSub<T = void> {
 }
 
 export interface Watcher {
+  id: number;
   addDep(dep: Dep): void
   update(): void
   getter(): void

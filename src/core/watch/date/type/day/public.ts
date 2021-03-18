@@ -10,6 +10,7 @@ export function updateDays(
   date: string,
   state: DateData
 ): void {
+  console.log(1)
   const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]

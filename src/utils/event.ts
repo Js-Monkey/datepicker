@@ -1,6 +1,7 @@
 import {_EventListener, eventType, Handler} from '../types/event'
 import {State} from '../types/store'
 import {isDisabledDate} from "./date"
+import {isObject} from "./typeOf"
 
 export function getEventListener(el: HTMLElement | Window, eventName: eventType = 'click'): _EventListener {
   let eventHandler: (e: Event) => unknown
@@ -24,10 +25,10 @@ export function on(
   handler: Handler,
   eventName: eventType = 'click',
   state?: State,
-  arg?: any
+  arg?: unknown
 ): (e: Event) => unknown {
   function listener(e: Event) {
-    if(arg&&arg.date && state &&isDisabledDate(state, arg.date)) return
+    if (isObject(arg) && arg.date && state && isDisabledDate(state, arg.date)) return
     return handler.call(state, e)
   }
 

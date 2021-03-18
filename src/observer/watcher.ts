@@ -5,17 +5,20 @@ import {isArray, isNumber} from '../utils/typeOf'
 import {State} from '../types/store'
 import {queueWatcher} from "./scheduler"
 
+let id = 0
 export default class Watcher {
   watcher: ReWriteSub
   child: any
   state: State
+  id: number
 
   constructor(watcher: ReWriteSub, state: State, child: any) {
     this.watcher = watcher
     this.state = state
     this.child = child
+    this.id = ++id
     setTarget(this)
-    this.update()
+    this.getter()
   }
 
   getter(): void {
