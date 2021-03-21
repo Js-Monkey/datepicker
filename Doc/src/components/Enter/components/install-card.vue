@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import {_Event} from "../../../../../src/types/event"
-
+let Msg: any
 export default {
   name: "install-card",
   props: {
@@ -27,7 +27,10 @@ export default {
       transfer.select()
       if (document.execCommand) {
         document.execCommand('copy')
-        this.$message('Copy succeeded')
+        if(Msg&&Msg.close){
+          Msg.close()
+        }
+        Msg = this.$Msg.success('Copy succeeded')
       }
       document.body.removeChild(transfer)
     }
