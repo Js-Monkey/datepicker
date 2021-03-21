@@ -15,18 +15,24 @@ export default {
 <style lang="scss">
 
 .components-content {
-  width: 70%;
   background: #112232;
-  padding: 20px 20px 20px 100px;
+  padding: 20px 20px 20px 20px;
   color: #dae3f6;
+  max-width: calc(100vw - 230px);
+  min-width: calc(100vw - 230px);
   font-family: Futura;
+  display: flex;
+  justify-content: center;
   &-wrapper{
-    width: 100%;
+    width: calc(100vw - 210px);
     background: #112232;
     display: flex;
     justify-content: center;
     height: calc(100vh - 66px);
     overflow-y: auto;
+  }
+  .markdown-body{
+    width: 70%;
   }
 }
 </style>

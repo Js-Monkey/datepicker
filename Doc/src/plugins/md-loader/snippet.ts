@@ -29,13 +29,27 @@ export default function transformToVue(source: string): string {
   const componentsEndIdx = snippetStr.lastIndexOf(codeBlock) + codeBlock.length
   const components = snippetStr.slice(0, componentsEndIdx).split(h2)
   const {componentNames, componentsRender} = getRenderComponent(components)
+  const rowLeft: string[] = []
+  const rowRight: string[] = []
+  componentNames.forEach((name,idx)=>{
+    if(idx & 1){
+      rowRight.push(name)
+    }else{
+      rowLeft.push(name)
+    }
+  })
   return `
  <template>
    <div class="demo">
      <div v-if="String(${title})" class="demo-title">
        ${title}
      </div>
-     ${componentNames}
+     <div class="row">
+     ${rowLeft.join('')}
+     </div>
+     <div class="row">
+     ${rowRight.join('')}
+     </div>
    </div>
  </template>
  <script>

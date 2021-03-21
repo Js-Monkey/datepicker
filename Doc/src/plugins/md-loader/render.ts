@@ -4,13 +4,13 @@ import {compileTemplate, SFCTemplateCompileOptions} from '@vue/compiler-sfc'
 import hljs from "highlight.js"
 
 interface VueComponents {
-  componentNames: string
+  componentNames: string[]
   componentsRender: string
 }
 
 export default function getRenderComponent(demos: string[]): VueComponents {
   demos = demos.filter(item=>item)
-  const componentNames = demos.map((_, idx) => '<component' + idx + '/>').join('')
+  const componentNames = demos.map((_, idx) => '<component' + idx + '/>')
   const _componentsCode = demos.reduce((componentsCode, demoCode, idx) => {
     function filterCode(name: string): string {
       const cut = demoCode.split(name)

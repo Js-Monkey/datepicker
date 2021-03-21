@@ -19,7 +19,8 @@
 <script>
     const input = document.querySelector('#dateRangeInput')
     const picker = this.createDatePicker(input,{
-           type: 'date-range'
+           type: 'date-range',
+           placement: 'left'
     })
 </script>
 
@@ -50,7 +51,7 @@
     const input = document.querySelector('#monthRangeInput')
     const picker = this.createDatePicker(input,{
            type: 'month-range',
-           placement:'top'
+           placement:'left'
     })
 </script>
 

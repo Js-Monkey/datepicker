@@ -75,6 +75,7 @@ export default defineComponent({
 .demo {
   width: 100%;
   margin-top: 20px;
+  display: flex;
   font-family: Futura;
 
   &:last-child {
@@ -93,15 +94,22 @@ export default defineComponent({
       color: rgb(244, 224, 233);
     }
   }
+  .row{
+    max-width: 50%;
+    min-width: 50%;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 
   &-card {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    padding: 20px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ccf5e5;
-
+    border: 1px dashed #2f3460;
+    border-radius: 8px;
     h2 {
       color: #ffb311;
     }
