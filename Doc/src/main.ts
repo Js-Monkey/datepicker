@@ -9,8 +9,8 @@ import highlightJs from 'highlight.js'
 import './assets/style/index.scss'
 import ColorPicker from 'element-plus/lib/el-color-picker'
 import Msg from 'element-plus/lib/el-message'
+import 'element-plus/lib/theme-chalk/index.css'
 import './assets/style/el-message.css'
-import 'element-plus/lib/theme-chalk/el-color-picker.css'
 import {createDatePicker} from '../../src'
 
 app.config.globalProperties.createDatePicker = createDatePicker
