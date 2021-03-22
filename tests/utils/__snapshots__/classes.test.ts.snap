@@ -3,9 +3,9 @@
 exports[`classes produces classnames of the Datepicker 1`] = `
 Object {
   "day": "better-datepicker-day",
-  "defaultCursor": "better-datepicker-default-cursor ",
   "header": "better-datepicker-header",
   "month": "better-datepicker-month",
+  "pointerCursor": "better-datepicker-pointer-cursor ",
   "today": "better-datepicker-today",
   "wrapper": "better-datepicker-wrapper",
   "year": "better-datepicker-year",

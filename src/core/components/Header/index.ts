@@ -1,6 +1,6 @@
 import {HeaderType} from '../../../types/components'
 import {createElement} from '../../../utils/element'
-import {header, defaultCursor} from '../../../utils/classes'
+import {header, pointerCursor} from '../../../utils/classes'
 import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from '../utils'
 import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
@@ -54,6 +54,7 @@ function year(state: State) {
       cb: year => year
     },
     event: toYearPage,
+    class: [pointerCursor],
     visible: {
       key: ['page'],
       cb: (page: pageName) => page !== 'year'
@@ -71,6 +72,7 @@ function month(state: State) {
       },
       cb: idx => monthNames[idx - 1]
     },
+    class: [pointerCursor],
     event: toMonthPage,
     visible: togglePage
   }, state)
@@ -95,8 +97,7 @@ function date(state: State) {
   const isMonth = has(state.options.type, 'month')
   return createElement({
     name: 'span',
-    text: isMonth ? showMonth : showDate,
-    class: [defaultCursor]
+    text: isMonth ? showMonth : showDate
   }, state)
 }
 

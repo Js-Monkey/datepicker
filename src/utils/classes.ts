@@ -4,5 +4,5 @@ export const header = `${name}-header`
 export const day = `${name}-day`
 export const month = `${name}-month`
 export const year = `${name}-year`
-export const defaultCursor = `${name}-default-cursor `
+export const pointerCursor = `${name}-pointer-cursor `
 export const today = `${name}-today`

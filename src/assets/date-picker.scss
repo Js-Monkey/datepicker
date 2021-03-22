@@ -1,15 +1,18 @@
 $theme-color: #2ECC71;
-$text-color: rgba(0, 0, 0, 0.52);
-$text-color-fade: rgba(0, 0, 0, 0.42);
-$background-color-light: rgba(0, 0, 0, 0.05);
-$background-color-dark: rgba(0, 0, 0, 0.12);
+$light-theme-color: lighten($theme-color, 46);
+$text-color: #858585;
 $transition: .3s all ease;
 $border-color: #dde0e7;
+$shadow: 0 1px 6px rgba(0, 0, 0, .2);
 
 .better-datepicker {
   * {
     box-sizing: border-box;
-    font-family: Futura;
+    font-family: Futura, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   &-wrapper {
@@ -20,17 +23,11 @@ $border-color: #dde0e7;
     list-style: none;
     min-height: 200px;
     background-color: #ffffff;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    box-shadow: $shadow;
     position: absolute;
 
     svg {
-      width: 14px;
-      height: 14px;
-      fill: $text-color-fade;
+      fill: $text-color;
       cursor: pointer;
       transition: $transition;
 
@@ -51,13 +48,8 @@ $border-color: #dde0e7;
     color: $text-color;
 
     span {
-      cursor: pointer;
       transition: $transition;
       margin: 0 4px;
-
-      &:hover {
-        color: $theme-color;
-      }
     }
 
     svg {
@@ -75,8 +67,52 @@ $border-color: #dde0e7;
     }
   }
 
-  &-day {
+  &-day, &-month {
     width: 100%;
+    border-collapse: collapse;
+
+    .disabled {
+      div {
+        opacity: .3;
+        cursor: not-allowed;
+      }
+    }
+
+    .inRange, .range-start, .range-end {
+      > div {
+        background: $light-theme-color;
+      }
+    }
+
+    .range-start {
+      > div {
+        color: white;
+        background-color: $theme-color;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+
+        &:hover {
+          color: white !important;
+        }
+      }
+    }
+
+    .range-end {
+      > div {
+        color: white;
+        background-color: $theme-color;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+
+        &:hover {
+          color: white !important;
+        }
+      }
+    }
+
+  }
+
+  &-day {
 
     td, th {
       border: none;
@@ -104,8 +140,9 @@ $border-color: #dde0e7;
     }
 
     .pre, .next {
-      div{
+      div {
         opacity: .3;
+        background: #ffffff;
 
         &:hover {
           color: inherit;
@@ -114,7 +151,7 @@ $border-color: #dde0e7;
     }
 
     .selected {
-      div{
+      div {
         color: white;
 
         &:after {
@@ -136,48 +173,6 @@ $border-color: #dde0e7;
         }
       }
     }
-
-    .inRange {
-      div{
-        background: #e8f8ef;
-      }
-    }
-
-    .range-start {
-      div{
-        color: white;
-        background-color: $theme-color;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-
-        &:hover {
-          color: white !important;
-        }
-      }
-    }
-
-    .range-end {
-     div{
-       color: white;
-       background-color: $theme-color;
-       border-top-right-radius: 20px;
-       border-bottom-right-radius: 20px;
-
-       &:hover {
-         color: white !important;
-       }
-     }
-    }
-    .disabled{
-      div{
-        opacity: .3;
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  &-day, &-month {
-    border-collapse: collapse;
   }
 
   &-month {
@@ -197,43 +192,15 @@ $border-color: #dde0e7;
     .selected {
       color: $theme-color;
     }
-    .disabled{
-      >div{
-        opacity: .3;
-        cursor: not-allowed;
-      }
-    }
-
-    .inRange, .range-start, .range-end {
-      > div {
-        background: #e8f8ef;
-      }
-    }
-
-    .range-start {
-      > div {
-        border-top-left-radius: 30px;
-        border-bottom-left-radius: 30px;
-      }
-    }
-
-    .range-end {
-      > div {
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
-      }
-    }
 
     .range-start, .range-end {
       > div {
+        background-color: $light-theme-color;
+
         div {
           color: white;
           background-color: $theme-color;
           border-radius: 20px;
-
-          &:hover {
-            color: white !important;
-          }
         }
       }
     }
@@ -252,16 +219,17 @@ $border-color: #dde0e7;
       height: 60px;
     }
   }
-}
 
-.better-datepicker-today {
-  color: $theme-color;
-}
-
-.better-datepicker-default-cursor {
-  cursor: default !important;
-
-  &:hover {
-    color: inherit !important;
+  &-today {
+    color: $theme-color;
   }
+
+  &-pointer-cursor {
+    cursor: pointer;
+
+    &:hover {
+      color: $theme-color;
+    }
+  }
+
 }
