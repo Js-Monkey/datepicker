@@ -1,10 +1,11 @@
 $theme-color: #2ECC71;
 $light-theme-color: lighten($theme-color, 46);
 $text-color: #858585;
-$transition: .3s all ease;
 $border-color: #dde0e7;
-$shadow: 0 1px 6px rgba(0, 0, 0, .2);
+$shadow-color: #737373;
 
+$shadow: 0 1px 6px $shadow-color;
+$transition: .3s all ease;
 .better-datepicker {
   * {
     box-sizing: border-box;

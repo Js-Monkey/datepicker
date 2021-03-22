@@ -1,121 +1,95 @@
 <template>
-
+  <div class="theme-ul">
+    <li v-for="list in cssLists">
+      <div class="color-card" :style="{background: list.value}">
+        {{ list.label }}
+        <div class="cloak">
+          {{ list.value }}
+        </div>
+      </div>
+      <el-color-picker v-model="list.value"></el-color-picker>
+    </li>
+  </div>
 </template>
 
 <script lang="ts">
 import '../../../assets/svg/svg'
-import {defineComponent, toRefs, ref} from 'vue'
+import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: 'theme-card',
   data() {
     return {
+      cssLists: [
+        {
+          value: '#2ECC71',
+          label: '$theme-color'
+        },
+        {
+          value: '#eafaf1',
+          label: '$light-theme-color'
+        },
+        {
+          value: '#737373',
+          label: '$shadow-color'
+        },
+        {
+          value: '#858585',
+          label: '$text-color'
+        },
+        {
+          value: '#dde0e7',
+          label: '$border-color'
+        },
+      ]
     }
   }
 })
 </script>
 
 <style lang="scss">
-@import "./Doc/src/assets/style/color";
-
-.demo {
-  width: 100%;
-  margin-top: 20px;
+.theme-ul {
+  list-style: none;
+  margin-top: 80px;
   display: flex;
-  font-family: Futura;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  &:last-child {
-    margin-bottom: 90px;
+  &:after {
+    content: "";
+    flex: auto;
   }
 
-  strong {
-    color: #e84c3b;
-  }
-
-  &-title {
-    h1 {
-      color: rgb(244, 224, 233);
-      text-align: center;
-      letter-spacing: 1px;
-      color: rgb(244, 224, 233);
-    }
-  }
-  .row{
-    max-width: 50%;
-    min-width: 50%;
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  &-card {
-    padding: 20px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ccf5e5;
-    border: 1px dashed #2f3460;
-    border-radius: 8px;
-    h2 {
-      color: #ffb311;
-    }
-
-    &-result {
-      overflow: auto;
-      height: 300px;
-      border: 1px dashed;
-      border-radius: 6px;
-      background: #131b2e;
-      display: flex;
-      justify-content: center;
-      padding: 30px;
-    }
-
-    &-description {
-      p {
-        line-height: 1.75;
-      }
-    }
-
-    .fixedHeight {
-      height: 300px;
-      pre{
-        min-height: 300px;
-      }
-    }
-
-    &-codeBox {;
-      overflow-y: auto;
-      overflow-x: hidden;
+  li {
+    text-align: center;
+    .color-card {
+      width: 150px;
+      height: 150px;
+      line-height: 130px;
+      border-radius: 8px;
       position: relative;
+      margin-bottom: 15px;
+      margin-left: 10px;
+      margin-right: 10px;
+      text-align: center;
+      color: #112232;
+      cursor: pointer;
 
-      &-button {
-        text-align: end;
-
-        span {
-          cursor: pointer;
-          margin-left: 10px;
-          color: #ffffff;
-          &.active {
-            color: #c62524;
-          }
-        }
-      }
-
-      &-wrapper {
-        width: 100%;
-        position: relative;
+      .cloak {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        background: #ffffff;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        opacity: .3;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
       }
     }
-    &:last-child{
-      padding-bottom: 90px;
-    }
-  }
 
-  .highlight {
-    width: 100%;
-    display: inline-block;
+    margin-bottom: 20px;
   }
 }
-
 </style>
