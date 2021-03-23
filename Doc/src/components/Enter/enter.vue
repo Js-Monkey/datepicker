@@ -15,6 +15,7 @@
 import Logo from './components/logo.vue'
 import installCard from './components/install-card.vue'
 import start from './start.md'
+
 export default {
   name: "Enter",
   components: {
@@ -34,7 +35,8 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  .install{
+
+  .install {
     width: 100%;
     height: 60px;
     margin-top: 80px;
@@ -44,7 +46,8 @@ export default {
     padding: 9px;
     font-family: Menlo;
   }
-  .demo-bar{
+
+  .demo-bar {
     width: 100%;
     padding: 5px;
     font-size: 25px;
@@ -52,7 +55,8 @@ export default {
     text-align: center;
     background: #e84c3b;
   }
-  .start{
+
+  .start {
     background: #112232;
   }
 

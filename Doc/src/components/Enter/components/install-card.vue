@@ -1,13 +1,12 @@
 <template>
   <div class="install-card">
     <div class="install-card-icon"> <b-icon :font-size="24" :name="icon"></b-icon></div>
-    <div class="install-card-code" @click="copy">{{text}}</div>
+    <div class="install-card-code" @click="copyText">{{text}}</div>
   </div>
 </template>
 
 <script lang="ts">
-import {_Event} from "../../../../../src/types/event"
-let Msg: any
+import {copyText} from "../../../utils"
 export default {
   name: "install-card",
   props: {
@@ -19,22 +18,11 @@ export default {
       default: 'yarn'
     }
   },
-  methods: {
-    copy(e: _Event) {
-      const transfer = document.createElement('input')
-      document.body.appendChild(transfer)
-      transfer.value = e.target.innerText
-      transfer.select()
-      if (document.execCommand) {
-        document.execCommand('copy')
-        if(Msg&&Msg.close){
-          Msg.close()
-        }
-        Msg = this.$Msg.success('Copy succeeded')
-      }
-      document.body.removeChild(transfer)
+ setup(){
+    return {
+      copyText
     }
-  }
+ }
 }
 </script>
 
