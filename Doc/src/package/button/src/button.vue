@@ -153,7 +153,6 @@
              typeStyle,sizeStyle,loadingStyle]
             "
             ref="button"
-            @click="onClick"
 
     >
         <b-icon :name="icon"
@@ -185,11 +184,6 @@
       name: 'b-button',
       components: {
         'b-icon': Icon
-      },
-      methods: {
-        onClick(e) {
-          this.$emit('click',e)
-        }
       },
       computed: {
         typeStyle() {

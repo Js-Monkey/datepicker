@@ -50,12 +50,12 @@ export default defineComponent({
       ]
     }
     let reactiveList = reactive(cssLists())
-
     function reset() {
       reactiveList.splice(0,reactiveList.length,...cssLists())
     }
     function downloadCss(){
-     console.log(download)
+      console.log(1)
+      //console.log(import('../../../../../src/assets/date-picker.scss'))
     }
 
     return {
