@@ -1,5 +1,5 @@
 $theme-color: #2ECC71;
-$light-theme-color: lighten($theme-color, 46);
+$range-color: lighten($theme-color, 46);
 $text-color: #858585;
 $border-color: #dde0e7;
 $shadow-color: #737373;
@@ -81,7 +81,7 @@ $transition: .3s all ease;
 
     .inRange, .range-start, .range-end {
       > div {
-        background: $light-theme-color;
+        background: $range-color;
       }
     }
 
@@ -196,7 +196,7 @@ $transition: .3s all ease;
 
     .range-start, .range-end {
       > div {
-        background-color: $light-theme-color;
+        background-color: $range-color;
 
         div {
           color: white;

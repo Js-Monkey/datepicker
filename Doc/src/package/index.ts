@@ -4,6 +4,7 @@ import Input from './input'
 import Icon from './icon'
 import demoCard from './demo-card'
 import themeCard from './theme-card'
+import datepickerDemo from './datepicker-demo'
 import {App} from 'vue'
 export function useComponent(app: App): void {
   app.use(Button)
@@ -12,4 +13,5 @@ export function useComponent(app: App): void {
   app.use(Input)
   app.use(demoCard)
   app.use(themeCard)
+  app.use(datepickerDemo)
 }
