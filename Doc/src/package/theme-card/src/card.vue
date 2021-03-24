@@ -1,9 +1,7 @@
 <template>
   <div class="theme-card">
-    <b-button-group class="button-group">
-      <b-button size="mini" @click="reset"> reset</b-button>
-      <b-button size="mini" @click="downloadCss" type="warn">download</b-button>
-    </b-button-group>
+    <b-icon fill="#4edee5" @click="reset" name="zhongzhi"></b-icon>
+    <b-icon fill="#FF4D4F" @click="downloadCss" name="download"></b-icon>
     <div class="theme-ul">
       <li v-for="list in reactiveList">
         {{ list.label }}
@@ -29,33 +27,55 @@ export default defineComponent({
       return [
         {
           value: '#2ECC71',
+          originVal: '#2ECC71',
           label: '$theme-color'
         },
         {
           value: '#eafaf1',
+          originVal: '#eafaf1',
           label: '$light-theme-color'
         },
         {
           value: '#737373',
+          originVal: '#737373',
           label: '$shadow-color'
         },
         {
           value: '#858585',
+          originVal: '#858585',
           label: '$text-color'
         },
         {
           value: '#dde0e7',
+          originVal: '#dde0e7',
           label: '$border-color'
         },
       ]
     }
     let reactiveList = reactive(cssLists())
     function reset() {
-      reactiveList.splice(0,reactiveList.length,...cssLists())
+      reactiveList.forEach(item=>item.value = item.originVal)
+    }
+    function transform(source){
+      return reactiveList.reduce((str, item)=>{
+        return str.replaceAll(item.originVal,item.value)
+      },source)
+    }
+    function download(res){
+      const source = transform(res.default)
+      const  blob = new Blob([ source], {type: 'text/css'})
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.setAttribute('download', 'datepicker.css')
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
     }
     function downloadCss(){
-      console.log(1)
-      //console.log(import('../../../../../src/assets/date-picker.scss'))
+      import('../../../../../src/assets/date-picker.scss').then(res=>{
+        download(res)
+      })
+
     }
 
     return {
@@ -78,10 +98,15 @@ export default defineComponent({
 
 .theme-card {
   position: relative;
-
+  text-align: right;
+  margin-top: 80px;
+  svg{
+    margin-left: 20px;
+    cursor: pointer;
+  }
   .theme-ul {
+    margin-top: 20px;
     list-style: none;
-    margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
