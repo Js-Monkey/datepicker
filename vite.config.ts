@@ -1,5 +1,7 @@
 import Vue from '@vitejs/plugin-vue'
 import md from './Doc/src/plugins/md-loader/index'
+import commonjs from '@rollup/plugin-commonjs'
+
 export default {
   root: './Doc',
   server: {
@@ -7,8 +9,11 @@ export default {
   },
   plugins: [
     Vue({
-      include: [/\.vue$/, /\.md$/],
+      include: [/\.vue$/, /\.md$/]
     }),
-    md(),
+    commonjs({
+
+    }),
+    md()
   ],
 }

@@ -2,6 +2,7 @@ node_modules/*
 test/*
 src/*
 Docs/*
+Doc/*
 config/*
 lib/*
 coverage/*
@@ -19,3 +20,4 @@ tests/*
 .eslintrc.js
 .eslintignore
 .editorconfig
+vite.config.js

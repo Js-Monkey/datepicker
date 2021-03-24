@@ -26,6 +26,7 @@ import {copyText} from "../../../utils"
 export default defineComponent({
   name: 'theme-card',
   setup() {
+    console.log(require('../src/assets/style/color.scss'))
     function cssLists(){
       return [
         {

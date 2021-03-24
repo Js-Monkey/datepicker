@@ -21,9 +21,9 @@ export const sheetRuleStatus = {
   }
 }
 
-  export function updatePopover(vis: boolean): void {
+export function updatePopover(vis: boolean): void {
   const el = this.popover
-  if(!el) return
+  if (!el) return
   const ss = document.styleSheets[0]
   const {zIndex} = this.options
   deleteRules(ss)
@@ -50,7 +50,8 @@ export function setPopoverStyle(el: HTMLElement, zx: number): void {
 }
 
 export function setPopoverLocation(): void {
-  if(!this.visible) return
+  if (!this.visible) return
+
   function setTransform(): void {
     popover.style.transform = transform[placement as 'left']
   }
