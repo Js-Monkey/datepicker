@@ -11,9 +11,7 @@ export default {
     Vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    commonjs({
-
-    }),
+    commonjs(),
     md()
   ],
 }

@@ -2,7 +2,7 @@
   <div class="theme-card">
     <b-button-group class="button-group">
       <b-button size="mini" @click="reset"> reset</b-button>
-      <b-button size="mini" type="warn">download</b-button>
+      <b-button size="mini" @click="downloadCss" type="warn">download</b-button>
     </b-button-group>
     <div class="theme-ul">
       <li v-for="list in reactiveList">
@@ -22,11 +22,9 @@
 import '../../../assets/svg/svg'
 import {defineComponent, reactive} from 'vue'
 import {copyText} from "../../../utils"
-
 export default defineComponent({
   name: 'theme-card',
   setup() {
-    console.log(require('../src/assets/style/color.scss'))
     function cssLists(){
       return [
         {
@@ -56,11 +54,15 @@ export default defineComponent({
     function reset() {
       reactiveList.splice(0,reactiveList.length,...cssLists())
     }
+    function downloadCss(){
+     console.log(download)
+    }
 
     return {
       copyText,
       reset,
-      reactiveList
+      reactiveList,
+      downloadCss
     }
   }
 })
