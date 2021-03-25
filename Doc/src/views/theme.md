@@ -1,4 +1,6 @@
 #  Theme
+对于主题自定义，目前提供了三种方案。目前只支持**颜色**的自定义，总共五种颜色，包括：主题
+
 
 ## SCSS变量
 
@@ -20,3 +22,21 @@ $text-tbody-color: #5f5f5f;
 
 
 <theme-card></theme-card>
+
+
+## Options
+
+
+
+```js
+
+const input = document.querySelector('#input')
+  createDatePicker(input,{
+    $theme: '#2a3a4a',
+    $range: '#bbbbbb',
+    $header: '#5f5f5f',
+    $th: '#cccccc',
+    $tbody: '#1a2a3a'
+  })
+
+```
