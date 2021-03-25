@@ -1,8 +1,9 @@
 {
   "name": "better-datepicker",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "better-datepicker",
-  "main": "dist/index.js",
+  "main": "dist/betterDatePicker.umd.js",
+  "module": "dist/betterDatePicker.es5.js",
   "scripts": {
     "dev": "vite",
     "build:demo": "vite build",
@@ -31,7 +32,7 @@
     "@typescript-eslint/parser": "^3.7.1",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
-    "better-datepicker": "^0.0.6",
+    "better-datepicker": "^0.0.7",
     "dart-sass": "^1.25.0",
     "element-plus": "^1.0.2-beta.35",
     "eslint": "^7.5.0",

@@ -10,7 +10,8 @@ const libraryName = 'better-day-time-picker'
 const config = {
   input: `src/index.ts`,
   output: [
-    { file: pkg.main, format: 'es', sourcemap: true },
+    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
+    { file: pkg.module, format: 'es', sourcemap: true },
   ],
   external: [],
   watch: {
