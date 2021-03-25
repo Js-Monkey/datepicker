@@ -14,7 +14,7 @@ configuration of DatePicker
 ```
 
 
-| Property     | Description | Type   | Optional value | Default |
+| Property     | Description | Type   | Accepted Values | Default |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
 | type              |     type of picker     |   string     |   date/date-range/month/month-range/week     | date
 | unlinkPanels      |     Unlink between two panels    |   boolean     |                   -                         | false
