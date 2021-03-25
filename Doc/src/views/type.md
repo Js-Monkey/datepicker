@@ -1,5 +1,6 @@
 ##  Date
-::: Date为默认模式, 基本单位为[日]，返回date为一个**string**
+
+::: Default mode is Date, the basic unit is [day], and the day you choose is a **string** value.
 ```html
 <Input width="20vw" id="dateInput">
 <script>
@@ -12,15 +13,15 @@
 
 
 ##  Date-range
-::: **date-range**模式可以选择选择开始时间和结束时间，返回的date是一个**日期区间**，为日期区间。
-默认两个区间面板是相互联动的，或者你可以使用*unlinkPanels*取消面板联动
+::: **date-range** mode can choose the start time and the end time. The range you choose is a **date range**.
+By default, the two interval panels are linked to each other, or you can use *unlinkPanels* to unlink the panels.
 ```html
 <Input width="20vw" id="dateRangeInput">
 <script>
     const input = document.querySelector('#dateRangeInput')
-    const picker = this.createDatePicker(input,{
-           type: 'date-range',
-           placement: 'left'
+    const picker = this.createDatePicker(input, {
+        type: 'date-range',
+        placement: 'left'
     })
 </script>
 
@@ -29,7 +30,7 @@
 
 
 ##  Month
-::: 基本单位为[月]，返回的日期精确到[日]是当月的第一天
+::: The basic unit is [month], and the date you choose is accurate to [day], which is the first day of the month
 ```html
 <Input width="20vw" id="monthInput">
 <script>
@@ -44,7 +45,7 @@
 
 
 ##  Month-range
-::: 基本单位为[月]，返回的是一个**日期区间**
+::: The basic unit is [month], and the range you choose is a **month range**
 ```html
 <Input width="20vw" id="monthRangeInput">
 <script>
