@@ -1,16 +1,16 @@
 #  Options
 
-configuration of DatePicker
+configuration of better-datepicker
 
 ```js
-     const input = document.querySelector('#input')
-     const options = {
-            placement: 'bottom',
-            type: 'date',
-            zIndex: 2000,
-            format: 'yyyy/MM/dd',
-     }
-     createDatePicker(input,options)
+const input = document.querySelector('#input')
+const options = {
+  placement: 'bottom',
+  type: 'date',
+  zIndex: 2000,
+  format: 'yyyy/MM/dd',
+}
+createDatePicker(input,options)
 ```
 
 

@@ -1,15 +1,15 @@
 # START
 
-首先使用npm或者yarn安装 *better-datePicker*
+First, use `npm` or `yarn` to install *better-datepicker*
+
 ```shell script
-    npm install better-datePicker
-    yarn add better-datePicker
+npm install better-datepicker
+yarn add better-datepicker
 ```
 
-引入js后，同时需要引入css文件
+Then, import *better-datepicker* and css
+
 ```js
-    import  {createDatePicker} from 'better-datepicker'
-    import 'better-datepicker/style/index.css'
+import  {createDatePicker} from 'better-datepicker'
+import 'better-datepicker/style/index.css'
 ```
-
-
