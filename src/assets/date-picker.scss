@@ -1,9 +1,11 @@
 $theme-color: #2ECC71;
 $range-color: lighten($theme-color, 46);
-$text-color: #858585;
+$text-header-color: #858585;
+$text-th-color: #969595;
+$text-tbody-color: #5f5f5f;
+
 $border-color: #dde0e7;
 $shadow-color: #737373;
-
 $shadow: 0 1px 6px $shadow-color;
 $transition: .3s all ease;
 .better-datepicker {
@@ -19,7 +21,6 @@ $transition: .3s all ease;
   &-wrapper {
     margin: 0;
     padding: 0;
-    color: $text-color;
     font-size: 14px;
     list-style: none;
     min-height: 200px;
@@ -28,7 +29,7 @@ $transition: .3s all ease;
     position: absolute;
 
     svg {
-      fill: $text-color;
+      fill: #858585;
       cursor: pointer;
       transition: $transition;
 
@@ -46,7 +47,7 @@ $transition: .3s all ease;
     text-align: center;
     font-weight: 500;
     font-size: 16px;
-    color: $text-color;
+    color: $text-header-color;
 
     span {
       transition: $transition;
@@ -61,10 +62,13 @@ $transition: .3s all ease;
   &-day, &-month, &-year {
     span {
       cursor: pointer;
-
+      color: $text-tbody-color;
       &:hover {
         color: $theme-color;
       }
+    }
+    td{
+      color: $text-tbody-color;
     }
   }
 
@@ -138,6 +142,7 @@ $transition: .3s all ease;
     th {
       font-weight: 400;
       cursor: default;
+      color: $text-th-color;
     }
 
     .pre, .next {

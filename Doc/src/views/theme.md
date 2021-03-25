@@ -7,9 +7,9 @@ better-datepicker使用**scss**作为选择器的预编译语言，您可以直�
 ```scss
 $theme-color: #2ECC71;
 $range-color: #eafaf1;
-$text-color: #858585;
-$border-color: #dde0e7;
-$shadow-color: #858585;
+$text-header-color: #858585;
+$text-th-color: #969595;
+$text-tbody-color: #5f5f5f;
 ```
 
 

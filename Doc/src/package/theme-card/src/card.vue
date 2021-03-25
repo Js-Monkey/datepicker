@@ -40,8 +40,18 @@ export default defineComponent({
       {
         value: '#858585',
         originVal: '#858585',
-        label: 'text'
-      }
+        label: 'header'
+      },
+      {
+        value: '#969595',
+        originVal: '#969595',
+        label: 'th'
+      },
+      {
+        value: '#5f5f5f',
+        originVal: '#5f5f5f',
+        label: 'tbody'
+      },
     ])
 
     function reset() {
@@ -79,8 +89,8 @@ export default defineComponent({
     }
   },
   methods: {
-    selectColor(idx) {
-      document.querySelectorAll('.el-color-picker__trigger')[idx].click()
+    selectColor(idx: number) {
+      (document.querySelectorAll('.el-color-picker__trigger')[idx] as HTMLElement).click()
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <svg class="b-icon" @click="$emit('click',$event)" :style="{fontSize,fill}">
+  <svg class="b-icon" :style="{fontSize,fill}">
     <use :xlink:href="`#icon-${name}`"></use>
   </svg>
 </template>
