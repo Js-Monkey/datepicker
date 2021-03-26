@@ -1,6 +1,6 @@
 #  Theme
 
-We provide 3 ways for custom theme. For now we only support custom of **color**, totally there are 5 colors, including `theme`.
+We provide 3 ways for custom theme. For now we only support custom of **color**, totally there are 5 colors
 
 ## SCSS Variables
 
@@ -28,9 +28,6 @@ const input = document.querySelector('#input')
 createDatePicker(input,{
   $theme: '#2a3a4a',
   $range: '#bbbbbb',
-  $header: '#5f5f5f',
-  $th: '#cccccc',
-  $tbody: '#1a2a3a'
 })
 
 ```

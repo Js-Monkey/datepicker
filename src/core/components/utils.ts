@@ -76,7 +76,7 @@ export function selectYear(e: _Event): void {
 }
 
 export function selectMonth(idx: number): void {
-  this.start.month = ++idx
+  this.start.month = idx
   this.start.date = this.start._month[idx].date
   this.visible = false
 }

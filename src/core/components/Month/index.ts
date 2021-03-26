@@ -6,7 +6,6 @@ import {State} from '../../../types/store'
 import {HeaderType} from "../../../types/components"
 import {monthEvent} from "./event";
 import {CreateElementOptions} from "../../../types/utils"
-import {dayEvent} from "../Day/event";
 
 let type: HeaderType = 'start'
 const rowsCount = 3
