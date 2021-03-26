@@ -56,7 +56,6 @@ export function setPopoverLocation(): void {
   if (!this.visible) return
 
   function setTransform(): void {
-    console.log(transform(offset))
     popover.style.transform = transform(offset)[placement as 'left']
   }
 

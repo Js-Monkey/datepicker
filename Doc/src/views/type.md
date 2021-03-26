@@ -5,7 +5,9 @@
 <Input width="20vw" id="dateInput">
 <script>
     const input = document.querySelector('#dateInput')
-    const picker = this.createDatePicker(input)
+    const picker = this.createDatePicker(input,{
+       themeColor: '#1890ff'
+    })
 </script>
 
 ```
@@ -22,7 +24,7 @@ By default, the two interval panels are linked to each other, or you can use *un
     const picker = this.createDatePicker(input, {
         type: 'date-range',
         placement: 'bottom',
-        offset: 100
+        themeColor: '#1890ff'
     })
 </script>
 
