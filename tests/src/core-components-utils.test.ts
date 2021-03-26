@@ -167,7 +167,7 @@ describe('selectMonth', () => {
     const fn = selectMonth.bind(state)
     fn(1)
     expect(state.visible).toBeFalsy()
-    expect(state.start.month).toEqual(2)
+    expect(state.start.month).toEqual(1)
   })
 })
 
