@@ -159,21 +159,8 @@ $transition: .3s all ease;
     .selected {
       div {
         color: white;
-
-        &:after {
-          display: block;
-          content: '';
-          border-radius: 50%;
-          background-color: $theme-color;
-          position: absolute;
-          z-index: -1;
-          width: 28px;
-          height: 28px;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
-
+        background-color: $theme-color;
+        border-radius: 5px;
         &:hover {
           color: white !important;
         }
@@ -227,7 +214,9 @@ $transition: .3s all ease;
   }
 
   &-today {
-    color: $theme-color;
+    div{
+      color: $theme-color;
+    }
   }
 
   &-pointer-cursor {

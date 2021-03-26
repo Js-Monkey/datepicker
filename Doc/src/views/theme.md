@@ -26,8 +26,8 @@ After configuring the style on this page, you can download the css code and put 
 ```js
 const input = document.querySelector('#input')
 createDatePicker(input,{
-  $theme: '#2a3a4a',
-  $range: '#bbbbbb',
+  themeColor: '#2a3a4a',
+  rangeBgColor: '#bbbbbb',
 })
 
 ```

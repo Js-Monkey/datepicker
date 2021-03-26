@@ -29,7 +29,7 @@ describe('setPopover', () => {
     setPopoverLocation.call(state)
     expect(popover.style.top).toBe('12px')
     expect(popover.style.left).toBe('0px')
-    expect(popover.style.transform).toBe('translate(0,0)')
+    expect(popover.style.transform).toBe('translate(0,12px)')
   })
   it('should set `popover` location when `popover` is in ParentNode', () => {
     const state = createState(defaultOptions())

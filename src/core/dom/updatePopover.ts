@@ -3,11 +3,14 @@ import {addAttr} from '../../utils/attribute'
 import {isInBody} from "../../utils/isInBody"
 import {deleteRules} from "./create-popover"
 
-const transform: Transform = {
-  top: `translate(0,-100%)`,
-  left: `translate(-100%,0)`,
-  bottom: `translate(0,0)`,
-  right: `translate(0,0)`
+function transform(offset: number | string): Transform{
+  offset = offset + 'px'
+  return {
+    top: `translate(0,calc(-100% - ${offset}))`,
+    left: `translate(calc(-100% - ${offset}),0)`,
+    bottom: `translate(0,${offset})`,
+    right: `translate(${offset},0)`
+  }
 }
 
 export const sheetRuleStatus = {
@@ -53,7 +56,8 @@ export function setPopoverLocation(): void {
   if (!this.visible) return
 
   function setTransform(): void {
-    popover.style.transform = transform[placement as 'left']
+    console.log(transform(offset))
+    popover.style.transform = transform(offset)[placement as 'left']
   }
 
   function setPosition(): void {
@@ -80,11 +84,11 @@ export function setPopoverLocation(): void {
       },
       left: {
         top: 0,
-        right: x
+        right: x + offset
       },
       right: {
         top: 0,
-        left: x
+        left: x + offset
       }
     }
     const tp = transform[placement as 'top']

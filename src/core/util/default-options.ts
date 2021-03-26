@@ -11,7 +11,9 @@ function defaultOptions(): Options {
     insertTo: 'body',
     binding: true,
     disabled: false,
-    disabledDate: null
+    disabledDate: null,
+    themeColor: '',
+    rangeBgColor:''
   }
 }
 

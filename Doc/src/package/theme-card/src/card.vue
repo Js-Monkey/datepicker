@@ -53,7 +53,6 @@ export default defineComponent({
         label: 'tbody'
       },
     ])
-
     function reset() {
       cssLists.forEach(item => item.value = item.originVal)
     }

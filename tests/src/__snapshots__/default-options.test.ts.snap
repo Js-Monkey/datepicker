@@ -9,6 +9,8 @@ Object {
   "insertTo": "body",
   "offset": 12,
   "placement": "bottom",
+  "rangeBgColor": "",
+  "themeColor": "",
   "type": "date",
   "unlinkPanels": false,
   "zIndex": 2000,

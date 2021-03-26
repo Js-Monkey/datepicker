@@ -29,6 +29,8 @@ export default interface Options {
   binding: boolean
   disabledDate?: ((date: Date) => boolean) | null
   disabled: boolean
+  themeColor: string
+  rangeBgColor: string
 }
 
 export interface AcceptOptions<T = (val: unknown) => boolean> {
@@ -42,4 +44,6 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
   insertTo: ('body' | 'parent')[]
   disabledDate: (date: Date) => boolean
   disabled: T
+  themeColor: T
+  rangeBgColor: T
 }

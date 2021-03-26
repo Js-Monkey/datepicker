@@ -21,7 +21,8 @@ By default, the two interval panels are linked to each other, or you can use *un
     const input = document.querySelector('#dateRangeInput')
     const picker = this.createDatePicker(input, {
         type: 'date-range',
-        placement: 'left'
+        placement: 'bottom',
+        offset: 100
     })
 </script>
 
