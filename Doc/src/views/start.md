@@ -1,6 +1,6 @@
 # START
 
-First, use `npm` or `yarn` to install *better-datepicker*
+First, use **npm** or **yarn** to install *better-datepicker*
 
 ```shell script
 npm install better-datepicker

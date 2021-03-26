@@ -4,7 +4,8 @@
 ![code-test](https://github.com/Js-Monkey/better-datepicker/workflows/code-test/badge.svg)
 ![](https://www.travis-ci.org/Js-Monkey/better-datepicker.svg?branch=master)
 ![](https://img.shields.io/codecov/c/github/js-monkey/better-datepicker/master.svg)
-
+![](http://img.badgesize.io/https://unpkg.com/better-datepicker@0.0.7/dist/betterDatePicker.es5.js)
+[![install size](https://packagephobia.com/badge?p=better-datepicker)](https://packagephobia.com/result?p=better-datepicker)
 
 ## Doc
 TODO

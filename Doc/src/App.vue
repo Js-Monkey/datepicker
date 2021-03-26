@@ -1,7 +1,6 @@
 <template>
   <Header/>
   <router-view/>
-  <input type="text" id="xx">
 </template>
 
 <script lang="ts">
