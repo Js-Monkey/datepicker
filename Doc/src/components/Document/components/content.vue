@@ -31,8 +31,8 @@ export default {
     height: calc(100vh - 66px);
     overflow-y: auto;
   }
-  .markdown-body{
-    width: 70%;
-  }
+}
+.markdown-body{
+  width: 70%;
 }
 </style>

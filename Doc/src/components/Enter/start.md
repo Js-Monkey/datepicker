@@ -8,7 +8,8 @@
 
 
 ## OPTIONS
- **createDatePicker**接受两个参数，第一个是需要绑定的元素，第二个是配置项, 更多详细**Options 配置** [Here](#/doc/options)
+  *createDatePicker* accepts two parameters.
+  The first is the **InputElement**, and the second is the **configuration item**. For more details [Here](#/doc/options)
 ```js
   const input = document.querySelector('#input')
   createDatePicker(input,{

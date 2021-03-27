@@ -58,6 +58,8 @@ export default {
 
   .start {
     background: #112232;
+    display: flex;
+    justify-content: center;
   }
 
 

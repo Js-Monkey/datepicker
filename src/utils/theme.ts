@@ -13,18 +13,15 @@ export function resetHoverColor(el: HTMLElement, theme: string): void {
 
 
 export function resetSelectColor(el: HTMLElement, state: State,classes: string): void {
-  const {themeColor} = state.options
+  const {themeColor, rangeBgColor} = state.options
   const div = el.children[0] as HTMLElement
-  if(themeColor && div){
-    if(has(classes, 'selected')){
-      div.style.backgroundColor = themeColor
-    }else{
-      div.style.backgroundColor = ''
-    }
-    if(has(classes, 'today')){
-      div.style.color = themeColor
-    }else{
-      div.style.color = ''
-    }
+  if(!div) return
+  const {style} = div
+  if(rangeBgColor){
+    style.backgroundColor = has(classes, 'inRange') ? rangeBgColor : ''
+  }
+  if(themeColor){
+    style.backgroundColor = has(classes, ['selected','range-start', 'range-end']) ? themeColor : rangeBgColor ? style.backgroundColor: ''
+    style.color = has(classes, 'today') ? themeColor : ''
   }
 }

@@ -23,11 +23,13 @@ After configuring the style on this page, you can download the css code and put 
 
 ## Options
 
+
+
 ```js
 const input = document.querySelector('#input')
 createDatePicker(input,{
   themeColor: '#2a3a4a',
-  rangeBgColor: '#bbbbbb',
+  rangeBgColor: '#bbbbbb'
 })
 
 ```

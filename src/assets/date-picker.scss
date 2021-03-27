@@ -97,7 +97,6 @@ $transition: .3s all ease;
       border: none;
       cursor: pointer;
       text-align: center;
-
       div {
         height: 36px;
         line-height: 36px;
@@ -149,7 +148,7 @@ $transition: .3s all ease;
       border-bottom-left-radius: 30px;
 
       &:hover {
-        color: inherit !important;
+        color: white !important;
       }
     }
   }
@@ -170,9 +169,8 @@ $transition: .3s all ease;
     td {
       height: 60px;
       width: 80px;
-      padding: 10px 6px;
       cursor: pointer;
-
+      padding: 0;
       > div {
         height: 48px;
         line-height: 38px;

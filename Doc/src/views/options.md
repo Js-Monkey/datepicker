@@ -26,3 +26,11 @@ createDatePicker(input,options)
 | disabledDate              |   Specifies the date that cannot be selected , should return boolean     |   Function     |   -    | -
 | disabled              |    To set inputElement disabled    |   boolean     |   -    | false
 | placement              |     picker placement     |   string     |   top/bottom/right/left    | bottom
+| themeColor              |     Theme color(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
+| rangeBgColor              |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
+
+
+## TODO1
+
+
+## TODO2

@@ -66,6 +66,9 @@ require('better-datepicker/index.css')
 | offset | Distance between Picker and inputElement | number | - | 12 |
 | insertTo | Name of the node inserted | string | body/parent | body |
 | binding | Bind the value of the inputElement | boolean | - | true |
+| themeColor  |     Theme color(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
+| rangeBgColor  |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
+
 
 ## Instance methods
 
@@ -80,7 +83,6 @@ require('better-datepicker/index.css')
 
 | versions | Description|
 |---------|------------ |
-| 0.1.0 | type support week/year/year-range|
 | 0.3.0 | instance methods support open、close |
 | 0.5.0 | methods support  set defaultOptions |
 | 0.7.0 | options support unlinkPanels、zIndex、readonly、disabled、default-value |
