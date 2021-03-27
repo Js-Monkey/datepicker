@@ -78,14 +78,20 @@ export interface updateOptions<T = string> extends Sub<T> {
   static?: string[]
 }
 
+export interface DynamicStyle{
+  display?: updateOptions
+  color?: updateOptions
+  background?: updateOptions
+}
+
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody' | 'i'
   text?: string | Sub<string>
   class?: updateOptions | string[]
   event?: eventHandler | EventListener[] | EventListenerHasArguments
   style?: Style
+  $style?: DynamicStyle
   children?: (CreateElementOptions | CreateElement)[]
-  visible?: updateOptions<boolean>
   hidden?: boolean
 }
 
@@ -99,7 +105,7 @@ export interface Handler<> {
   class: HandlerCb
   event: HandlerCb
   style: HandlerCb
+  $style: HandlerCb
   children: HandlerCb
-  visible: HandlerCb
   hidden: HandlerCb
 }

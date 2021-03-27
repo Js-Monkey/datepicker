@@ -1,7 +1,7 @@
 import {ComponentStatus, DateData, State} from "../../../../../types/store"
 import {isDisabledDate, joinDate, monthDiff} from "../../../../../utils/date"
 import {rangeStatus} from "../public"
-import {mergeClasses} from "../../../../../utils/merge";
+import {mergeClasses} from "../../../../../utils/merge"
 
 export function updateMonth(year: number, date: string, state: DateData): void {
   state._month.forEach((item, idx) => {

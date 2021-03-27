@@ -1,7 +1,6 @@
 import {HeaderType} from '../../../types/components'
-import {createElement} from '../../../utils/element'
-import {header, pointerCursor} from '../../../utils/classes'
-import {nextMonth, nextYear, preMonth, preYear, toggleVisibility, toMonthPage, toYearPage} from '../utils'
+import {createElement, visible} from '../../../utils/element'
+import {nextMonth, nextYear, preMonth, preYear, isDayPage, toMonthPage, toYearPage} from '../utils'
 import {pageName, State} from '../../../types/store'
 import {getMinInTen} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
@@ -13,8 +12,10 @@ import has from "../../../utils/has"
 let name: HeaderType = 'start'
 
 const togglePage = {
-  key: ['page'],
-  cb: toggleVisibility
+  display:{
+    key: ['page'],
+    cb: isDayPage
+  }
 }
 
 function yearRange(state: State) {
@@ -33,9 +34,11 @@ function yearRange(state: State) {
         },
         cb: (year: number) => range(year)
       },
-      visible: {
-        key: ['page'],
-        cb: (page: pageName) => page === 'year'
+      $style: {
+        display:{
+          key: ['page'],
+          cb: (page: pageName) => visible(page === 'year')
+        }
       },
       event: toYearPage
     },
@@ -54,10 +57,12 @@ function year(state: State) {
       cb: year => year
     },
     event: toYearPage,
-    class: [pointerCursor],
-    visible: {
-      key: ['page'],
-      cb: (page: pageName) => page !== 'year'
+    class: ['pointerCursor'],
+    $style:{
+      display:{
+        key: ['page'],
+        cb: (page: pageName) => visible(page !== 'year')
+      }
     }
   }, state)
 }
@@ -72,9 +77,9 @@ function month(state: State) {
       },
       cb: idx => monthNames[idx - 1]
     },
-    class: [pointerCursor],
+    class: ['pointerCursor'],
     event: toMonthPage,
-    visible: togglePage
+    $style: togglePage
   }, state)
 }
 
@@ -130,7 +135,7 @@ function preMonthIcon(state: State) {
         height: '14px',
       },
       event: preMonth,
-      visible: togglePage
+      $style: togglePage
     },
     state
   )
@@ -165,7 +170,7 @@ function nextMonthIcon(state: State) {
         height: '14px',
       },
       event: Bind(nextMonth, name),
-      visible: togglePage
+      $style: togglePage
     },
     state
   )
@@ -179,7 +184,7 @@ const headerChildren = {
 
 export function Header(state: State, t?: HeaderType): Node {
   const opt = {
-    class: [header],
+    class: ['header'],
     children: headerChildren[t || 'main'],
     style: {
       width: '298px',

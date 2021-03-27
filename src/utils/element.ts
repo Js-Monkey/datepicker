@@ -38,8 +38,12 @@ function handler(el: HTMLElement, val: any, state: State): Handler {
         update(el, val)
       }
     },
-    visible: () => update<boolean>(el, val, 'sty'),
-    hidden: () => hidden(el, val)
+    hidden: () => hidden(el, val),
+    $style(){
+      Object.keys(val).forEach(key=>{
+        update<boolean>(el, val[key], 'style', key)
+      })
+    }
   }
 
 }
@@ -91,13 +95,19 @@ export function appendChild(children: Element | Element[], parent: HTMLElement |
   }
 }
 
-export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], type: keyof UpdateCbType = 'text'): void {
-  if (isArray(opt)) return el.setAttribute('class', opt.join(' '))
+export function visible(vis: boolean): 'none' | 'inline-block'{
+  return vis ? 'inline-block' : 'none'
+}
+
+export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], type: keyof UpdateCbType = 'text', styKey?: string): void {
+  if (isArray(opt)) return resetAttr(el,mergeClasses(opt))
   const {key, cb} = opt
   const callbacks: UpdateCbType = {
-    cls: (res: string) => resetAttr(el, mergeClasses(res, opt.static)),
+    cls: (res: string) =>  resetAttr(el, mergeClasses(res, opt.static)),
     text: (res: string) => el.innerText = res,
-    sty: (vis: boolean) => el.style.display = vis ? 'inline-block' : 'none'
+    style: (val: any) => {
+      el.style[styKey as 'color'] = val
+    }
   }
 
   addWatch(

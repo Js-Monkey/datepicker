@@ -1,6 +1,5 @@
 import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
-import {wrapper} from '../../utils/classes'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Day'
 import {endMonth, Month} from '../components/Month'
@@ -68,7 +67,7 @@ function listenToAnimation(pop: HTMLElement) {
 export function createPopover(state: State): HTMLElement {
   const pop = createElement(
     {
-      class: [wrapper],
+      class: ['wrapper'],
       children: popoverType[state.type],
       hidden: true
     },

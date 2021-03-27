@@ -23,7 +23,7 @@
 <script lang="ts">
 import '../../../assets/svg/svg'
 import {defineComponent, toRefs} from 'vue'
-import {isNumber} from "../../../../../src/utils/typeOf";
+import {isNumber} from "../../../../../src/utils/typeOf"
 
 export default defineComponent({
   name: 'Input',

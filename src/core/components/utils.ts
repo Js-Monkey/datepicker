@@ -3,6 +3,7 @@ import {HeaderType, RangeClickEvent} from '../../types/components'
 import {EventListener} from "../../types/utils"
 import {_Event} from "../../types/event"
 import {getNext, getPre} from "../../utils/date";
+import {visible} from "../../utils/element";
 
 export const utilStyle = {
   'text-align': 'center',
@@ -57,12 +58,12 @@ export function preYear(): void {
 
 export function nextMonth(type: HeaderType): void {
   const child = this[type]
-  ;[child.month,child.year] = getNext(child)
+  ;[child.month, child.year] = getNext(child)
 }
 
 export function preMonth(): void {
   const child = this.start
-  ;[child.month,child.year] = getPre(child)
+  ;[child.month, child.year] = getPre(child)
 }
 
 export function toMonthPage(): void {
@@ -91,6 +92,6 @@ export function toYearPage(): void {
   this.page = 'year'
 }
 
-export function toggleVisibility(page: pageName): boolean {
-  return page === 'day'
+export function isDayPage(page: pageName): 'none' | 'inline-block' {
+  return visible(page === 'day')
 }

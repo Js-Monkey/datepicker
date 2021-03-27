@@ -4,7 +4,7 @@ import {
   nextYear,
   preMonth,
   preYear, selectMonth,
-  selectYear, toDayPage, toggleVisibility,
+  selectYear, toDayPage, isDayPage,
   toMonthPage, toYearPage
 } from "../../src/core/components/utils"
 import {createState} from "../../src/store"
@@ -174,8 +174,8 @@ describe('selectMonth', () => {
 
 describe('toggleVisibility', () => {
   it('should  return  whether page is `day`', () => {
-    expect(toggleVisibility('day')).toBeTruthy()
-    expect(toggleVisibility('month')).toBeFalsy()
-    expect(toggleVisibility('year')).toBeFalsy()
+    expect(isDayPage('day')).toBe('inline-block')
+    expect(isDayPage('month')).toBe('none')
+    expect(isDayPage('year')).toBe('none')
   })
 })

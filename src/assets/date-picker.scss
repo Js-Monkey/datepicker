@@ -213,12 +213,6 @@ $transition: .3s all ease;
     }
   }
 
-  &-today {
-    div{
-      color: $theme-color;
-    }
-  }
-
   &-pointer-cursor {
     cursor: pointer;
 
@@ -227,4 +221,9 @@ $transition: .3s all ease;
     }
   }
 
+  &-today {
+    div{
+      color: $theme-color;
+    }
+  }
 }

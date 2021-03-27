@@ -9,7 +9,7 @@ export type HeaderType = 'start' | 'end'
 export interface UpdateCbType {
   text: (res: string)=> void
   cls: (res: string)=> void
-  sty: (res: boolean)=> void
+  style: (res: any)=> void
 }
 
 export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>

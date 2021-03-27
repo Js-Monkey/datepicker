@@ -1,6 +1,5 @@
-import {createElement} from '../../../utils/element'
+import {createElement, visible} from '../../../utils/element'
 import {monthNames} from '../../util/i18n'
-import {month} from '../../../utils/classes'
 import {utilStyle} from '../utils'
 import {State} from '../../../types/store'
 import {HeaderType} from "../../../types/components"
@@ -63,11 +62,13 @@ export function Month(state: State, t: HeaderType = 'start'): Node {
     {
       name: 'table',
       children: [tBody],
-      class: [month],
+      class: ['month'],
       style: utilStyle,
-      visible: {
-        key: ['page'],
-        cb: (page: string) => page === 'month'
+      $style:{
+        display:{
+          key: ['page'],
+          cb: (page: string) => visible(page === 'month')
+        }
       }
     },
     state

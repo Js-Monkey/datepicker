@@ -1,8 +1,7 @@
 import {createElement} from '../../../utils/element'
-import {day} from '../../../utils/classes'
 import {dayBarNames} from '../../util/i18n'
 import {State} from '../../../types/store'
-import {toggleVisibility, utilStyle} from '../utils'
+import {isDayPage, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
 import {HeaderType} from "../../../types/components"
@@ -50,6 +49,16 @@ function tBody(state: State): Node {
           }
         ],
         style: tableStyle,
+        $style: {
+          color: {
+            key: {
+              name: 'options', childKey: ['themeColor']
+            },
+            cb: (val: string) => {
+              return child.status === 'selected' ? val : ''
+            }
+          }
+        },
         class: config(child),
         event: {
           listener: dayEvent(child)[state.type as 'date'],
@@ -86,11 +95,13 @@ export function Day(state: State, t: HeaderType = 'start'): Node {
     {
       name: 'table',
       children: [bar, tBody],
-      class: [day],
+      class: ['day'],
       style: utilStyle,
-      visible: {
-        key: ['page'],
-        cb: toggleVisibility
+      $style: {
+        display: {
+          key: ['page'],
+          cb: isDayPage
+        }
       }
     },
     state

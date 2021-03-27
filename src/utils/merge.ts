@@ -1,6 +1,9 @@
-import {isArray} from './typeOf'
 import Options from "../types/options"
 import {checkOptions} from "./checkOptions"
+import {logo} from "./classes"
+import {isArray} from "./typeOf";
+import has from "./has";
+
 export function mergeOptions(source: any, target = Object.create(null)): Options {
   for (const key in source) {
     const val = target[key]
@@ -11,6 +14,11 @@ export function mergeOptions(source: any, target = Object.create(null)): Options
   return source
 }
 
-export function mergeClasses(...args: (string | string[] | undefined)[]): string {
-  return (args.reduce((classes: string, arg) => (!arg ? classes : classes + ' ' + (isArray(arg) ? arg.join(' ') : arg)), '') as string).trim()
+function addLogo(str: string) {
+  return has(str, logo) ? str : logo + '-' + str
 }
+
+export function mergeClasses(...args: (string | string[] | undefined)[]): string {
+  return args.filter(item => item).map(arg => isArray(arg) ? mergeClasses(...arg) : addLogo(arg as string)).join(' ')
+}
+
