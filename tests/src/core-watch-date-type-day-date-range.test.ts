@@ -1,25 +1,25 @@
-import {hoverDay, rangeLinkPrecisionToDay, startLinkEndToMonth} from "../../src/core/watch/date/type/day/date-range"
+import {hoverDay} from "../../src/core/watch/date/type/day/date-range"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 
-describe('updateRangeStartMonth', () => {
-  const state = createState(defaultOptions())
-  it('should changed `startMonth` and `startYear`', () => {
-    rangeLinkPrecisionToDay.cb.call(state, 1, 2021)
-    expect(state.start.year).toBe(2020)
-    expect(state.start.month).toBe(12)
-  });
-})
+// describe('updateRangeStartMonth', () => {
+//   const state = createState(defaultOptions())
+//   it('should changed `startMonth` and `startYear`', () => {
+//     rangeLinkPrecisionToDay.cb.call(state, 1, 2021)
+//     expect(state.start.year).toBe(2020)
+//     expect(state.start.month).toBe(12)
+//   });
+// })
 
 
-describe('updateRangeEndMonth', () => {
-  const state = createState(defaultOptions())
-  it('should changed `endMonth` and `endYear`', () => {
-    startLinkEndToMonth.cb.call(state, 12, 2000)
-    expect(state.end.year).toBe(2001)
-    expect(state.end.month).toBe(1)
-  });
-})
+// describe('updateRangeEndMonth', () => {
+//   const state = createState(defaultOptions())
+//   it('should changed `endMonth` and `endYear`', () => {
+//     startLinkEndToMonth.cb.call(state, 12, 2000)
+//     expect(state.end.year).toBe(2001)
+//     expect(state.end.month).toBe(1)
+//   });
+// })
 
 
 describe('hoverDay callback', () => {

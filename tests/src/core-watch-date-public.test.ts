@@ -1,7 +1,7 @@
 import {rangeStatus, startDate, handleSelecting} from "../../src/core/watch/date/type/public"
 import {createState} from '../../src/store'
 import defaultOptions from "../../src/core/util/default-options"
-
+import {logo} from '../../src/utils/classes'
 const state = createState(defaultOptions())
 const sd = '1999/10/1'
 const ed = '2000/10/1'
@@ -24,7 +24,7 @@ describe('rangeStatus', () => {
   it('if `value` === `max` && `value` === `min`, return `range-start range-end`', () => {
     state.range.start = ed
     state.range.end = ed
-    expect(rangeStatus(state, ed)).toEqual('range-start range-end')
+    expect(rangeStatus(state, ed)).toEqual(`${logo}-range-start ${logo}-range-end`)
   })
 })
 
