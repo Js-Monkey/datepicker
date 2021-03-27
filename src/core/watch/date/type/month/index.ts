@@ -1,5 +1,6 @@
-import {getStatus, updateMonth} from "./public"
+import {getStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
+import {updateMonth} from "../public"
 
 export const updateStartMonth = {
   key: {name: 'start', childKey: ['year', 'date']},

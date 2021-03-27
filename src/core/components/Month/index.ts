@@ -32,7 +32,7 @@ function tBody(state: State): Node {
             name: ['status'],
             child
           },
-          cb: (val: string) => val
+          cb: (val: string) =>   val
         },
         children: [
           {
