@@ -83,38 +83,12 @@ $transition: .3s all ease;
       }
     }
 
-    .inRange, .range-start, .range-end {
-      > div {
-        background: $range-color;
-      }
+  }
+
+  &-inRange, &-range-start, &-range-end {
+    > div {
+      background: $range-color;
     }
-
-    .range-start {
-      > div {
-        color: white;
-        background-color: $theme-color;
-        border-top-left-radius: 30px;
-        border-bottom-left-radius: 30px;
-
-        &:hover {
-          color: white !important;
-        }
-      }
-    }
-
-    .range-end {
-      > div {
-        color: white;
-        background-color: $theme-color;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
-
-        &:hover {
-          color: white !important;
-        }
-      }
-    }
-
   }
 
   &-day {
@@ -144,29 +118,53 @@ $transition: .3s all ease;
       cursor: default;
       color: $text-th-color;
     }
-
-    .pre, .next {
-      div {
-        opacity: .3;
-        background: #ffffff;
-
-        &:hover {
-          color: inherit;
-        }
-      }
-    }
-
-    .selected {
-      div {
-        color: white;
-        background-color: $theme-color;
-        border-radius: 5px;
-        &:hover {
-          color: white !important;
-        }
+  }
+  &-day &-selected {
+    div {
+      color: white;
+      background-color: $theme-color;
+      border-radius: 5px;
+      &:hover {
+        color: white !important;
       }
     }
   }
+  &-day &-range-end {
+    > div {
+      color: white;
+      background-color: $theme-color;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+
+      &:hover {
+        color: white !important;
+      }
+    }
+  }
+  &-day &-range-start {
+    > div {
+      color: white;
+      background-color: $theme-color;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+
+      &:hover {
+        color: white !important;
+      }
+    }
+  }
+
+  &-pre, &-next {
+    div {
+      opacity: .3;
+      background: #ffffff;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
 
   &-month {
     td {
@@ -181,12 +179,10 @@ $transition: .3s all ease;
         padding: 5px 6px;
       }
     }
+  }
 
-    .selected {
-      color: $theme-color;
-    }
-
-    .range-start, .range-end {
+  &-month{
+    .better-datepicker-range-start,.better-datepicker-range-end {
       > div {
         background-color: $range-color;
 
@@ -197,7 +193,18 @@ $transition: .3s all ease;
         }
       }
     }
-
+  }
+  &-month &-selected {
+    div{
+      div {
+        color: white;
+        background-color: $theme-color;
+        border-radius: 5px;
+        &:hover {
+          color: white !important;
+        }
+      }
+    }
   }
 
   &-year {
@@ -213,7 +220,7 @@ $transition: .3s all ease;
     }
   }
 
-  &-pointer-cursor {
+  &-pointerCursor {
     cursor: pointer;
 
     &:hover {

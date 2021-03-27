@@ -54,9 +54,7 @@ function tBody(state: State): Node {
             key: {
               name: 'options', childKey: ['themeColor']
             },
-            cb: (val: string) => {
-              return child.status === 'selected' ? val : ''
-            }
+            cb: (val: string) => val
           }
         },
         class: config(child),
