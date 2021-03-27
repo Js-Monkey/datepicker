@@ -3,6 +3,7 @@ import {dateDiff, transformDateToArray, rangeSort, joinDate} from "../../../../u
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
 import {getStatus} from "./month/public"
+import {mergeClasses} from "../../../../utils/merge";
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
@@ -10,13 +11,15 @@ export function rangeStatus(state: State, date: string): ComponentStatus {
   const isMin = date === min
   const isMax = date === max
   const isInRange = dateDiff(max, date) && dateDiff(date, min)
+  const st = 'range-start'
+  const et = 'range-end'
   if (isInRange) return 'inRange'
   if (isMax && isMin) {
-    return 'range-start range-end'
+    return mergeClasses(st, et) as ComponentStatus
   } else if (isMin) {
-    return 'range-start'
+    return st
   } else if (isMax) {
-    return 'range-end'
+    return et
   } else {
     return ''
   }

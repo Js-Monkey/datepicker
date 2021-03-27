@@ -2,13 +2,11 @@ import {addWatch} from "../../../observer/watcher"
 import Options from "../../../types/options"
 import {
   updateDayDom,
-  endLinkStartToMonth,
-  startLinkEndToMonth,
+  linkMonth,
   hoverDay,
-  rangeLinkPrecisionToDay
 } from "./type/day/date-range"
 import {startDays} from "./type/day/date"
-import {endLinkStartToYear, startLinkEndToYear, updateStartMonth, updateEndMonth, hoverMonth} from "./type/month"
+import {LinkYear, watchMonth, hoverMonth} from "./type/month"
 import {handleSelecting, startDate, endDate, date, startMonth} from './type/public'
 import {Listeners} from "../../../types/watch"
 import {has} from "../../../utils/has"
@@ -17,14 +15,13 @@ const listeners: Listeners = {
   'date-range': [
     startDays,
     updateDayDom,
-    endLinkStartToMonth,
-    startLinkEndToMonth,
-    hoverDay,
-    rangeLinkPrecisionToDay,
+    linkMonth(),
+    linkMonth('end'),
+    hoverDay
   ],
   date: [startDays, startMonth],
-  month: [updateStartMonth],
-  'month-range': [updateStartMonth, endLinkStartToYear, startLinkEndToYear, updateEndMonth, hoverMonth],
+  month: [watchMonth()],
+  'month-range': [watchMonth(), LinkYear(), LinkYear('end'), watchMonth('end'), hoverMonth],
 }
 
 
