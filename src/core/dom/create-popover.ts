@@ -24,13 +24,14 @@ function rangeComponent(type: 'month' | 'day') {
       style: {
         width: '646px'
       },
-      children: [{
-        style: {
-          display: 'inline-block',
-          'border-right': '1px solid #e4e4e4'
+      children: [
+        {
+          style: {
+            display: 'inline-block',
+            'border-right': '1px solid #e4e4e4'
+          },
+          children: componentType[type].start
         },
-        children: componentType[type].start
-      },
         {
           style: {
             display: 'inline-block'
@@ -48,11 +49,11 @@ const popoverType: PopoverType = {
   'month-range': rangeComponent('month')
 }
 
-export function deleteRules(sheet: any = document.styleSheets[0]): void{
+export function deleteRules(sheet: any = document.styleSheets[0]): void {
   const ruleSheet = sheet ? sheet.rules : null
-  if(ruleSheet && ruleSheet.length>0){
+  if (ruleSheet && ruleSheet.length > 0) {
     const {name, type} = ruleSheet[0]
-    if (has(['show', 'hidden'], name) && type === 7)sheet.deleteRule(0)
+    if (has(['show', 'hidden'], name) && type === 7) sheet.deleteRule(0)
   }
 }
 

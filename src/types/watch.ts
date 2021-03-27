@@ -6,3 +6,8 @@ export interface Listeners<T = Sub>{
   month: T[]
   'month-range': T[]
 }
+
+export interface ReverseMap {
+  start: 'end',
+  end: 'start'
+}

@@ -23,9 +23,7 @@ function config(child: any, name: 'text' | 'status' = 'status') {
       name: [name],
       child
     },
-    cb: (val: string) => {
-      return val
-    }
+    cb: (val: string) => val
   }
 }
 
