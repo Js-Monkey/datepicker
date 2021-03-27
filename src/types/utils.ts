@@ -1,4 +1,5 @@
 import {Sub} from './observer'
+import {Callback} from "./core";
 
 export interface UtilObject {
   [key: string]: any
@@ -36,14 +37,14 @@ export type eventType = 'click' | 'mouseenter' | 'mouseleave' | 'focus'
 
 export type eventHandler = (...arg: any) => unknown
 
-export interface EventListener {
+export interface _EventListener {
   name: eventType
   handler: eventHandler
 }
 
 export interface EventListenerHasArguments {
   arg: any
-  listener: eventHandler | EventListener[]
+  listener: eventHandler | _EventListener[]
 }
 
 export interface Style {
@@ -78,7 +79,7 @@ export interface updateOptions<T = string> extends Sub<T> {
   static?: string[]
 }
 
-export interface DynamicStyle{
+export interface DynamicStyle {
   display?: updateOptions
   color?: updateOptions
   background?: updateOptions
@@ -88,7 +89,7 @@ export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody' | 'i'
   text?: string | Sub<string>
   class?: updateOptions | string[]
-  event?: eventHandler | EventListener[] | EventListenerHasArguments
+  event?: eventHandler | _EventListener[] | EventListenerHasArguments
   style?: Style
   $style?: DynamicStyle
   children?: (CreateElementOptions | CreateElement)[]
@@ -108,4 +109,9 @@ export interface Handler<> {
   $style: HandlerCb
   children: HandlerCb
   hidden: HandlerCb
+}
+
+
+export interface AddEventListenerFunction {
+  (listener: _EventListener[] | Callback, arg?: unknown): void
 }

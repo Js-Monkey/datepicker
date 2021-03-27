@@ -27,6 +27,9 @@ function tBody(state: State): Node {
       const child = state[type]._month[idx]
       return {
         name: 'td',
+        children: [
+          {text: monthNames[idx]}
+        ],
         class: {
           key: {
             name: ['status'],
@@ -34,11 +37,6 @@ function tBody(state: State): Node {
           },
           cb: (val: string) =>   val
         },
-        children: [
-          {
-            children: [{text: monthNames[idx]}]
-          }
-        ],
         event: {
           listener: monthEvent(idx, child)[state.type as 'date'],
           arg: child

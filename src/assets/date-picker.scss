@@ -32,10 +32,6 @@ $transition: .3s all ease;
       fill: #858585;
       cursor: pointer;
       transition: $transition;
-
-      &:hover {
-        fill: $theme-color;
-      }
     }
   }
 
@@ -69,6 +65,10 @@ $transition: .3s all ease;
     }
     td{
       color: $text-tbody-color;
+      border-radius: 5px;
+      &:hover{
+        color: $theme-color;
+      }
     }
   }
 
@@ -120,7 +120,7 @@ $transition: .3s all ease;
     }
   }
   &-day &-selected {
-    div {
+   div {
       color: white;
       background-color: $theme-color;
       border-radius: 5px;
@@ -149,7 +149,7 @@ $transition: .3s all ease;
       border-bottom-left-radius: 30px;
 
       &:hover {
-        color: white !important;
+        color: inherit !important;
       }
     }
   }
@@ -160,7 +160,7 @@ $transition: .3s all ease;
       background: #ffffff;
 
       &:hover {
-        color: inherit;
+        color: $text-tbody-color !important;
       }
     }
   }
@@ -170,7 +170,7 @@ $transition: .3s all ease;
     td {
       height: 60px;
       width: 80px;
-      padding: 6px 0;
+      padding: 10px 6px;
       cursor: pointer;
 
       > div {
@@ -184,36 +184,31 @@ $transition: .3s all ease;
   &-month{
     .better-datepicker-range-start,.better-datepicker-range-end {
       > div {
-        background-color: $range-color;
-        div {
-          color: white;
-          background-color: $theme-color;
-          border-radius: 20px;
-        }
+        color: white;
+        background-color: $theme-color;
+        border-radius: 20px;
       }
     }
     .better-datepicker-range-start{
       >div{
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
       }
     }
     .better-datepicker-range-end{
       >div{
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
   }
   &-month &-selected {
-    div{
-      div {
-        color: white;
-        background-color: $theme-color;
-        border-radius: 5px;
-        &:hover {
-          color: white !important;
-        }
+    div {
+      color: white;
+      background-color: $theme-color;
+      border-radius: 5px;
+      &:hover {
+        color: white !important;
       }
     }
   }

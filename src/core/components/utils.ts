@@ -1,6 +1,6 @@
 import {MonthComponents, pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
-import {EventListener} from "../../types/utils"
+import {_EventListener} from "../../types/utils"
 import {_Event} from "../../types/event"
 import {getNext, getPre} from "../../utils/date";
 import {visible} from "../../utils/element";
@@ -22,7 +22,7 @@ const rangeClickEvent: RangeClickEvent = {
   }
 }
 
-export function handleRange(state: MonthComponents): EventListener[] {
+export function handleRange(state: MonthComponents): _EventListener[] {
   return [
     {
       name: 'click',

@@ -1,15 +1,25 @@
 import {isArray, isFunc, isString} from './typeOf'
 import {on} from './event'
-import {CreateElementOptions, updateOptions, eventHandler, eventType, Handler} from '../types/utils'
+import {
+  CreateElementOptions,
+  updateOptions,
+  eventHandler,
+  eventType,
+  Handler,
+  _EventListener
+} from '../types/utils'
 import {State} from '../types/store'
 import {addWatch} from '../observer/watcher'
 import {resetAttr, transformStyle} from './attribute'
 import {mergeClasses} from './merge'
 import {UpdateCbType} from "../types/components"
 import {SvgName} from "../types/element"
+import {resetHoverColor, resetSelectColor} from "./theme"
+import {Callback} from "../types/core";
 
 function handler(el: HTMLElement, val: any, state: State): Handler {
-  function addListener(listener: any, arg?: unknown) {
+  const {themeColor} = state.options
+  function addListener(listener: _EventListener[] | Callback, arg?: unknown): void {
     if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
       listener.forEach(e => on(el, e.handler, e.name, state, arg))
     } else {
@@ -24,12 +34,15 @@ function handler(el: HTMLElement, val: any, state: State): Handler {
       } else {
         addListener(val)
       }
+      if (themeColor) {
+        resetHoverColor(el, themeColor)
+      }
     },
-    class: () => update(el, val, 'cls'),
-    style: () => resetAttr(el, transformStyle(val), 'style'),
     children() {
       val.forEach((child: CreateElementOptions) => el.appendChild(createElement(child, state)))
     },
+    class: () => update.call(state,el, val, 'cls'),
+    style: () => resetAttr(el, transformStyle(val), 'style'),
     name: () => null,
     text() {
       if (isString(val)) {
@@ -39,8 +52,8 @@ function handler(el: HTMLElement, val: any, state: State): Handler {
       }
     },
     hidden: () => hidden(el, val),
-    $style(){
-      Object.keys(val).forEach(key=>{
+    $style() {
+      Object.keys(val).forEach(key => {
         update<boolean>(el, val[key], 'style', key)
       })
     }
@@ -95,19 +108,21 @@ export function appendChild(children: Element | Element[], parent: HTMLElement |
   }
 }
 
-export function visible(vis: boolean): 'none' | 'inline-block'{
+export function visible(vis: boolean): 'none' | 'inline-block' {
   return vis ? 'inline-block' : 'none'
 }
 
 export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], type: keyof UpdateCbType = 'text', styKey?: string): void {
-  if (isArray(opt)) return resetAttr(el,mergeClasses(opt))
+  if (isArray(opt)) return resetAttr(el, mergeClasses(opt))
   const {key, cb} = opt
   const callbacks: UpdateCbType = {
-    cls: (res: string) => resetAttr(el, mergeClasses(res, opt.static)),
+    cls: (res: string) => {
+      const classes = mergeClasses(res, opt.static)
+      resetAttr(el, classes)
+      resetSelectColor(el, this, classes)
+    },
     text: (res: string) => el.innerText = res,
-    style: (val: string) => {
-      el.style[styKey as 'color'] = val
-    }
+    style: (val: string) => el.style[styKey as 'color'] = val
   }
 
   addWatch(

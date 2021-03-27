@@ -36,7 +36,7 @@
       <tr v-for="row in 6">
         <td v-for="col in 7" style="height:40px;width:40px;padding:3px 0"
             :style="{color:  getDay(row,col) === 3 ? theme.value :tbody.value}"
-            :class="{pre: getDay(row,col) < 2,next: getDay(row,col)>32, 'range-start': row ===3 && col ===1, 'range-end': row ===3 && col ===7, 'inRange':  row ===3 && (col>1&& col<7)}">
+            :class="{pre: getDay(row,col) < 2,next: getDay(row,col)>32, 'better-datepicker-range-start': row ===3 && col ===1, 'better-datepicker-range-end': row ===3 && col ===7, 'better-datepicker-inRange':  row ===3 && (col>1&& col<7)}">
           <div
             :style="{background: row ===3 && (col>1&& col<7)? range.value: ((row ===3 && col ===1) || (row===3 && col === 7))? theme.value:''}">x
           </div>

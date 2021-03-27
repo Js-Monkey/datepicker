@@ -49,14 +49,14 @@ function tBody(state: State): Node {
           }
         ],
         style: tableStyle,
-        $style: {
-          color: {
-            key: {
-              name: 'options', childKey: ['themeColor']
-            },
-            cb: (val: string) => val
-          }
-        },
+        // $style: {
+        //   color: {
+        //     key: {
+        //       name: 'options', childKey: ['themeColor']
+        //     },
+        //     cb: (val: string) => val
+        //   }
+        // },
         class: config(child),
         event: {
           listener: dayEvent(child)[state.type as 'date'],
