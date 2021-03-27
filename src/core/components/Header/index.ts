@@ -7,7 +7,7 @@ import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {Sub} from "../../../types/observer"
 import {monthNames} from "../../util/i18n"
-import has from "../../../utils/has"
+import {has} from "../../../utils/has"
 
 let name: HeaderType = 'start'
 

@@ -1,6 +1,7 @@
 import {getNext, getPre} from "../../../../../utils/date"
 import {moreStatus, updateDays} from "./public"
 import {Sub} from "../../../../../types/observer"
+import {not} from "../../../../../utils/has"
 
 function updateRangeStartMonth(em: number, ey: number): void {
   const data = this.start
@@ -39,9 +40,12 @@ export const startLinkEndToMonth: Sub = {
 
 export const hoverDay: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
-  cb() {
-    (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name]._day.filter(item => !['pre', 'next'].includes(item.status)).forEach(item => item.status = moreStatus(this, item.date))
+  cb(start, end) {
+    if(!start && !end) return
+    ;(['start', 'end'] as ['start', 'end']).forEach(name => {
+     this[name]._day.filter(item => not(item.status, ['pre', 'next'])).forEach(item => {
+       item.status = moreStatus(this, item.date)
+     })
     })
   }
 }

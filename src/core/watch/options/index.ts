@@ -1,6 +1,6 @@
 import {addWatch} from '../../../observer/watcher'
 import Options from "../../../types/options"
-import has from "../../../utils/has"
+import {has} from "../../../utils/has"
 
 
 const options = {

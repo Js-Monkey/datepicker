@@ -1,5 +1,5 @@
 import {Types, UtilObject} from '../types/utils'
-import has from "./has"
+import {has} from "./has"
 
 const toString = Object.prototype.toString
 const typeOf = (val: unknown, typeName: keyof Types) => has(toString.call(val), typeName)
@@ -25,5 +25,5 @@ export function isBoolean(val: unknown): val is boolean {
 }
 
 export function isArray<T = unknown>(val: unknown): val is T[] {
-  return typeOf(val, 'Array')
+  return Array.isArray(val)
 }

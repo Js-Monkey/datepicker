@@ -1,6 +1,6 @@
 import Options, {AcceptOptions} from '../types/options'
 import {isArray, isBoolean, isFunc, isNumber, isString} from './typeOf'
-import has from "./has"
+import {has} from "./has"
 
 
 

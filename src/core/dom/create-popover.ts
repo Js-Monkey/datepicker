@@ -5,7 +5,7 @@ import {Day, endDay} from '../components/Day'
 import {endMonth, Month} from '../components/Month'
 import {Year} from '../components/Year'
 import {PopoverType} from '../../types/components'
-import has from "../../utils/has"
+import {has} from "../../utils/has"
 
 
 function rangeComponent(type: 'month' | 'day') {

@@ -11,7 +11,7 @@ import {startDays} from "./type/day/date"
 import {endLinkStartToYear, startLinkEndToYear, updateStartMonth, updateEndMonth, hoverMonth} from "./type/month"
 import {handleSelecting, startDate, endDate, date} from './type/public'
 import {Listeners} from "../../../types/watch"
-import has from "../../../utils/has";
+import {has} from "../../../utils/has"
 
 const listeners: Listeners = {
   'date-range': [

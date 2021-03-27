@@ -103,7 +103,7 @@ export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], typ
   if (isArray(opt)) return resetAttr(el,mergeClasses(opt))
   const {key, cb} = opt
   const callbacks: UpdateCbType = {
-    cls: (res: string) =>  resetAttr(el, mergeClasses(res, opt.static)),
+    cls: (res: string) => resetAttr(el, mergeClasses(res, opt.static)),
     text: (res: string) => el.innerText = res,
     style: (val: string) => {
       el.style[styKey as 'color'] = val
