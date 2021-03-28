@@ -8,7 +8,7 @@
 [![install size](https://packagephobia.com/badge?p=better-datepicker)](https://packagephobia.com/result?p=better-datepicker)
 
 ## Doc
-TODO
+https://js-monkey.github.io/better-datepicker/#/doc/start
 
 ## Installing
 
