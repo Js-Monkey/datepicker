@@ -11,5 +11,5 @@ Then, import *better-datepicker* and css
 
 ```js
 import  {createDatePicker} from 'better-datepicker'
-import 'better-datepicker/style/index.css'
+import 'better-datepicker/index.css'
 ```

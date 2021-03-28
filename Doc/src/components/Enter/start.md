@@ -2,7 +2,7 @@
  Import styles, **or you can customize theme colors** [Here](#/doc/theme)
 ```js
   import  {createDatePicker} from 'better-datepicker'
-  import 'better-datepicker/style/index.css'
+  import 'better-datepicker/index.css'
 
 ```
 
