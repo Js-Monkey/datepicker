@@ -19,3 +19,12 @@
     format: 'yyyy/MM/dd'
   })
 ```
+
+## DOCUMENT TODOLIST
+
+| TODO     | VERSION   |
+| ----------------- | -------------------------------- |
+| Support Mobile  |    0.3     |
+| Show All Demo  |  0.4    |
+| Support online debugging  (codeSandBox)  |  0.5    |
+| -  |  -   |

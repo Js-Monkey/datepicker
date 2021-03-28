@@ -1,0 +1,47 @@
+@media screen and (max-width: 893px) {
+  body{
+    font-size: 14px;
+  }
+  .install{
+    flex-direction: column;
+    font-size: 14px;
+    &-card{
+      margin: 6px 0;
+      &-code{
+        padding: 6px 9px;
+      }
+      svg{
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 564px) {
+  .install{
+    font-size: 12px;
+  }
+  .enter-button{
+    &-description{
+      font-size: 15px !important;
+    }
+    //button{
+    //  padding: 5px 12px !important;
+    //  font-size: 12px !important;
+    //}
+    button{
+      display: none !important;
+    }
+  }
+  .header-nav{
+    display: none !important;
+  }
+  .header-github{
+    margin-left: auto !important;
+  }
+  .logo{
+    width: 50vw !important;
+    height: 39vw !important;
+  }
+}

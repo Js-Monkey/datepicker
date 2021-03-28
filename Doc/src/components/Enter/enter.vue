@@ -35,16 +35,22 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  width: 100%;
   .install {
     width: 100%;
-    height: 60px;
-    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #264b61;
     text-align: center;
     color: #f9fdfe;
     padding: 9px;
     font-family: Menlo;
+  }
+
+  .start {
+    width: 100%;
+    margin-bottom: 100px;
   }
 
   .demo-bar {

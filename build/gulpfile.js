@@ -17,4 +17,4 @@ function compile() {
 }
 
 
-exports.build = series(compile)
+exports.build =  series(compile)

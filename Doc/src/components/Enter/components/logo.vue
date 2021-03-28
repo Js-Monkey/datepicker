@@ -1,7 +1,13 @@
 <template>
-  <b-icon font-size="30vw" name="better1"></b-icon>
-  <div>
-    <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn" icon="forward" position="right">
+  <div class="enter-button">
+    <b-icon class="logo" :font-size="300" name="better1"></b-icon>
+    <div class="enter-button-description">
+      A Datepicker with no dependency
+      <br>
+      Lighter and Better
+    </div>
+    <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn"
+              icon="forward" position="right">
       Document
     </b-button>
   </div>
@@ -10,10 +16,10 @@
 <script>
 export default {
   name: "logo",
-  methods:{
-    toDocument(){
+  methods: {
+    toDocument() {
       this.$router.push({
-        name:'start'
+        name: 'start'
       })
     }
   }
@@ -25,8 +31,22 @@ button {
   font-family: Menlo;
 }
 
-svg {
-  width: 40vw !important;
-  height: 25vw !important;
+.logo {
+  margin-right: 15px;
+}
+
+.enter-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  font-family: Futura, sans-serif;
+  &-description{
+    color: #ECF0F1;
+    margin-bottom: 30px;
+    font-size: 20px;
+    text-align: center;
+  }
 }
 </style>

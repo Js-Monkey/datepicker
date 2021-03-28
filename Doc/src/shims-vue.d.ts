@@ -8,3 +8,19 @@ declare module '*.md' {
   const value: any
   export default value
 }
+
+declare module 'rollup-plugin-sourcemaps'{
+  const value: any
+  export default value
+}
+
+declare module 'rollup-plugin-json'{
+  const value: any
+  export default value
+}
+
+
+declare module 'lodash.camelcase'{
+  const value: any
+  export default value
+}

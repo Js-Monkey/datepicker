@@ -1,5 +1,5 @@
 <template>
-  <svg class="b-icon" :style="{fontSize,fill}">
+  <svg class="b-icon" :style="{'font-size':fontSize + 'px',fill}">
     <use :xlink:href="`#icon-${name}`"></use>
   </svg>
 </template>

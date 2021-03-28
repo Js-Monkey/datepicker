@@ -1,6 +1,6 @@
 {
   "name": "better-datepicker",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description": "better-datepicker",
   "main": "dist/betterDatePicker.umd.js",
   "module": "dist/betterDatePicker.es5.js",
@@ -10,14 +10,14 @@
     "serve": "vite preview",
     "build:css": "gulp build --gulpfile build/gulpfile.js",
     "prebp": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c build/rollup.config.js && npm run build:css &&  rm -rf .rpt2_cache",
+    "build": "tsc --module commonjs && rollup -c build/rollup.config.ts && npm run build:css &&  rm -rf .rpt2_cache",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "lint": "eslint src --fix --ext .ts,.tsx"
   },
   "jest": {
-    "preset": "./build/jest.config"
+    "preset": "./build/jest.config.ts"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -26,6 +26,8 @@
     ]
   },
   "devDependencies": {
+    "@types/gulp-dart-sass": "^1.0.0",
+    "@types/gulp-rename": "^2.0.0",
     "@types/jest": "^25.2.1",
     "@types/markdown-it": "^12.0.1",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
