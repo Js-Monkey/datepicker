@@ -165,7 +165,7 @@ $transition: .3s all ease;
   }
 
 
-  &-month {
+  &-month, &-year {
     td {
       height: 60px;
       width: 80px;
@@ -179,7 +179,7 @@ $transition: .3s all ease;
     }
   }
 
-  &-month{
+  &-month,&-year{
     .better-datepicker-range-start,.better-datepicker-range-end {
       > div {
         color: white;
@@ -210,17 +210,14 @@ $transition: .3s all ease;
       }
     }
   }
-
-  &-year {
-    text-align: start !important;
-
-    span {
-      text-align: center;
-      display: inline-block;
-      line-height: 60px;
-      padding: 5px;
-      width: 70px;
-      height: 60px;
+  &-year &-selected {
+    div {
+      color: white;
+      background-color: $theme-color;
+      border-radius: 5px;
+      &:hover {
+        color: white !important;
+      }
     }
   }
 
