@@ -8,7 +8,7 @@
 [![install size](https://packagephobia.com/badge?p=better-datepicker)](https://packagephobia.com/result?p=better-datepicker)
 
 ## Doc
-https://js-monkey.github.io/better-datepicker/#/doc/start
+https://js-monkey.github.io/better-datepicker/  
 
 ## Installing
 
@@ -91,6 +91,3 @@ require('better-datepicker/index.css')
 ## Browser support
 
 todo
-
-
-
