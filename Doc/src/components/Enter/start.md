@@ -36,7 +36,7 @@
 
   instance.getCurrentDate()
 
-  //more    
+  //more
 ```
 
 ## METHODS

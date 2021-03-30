@@ -22,7 +22,7 @@ import defaultOptions from "../../src/core/util/default-options"
 describe('hover', () => {
   const state = createState(defaultOptions())
   it('should changed `_month.status`', () => {
-    hover.cb.call(state)
+    hover().cb.call(state)
     expect(state.start._month[0].status).toBe('')
     expect(state.end._month[0].status).toBe('')
   })
