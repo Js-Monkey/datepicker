@@ -6,6 +6,19 @@
 
 ```
 
+you can also 
+
+```html
+  <div id="wrapper">
+     <span>Including children, find the first inputElement</span>
+     <input type="text">
+  </div>
+```
+```js
+  const input = document.querySelector('#wrapper')
+  createDatePicker(input)
+```
+
 
 ## OPTIONS
   *createDatePicker* accepts two parameters.
