@@ -9,7 +9,7 @@ Darcula color scheme from the JetBrains family of IDEs
   overflow-x: auto;
   padding: 0.5em;
   background: #131b2e;
-  color: #bababa;
+  color: #efefe4;
 }
 a{
   color: #3498DB;
@@ -96,12 +96,13 @@ pre {
   color: #e0c46c;
 }
 
-.hljs-comment,
 .hljs-deletion,
 .hljs-meta {
   color: #aafa91;
 }
-
+.hljs-comment{
+  color: #7a7a7a;
+}
 
 .markdown-body, .demo{
   color: #dae3f6;

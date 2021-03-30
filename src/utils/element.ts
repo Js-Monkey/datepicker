@@ -2,7 +2,7 @@ import {isArray, isFunc, isString} from './typeOf'
 import {on} from './event'
 import {
   CreateElementOptions,
-  updateOptions,
+  update,
   eventHandler,
   eventType,
   Handler,
@@ -112,7 +112,7 @@ export function visible(vis: boolean): 'none' | 'inline-block' {
   return vis ? 'inline-block' : 'none'
 }
 
-export function update<T>(el: HTMLElement, opt: updateOptions<T> | string[], type: keyof UpdateCbType = 'text', styKey?: string): void {
+export function update<T>(el: HTMLElement, opt: update<T> | string[], type: keyof UpdateCbType = 'text', styKey?: string): void {
   if (isArray(opt)) return resetAttr(el, mergeClasses(opt))
   const {key, cb} = opt
   const callbacks: UpdateCbType = {

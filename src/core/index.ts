@@ -51,7 +51,7 @@ export default function Picker(): BetterPicker {
     }
   }
 
-  function updateOptions(options: Options) {
+  function update(options: Options) {
     opt = mergeOptions(opt, options)
     destroyed()
     create()
@@ -85,7 +85,7 @@ export default function Picker(): BetterPicker {
       options,
       getCurrentDate,
       onChange,
-      updateOptions,
+      update,
       destroyed
     }
   }

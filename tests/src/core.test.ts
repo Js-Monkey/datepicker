@@ -22,7 +22,7 @@ describe('createDatePicker', () => {
   })
 
   it('should update `state.options`', () => {
-    expect(instance?.updateOptions({placement: "bottom"} as any)).toBeUndefined()
+    expect(instance?.update({placement: "bottom"} as any)).toBeUndefined()
   })
 
   it('should get current date', () => {

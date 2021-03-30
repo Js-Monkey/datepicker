@@ -76,7 +76,7 @@ require('better-datepicker/index.css')
 |---------|------------ |------------ |
 | destroyed | destroyed the datepicker,clear InputElement value| -
 | onChange | called callback when date has changed |(callback)
-| updateOptions | Update configuration, remove old datepicker | (options)
+| update | Update configuration, remove old datepicker | (options)
 | getCurrentDate | get current date | -
 
 ## TODO LIST

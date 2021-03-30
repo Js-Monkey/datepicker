@@ -13,7 +13,7 @@ export type Callback = (...arg: any) => any
 export interface BetterPickerInstance {
   getCurrentDate: () => GetDateType
   onChange: (cb: Callback) => void
-  updateOptions: (options: Options)=> void
+  update: (options: Options)=> void
   destroyed: ()=> void
 }
 

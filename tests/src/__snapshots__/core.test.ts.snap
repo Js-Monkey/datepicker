@@ -6,6 +6,6 @@ Object {
   "getCurrentDate": [Function],
   "onChange": [Function],
   "options": undefined,
-  "updateOptions": [Function],
+  "update": [Function],
 }
 `;

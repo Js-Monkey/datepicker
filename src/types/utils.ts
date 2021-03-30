@@ -75,20 +75,20 @@ export interface CreateElement {
   (...arg: any): Node
 }
 
-export interface updateOptions<T = string> extends Sub<T> {
+export interface update<T = string> extends Sub<T> {
   static?: string[]
 }
 
 export interface DynamicStyle {
-  display?: updateOptions
-  color?: updateOptions
-  background?: updateOptions
+  display?: update
+  color?: update
+  background?: update
 }
 
 export interface CreateElementOptions {
   name?: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody' | 'i'
   text?: string | Sub<string>
-  class?: updateOptions | string[]
+  class?: update | string[]
   event?: eventHandler | _EventListener[] | EventListenerHasArguments
   style?: Style
   $style?: DynamicStyle

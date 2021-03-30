@@ -20,6 +20,29 @@
   })
 ```
 
+## INSTANCE METHODS
+
+```js
+  const input = document.querySelector('#input')
+  const instance = createDatePicker(input)
+
+  instance.destroyed() //destroyed the datepicker
+
+  instance.update({placement: 'top'}) //Update configuration, destroyed old datepicker
+
+  instance.onChange((date)=>{
+    console.log('The current date is ' + date)
+  })
+
+  instance.getCurrentDate()
+
+  //more    
+```
+
+## METHODS
+
+TODO
+
 ## DOCUMENT TODOLIST
 
 | TODO     | VERSION   |
