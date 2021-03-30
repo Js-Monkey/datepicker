@@ -1,8 +1,7 @@
 import {ComponentStatus, DateData, State} from "../../../../types/store"
-import {isBigger, transformDateToArray, rangeSort, joinDate, getTenRange} from "../../../../utils/date"
+import {isBigger, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
-import {getStatus} from "./month&year/public"
 import {mergeClasses} from "../../../../utils/merge"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
@@ -70,21 +69,6 @@ export const startMonthAndYear: Sub = {
       item.status = idx === 0 ? 'pre' : idx === 11 ? 'next' : year === itemYear ? 'selected' : ''
     })
   }
-}
-
-export function updateMonth(year: number, date: string, state: DateData): void {
-  state._month.forEach((item, idx) => {
-    item.date = joinDate(idx + 1, year)
-    item.status = getStatus(this, item.date, idx)
-  })
-}
-
-export function updateYear(year: number, date: string, state: DateData): void {
-  const range = getTenRange(year)
-  state._year.forEach((item, idx) => {
-    item.date = joinDate(1, range[idx])
-    item.status = getStatus(this, item.date, idx, 'year')
-  })
 }
 
 

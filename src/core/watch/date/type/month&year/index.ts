@@ -1,6 +1,6 @@
 import {getStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
-import {updateMonth, updateYear} from "../public"
+import {updateYear,updateMonth} from "./public"
 import {ComponentsName} from "../../../../../types/components"
 
 const key = (name: string) => {
