@@ -55,6 +55,30 @@ require('better-datepicker/index.css')
   })
 ```
 
+you can also 
+
+```html
+  <div id="wrapper">
+     <span>Including children, find the first inputElement</span>
+     <input type="text">
+  </div>
+  <script >
+    const input = document.querySelector('#wrapper')
+    createDatePicker(input,{
+      placement: 'bottom',
+      type: 'date',
+      zIndex: 2000,
+      format: 'yyyy/MM/dd'
+    })
+  </script>
+```
+
+todo: support virtual dom
+
+# Options Validator
+
+If the format is illegal, it will use default value
+
 ## Options
 
 | Options | Description | Type | Accepted Values | Default |
@@ -68,6 +92,7 @@ require('better-datepicker/index.css')
 | binding | Bind the value of the inputElement | boolean | - | true |
 | themeColor  |     Theme color(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
 | rangeBgColor  |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
+
 
 
 ## Instance methods
