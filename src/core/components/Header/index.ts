@@ -2,7 +2,7 @@ import {HeaderType} from '../../../types/components'
 import {createElement, visible} from '../../../utils/element'
 import {nextMonth, nextYear, preMonth, preYear, isDayPage, toMonthPage, toYearPage} from '../utils'
 import {pageName, State} from '../../../types/store'
-import {getMinInTen} from '../../../utils/date'
+import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {Sub} from "../../../types/observer"
@@ -20,7 +20,7 @@ const togglePage = {
 
 function yearRange(state: State) {
   const range = (year: number) => {
-    const min = getMinInTen(year)
+    const min = getTenRange(year)[1]
     const max = min + 9
     return min + ' - ' + max
   }

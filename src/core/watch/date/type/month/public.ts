@@ -3,7 +3,7 @@ import {isDisabledDate, dateCompare} from "../../../../../utils/date"
 import {rangeStatus} from "../public"
 import {mergeClasses} from "../../../../../utils/merge"
 
-export function getStatus(self: State, date: string): ComponentStatus {
+export function getMonthStatus(self: State, date: string): ComponentStatus {
   const typeStatus = {
     month: monthStatus,
     date: monthStatus,

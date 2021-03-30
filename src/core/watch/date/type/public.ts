@@ -1,8 +1,9 @@
 import {ComponentStatus, DateData, State} from "../../../../types/store"
-import {isBigger, transformDateToArray, rangeSort, joinDate} from "../../../../utils/date"
+import {isBigger, transformDateToArray, rangeSort, joinDate, getTenRange} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
-import {getStatus} from "./month/public"
+import {getMonthStatus} from "./month/public"
+import {getYearStatus} from "./year/public"
 import {mergeClasses} from "../../../../utils/merge"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
@@ -59,11 +60,15 @@ export const date: Sub = {
   cb: dispatchDateChange
 }
 
-export const startMonth: Sub = {
+export const startMonthAndYear: Sub = {
   key: {name: 'start', childKey: ['year', 'month']},
   cb(year, month, state: DateData) {
     state._month.forEach((item, idx) => {
       item.status = month === (idx + 1) ? 'selected' : ''
+    })
+    state._year.forEach((item) => {
+      const [itemYear] = transformDateToArray(item.date)
+      item.status = year === itemYear ? 'selected' : ''
     })
   }
 }
@@ -71,7 +76,15 @@ export const startMonth: Sub = {
 export function updateMonth(year: number, date: string, state: DateData): void {
   state._month.forEach((item, idx) => {
     item.date = joinDate(idx + 1, year)
-    item.status = getStatus(this, item.date)
+    item.status = getMonthStatus(this, item.date)
+  })
+}
+
+export function updateYear(date: string, state: DateData): void {
+  const range = getTenRange(state.year)
+  state._year.forEach((item,idx) => {
+    item.date = joinDate(1, range[idx])
+    item.status = getYearStatus(this, item.date)
   })
 }
 

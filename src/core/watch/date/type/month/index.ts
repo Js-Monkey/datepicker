@@ -1,4 +1,4 @@
-import {getStatus} from "./public"
+import {getMonthStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
 import {updateMonth} from "../public"
 
@@ -29,7 +29,7 @@ export const hoverMonth: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
   cb() {
     (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name]._month.forEach(item => item.status = getStatus(this, item.date))
+      this[name]._month.forEach(item => item.status = getMonthStatus(this, item.date))
     })
   }
 }

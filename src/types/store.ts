@@ -60,7 +60,7 @@ export interface stateDate<T = Date> {
   date: (string | null) | (string | null)[]
 }
 
-export type pageName = 'day' | 'year' | 'month'
+export type pageName = 'date' | 'year' | 'month'
 
 export interface stateUtil {
   options: Options

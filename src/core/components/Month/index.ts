@@ -8,26 +8,40 @@ import {CreateElementOptions} from "../../../types/utils"
 import _for from "../../../utils/for"
 
 let type: HeaderType = 'start'
-const rowsCount = 3
-const colsCount = 4
+const rows = 3
+const cols = 4
 
+export function Month(state: State, t: HeaderType = 'start'): Node {
+  type = t
+  function tBody(state: State): Node {
 
-function tBody(state: State): Node {
+    return createElement(
+      {
+        children: tr(),
+        name: 'tbody'
+      },
+      state
+    )
+  }
   function tr(): CreateElementOptions[] {
     return _for((rc) => {
       return {
         name: 'tr',
         children: td(rc)
       }
-    }, rowsCount)
+    }, rows)
   }
 
   function td(rc: number): CreateElementOptions[] {
     return _for((cc) => {
-      const idx = rc * 4 + cc
+      const idx = rc * cols + cc
       const child = state[type]._month[idx]
       return {
         name: 'td',
+        event: {
+          listener: monthEvent(child)[state.type as 'date'],
+          arg: child
+        },
         children: [
           {text: monthNames[idx]}
         ],
@@ -38,25 +52,9 @@ function tBody(state: State): Node {
           },
           cb: (val: string) => val
         },
-        event: {
-          listener: monthEvent(idx, child)[state.type as 'date'],
-          arg: child
-        }
       }
-    }, colsCount)
+    }, cols)
   }
-
-  return createElement(
-    {
-      children: tr(),
-      name: 'tbody'
-    },
-    state
-  )
-}
-
-export function Month(state: State, t: HeaderType = 'start'): Node {
-  type = t
   return createElement(
     {
       name: 'table',

@@ -58,3 +58,18 @@ By default, the two interval panels are linked to each other, or you can use *un
 
 ```
 :::
+
+##  Year
+:::
+```html
+<Input width="20vw" id="yearInput">
+<script>
+    const input = document.querySelector('#yearInput')
+    const picker = this.createDatePicker(input,{
+           type: 'year',
+           placement:'top'
+    })
+</script>
+
+```
+:::

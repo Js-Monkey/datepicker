@@ -8,9 +8,9 @@ import {PopoverType} from '../../types/components'
 import {has} from "../../utils/has"
 
 
-function rangeComponent(type: 'month' | 'day') {
+function rangeComponent(type: 'month' | 'date' = 'month') {
   const componentType = {
-    day: {
+    date: {
       start: [HeaderLeft, Day],
       end: [HeaderRight, endDay]
     },
@@ -44,9 +44,11 @@ function rangeComponent(type: 'month' | 'day') {
 
 const popoverType: PopoverType = {
   date: [Header, Day, Month, Year],
-  'date-range': rangeComponent('day'),
+  'date-range': rangeComponent('date'),
   month: [Header, Month, Year],
-  'month-range': rangeComponent('month')
+  'month-range': rangeComponent(),
+  year: [Header, Year],
+  'year-range': [Header, Year]
 }
 
 export function deleteRules(sheet: any = document.styleSheets[0]): void {

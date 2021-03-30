@@ -1,10 +1,11 @@
 import {createElement, visible} from '../../../utils/element'
 import {pageName, State} from '../../../types/store'
-import {selectYear, utilStyle} from '../utils'
-import {getMinInTen} from '../../../utils/date'
+import {utilStyle} from '../utils'
+import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from "../../../types/utils"
 import _for from "../../../utils/for"
-import {HeaderType} from "../../../types/components";
+import {HeaderType} from "../../../types/components"
+import {yearEvent} from "./event"
 
 const rows = 3
 const cols = 4
@@ -12,6 +13,7 @@ let type: HeaderType = 'start'
 
 export function Year(state: State, t: HeaderType = 'start'): Node {
   type = t
+
   function tbody(): CreateElementOptions {
     return {
       name: 'tbody',
@@ -31,18 +33,22 @@ export function Year(state: State, t: HeaderType = 'start'): Node {
   function td(row: number): CreateElementOptions[] {
     return _for((col) => {
       const idx = row * cols + col
-      const year = idx - 1
       const child = state[type]._year[idx]
       return {
         name: 'td',
-        event: selectYear,
-        text: {
-          key: {
-            name: 'start',
-            childKey: ['year']
-          },
-          cb: (y: number) => String(getMinInTen(y) + year)
+        event: {
+          listener: yearEvent(idx, child)[state.type as 'year'],
+          arg: child
         },
+        children: [{
+          text: {
+            key: {
+              name: 'start',
+              childKey: ['year']
+            },
+            cb: (y: number) => String(getTenRange(y)[idx])
+          }
+        }],
         class: {
           key: {
             name: ['status'],
@@ -53,6 +59,7 @@ export function Year(state: State, t: HeaderType = 'start'): Node {
       }
     }, cols)
   }
+
   return createElement(
     {
       name: 'table',

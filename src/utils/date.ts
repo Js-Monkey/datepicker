@@ -1,5 +1,6 @@
 import {DateData, State} from "../types/store";
 import {isArray, isObject} from "./typeOf";
+import _for from "./for";
 
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()
@@ -21,8 +22,8 @@ export function daysInAMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
-export function getMinInTen(num: number): number {
-  return num - Number(num.toString().slice(-1))
+export function getTenRange(year: number): number[] {
+  return _for((idx) => year + idx -1 - Number(year.toString().slice(-1)), 12)
 }
 
 export function monthFirstDay(year: number, month: number): number {
@@ -50,8 +51,8 @@ export function isBigger(source: string | null, target: string | null): boolean 
 
 export function dateCompare(source: string | null, target: string | null, precision = 2): boolean {
   if (!source || !target) return false
-  source = source.split('/').slice(0,precision).join('/')
-  target = target.split('/').slice(0,precision).join('/')
+  source = source.split('/').slice(0, precision).join('/')
+  target = target.split('/').slice(0, precision).join('/')
   return source === target
 }
 

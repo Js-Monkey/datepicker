@@ -1,8 +1,7 @@
 import {MonthOrYearComponents, pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
 import {_EventListener} from "../../types/utils"
-import {_Event} from "../../types/event"
-import {getNext, getPre} from "../../utils/date"
+import {getNext, getPre, transformDateToArray} from "../../utils/date"
 import {visible} from "../../utils/element"
 
 export const utilStyle = {
@@ -66,26 +65,30 @@ export function preMonth(): void {
   ;[child.month, child.year] = getPre(child)
 }
 
-export function toMonthPage(): void {
+export function toMonthPage(state: MonthOrYearComponents): void {
+  const {date} = state
+  if (date) [this.start.year] = transformDateToArray(date)
   this.page = 'month'
 }
 
-export function selectYear(e: _Event): void {
-  const text = e.target.innerText
-  this.start.year = Number(text)
-  this.page = 'month'
+export function selectYear(state: MonthOrYearComponents): void {
+  const {date} = state
+  ;[this.start.year] = transformDateToArray(date)
+  this.start.date = date
+  this.visible = false
 }
 
-export function selectMonth(idx: number): void {
-  this.start.month = idx
-  this.start.date = this.start._month[idx].date
+export function selectMonth(state: MonthOrYearComponents): void {
+  const {date} = state
+  this.start.month = transformDateToArray(date)
+  this.start.date = date
   this.visible = false
 }
 
 
-export function toDayPage(month: number): void {
-  this.start.month = ++month
-  this.page = 'day'
+export function toDayPage(state: MonthOrYearComponents): void {
+  this.start.month = transformDateToArray(state.date)[1]
+  this.page = 'date'
 }
 
 export function toYearPage(): void {
@@ -93,5 +96,5 @@ export function toYearPage(): void {
 }
 
 export function isDayPage(page: pageName): 'none' | 'inline-block' {
-  return visible(page === 'day')
+  return visible(page === 'date')
 }

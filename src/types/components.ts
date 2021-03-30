@@ -1,15 +1,15 @@
 import {State} from './store'
 import {CreateElement, CreateElementOptions} from './utils'
 import {_EventListener} from "./utils"
-import {DatepickerType, DateType, MonthType} from "./options"
+import {DatepickerType, DateType, MonthType, YearType} from "./options"
 
 export type HeaderType = 'start' | 'end'
 
 
 export interface UpdateCbType {
-  text: (res: string)=> void
-  cls: (res: string)=> void
-  style: (res: string)=> void
+  text: (res: string) => void
+  cls: (res: string) => void
+  style: (res: string) => void
 }
 
 export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>
@@ -17,6 +17,8 @@ export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[
 export type DayEvent = DateType<(this: State) => void, _EventListener[]>
 
 export type MonthEvent = MonthType<(this: State) => void, _EventListener[]>
+
+export type YearEvent = YearType<(this: State) => void, _EventListener[]>
 
 export interface RangeClickEvent {
   complete: {

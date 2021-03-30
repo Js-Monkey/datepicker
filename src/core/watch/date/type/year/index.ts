@@ -1,35 +1,35 @@
-import {getStatus} from "./public"
+import {getYearStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
-import {updateMonth} from "../public"
+import {updateYear} from "../public"
 
-const childKey = ['year', 'date']
+const childKey = ['date']
 
-export function watchMonth(name = 'start'): Sub {
+export function watchYear(name = 'start'): Sub {
   return {
     key: {name, childKey},
-    cb: updateMonth,
+    cb: updateYear,
   }
 }
 
-export function LinkYear(name: 'start' | 'end' = 'start'): Sub {
-  return {
-    key: {name, childKey: ['year']},
-    cb(year: number): void {
-      if(name==='start'){
-        this.end.year = ++year
-      }else{
-        this.start.year = --year
-      }
-    }
-  }
+// export function LinkYear(name: 'start' | 'end' = 'start'): Sub {
+//   return {
+//     key: {name, childKey: ['year']},
+//     cb(year: number): void {
+//       if(name==='start'){
+//         this.end.year = ++year
+//       }else{
+//         this.start.year = --year
+//       }
+//     }
+//   }
+//
+// }
 
-}
-
-export const hoverMonth: Sub = {
+export const hoverYear: Sub = {
   key: {name: 'range', childKey: ['start', 'end']},
   cb() {
     (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name]._month.forEach(item => item.status = getStatus(this, item.date))
+      this[name]._year.forEach(item => item.status = getYearStatus(this, item.date))
     })
   }
 }

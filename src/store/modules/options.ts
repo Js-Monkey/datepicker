@@ -5,6 +5,6 @@ export default function (options: Options): stateUtil {
   return {
     options,
     visible: false,
-    page: 'day'
+    page: 'date'
   }
 }
