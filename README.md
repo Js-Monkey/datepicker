@@ -59,7 +59,7 @@ require('better-datepicker/index.css')
 
 | Options | Description | Type | Accepted Values | Default |
 |---------|------------ |---------- |-------------  |-------- |
-| type | Type of datepicker | string | date/date-range/month/month-range | date |
+| type | Type of datepicker | string | date/date-range/month/month-range/year | date |
 | format | To set the date format | string | - | yyyy/mm/dd |
 | placement | Placement of datepicker | string | top/bottom/right/left | bottom |
 | disabledDate | Specifies the date that cannot be selected | function | - | - |
@@ -83,6 +83,7 @@ require('better-datepicker/index.css')
 
 | versions | Description|
 |---------|------------ |
+| 0.2.0 | support date-range/week |
 | 0.3.0 | instance methods support open、close |
 | 0.5.0 | methods support  set defaultOptions |
 | 0.7.0 | options support unlinkPanels、zIndex、readonly、disabled、default-value |

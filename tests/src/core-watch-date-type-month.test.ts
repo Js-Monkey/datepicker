@@ -1,4 +1,4 @@
-import {hoverMonth} from "../../src/core/watch/date/type/month&year"
+import {hover} from "../../src/core/watch/date/type/month&year"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 
@@ -19,10 +19,10 @@ import defaultOptions from "../../src/core/util/default-options"
 //   })
 // })
 
-describe('hoverMonth', () => {
+describe('hover', () => {
   const state = createState(defaultOptions())
   it('should changed `_month.status`', () => {
-    hoverMonth.cb.call(state)
+    hover.cb.call(state)
     expect(state.start._month[0].status).toBe('')
     expect(state.end._month[0].status).toBe('')
   })

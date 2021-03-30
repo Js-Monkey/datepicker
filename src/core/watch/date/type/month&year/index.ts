@@ -1,6 +1,7 @@
 import {getStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
 import {updateMonth, updateYear} from "../public"
+import {ComponentsName} from "../../../../../types/components"
 
 const key = (name: string) => {
   return {name, childKey: ['year', 'date']}
@@ -29,20 +30,13 @@ export function LinkYear(name: 'start' | 'end' = 'start'): Sub {
 
 }
 
-export const hoverMonth: Sub = {
-  key: rangeKey,
-  cb() {
-    (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name]._month.forEach(item => item.status = getStatus(this, item.date))
-    })
-  }
-}
-
-export const hoverYear: Sub = {
-  key: rangeKey,
-  cb() {
-    (['start', 'end'] as ['start', 'end']).forEach(name => {
-      this[name]._year.forEach(item => item.status = getStatus(this, item.date, 'year'))
-    })
+export function hover(type:ComponentsName = 'month'): Sub{
+  return {
+    key: rangeKey,
+    cb() {
+      (['start', 'end'] as ['start', 'end']).forEach(name => {
+        this[name][('_'+type) as '_month'].forEach((item,idx) => item.status = getStatus(this, item.date,idx,type))
+      })
+    }
   }
 }

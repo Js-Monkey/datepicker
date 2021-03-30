@@ -65,9 +65,9 @@ export const startMonthAndYear: Sub = {
     state._month.forEach((item, idx) => {
       item.status = month === (idx + 1) ? 'selected' : ''
     })
-    state._year.forEach((item) => {
+    state._year.forEach((item, idx) => {
       const [itemYear] = transformDateToArray(item.date)
-      item.status = year === itemYear ? 'selected' : ''
+      item.status = idx === 0 ? 'pre' : idx === 11 ? 'next' : year === itemYear ? 'selected' : ''
     })
   }
 }
@@ -75,7 +75,7 @@ export const startMonthAndYear: Sub = {
 export function updateMonth(year: number, date: string, state: DateData): void {
   state._month.forEach((item, idx) => {
     item.date = joinDate(idx + 1, year)
-    item.status = getStatus(this, item.date)
+    item.status = getStatus(this, item.date, idx)
   })
 }
 
@@ -83,7 +83,7 @@ export function updateYear(year: number, date: string, state: DateData): void {
   const range = getTenRange(year)
   state._year.forEach((item, idx) => {
     item.date = joinDate(1, range[idx])
-    item.status = getStatus(this, item.date, 'year')
+    item.status = getStatus(this, item.date, idx, 'year')
   })
 }
 
