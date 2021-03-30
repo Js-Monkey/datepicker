@@ -24,11 +24,10 @@ export interface DateComponents {
   date: string
 }
 
-export interface MonthComponents {
+export interface MonthOrYearComponents {
   status: ComponentStatus
   date: string
 }
-
 
 export interface stateComponent<T = null | HTMLElement, U = null | Fn> {
   reference: HTMLInputElement | null
@@ -41,7 +40,8 @@ export interface DateData {
   year: number
   month: number
   _day: DateComponents[]
-  _month: MonthComponents[]
+  _month: MonthOrYearComponents[]
+  _year: MonthOrYearComponents[]
 }
 
 export type RangeStatus = 'complete' | 'selecting'

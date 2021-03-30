@@ -1,9 +1,9 @@
-import {MonthComponents, pageName, RangeStatus} from '../../types/store'
+import {MonthOrYearComponents, pageName, RangeStatus} from '../../types/store'
 import {HeaderType, RangeClickEvent} from '../../types/components'
 import {_EventListener} from "../../types/utils"
 import {_Event} from "../../types/event"
-import {getNext, getPre} from "../../utils/date";
-import {visible} from "../../utils/element";
+import {getNext, getPre} from "../../utils/date"
+import {visible} from "../../utils/element"
 
 export const utilStyle = {
   'text-align': 'center',
@@ -22,7 +22,7 @@ const rangeClickEvent: RangeClickEvent = {
   }
 }
 
-export function handleRange(state: MonthComponents): _EventListener[] {
+export function handleRange(state: MonthOrYearComponents): _EventListener[] {
   return [
     {
       name: 'click',

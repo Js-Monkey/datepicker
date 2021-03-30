@@ -1,22 +1,24 @@
-import {DateComponents, DateData, MonthComponents, stateDate} from '../../types/store'
+import {DateComponents, DateData, MonthOrYearComponents, stateDate} from '../../types/store'
 import {getDay, getMonth, getNext, getYear, joinDate} from '../../utils/date'
+import _for from "../../utils/for"
 
 const dayComponents = (): DateComponents[] =>
-  Array.from({length: 42}).map(() => {
+  _for(() => {
     return {
       text: '',
       status: '',
       date: ''
     }
-  })
+  },42)
 
-const monthComponents = (): MonthComponents[] =>
-  Array.from({length: 12}).map(() => {
+const _Components = (): MonthOrYearComponents[] =>
+  _for(() => {
     return {
       status: '',
       date: ''
     }
-  })
+  },12)
+
 
 function rangeComponents(month: number,year: number): DateData{
   return {
@@ -24,7 +26,8 @@ function rangeComponents(month: number,year: number): DateData{
     year,
     month,
     _day: dayComponents(),
-    _month: monthComponents()
+    _month: _Components(),
+    _year: _Components()
   }
 }
 

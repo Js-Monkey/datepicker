@@ -154,8 +154,8 @@ $transition: .3s all ease;
   }
 
   &-pre, &-next {
+    opacity: .3;
     div {
-      opacity: .3;
       background: #ffffff;
 
       &:hover {

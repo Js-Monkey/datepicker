@@ -5,7 +5,7 @@ import {
   daysInAMonth,
   monthFirstDay,
   joinDate,
-  transformDate, transformDateToArray, monthDiff, getPre, getNext, isInRange
+  transformDate, transformDateToArray, dateCompare, getPre, getNext, isInRange
 } from '../../src/utils/date'
 
 describe('Date', () => {
@@ -77,12 +77,12 @@ describe('Date', () => {
   })
 
   test('should compare two dates, accurate to month, if days are different, also return true', () => {
-    expect(monthDiff('1999/9/1', '1999/9/10')).toBeTruthy()
-    expect(monthDiff('2009/10/1', '2009/10/12')).toBeTruthy()
-    expect(monthDiff('2099/1/1', '2099/1/1')).toBeTruthy()
-    expect(monthDiff('1999/9/1', '2009/9/10')).toBeFalsy()
-    expect(monthDiff('2020/9/1', '2021/9/10')).toBeFalsy()
-    expect(monthDiff('1999/9/1', '1999/2/10')).toBeFalsy()
-    expect(monthDiff('2020/9/1', '2020/10/10')).toBeFalsy()
+    expect(dateCompare('1999/9/1', '1999/9/10')).toBeTruthy()
+    expect(dateCompare('2009/10/1', '2009/10/12')).toBeTruthy()
+    expect(dateCompare('2099/1/1', '2099/1/1')).toBeTruthy()
+    expect(dateCompare('1999/9/1', '2009/9/10')).toBeFalsy()
+    expect(dateCompare('2020/9/1', '2021/9/10')).toBeFalsy()
+    expect(dateCompare('1999/9/1', '1999/2/10')).toBeFalsy()
+    expect(dateCompare('2020/9/1', '2020/10/10')).toBeFalsy()
   })
 })

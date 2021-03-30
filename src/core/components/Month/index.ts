@@ -5,6 +5,7 @@ import {State} from '../../../types/store'
 import {HeaderType} from "../../../types/components"
 import {monthEvent} from "./event";
 import {CreateElementOptions} from "../../../types/utils"
+import _for from "../../../utils/for"
 
 let type: HeaderType = 'start'
 const rowsCount = 3
@@ -13,16 +14,16 @@ const colsCount = 4
 
 function tBody(state: State): Node {
   function tr(): CreateElementOptions[] {
-    return Array.from({length: rowsCount}).map((_, rc) => {
+    return _for((rc) => {
       return {
         name: 'tr',
         children: td(rc)
       }
-    })
+    }, rowsCount)
   }
 
   function td(rc: number): CreateElementOptions[] {
-    return Array.from({length: colsCount}).map((_, cc) => {
+    return _for((cc) => {
       const idx = rc * 4 + cc
       const child = state[type]._month[idx]
       return {
@@ -35,14 +36,14 @@ function tBody(state: State): Node {
             name: ['status'],
             child
           },
-          cb: (val: string) =>   val
+          cb: (val: string) => val
         },
         event: {
           listener: monthEvent(idx, child)[state.type as 'date'],
           arg: child
         }
       }
-    })
+    }, colsCount)
   }
 
   return createElement(
@@ -62,8 +63,8 @@ export function Month(state: State, t: HeaderType = 'start'): Node {
       children: [tBody],
       class: ['month'],
       style: utilStyle,
-      $style:{
-        display:{
+      $style: {
+        display: {
           key: ['page'],
           cb: (page: string) => visible(page === 'month')
         }

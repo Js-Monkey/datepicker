@@ -5,6 +5,7 @@ import {isDayPage, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
 import {HeaderType} from "../../../types/components"
+import _for from "../../../utils/for"
 
 let type: HeaderType = 'start'
 const rowsCount = 6
@@ -29,16 +30,16 @@ function config(child: any, name: 'text' | 'status' = 'status') {
 
 function tBody(state: State): Node {
   function tr(): CreateElementOptions[] {
-    return Array.from({length: rowsCount}).map((_, rc) => {
+    return _for((rc) => {
       return {
         name: 'tr',
         children: td(rc)
       }
-    })
+    }, rowsCount)
   }
 
   function td(rc: number): CreateElementOptions[] {
-    return Array.from({length: colsCount}).map((_, cc) => {
+    return _for((cc) => {
       const idx = rc * 7 + cc
       const child = state[type]._day[idx]
       return {
@@ -63,7 +64,7 @@ function tBody(state: State): Node {
           arg: child
         }
       }
-    })
+    }, colsCount)
   }
 
   return createElement(

@@ -22,7 +22,6 @@ export function daysInAMonth(year: number, month: number): number {
 }
 
 export function getMinInTen(num: number): number {
-
   return num - Number(num.toString().slice(-1))
 }
 
@@ -43,32 +42,32 @@ export function transformDate(date: Date): string {
   return joinDate(getMonth(date), getYear(date), getDay(date))
 }
 
-export function dateDiff(source: string | null, target: string | null): boolean {
+export function isBigger(source: string | null, target: string | null): boolean {
   if (!source || !target) return false
   return Date.parse(source) > Date.parse(target)
 }
 
 
-export function monthDiff(source: string | null, target: string | null): boolean {
+export function dateCompare(source: string | null, target: string | null, precision = 2): boolean {
   if (!source || !target) return false
-  const [sourceYear, sourceMonth] = source.split('/')
-  const [targetYear, targetMonth] = target.split('/')
-  return sourceYear === targetYear && sourceMonth === targetMonth
+  source = source.split('/').slice(0,precision).join('/')
+  target = target.split('/').slice(0,precision).join('/')
+  return source === target
 }
 
 export function rangeSort(min: string | null, max: string | null): (string | null)[] {
   const range = [min, max]
-  return dateDiff(min, max) ? range : range.reverse()
+  return isBigger(min, max) ? range : range.reverse()
 }
 
 
 export function isInRange<T = number>(max: string, min: string, date: string): string {
-  return dateDiff(max, date) && dateDiff(date, min) ? 'in-range' : ''
+  return isBigger(max, date) && isBigger(date, min) ? 'in-range' : ''
 }
 
 
 export function getPre<T = number>(m: number, y?: number): [number, number] {
-  if(isObject(m)) [m,y] = [m.month, m.year]
+  if (isObject(m)) [m, y] = [m.month, m.year]
   let month = --m
   if (month === 0) {
     month = 12
@@ -78,7 +77,7 @@ export function getPre<T = number>(m: number, y?: number): [number, number] {
 }
 
 export function getNext<T = number>(m: number | DateData, y?: number): [number, number] {
-  if(isObject(m)) [m,y] = [m.month, m.year]
+  if (isObject(m)) [m, y] = [m.month, m.year]
   let month = ++m
   if (month === 13) {
     month = 1
