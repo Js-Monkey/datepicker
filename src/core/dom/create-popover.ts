@@ -2,8 +2,7 @@ import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Day'
-import {endMonth, Month} from '../components/Month'
-import {Year} from '../components/Year'
+import {Month, endMonth, Year} from '../components/Month&Year'
 import {PopoverType} from '../../types/components'
 import {has} from "../../utils/has"
 

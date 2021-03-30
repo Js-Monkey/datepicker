@@ -6,9 +6,8 @@ import {
   hoverDay,
 } from "./type/day/date-range"
 import {startDays} from "./type/day/date"
-import {LinkYear, watchMonth, hoverMonth} from "./type/month"
+import {LinkYear, monthOrYear, hoverMonth} from "./type/month&year"
 import {handleSelecting, startDate, endDate, date, startMonthAndYear} from './type/public'
-import {watchYear} from "./type/year"
 import {Listeners} from "../../../types/watch"
 import {has} from "../../../utils/has"
 
@@ -20,11 +19,11 @@ const listeners: Listeners = {
     linkMonth('end'),
     hoverDay
   ],
-  date: [startDays, watchYear(),watchMonth(),startMonthAndYear],
-  month: [watchMonth()],
-  'month-range': [watchMonth(), LinkYear(), LinkYear('end'), watchMonth('end'), hoverMonth],
-  year: [watchYear()],
-  'year-range':[watchYear()]
+  date: [startDays, monthOrYear(false),monthOrYear(),startMonthAndYear],
+  month: [monthOrYear()],
+  'month-range': [monthOrYear(), LinkYear(), LinkYear('end'), monthOrYear(true,'end'), hoverMonth],
+  year: [monthOrYear(false)],
+  'year-range':[monthOrYear(false)]
 }
 
 

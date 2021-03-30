@@ -1,4 +1,7 @@
 import Options from "./options"
+import {rangeStatus} from "../core/watch/date/type/public";
+import {monthStatus, yearStatus} from "../core/watch/date/type/month&year/public";
+import {State} from "./store";
 
 export interface BetterPicker {
   (el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined
@@ -24,4 +27,20 @@ export interface Formats {
   MM: (date: Date) => string
   yy: (date: Date) => string
   yyyy: (date: Date) => number
+}
+
+export interface GetStatusFunctions {
+  (state: State, date: string):string
+}
+export interface GetStatusFunctionsType{
+  year:{
+    year: GetStatusFunctions
+    date: GetStatusFunctions
+    'year-range': GetStatusFunctions
+  }
+  month:{
+    month: GetStatusFunctions
+    date: GetStatusFunctions
+    'month-range': GetStatusFunctions
+  }
 }

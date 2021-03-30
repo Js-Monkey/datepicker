@@ -1,4 +1,4 @@
-import {hoverMonth} from "../../src/core/watch/date/type/month"
+import {hoverMonth} from "../../src/core/watch/date/type/month&year"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 
