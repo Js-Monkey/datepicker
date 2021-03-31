@@ -14,8 +14,9 @@ A PC Datepicker
 ## Doc
 https://js-monkey.github.io/better-datepicker/
 
-##Demo
-  <img width="240px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
+## Demo
+
+<img width="240px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
 
 ## Installing
 
