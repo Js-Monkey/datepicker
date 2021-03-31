@@ -64,6 +64,19 @@ export default function getRenderComponent(demos: string[]): VueComponents {
             const render = (function(){  ${renderFunction}})()
              return defineComponent({
                render,
+               data(){
+                return {
+                    clear: null,
+                    destroyed: null,
+                    update: null,
+                    create: null,
+                    onChange: null,
+                    getCurrentDate: null,
+                    getDate: null,
+                    open: null,
+                    close: null,
+                 }
+               },
                mounted(){
                     try{${script}}catch(err){console.error(err)}
                }

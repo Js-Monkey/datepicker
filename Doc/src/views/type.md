@@ -1,3 +1,4 @@
+datepicker Type
 ##  Date
 
 ::: Default mode is Date, the basic unit is [day], and the day you choose is a **string** value.

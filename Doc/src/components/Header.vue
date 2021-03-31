@@ -45,7 +45,7 @@ export default defineComponent({
 $header-bg: $black;
 $header-height: 66px;
 .header {
-  z-index: 3000;
+  z-index: 2001;
   position: relative;
   height: $header-height;
   display: flex;
