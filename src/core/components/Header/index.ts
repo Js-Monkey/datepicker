@@ -106,11 +106,9 @@ function date(state: State) {
             cb: (year: number) => getRange(year)
         },
     }
-    const {type} = state.options
-    const page = type.split('-').shift()
     return createElement({
         name: 'span',
-        text: textType[page as 'date']
+        text: textType[state._type as 'date']
 
     }, state)
 }

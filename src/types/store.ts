@@ -86,6 +86,7 @@ export interface utilWatchers<T = utilWatcher> {
 export interface State extends stateComponent, stateUtil, stateDate {
   id: number
   type: keyof DatepickerType
+  _type: pageName
 }
 
 
