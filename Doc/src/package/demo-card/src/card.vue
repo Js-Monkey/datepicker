@@ -132,9 +132,9 @@ export default defineComponent({
     }
 
     .fixedHeight {
-      height: 300px;
+      height: 220px;
       pre{
-        min-height: 300px;
+        min-height: 220px;
       }
     }
 
