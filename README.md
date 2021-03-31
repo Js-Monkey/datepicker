@@ -90,7 +90,7 @@ If the format is illegal, it will use default value
 
 | Options | Description | Type | Accepted Values | Default |
 |---------|------------ |---------- |-------------  |-------- |
-| type | Type of datepicker | string | date/date-range/month/month-range/year | date |
+| type | Type of datepicker | string | date/date-range/month/month-range/year/year-range | date |
 | format | To set the date format | string | - | yyyy/mm/dd |
 | placement | Placement of datepicker | string | top/bottom/right/left | bottom |
 | disabledDate | Specifies the date that cannot be selected | function | - | - |
@@ -110,12 +110,15 @@ If the format is illegal, it will use default value
 | onChange | called callback when date has changed |(callback)
 | update | Update configuration, remove old datepicker | (options)
 | getCurrentDate | get current date | -
+| open | open the datepicker | -
+| close | close the datepicker | -
+| clear | clear the date | -
 
 ## TODO LIST
 
 | versions | Description|
 |---------|------------ |
-| 0.2.0 | support date-range/week |
+| 0.2.0 | support week |
 | 0.3.0 | instance methods support open、close |
 | 0.5.0 | methods support  set defaultOptions |
 | 0.7.0 | options support unlinkPanels、zIndex、readonly、disabled、default-value |
