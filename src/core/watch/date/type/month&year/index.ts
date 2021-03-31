@@ -5,7 +5,7 @@ const key = (name: string) => {
     return {name, childKey: ['year', 'date']}
 }
 
-export function monthOrYear(type = true, name = 'start'): Sub {
+export function wacthYM(type = true, name = 'start'): Sub {
     return {
         key: key(name),
         cb: type ? updateMonth : updateYear,

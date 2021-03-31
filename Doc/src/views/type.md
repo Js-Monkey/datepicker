@@ -84,7 +84,10 @@ By default, the two interval panels are linked to each other, or you can use *un
     const input = document.querySelector('#yearRangeInput')
     const picker = this.createDatePicker(input,{
            type: 'year-range',
-           placement:'left'
+           placement:'left',
+           disabledDate(date){
+                return Date.parse(date) > Date.now()
+           }       
     })
 </script>
 

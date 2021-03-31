@@ -5,7 +5,7 @@ import {
   linkMonth,
 } from "./type/day/date-range"
 import {startDays} from "./type/day/date"
-import {LinkYear, monthOrYear} from "./type/month&year"
+import {LinkYear, wacthYM} from "./type/month&year"
 import {handleSelecting, startDate, endDate, date, startMonthAndYear,hoverSelect} from './type/public'
 import {Listeners} from "../../../types/watch"
 import {has} from "../../../utils/has"
@@ -18,11 +18,11 @@ const listeners: Listeners = {
     linkMonth('end'),
     hoverSelect('date')
   ],
-  date: [startDays, monthOrYear(false),monthOrYear(),startMonthAndYear],
-  month: [monthOrYear()],
-  'month-range': [monthOrYear(), LinkYear(), LinkYear('end'), monthOrYear(true,'end'), hoverSelect()],
-  year: [monthOrYear(false)],
-  'year-range':[monthOrYear(false), monthOrYear(false,'end'), LinkYear('start', true), LinkYear('end',true),hoverSelect('year')]
+  date: [startDays, wacthYM(false),wacthYM(),startMonthAndYear],
+  month: [wacthYM()],
+  'month-range': [wacthYM(), LinkYear(), LinkYear('end'), wacthYM(true,'end'), hoverSelect()],
+  year: [wacthYM(false)],
+  'year-range':[wacthYM(false), wacthYM(false,'end'), LinkYear('start', true), LinkYear('end',true),hoverSelect('year')]
 }
 
 
