@@ -38,16 +38,16 @@ Instance method
 
 ##  update
 
-::: **update** the datepicker, Instance methods are not available except *update*
+::: **update** the datepicker
 ```html
 <div>
 <Input id="updateInput" />
-<b-button @click="clear" style="margin-left:20px" size="mini">clear</b-button>
+<b-button @click="setPlacementLeft" style="margin-left:20px" size="mini">update</b-button>
 </div>
 <script>
     const input = document.querySelector('#updateInput')
     const picker = this.createDatePicker(input)
-    this.clear = ()=> picker.clear()
+    this.setPlacementLeft = ()=> picker.update({placement:'left'})
 </script>
 
 ```
@@ -83,7 +83,9 @@ Instance method
 </div>
 <script>
     const input = document.querySelector('#getCurrentDateInput')
-    const picker = this.createDatePicker(input)
+    const picker = this.createDatePicker(input,{
+          placement: 'top'
+    })
     this.getDate = ()=> {
         const date = picker.getCurrentDate()
         this.$Msg.info('The current date is '+ date)
@@ -95,16 +97,20 @@ Instance method
 
 ##  open/close
 
-::: **getCurrentDate** 
+::: **Manual open/close** 
+If *open/close* is executed in the event listener callback.
+please use **e.stopPropagation()** to prevent events from bubbling onto the **Body**
 ```html
 <div>
 <Input id="openInput" />
-<b-button @click="open" style="margin-left:20px" size="mini">open</b-button>
+<b-button @click.stop="open" style="margin-left:20px" size="mini">open</b-button>
 </div>
 <script>
     const input = document.querySelector('#openInput')
-    const picker = this.createDatePicker(input)
-    this.open = ()=> picker.open()
+    const picker = this.createDatePicker(input,{
+        placement: 'top'
+    })
+    this.open = ()=>picker.open()  
 </script>
 
 ```
