@@ -23,7 +23,7 @@ const listeners: Listeners = {
   month: [monthOrYear()],
   'month-range': [monthOrYear(), LinkYear(), LinkYear('end'), monthOrYear(true,'end'), hover()],
   year: [monthOrYear(false)],
-  'year-range':[monthOrYear(false)]
+  'year-range':[monthOrYear(false), monthOrYear(false,'end'), LinkYear('start', true), LinkYear('end',true),hover('year')]
 }
 
 

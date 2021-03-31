@@ -41,4 +41,8 @@ export interface GetStatusFunctionsType{
     date: GetStatusFunctions
     'month-range': GetStatusFunctions
   }
+  date:{
+    date: GetStatusFunctions
+    'date-range': GetStatusFunctions
+  }
 }

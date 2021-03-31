@@ -2,12 +2,12 @@ import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Day'
-import {Month, endMonth, Year} from '../components/Month&Year'
-import {PopoverType} from '../../types/components'
+import {Month, endMonth, Year,endYear} from '../components/Month&Year'
+import {PopoverType, RangeComponentName} from '../../types/components'
 import {has} from "../../utils/has"
 
 
-function rangeComponent(type: 'month' | 'date' = 'month') {
+function rangeComponent(type: RangeComponentName = 'month') {
   const componentType = {
     date: {
       start: [HeaderLeft, Day],
@@ -16,6 +16,10 @@ function rangeComponent(type: 'month' | 'date' = 'month') {
     month: {
       start: [HeaderLeft, Month],
       end: [HeaderRight, endMonth]
+    },
+    year:{
+      start: [HeaderLeft, Year],
+      end: [HeaderRight, endYear]
     }
   }
   return [
@@ -47,7 +51,7 @@ const popoverType: PopoverType = {
   month: [Header, Month, Year],
   'month-range': rangeComponent(),
   year: [Header, Year],
-  'year-range': [Header, Year]
+  'year-range': rangeComponent('year')
 }
 
 export function deleteRules(sheet: any = document.styleSheets[0]): void {

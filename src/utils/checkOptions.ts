@@ -6,7 +6,7 @@ import {has} from "./has"
 
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
-  type: ['date', 'date-range', 'month', 'month-range','year'],
+  type: ['date', 'date-range', 'month', 'month-range','year','year-range'],
   unlinkPanels: isBoolean,
   format: isString,
   zIndex: isNumber,

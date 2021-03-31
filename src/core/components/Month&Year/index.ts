@@ -29,7 +29,7 @@ const components: CreateMonthOrYearComponentsOptions = {
     children: (idx: number) => [{
       text: {
         key: {
-          name: 'start',
+          name: type,
           childKey: ['year']
         },
         cb: (y: number) => String(getTenRange(y)[idx])
