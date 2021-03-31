@@ -3,6 +3,7 @@ $range-color: lighten($theme-color, 46);
 $text-header-color: #858585;
 $text-th-color: #969595;
 $text-tbody-color: #5f5f5f;
+$text-tbody-light-color: #bcbbbb;
 
 $border-color: #dde0e7;
 $shadow-color: #737373;
@@ -78,8 +79,11 @@ $transition: .3s all ease;
 
     .better-datepicker-disabled {
       div {
-        opacity: .3;
+        color: $text-tbody-light-color;
         cursor: not-allowed;
+      }
+      &:hover{
+        color: $text-tbody-color !important;
       }
     }
 
@@ -136,7 +140,7 @@ $transition: .3s all ease;
       border-bottom-right-radius: 30px;
 
       &:hover {
-        color: white !important;
+        color: white;
       }
     }
   }
@@ -148,19 +152,16 @@ $transition: .3s all ease;
       border-bottom-left-radius: 30px;
 
       &:hover {
-        color: white !important;
+        color: white;
       }
     }
   }
 
   &-pre, &-next {
-    opacity: .3;
+    color: $text-tbody-light-color !important;
     div {
-      background: #ffffff;
-
-      &:hover {
-        color: $text-tbody-color !important;
-      }
+      color: $text-tbody-light-color !important;
+      background: #ffffff !important;
     }
   }
 
@@ -206,7 +207,7 @@ $transition: .3s all ease;
       background-color: $theme-color;
       border-radius: 5px;
       &:hover {
-        color: white !important;
+        color: white;
       }
     }
   }
@@ -216,7 +217,7 @@ $transition: .3s all ease;
       background-color: $theme-color;
       border-radius: 5px;
       &:hover {
-        color: white !important;
+        color: white;
       }
     }
   }

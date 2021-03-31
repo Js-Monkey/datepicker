@@ -29,6 +29,6 @@ export function updateDays(
         }
       }
     ;[item.text, item.date] = newDate[status || 'other']()
-    item.status = status || getStatus(this, item.date, idx,'date',status)
+    item.status = getStatus(this, item.date, idx,'date',status)
   })
 }
