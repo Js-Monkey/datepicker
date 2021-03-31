@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <ul>
-      <li :class="{secondLevel: isSecondLevel(list)}" @click.stop="toRoute(list.name)" v-for="list in routeLists">
+      <li :class="{secondLevel: isSecondLevel(list)}" @click="toRoute(list.name)" v-for="list in routeLists">
         {{ list.name }}
       </li>
     </ul>
