@@ -1,13 +1,9 @@
-import {getStatus} from "./public"
 import {Sub} from "../../../../../types/observer"
 import {updateYear, updateMonth} from "./public"
-import {ComponentsName} from "../../../../../types/components"
-import {not} from "../../../../../utils/has";
 
 const key = (name: string) => {
     return {name, childKey: ['year', 'date']}
 }
-const rangeKey = {name: 'range', childKey: ['start', 'end']}
 
 export function monthOrYear(type = true, name = 'start'): Sub {
     return {
@@ -27,17 +23,6 @@ export function LinkYear(name: 'start' | 'end' = 'start', isTen = false): Sub {
             } else {
                 this.start.year = (year - spacing)
             }
-        }
-    }
-}
-
-export function hover(type: ComponentsName = 'month'): Sub {
-    return {
-        key: rangeKey,
-        cb() {
-            (['start', 'end'] as ['start', 'end']).forEach(name => {
-                this[name][('_' + type) as '_month'].filter(item => not(item.status, ['pre', 'next'])).forEach((item, idx) => item.status = getStatus(this, item.date, idx, type))
-            })
         }
     }
 }

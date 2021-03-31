@@ -25,7 +25,7 @@ function rangeComponents(month: number,year: number): DateData{
     date: null,
     year,
     month,
-    _day: dayComponents(),
+    _date: dayComponents(),
     _month: _Components(),
     _year: _Components()
   }

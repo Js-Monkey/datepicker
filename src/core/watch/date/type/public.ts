@@ -3,6 +3,9 @@ import {isBigger, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
 import {mergeClasses} from "../../../../utils/merge"
+import {RangeComponentName} from "../../../../types/components"
+import {not} from "../../../../utils/has"
+import {getStatus} from "./month&year/public"
 
 export function rangeStatus(state: State, date: string): ComponentStatus {
   const {start, end} = state.range
@@ -70,6 +73,18 @@ export const startMonthAndYear: Sub = {
     })
   }
 }
+
+export function hoverSelect(type: RangeComponentName = 'month'): Sub {
+  return {
+    key: {name: 'range', childKey: ['start', 'end']},
+    cb() {
+      (['start', 'end'] as ['start', 'end']).forEach(name => {
+        this[name][('_' + type) as '_month'].filter(item => not(item.status, ['pre', 'next'])).forEach((item, idx) => item.status = getStatus(this, item.date, idx, type))
+      })
+    }
+  }
+}
+
 
 
 function finishSelect(self: State) {

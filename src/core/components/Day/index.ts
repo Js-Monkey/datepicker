@@ -41,7 +41,7 @@ function tBody(state: State): Node {
   function td(rc: number): CreateElementOptions[] {
     return _for((cc) => {
       const idx = rc * 7 + cc
-      const child = state[type]._day[idx]
+      const child = state[type]._date[idx]
       return {
         name: 'td',
         children: [

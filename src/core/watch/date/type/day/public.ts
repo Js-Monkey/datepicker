@@ -10,7 +10,7 @@ export function updateDays(
   const [preMonth, preYear] = getPre(month, year)
   const preDays = daysInAMonth(preYear, preMonth)
   const [fd, days] = [monthFirstDay(year, month), daysInAMonth(year, month)]
-  state._day.forEach((item, index) => {
+  state._date.forEach((item, index) => {
     const idx = index + 1
     const currentIdx = idx - fd
     const status: ComponentStatus = index < fd ? 'pre' : fd + days <= index ? 'next' : ''

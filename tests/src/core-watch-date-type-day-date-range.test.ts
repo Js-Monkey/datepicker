@@ -1,4 +1,4 @@
-import {hoverDay} from "../../src/core/watch/date/type/day/date-range"
+import {hoverSelect} from "../../src/core/watch/date/type/public"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 
@@ -24,8 +24,8 @@ import defaultOptions from "../../src/core/util/default-options"
 
 describe('hoverDay callback', () => {
   const state = createState(defaultOptions())
-  it('should changed all `_day.status`', () => {
-    hoverDay.cb.call(state)
-    expect(state.start._day[0].status).toBe('')
+  it('should changed all `_date.status`', () => {
+    hoverSelect().cb.call(state)
+    expect(state.start._date[0].status).toBe('')
   });
 })

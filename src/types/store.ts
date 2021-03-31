@@ -39,7 +39,7 @@ export interface DateData {
   date: string | null
   year: number
   month: number
-  _day: DateComponents[]
+  _date: DateComponents[]
   _month: MonthOrYearComponents[]
   _year: MonthOrYearComponents[]
 }

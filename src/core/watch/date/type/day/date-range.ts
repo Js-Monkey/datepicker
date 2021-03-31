@@ -1,8 +1,6 @@
 import {getNext, getPre} from "../../../../../utils/date"
 import {updateDays} from "./public"
-import {getStatus} from "../month&year/public"
 import {Sub} from "../../../../../types/observer"
-import {not} from "../../../../../utils/has"
 import {ReverseMap} from "../../../../../types/watch"
 
 const childKey = ['month', 'year', 'date']
@@ -29,16 +27,4 @@ export function linkMonth(name: 'start' | 'end' = 'start'): Sub {
     }
   }
 
-}
-
-export const hoverDay: Sub = {
-  key: {name: 'range', childKey: ['start', 'end']},
-  cb(start, end) {
-    if (!start && !end) return
-    (['start', 'end'] as ['start', 'end']).forEach((name,idx) => {
-      this[name]._day.filter(item => not(item.status, ['pre', 'next'])).forEach(item => {
-        item.status = getStatus(this, item.date,idx,'date')
-      })
-    })
-  }
 }
