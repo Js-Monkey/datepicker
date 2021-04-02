@@ -1,6 +1,7 @@
 import BD from './core'
 import Options from './types/options'
 import {BetterPickerInstance} from "./types/core"
+import {changeOpt} from "./core/util/default-options";
 
 export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined {
   const picker = BD()
@@ -8,3 +9,4 @@ export function createDatePicker(el: HTMLInputElement, options?: Options): Bette
 }
 
 
+export const defaultOptions =  changeOpt

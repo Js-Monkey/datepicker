@@ -15,7 +15,7 @@ export function transformStyle(sty: Style): string {
 export function addAttr(el: HTMLElement | Element, val: string | UtilObject, name = 'class'): void {
   let attr = el.getAttribute(name) || ''
   if (isObject(val)) {
-    val = Object.keys(val).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
+    val = Object.keys(val).filter(key=>val[key  as keyof void]).reduce((c, key) => c + key + ':' + val[key as keyof void] + ';', '')
   }
   attr += ' ' + val
   el.setAttribute(name, attr)

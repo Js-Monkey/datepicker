@@ -23,13 +23,29 @@ After configuring the style on this page, you can download the css code and put 
 
 ## Options
 
+```js
+  import {defaultOptions} from "better-datepicker"
+  defaultOptions(input,{
+    themeColor: '#1890ff',
+    rangeBgColor: '#e6f7ff',
+    tdColor: '#5f5f5f',
+    thColor: '#5f5f5f'
+  })
+```
+
+or 
+
+only changes theme of the **current instance**
+
 
 
 ```js
 const input = document.querySelector('#input')
-createDatePicker(input,{
+const instance = createDatePicker(input,{
   themeColor: '#2a3a4a',
-  rangeBgColor: '#bbbbbb'
+  rangeBgColor: '#bbbbbb',
+  tdColor: '#5f5f5f',
+  thColor: '#5f5f5f'
 })
 
 ```

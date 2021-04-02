@@ -1,18 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`default-options default-options 1`] = `
-Object {
-  "binding": true,
-  "disabled": false,
-  "disabledDate": null,
-  "format": "yyyy/MM/dd",
-  "insertTo": "body",
-  "offset": 12,
-  "placement": "bottom",
-  "rangeBgColor": "",
-  "themeColor": "",
-  "type": "date",
-  "unlinkPanels": false,
-  "zIndex": 2000,
-}
-`;
+exports[`default-options default-options 1`] = `Object {}`;

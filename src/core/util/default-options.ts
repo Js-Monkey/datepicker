@@ -1,7 +1,7 @@
-import Options from '../../types/options'
+import Options, {PickerOptions} from '../../types/options'
+import {mergeOptions} from "../../utils/merge"
 
-function defaultOptions(): Options {
-  return {
+const opt: Options = {
     placement: 'bottom',
     type: 'date',
     zIndex: 2000,
@@ -13,8 +13,18 @@ function defaultOptions(): Options {
     disabled: false,
     disabledDate: null,
     themeColor: '',
-    rangeBgColor:''
-  }
+    rangeBgColor: '',
+    tdColor:'',
+    thColor:''
+}
+
+
+export function changeOpt(target: PickerOptions): void {
+    mergeOptions(opt, target)
+}
+
+function defaultOptions(): Options {
+    return Object.create(opt)
 }
 
 export default defaultOptions

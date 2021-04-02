@@ -28,9 +28,9 @@ createDatePicker(input,options)
 | placement              |     picker placement     |   string     |   top/bottom/right/left    | bottom
 | themeColor              |     Theme color(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
 | rangeBgColor              |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
+| tdColor  |     Td text color   |   string     |   -   | -
+| thColor  |     Th text color   |   string     |   -   | -
 
 
-## TODO1
+## TODO
 
-
-## TODO2

@@ -3,20 +3,24 @@ import {isArray, isBoolean, isFunc, isNumber, isString} from './typeOf'
 import {has} from "./has"
 
 
-
+const str = isString
+const bool = isBoolean
+const num = isNumber
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
   type: ['date', 'date-range', 'month', 'month-range','year','year-range'],
-  unlinkPanels: isBoolean,
-  format: isString,
-  zIndex: isNumber,
-  disabled: isBoolean,
+  unlinkPanels: bool,
+  format: str,
+  zIndex: num,
+  disabled: bool,
   disabledDate: isFunc,
-  offset: isNumber,
+  offset: num,
   insertTo: ['body', 'parent'],
-  binding: isBoolean,
-  themeColor: isString,
-  rangeBgColor: isString,
+  binding: bool,
+  themeColor: str,
+  rangeBgColor: str,
+  tdColor: str,
+  thColor: str
 }
 
 export function checkOptions(key: keyof Options, val: unknown): boolean {

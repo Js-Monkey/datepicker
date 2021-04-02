@@ -100,7 +100,52 @@ If the format is illegal, it will use default value
 | binding | Bind the value of the inputElement | boolean | - | true |
 | themeColor  |     Theme color(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
 | rangeBgColor  |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
+| tdColor  |     Td text color   |   string     |   -   | -
+| thColor  |     Th text color   |   string     |   -   | -
 
+
+## Default Options
+
+global config
+
+```js
+  import {defaultOptions} from "better-datepicker"
+  defaultOptions(input,{
+    placement: 'bottom',
+    type: 'date',
+    zIndex: 2000,
+    format: 'yyyy/MM/dd'
+  })
+```
+
+## Theme
+
+you can use **defaultOptions**
+
+
+```js
+  import {defaultOptions} from "better-datepicker"
+  defaultOptions(input,{
+    themeColor: '#1890ff',
+    rangeBgColor: '#e6f7ff',
+    tdColor: '#5f5f5f',
+    thColor: '#5f5f5f'
+  })
+```
+
+or 
+
+only changes theme of the current instance
+
+```js
+     const input = document.querySelector('#wrapper')
+     const instance = createDatePicker(input,{
+         themeColor: '#1890ff',
+         rangeBgColor: '#e6f7ff',
+         tdColor: '#5f5f5f',
+         thColor: '#5f5f5f'
+     })
+```
 
 
 ## Instance methods
@@ -120,10 +165,9 @@ If the format is illegal, it will use default value
 | versions | Description|
 |---------|------------ |
 | 0.2.0 | support week |
-| 0.3.0 | instance methods support open、close |
-| 0.5.0 | methods support  set defaultOptions |
-| 0.7.0 | options support unlinkPanels、zIndex、readonly、disabled、default-value |
-| 0.9.0 | - |
+| 0.3.0 | support i18n |
+| 0.5.0 | support unlinkPanels、zIndex、readonly、disabled、default-value |
+| 0.7.0 | - |
 
 ## Browser support
 

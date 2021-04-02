@@ -21,8 +21,7 @@ By default, the two interval panels are linked to each other, or you can use *un
 <script>
     const input = document.querySelector('#dateRangeInput')
     const picker = this.createDatePicker(input, {
-        type: 'date-range',
-        placement: 'left'
+        type: 'date-range'
     })
 </script>
 
@@ -52,8 +51,7 @@ By default, the two interval panels are linked to each other, or you can use *un
 <script>
     const input = document.querySelector('#monthRangeInput')
     const picker = this.createDatePicker(input,{
-           type: 'month-range',
-           placement:'left'
+           type: 'month-range'
     })
 </script>
 
@@ -85,7 +83,7 @@ By default, the two interval panels are linked to each other, or you can use *un
     const input = document.querySelector('#yearRangeInput')
     const picker = this.createDatePicker(input,{
            type: 'year-range',
-           placement:'left',
+           placement:'top',
            disabledDate(date){
                 return Date.parse(date) > Date.now()
            }       
