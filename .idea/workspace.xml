@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b661a6ed-8e3f-465d-9058-ca2794d5033f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/date-picker.e96b1201.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/index.07a495fb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/index.5c59bdc1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/method.8c14d090.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/options.86cc9c20.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/start.09e21df4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/theme.ccba5543.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/type.36ee8764.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/date-picker.5060b127.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.d0a3d769.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.f7c415a1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/vendor.7c893327.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/vendor.f2e5a303.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/theme.945519f6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/type.94e602d2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/code-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index.5c59bdc1.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index.21523807.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/options.86cc9c20.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/options.fb11ccfd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/theme.ccba5543.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/type.36ee8764.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,19 +81,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Doc/src/views" />
-      <recent name="$PROJECT_DIR$/Doc/src/components/Enter" />
-      <recent name="$PROJECT_DIR$/Doc/src/components/Document" />
-      <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/tests/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/core/components/Year" />
       <recent name="$PROJECT_DIR$/src/core/watch/date/type/year" />
       <recent name="$PROJECT_DIR$/Doc/src/package/datepicker-demo" />
       <recent name="$PROJECT_DIR$/Doc/src/package/button-group" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Doc/src/views" />
+      <recent name="$PROJECT_DIR$/Doc/src/components/Enter" />
+      <recent name="$PROJECT_DIR$/Doc/src/components/Document" />
+      <recent name="$PROJECT_DIR$/src/utils" />
+      <recent name="$PROJECT_DIR$/tests/src" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build:demo">
