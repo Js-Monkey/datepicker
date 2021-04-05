@@ -110,7 +110,7 @@ global config
 
 ```js
   import {defaultOptions} from "better-datepicker"
-  defaultOptions(input,{
+  defaultOptions({
     placement: 'bottom',
     type: 'date',
     zIndex: 2000,
@@ -125,7 +125,7 @@ you can use **defaultOptions**
 
 ```js
   import {defaultOptions} from "better-datepicker"
-  defaultOptions(input,{
+  defaultOptions({
     themeColor: '#1890ff',
     rangeBgColor: '#e6f7ff',
     tdColor: '#5f5f5f',

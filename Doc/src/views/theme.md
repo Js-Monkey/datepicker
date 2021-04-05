@@ -25,7 +25,7 @@ After configuring the style on this page, you can download the css code and put 
 
 ```js
   import {defaultOptions} from "better-datepicker"
-  defaultOptions(input,{
+  defaultOptions({
     themeColor: '#1890ff',
     rangeBgColor: '#e6f7ff',
     tdColor: '#5f5f5f',
