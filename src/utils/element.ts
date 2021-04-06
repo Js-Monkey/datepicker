@@ -46,7 +46,7 @@ function handler(el: HTMLElement, val: any, state: State): Handler {
         style: () => addAttr(el, transformStyle(val), 'style'),
         name: () => {
             const color:string | undefined =  state.options[(val + 'Color') as 'thColor']
-            addAttr(el,{color}, 'style')
+            if(color)addAttr(el,{color}, 'style')
         },
         text() {
             if (isString(val)) {

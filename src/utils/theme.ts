@@ -14,7 +14,7 @@ export function resetHoverColor(el: HTMLElement, theme: string): void {
 
 export function resetSelectColor(el: HTMLElement, state: State,classes: string): void {
   const {themeColor, rangeBgColor} = state.options
-  const div = el.children[0] as HTMLElement
+  const div = Array.from(el.children).shift() as HTMLElement
   if(!div) return
   const {style} = div
   if(rangeBgColor){
@@ -22,6 +22,6 @@ export function resetSelectColor(el: HTMLElement, state: State,classes: string):
   }
   if(themeColor){
     style.backgroundColor = has(classes, ['selected','range-start', 'range-end']) ? themeColor : rangeBgColor ? style.backgroundColor: ''
-    style.color = has(classes, 'today') ? themeColor : ''
+    style.borderColor = has(classes, 'today') ? themeColor : ''
   }
 }

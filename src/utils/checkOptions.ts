@@ -8,7 +8,7 @@ const bool = isBoolean
 const num = isNumber
 const acceptOptions: AcceptOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
-  type: ['date', 'date-range', 'month', 'month-range','year','year-range'],
+  type: ['date', 'date-range', 'week','month', 'month-range','year','year-range'],
   unlinkPanels: bool,
   format: str,
   zIndex: num,

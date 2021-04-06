@@ -1,7 +1,7 @@
 import {State} from '../../types/store'
 import {createElement} from '../../utils/element'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
-import {Day, endDay} from '../components/Day'
+import {Day, endDay} from '../components/Date&Week'
 import {Month, endMonth, Year,endYear} from '../components/Month&Year'
 import {PopoverType, RangeComponentName} from '../../types/components'
 import {has} from "../../utils/has"
@@ -47,6 +47,7 @@ function rangeComponent(type: RangeComponentName = 'month') {
 
 const popoverType: PopoverType = {
   date: [Header, Day, Month, Year],
+  week: [Header, Day, Month, Year],
   'date-range': rangeComponent('date'),
   month: [Header, Month, Year],
   'month-range': rangeComponent(),

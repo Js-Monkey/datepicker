@@ -4,6 +4,7 @@ import {rangeStatus} from "../public"
 import {mergeClasses} from "../../../../../utils/merge"
 import {RangeComponentName} from "../../../../../types/components"
 import {GetStatusFunctionsType} from "../../../../../types/core"
+import {has} from "../../../../../utils/has";
 
 export function monthStatus(state: State, date: string): ComponentStatus {
     return dateCompare(state.start.date, date) ? 'selected' : ''
@@ -14,28 +15,23 @@ export function yearStatus(state: State, date: string, idx: number): ComponentSt
     return idx === 0 ? 'pre' : idx === 11 ? 'next' : dateCompare(state.start.date, date, 1) ? 'selected' : ''
 }
 
+export function dateStatus(state: State, date: string): ComponentStatus {
+    return state.start.date === date ? 'selected' : ''
+}
+
 
 export function getStatus(self: State, date: string, idx: number, type: RangeComponentName = 'month',preStatus = ''): ComponentStatus {
     const typeStatus: GetStatusFunctionsType = {
-        year: {
-            year: yearStatus,
-            date: yearStatus,
-            'year-range': rangeStatus
-        },
-        month: {
-            month: monthStatus,
-            date: monthStatus,
-            'month-range': rangeStatus
-        },
-        date: {
-            date: () => self.start.date === date ? 'selected' : '',
-            'date-range': () => rangeStatus(self, date)
-        }
+        year: yearStatus,
+        month: monthStatus,
+        date: dateStatus,
+        week: rangeStatus
     }
     function isToday() {
         return Date.parse(self.today) === Date.parse(date) ? 'today' : ''
     }
-    return mergeClasses(typeStatus[type][self.type as 'date'](self, date, idx), isDisabledDate(self, date),preStatus,isToday()) as ''
+    const method = has(self.type, 'range') ? rangeStatus : typeStatus[type]
+    return mergeClasses(method(self, date, idx), isDisabledDate(self, date),preStatus,isToday()) as ''
 }
 
 

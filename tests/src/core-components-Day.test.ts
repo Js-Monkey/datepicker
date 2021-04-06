@@ -1,6 +1,6 @@
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
-import {endDay} from "../../src/core/components/Day"
+import {endDay} from "../../src/core/components/Date&Week"
 
 const state = createState(defaultOptions())
 describe('endDay',()=>{
@@ -8,4 +8,4 @@ describe('endDay',()=>{
     expect(endDay(state)).toBeInstanceOf(HTMLElement)
   })
 })
-  
+

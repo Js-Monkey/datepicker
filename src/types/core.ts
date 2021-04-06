@@ -33,18 +33,8 @@ export interface GetStatusFunctions {
 }
 
 export interface GetStatusFunctionsType {
-    year: {
-        year: GetStatusFunctions
-        date: GetStatusFunctions
-        'year-range': GetStatusFunctions
-    }
-    month: {
-        month: GetStatusFunctions
-        date: GetStatusFunctions
-        'month-range': GetStatusFunctions
-    }
-    date: {
-        date: GetStatusFunctions
-        'date-range': GetStatusFunctions
-    }
+    year: GetStatusFunctions
+    month: GetStatusFunctions
+    date: GetStatusFunctions
+    week: GetStatusFunctions
 }

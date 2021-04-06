@@ -50,14 +50,6 @@ function tBody(state: State): Node {
           }
         ],
         style: tableStyle,
-        // $style: {
-        //   color: {
-        //     key: {
-        //       name: 'options', childKey: ['themeColor']
-        //     },
-        //     cb: (val: string) => val
-        //   }
-        // },
         class: config(child),
         event: {
           listener: dayEvent(child)[state.type as 'date'],
@@ -66,7 +58,6 @@ function tBody(state: State): Node {
       }
     }, colsCount)
   }
-
   return createElement(
     {
       children: tr(),
@@ -90,11 +81,13 @@ function bar(state: State): Node {
 
 export function Day(state: State, t: HeaderType = 'start'): Node {
   type = t
+  const classes = ['date']
+  if(state.type==='week')classes.push('week')
   return createElement(
     {
       name: 'table',
       children: [bar, tBody],
-      class: ['day'],
+      class: classes,
       style: utilStyle,
       $style: {
         display: {

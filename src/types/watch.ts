@@ -1,12 +1,8 @@
 import {Sub} from "./observer"
+import {DatepickerType} from "./options";
 
-export interface Listeners<T = Sub>{
-  'date-range': T[]
-  date: T[]
-  month: T[]
-  'month-range': T[]
-  year: T[]
-  'year-range': T[]
+export type Listeners<T = Sub> = {
+  [key in keyof DatepickerType]: T[]
 }
 
 export interface ReverseMap {

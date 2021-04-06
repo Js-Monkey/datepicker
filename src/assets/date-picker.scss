@@ -1,11 +1,11 @@
-$theme-color: #2ECC71;
+$theme-color: #2ecc71;
 $range-color: lighten($theme-color, 46);
 $text-header-color: #858585;
 $text-th-color: #969595;
 $text-tbody-color: #5f5f5f;
 $text-tbody-light-color: #bcbbbb;
 
-$border-color: #dde0e7;
+$border-color: #f1f0f0;
 $shadow-color: #737373;
 $shadow: 0 1px 6px $shadow-color;
 $transition: .3s all ease;
@@ -56,7 +56,7 @@ $transition: .3s all ease;
     }
   }
 
-  &-day, &-month, &-year {
+  &-date, &-month, &-year {
     span {
       cursor: pointer;
       color: $text-tbody-color;
@@ -73,7 +73,7 @@ $transition: .3s all ease;
     }
   }
 
-  &-day, &-month,&-year {
+  &-date, &-month,&-year {
     width: 100%;
     border-collapse: collapse;
 
@@ -95,7 +95,7 @@ $transition: .3s all ease;
     }
   }
 
-  &-day {
+  &-date {
 
     td, th {
       border: none;
@@ -122,7 +122,7 @@ $transition: .3s all ease;
       color: $text-th-color;
     }
   }
-  &-day &-selected {
+  &-date &-selected {
    div {
       color: white;
       background-color: $theme-color;
@@ -132,7 +132,7 @@ $transition: .3s all ease;
       }
     }
   }
-  &-day &-range-end {
+  &-date &-range-end {
     > div {
       color: white;
       background-color: $theme-color;
@@ -144,7 +144,7 @@ $transition: .3s all ease;
       }
     }
   }
-  &-day &-range-start {
+  &-date &-range-start {
     > div {
       color: white;
       background-color: $theme-color;
@@ -153,6 +153,18 @@ $transition: .3s all ease;
 
       &:hover {
         color: white;
+      }
+    }
+  }
+
+  &-week{
+    tr{
+      &:hover{
+         div{
+           transition: $transition;
+           background-color: $border-color !important;
+           color: $text-tbody-color;
+         }
       }
     }
   }
@@ -232,7 +244,8 @@ $transition: .3s all ease;
 
   &-today {
     div{
-      color: $theme-color;
+      border: 1px solid $theme-color;
+      border-radius: 5px;
     }
   }
 }

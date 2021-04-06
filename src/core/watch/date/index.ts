@@ -3,12 +3,14 @@ import Options from "../../../types/options"
 import {
   updateDayDom,
   linkMonth,
-} from "./type/day/date-range"
-import {startDays} from "./type/day/date"
+} from "./type/date&week/date-range"
+import {startDays} from "./type/date&week/date"
 import {LinkYear, wacthYM} from "./type/month&year"
 import {handleSelecting, startDate, endDate, date, startMonthAndYear,hoverSelect} from './type/public'
 import {Listeners} from "../../../types/watch"
 import {has} from "../../../utils/has"
+
+const dateWeek = [startDays, wacthYM(false),wacthYM(),startMonthAndYear]
 
 const listeners: Listeners = {
   'date-range': [
@@ -18,7 +20,8 @@ const listeners: Listeners = {
     linkMonth('end'),
     hoverSelect('date')
   ],
-  date: [startDays, wacthYM(false),wacthYM(),startMonthAndYear],
+  date: dateWeek,
+  week: dateWeek,
   month: [wacthYM()],
   'month-range': [wacthYM(), LinkYear(), LinkYear('end'), wacthYM(true,'end'), hoverSelect()],
   year: [wacthYM(false)],

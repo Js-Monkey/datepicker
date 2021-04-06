@@ -1,4 +1,4 @@
-import {dayEvent} from "../../src/core/components/Day/event"
+import {dayEvent} from "../../src/core/components/Date&Week/event"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 

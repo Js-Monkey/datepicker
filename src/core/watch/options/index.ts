@@ -4,7 +4,7 @@ import {addWatch} from '../../../observer/watcher'
 const options = {
   key: ['options'],
   cb() {
-    this.page = this._type
+    this.page = this._type.replace('week','date')
   }
 }
 
