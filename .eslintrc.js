@@ -1,4 +1,4 @@
-module.exports = {
+  module.exports = {
   root: true,
   parserOptions: {
     parser: "babel-eslint",
@@ -17,3 +17,4 @@ module.exports = {
     "no-extra-semi": 2,
   },
 }
+
