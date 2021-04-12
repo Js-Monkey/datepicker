@@ -8,7 +8,7 @@ const rename = require('gulp-rename')
 function compile() {
     return src('../src/assets/*.scss')
         .pipe(sass.sync())
-        .pipe(rename(function (path) {
+        .pipe(rename(function (path: any) {
             path.basename = "index"
             path.extname = ".css"
         }))
@@ -16,5 +16,4 @@ function compile() {
         .pipe(dest('../dist'))
 }
 
-
-exports.build =  series(compile)
+exports.build = series(compile)
