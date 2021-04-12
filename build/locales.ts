@@ -1,27 +1,28 @@
-import json from "rollup-plugin-json"
-import typescript from "rollup-plugin-typescript2"
-import commonjs from  "rollup-plugin-commonjs"
-import  resolve from  "rollup-plugin-node-resolve"
-import sourceMaps from "rollup-plugin-sourcemaps"
+const json = require("rollup-plugin-json")
+const typescript = require("rollup-plugin-typescript2")
+const commonjs = require("rollup-plugin-commonjs")
+const resolve = require("rollup-plugin-node-resolve")
+const sourceMaps = require("rollup-plugin-sourcemaps")
 
-const rollup = require('rollup')
+const {rollup} = require('rollup')
 const fs = require('fs')
-const { terser } = require('rollup-plugin-terser')
+const {terser} = require('rollup-plugin-terser')
 
 
 async function build(option: any) {
-    const bundle = await rollup.rollup(option.input)
+    const bundle = await rollup(option.input)
     await bundle.write(option.output)
 }
 
 const rollupConfig = (config: any) => {
-    const { input, fileName } = config
+    const {input, fileName, name} = config
+    console.log(fileName)
     return {
         input: {
             input,
             plugins: [
                 json(),
-                typescript({ useTsconfigDeclarationDir: true }),
+                typescript({useTsconfigDeclarationDir: true}),
                 commonjs(),
                 resolve(),
                 sourceMaps(),
@@ -30,7 +31,8 @@ const rollupConfig = (config: any) => {
         },
         output: {
             file: fileName,
-            format: 'umd'
+            format: 'umd',
+            name
         }
     }
 }
@@ -39,11 +41,12 @@ const rollupConfig = (config: any) => {
 (async () => {
     try {
         const locales = await fs.readdirSync('./src/locale')
+        console.log(locales)
         locales.forEach((l: string) => {
-            console.log()
             build(rollupConfig({
                 input: `./src/locale/${l}`,
-                fileName: `./dist/locale/${l.replace('ts','js')}`,
+                fileName: `./dist/locale/${l.replace('ts', 'js')}`,
+                name: l.split('.ts').shift()
             }))
         })
     } catch (e) {
