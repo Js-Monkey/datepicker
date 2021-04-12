@@ -7,7 +7,7 @@ import {watch} from './watch'
 import {State} from "../types/store"
 import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
-import {destroyHook} from "./util/method"
+import {destroyHook, getDate} from "./util/method"
 import {BetterPicker, Callback} from "../types/core"
 import {getEventListener} from "../utils/event";
 import {listenToScrollParents} from "../utils/listenToParents"
@@ -34,7 +34,7 @@ export default function Picker(): BetterPicker {
 
     function getCurrentDate() {
         if (!state) return null
-        return state.date
+        return getDate(state)
     }
 
     function onChange(cb: Callback) {

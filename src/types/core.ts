@@ -5,7 +5,7 @@ export interface BetterPicker {
     (el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined
 }
 
-export type GetDateType = (string | null) | (string | null)[]
+export type GetDateType = (Date | null) | (Date | null)[]
 
 
 export type Callback = (...arg: any) => any

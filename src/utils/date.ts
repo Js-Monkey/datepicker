@@ -1,6 +1,11 @@
-import {DateData, State} from "../types/store";
-import {isArray, isObject} from "./typeOf";
-import _for from "./for";
+import {DateData, State} from "../types/store"
+import {isArray, isObject} from "./typeOf"
+import _for from "./for"
+
+export function date(date: string | null): Date | null{
+  if(!date) return null
+  return new Date(date)
+}
 
 export function getYear(date: Date = new Date()): number {
   return date.getFullYear()

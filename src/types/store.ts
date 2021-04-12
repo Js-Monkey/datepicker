@@ -1,5 +1,5 @@
 import Options, {DatepickerType} from './options'
-import {Fn} from "./utils"
+import {DateType, Fn} from "./utils"
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
 type dateWatcher = (target: stateDate, key: keyof dateWatchers, value: unknown) => void
@@ -57,7 +57,7 @@ export interface stateDate<T = Date> {
   start: DateData
   end: DateData
   today: string
-  date: (string | null) | (string | null)[]
+  date: DateType| DateType[]
 }
 
 export type pageName = 'date' | 'year' | 'month'

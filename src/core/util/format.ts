@@ -1,6 +1,7 @@
 import {Formats} from "../../types/core"
 import {isArray} from "../../utils/typeOf"
 import {getDay, getMonth, getYear} from "../../utils/date"
+import {DateType} from "../../types/utils";
 
 const token = /d{1,2}|M{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
 
@@ -22,9 +23,10 @@ function pad(val: string | number, len?: number) {
   return val
 }
 
-export function getFormatDate(date: string | string[], format: string): string {
-  function formatParse(dateStr: string): string {
-    return format.replace(token, val => formats[val as 'dd'](new Date(dateStr)))
+export function getFormatDate(date: DateType | DateType[], format: string): string | null{
+  function formatParse(dateStr: DateType): string | null {
+    if(!dateStr) return null
+    return format.replace(token, val => formats[val as 'dd'](new Date(dateStr.toString())))
   }
 
   if (isArray(date)) return date.map(d => formatParse(d)).join(' - ')

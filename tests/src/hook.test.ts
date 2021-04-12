@@ -13,7 +13,7 @@ describe('getDate', () => {
     state.options.type = 'date-range'
     state.start.date = startDate
     state.end.date = endDate
-    expect(getDate(state)).toEqual([startDate, endDate])
+    expect(getDate(state)).toEqual([new Date(startDate), new Date(endDate)])
   })
 })
 
