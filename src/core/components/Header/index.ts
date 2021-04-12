@@ -5,7 +5,6 @@ import {pageName, State} from '../../../types/store'
 import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
-import {monthNames} from "../../util/i18n"
 
 let name: HeaderType = 'start'
 
@@ -74,7 +73,7 @@ function month(state: State) {
                 name,
                 childKey: ['month']
             },
-            cb: idx => monthNames[idx - 1]
+            cb: idx => state.locale.months[idx - 1]
         },
         class: ['pointerCursor'],
         event: toMonthPage,
@@ -89,7 +88,7 @@ function date(state: State) {
                 name,
                 childKey: ['month', 'year']
             },
-            cb: (idx, year) => monthNames[idx - 1] + ' ' + year
+            cb: (idx, year) => state.locale.months[idx - 1] + ' ' + year
         },
         month: {
             key: {

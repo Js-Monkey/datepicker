@@ -79,3 +79,11 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
     tdColor: T
     thColor: T
 }
+
+
+export interface LocaleConfig {
+    name: 'en' | 'zh_CN'
+    weekdays: string[]
+    months: string[]
+    weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6
+}

@@ -42,7 +42,7 @@ export interface RangeClickEvent {
 export interface CreateMonthOrYearComponentsOptions{
   month: {
     listener: (child: MonthOrYearComponents, state:State)=>eventHandler
-    children: (idx:number)=>(CreateElementOptions | CreateElement)[]
+    children: (text:string)=>(CreateElementOptions | CreateElement)[]
   },
   year:{
     listener: (child: MonthOrYearComponents, state:State)=>eventHandler

@@ -1,4 +1,4 @@
-import Options, {DatepickerType} from './options'
+import Options, {DatepickerType, LocaleConfig} from './options'
 import {DateType, Fn} from "./utils"
 
 type componentWatcher = (target: stateComponent, key: keyof componentsWatchers, value: unknown) => void
@@ -66,6 +66,7 @@ export interface stateUtil {
   options: Options
   visible: boolean
   page: pageName
+  locale: LocaleConfig
 }
 
 export interface componentsWatchers<T = componentWatcher> {

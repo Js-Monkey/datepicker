@@ -1,5 +1,4 @@
 import {createElement} from '../../../utils/element'
-import {dayBarNames} from '../../util/i18n'
 import {State} from '../../../types/store'
 import {isDayPage, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
@@ -71,7 +70,7 @@ function bar(state: State): Node {
   return createElement(
     {
       name: 'thead',
-      children: dayBarNames.map(name => {
+      children: state.locale.weekdays.map(name => {
         return {text: name, name: 'th', style: tableStyle}
       })
     },

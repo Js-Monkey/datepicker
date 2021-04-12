@@ -7,7 +7,9 @@ export default function ObserveState(state: State): State {
     Object.keys(obj).forEach(key => {
       const val = obj[key as keyof T]
       if (isArray(val)) {
-        val.forEach(v => observe(v))
+        val.forEach(v => {
+          if(isObject(v))observe(v)
+        })
       } else if (isObject(val)) {
         observe(val)
       } else {

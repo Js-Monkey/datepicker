@@ -1,5 +1,4 @@
 import {createElement, visible} from '../../../utils/element'
-import {monthNames} from '../../util/i18n'
 import {utilStyle} from '../utils'
 import {State} from '../../../types/store'
 import {
@@ -20,9 +19,7 @@ const cols = 4
 const components: CreateMonthOrYearComponentsOptions = {
   month: {
     listener: (child,state)=> monthEvent(child)[state.type as 'date'],
-    children: (idx: number) => [
-      {text: monthNames[idx]}
-    ]
+    children: (text: string) => [{text}]
   },
   year: {
     listener: (child,state)=> yearEvent(child)[state.type as 'date'],
@@ -73,7 +70,7 @@ export function YM(componentName: ComponentsName = 'month'): createMonthOrYearCo
             listener: listener(child, state),
             arg: child
           },
-          children: children(idx),
+          children: children(state.locale.months[idx] as never),
           class: {
             key: {
               name: ['status'],
