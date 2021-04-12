@@ -15,7 +15,7 @@ async function build(option: any) {
 }
 
 const rollupConfig = (config: any) => {
-    const { input, fileName, name } = config
+    const { input, fileName } = config
     return {
         input: {
             input,
@@ -30,11 +30,7 @@ const rollupConfig = (config: any) => {
         },
         output: {
             file: fileName,
-            format: 'umd',
-            name: name || 'dayjs',
-            globals: {
-                dayjs: 'dayjs'
-            }
+            format: 'umd'
         }
     }
 }
