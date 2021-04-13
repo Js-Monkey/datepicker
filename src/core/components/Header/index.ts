@@ -5,6 +5,7 @@ import {pageName, State} from '../../../types/store'
 import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
+import {getFormatDate} from "../../util/format";
 
 let name: HeaderType = 'start'
 
@@ -19,6 +20,10 @@ const getRange = (year: number) => {
     const min = getTenRange(year)[1]
     const max = min + 9
     return min + ' - ' + max
+}
+
+function format(date: string, format: string): string {
+    return getFormatDate(date, format) as string
 }
 
 function yearRange(state: State) {
@@ -52,7 +57,7 @@ function year(state: State) {
                 name,
                 childKey: ['year', '_date']
             },
-            cb: year => year
+            cb: year => format(year, state.locale.yearFormat)
         },
         event: toYearPage,
         class: ['pointerCursor'],
@@ -88,7 +93,7 @@ function date(state: State) {
                 name,
                 childKey: ['month', 'year']
             },
-            cb: (idx, year) => state.locale.months[idx - 1] + ' ' + year
+            cb: (idx, year) => format(year, state.locale.yearFormat) + ' ' + state.locale.months[idx - 1]
         },
         month: {
             key: {
@@ -97,7 +102,7 @@ function date(state: State) {
             },
             cb: (year) => year
         },
-        year:  {
+        year: {
             key: {
                 name,
                 childKey: ['year', '_date']
@@ -184,7 +189,7 @@ function nextMonthIcon(state: State) {
 
 const headerChildren = {
     start: [preYearIcon, preMonthIcon, date],
-    main: [preYearIcon, preMonthIcon, yearRange, month, year, nextYearIcon, nextMonthIcon],
+    main: [preYearIcon, preMonthIcon, yearRange, year, month, nextYearIcon, nextMonthIcon],
     end: [date, nextYearIcon, nextMonthIcon]
 }
 
