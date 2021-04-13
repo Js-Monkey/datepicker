@@ -11,12 +11,12 @@ const {terser} = require('rollup-plugin-terser')
 
 async function build(option: any) {
     const bundle = await rollup(option.input)
-    await bundle.write(option.output)
+    await bundle.write(option.output_es)
+    await bundle.write(option.output_umd)
 }
 
 const rollupConfig = (config: any) => {
     const {input, fileName, name} = config
-    console.log(fileName)
     return {
         input: {
             input,
@@ -29,8 +29,13 @@ const rollupConfig = (config: any) => {
                 terser()
             ],
         },
-        output: {
-            file: fileName,
+        output_es: {
+            file: './dist/locale_es/' + fileName,
+            format: 'es',
+            name
+        },
+        output_umd: {
+            file: './dist/locale_umd/' + fileName,
             format: 'umd',
             name
         }
@@ -41,11 +46,10 @@ const rollupConfig = (config: any) => {
 (async () => {
     try {
         const locales = await fs.readdirSync('./src/locale')
-        console.log(locales)
         locales.forEach((l: string) => {
             build(rollupConfig({
                 input: `./src/locale/${l}`,
-                fileName: `./dist/locale/${l.replace('ts', 'js')}`,
+                fileName: l.replace('ts', 'js'),
                 name: l.split('.ts').shift()
             }))
         })
