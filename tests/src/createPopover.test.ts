@@ -13,6 +13,6 @@ describe('createPopover', () => {
     state.reference = reference
     const ev = new Event('animationend')
     state.popover.dispatchEvent(ev)
-    expect(state.popover.style.display).toBe('inline-block')
+    expect(state.popover.style.display).toBe('none')
   })
 })
