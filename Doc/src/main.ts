@@ -9,9 +9,8 @@ import Msg from 'element-plus/lib/el-message'
 import 'element-plus/lib/theme-chalk/index.css'
 import './assets/style/el-message.css'
 import {createDatePicker,locale} from '../../src'
-// import xx from '../../dist/locale_es/zh_CN.js'
-// console.log(xx)
-// locale(xx)
+import xx from '../../dist/locale_es/zh_CN.js'
+locale(xx)
 
 const app = createApp(App)
 useComponent(app)

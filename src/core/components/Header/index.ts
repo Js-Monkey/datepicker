@@ -22,7 +22,7 @@ const getRange = (year: number) => {
     return min + ' - ' + max
 }
 
-function format(date: string, format: string): string {
+function format(date: string, format = 'yyyy'): string {
     return getFormatDate(date, format) as string
 }
 
