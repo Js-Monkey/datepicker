@@ -67,10 +67,12 @@ function tBody(state: State): Node {
 }
 
 function bar(state: State): Node {
+  const offset = state.locale.weekStart || 0
+  const {weekdays} = state.locale
   return createElement(
     {
       name: 'thead',
-      children: state.locale.weekdays.map(name => {
+      children:weekdays.slice(offset,weekdays.length).concat(weekdays.slice(0,offset)).map(name => {
         return {text: name, name: 'th', style: tableStyle}
       })
     },

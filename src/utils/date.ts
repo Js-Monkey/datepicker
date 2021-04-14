@@ -31,10 +31,10 @@ export function getTenRange(year: number): number[] {
   return _for((idx) => year + idx -1 - Number(year.toString().slice(-1)), 12)
 }
 
-export function monthFirstDay(year: number, month: number): number {
+export function monthFirstDay(year: number, month: number,start = 0): number {
   let firstDate = new Date(`${year}/${month}/01`).getDay()
   if (firstDate === 0) firstDate = 7
-  return firstDate
+  return firstDate - start
 }
 
 export function joinDate<T = (number | string)>(month?: T[] | T, year = 1, day = 1): string {
