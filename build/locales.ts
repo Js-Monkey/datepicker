@@ -45,10 +45,11 @@ const rollupConfig = (config: any) => {
 
 (async () => {
     try {
-        const locales = await fs.readdirSync('./src/locale')
+        const locales = await fs.readdirSync('./locale')
+        console.log(locales)
         locales.forEach((l: string) => {
             build(rollupConfig({
-                input: `./src/locale/${l}`,
+                input: `./locale/${l}`,
                 fileName: l.replace('ts', 'js'),
                 name: l.split('.ts').shift()
             }))
