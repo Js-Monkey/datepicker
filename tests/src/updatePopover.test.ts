@@ -1,17 +1,17 @@
-import {setPopoverLocation, sheetRuleStatus} from "../../src/core/dom/updatePopover"
+import {setPopoverLocation, sheetRule} from "../../src/core/dom/updatePopover"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
 
 describe('sheetRuleStatus', () => {
   it('should match Snapshot', () => {
-    expect(sheetRuleStatus).toMatchSnapshot()
+    expect(sheetRule).toMatchSnapshot()
   })
   it('should get keyframes rules', () => {
     const transform = 'translate(0,0)'
-    const hiddenRules = sheetRuleStatus['false'].rule(transform)
+    const hiddenRules = sheetRule[0](transform)
     expect(hiddenRules).toEqual(`@keyframes hidden { 0% {opacity: 1;transform: translate(0,0) scaleY(1);} 100% {opacity: 0;visibility: hidden;transform: translate(0,0) scaleY(.8);} }`)
 
-    const showRules = sheetRuleStatus['true'].rule(transform)
+    const showRules = sheetRule[1](transform)
     expect(showRules).toEqual(`@keyframes show { 0% {display: block;opacity: 0;transform:scaleY(.8) translate(0,0);} 100% {display: block;opacity: 1;transform: scaleY(1) translate(0,0);} }`)
   })
 })

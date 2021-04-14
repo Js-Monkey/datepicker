@@ -5,6 +5,7 @@ import {Day, endDay} from '../components/Date&Week'
 import {Month, endMonth, Year,endYear} from '../components/Month&Year'
 import {PopoverType, RangeComponentName} from '../../types/components'
 import {has} from "../../utils/has"
+import {canIUseAnimation} from "../../utils/env";
 
 
 function rangeComponent(type: RangeComponentName = 'month') {
@@ -56,19 +57,25 @@ const popoverType: PopoverType = {
 }
 
 export function deleteRules(sheet: any = document.styleSheets[0]): void {
-  const ruleSheet = sheet ? sheet.rules : null
+  const ruleSheet = sheet.rules
   if (ruleSheet && ruleSheet.length > 0) {
-    const {name, type} = ruleSheet[0]
-    if (has(['show', 'hidden'], name) && type === 7) sheet.deleteRule(0)
+   for(let i = 1;i>=0;i--){
+     if(!ruleSheet[i]) return
+     const {name, type} = ruleSheet[i]
+     if (has(['show', 'hidden'], name) && type === 7) {
+       sheet.deleteRule(i)
+     }
+   }
   }
 }
 
 function listenToAnimation(pop: HTMLElement) {
   pop.style.display = 'none'
-  pop.addEventListener('animationend', (e) => {
-    pop.style.display = e.animationName === 'hidden' ? 'none' : 'inline-block'
-    deleteRules()
-  })
+  if(canIUseAnimation()){
+    pop.addEventListener('animationend', (e) => {
+      pop.style.display = e.animationName === 'hidden' ? 'none' : 'inline-block'
+    })
+  }
 }
 
 export function createPopover(state: State): HTMLElement {
