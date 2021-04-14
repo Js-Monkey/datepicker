@@ -10,5 +10,5 @@ export function canIUseAnimation(): boolean {
     if (!sheet) return false
     const rules = sheet[0]
     const div = document.createElement('div')
-    return !!rules && rules.deleteRule && rules.insertRule && rules.rules && typeof document.onanimationend !== 'undefined' && typeof div.style.animationName !== 'undefined'
+    return rules && rules.deleteRule && rules.insertRule && rules.rules && typeof document.onanimationend !== 'undefined' && typeof div.style.animationName !== 'undefined'
 }
