@@ -1,9 +1,9 @@
 import {Formats} from "../../types/core"
 import {isArray} from "../../utils/typeOf"
-import {getDay, getMonth, getYear} from "../../utils/date"
-import {DateType} from "../../types/utils";
+import {getDay, getMonth, getYear, getYearWeek} from "../../utils/date"
+import {DateType} from "../../types/utils"
 
-const token = /d{1,2}|M{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
+const token = /d{1,2}|M{1,2}|w{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
 
 const formats: Formats = {
   d: (date: Date) => getDay(date),
@@ -11,7 +11,9 @@ const formats: Formats = {
   M: (date: Date) => getMonth(date),
   MM: (date: Date) => pad(getMonth(date)),
   yy: (date: Date) => String(getYear(date)).substr(2),
-  yyyy: (date: Date) => getYear(date)
+  yyyy: (date: Date) => getYear(date),
+  w:(date: Date)=> getYearWeek(date),
+  ww:(date: Date)=> getYearWeek(date),
 }
 
 function pad(val: string | number, len?: number) {

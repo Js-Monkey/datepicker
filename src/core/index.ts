@@ -15,6 +15,8 @@ import clickOutside from "../utils/clickoutside"
 import {Off} from "../types/event"
 import defaultOptions from "./util/default-options"
 import {Bind} from "../utils/bind"
+import {UtilObject} from "../types/utils";
+
 
 export default function Picker(): BetterPicker {
     let state: State | null, reference: HTMLInputElement, opt: Options
@@ -49,7 +51,7 @@ export default function Picker(): BetterPicker {
     function update(options: Options) {
         opt = mergeOptions(opt, options)
         destroyed()
-        create()
+        create(options)
     }
 
     function destroyed() {
@@ -61,9 +63,10 @@ export default function Picker(): BetterPicker {
         state = null
     }
 
-    function create(): void {
+    function create(options?: Options): void {
         if (!reference) return
         state = createState(opt)
+        changeWeekFormat(options)
         watch(opt)
         addListener()
         state.reference = reference
@@ -86,12 +89,19 @@ export default function Picker(): BetterPicker {
         state.visible = false
     }
 
+    function changeWeekFormat(opt?:Options) {
+        console.log(opt)
+        if(state?.type==='week' && (!opt || !opt.format)){
+            state.options.format = state.locale.weekFormat
+        }
+    }
+
     return function (el: HTMLInputElement, options?: Options) {
         const inputElement = findInputElement(el)
         if (!isInputElement(inputElement)) return
         reference = inputElement
         opt = mergeOptions(defaultOptions(), options)
-        create()
+        create(options)
         return {
             options,
             getCurrentDate,

@@ -26,6 +26,8 @@ export interface Formats {
     MM: (date: Date) => string
     yy: (date: Date) => string
     yyyy: (date: Date) => number
+    w: (date: Date) => number
+    ww: (date: Date) => number
 }
 
 export interface GetStatusFunctions {

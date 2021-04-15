@@ -87,4 +87,5 @@ export interface LocaleConfig {
     months: string[]
     weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6
     yearFormat: string
+    weekFormat: string
 }

@@ -5,7 +5,7 @@ import {
   daysInAMonth,
   monthFirstDay,
   joinDate,
-  transformDate, transformDateToArray, dateCompare, getPre, getNext, isInRange
+  transformDate, transformDateToArray, dateCompare, getPre, getNext, isInRange, getYearWeek
 } from '../../src/utils/date'
 
 describe('Date', () => {
@@ -85,4 +85,12 @@ describe('Date', () => {
     expect(dateCompare('1999/9/1', '1999/2/10')).toBeFalsy()
     expect(dateCompare('2020/9/1', '2020/10/10')).toBeFalsy()
   })
+
+  // it('should get the week of the year', () => {
+  //   expect(getYearWeek('2020/4/15')).toBe(16)
+  //   expect(getYearWeek('2020/1/01')).toBe(1)
+  //   expect(getYearWeek('2024/10/15')).toBe(42)
+  //   expect(getYearWeek('2016/7/19')).toBe(30)
+  //   expect(getYearWeek('2016/1/17')).toBe(4)
+  // })
 })
