@@ -82,7 +82,7 @@ export interface AcceptOptions<T = (val: unknown) => boolean> {
 
 
 export interface LocaleConfig {
-    name: 'en' | 'zh_CN'
+    name: string
     weekdays: string[]
     months: string[]
     weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6
