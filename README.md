@@ -8,7 +8,7 @@ A PC Datepicker
 ![code-test](https://github.com/Js-Monkey/better-datepicker/workflows/code-test/badge.svg)
 ![](https://www.travis-ci.org/Js-Monkey/better-datepicker.svg?branch=master)
 ![](https://img.shields.io/codecov/c/github/js-monkey/better-datepicker/master.svg)
-![](http://img.badgesize.io/https://unpkg.com/better-datepicker@0.0.7/dist/betterDatePicker.es5.js)
+![](http://img.badgesize.io/https://unpkg.com/better-datepicker/dist/betterDatePicker.es5.js?compression=gzip)
 [![install size](https://packagephobia.com/badge?p=better-datepicker)](https://packagephobia.com/result?p=better-datepicker)
 
 ## Doc
@@ -16,7 +16,7 @@ https://js-monkey.github.io/better-datepicker/
 
 ## Demo
 
-<img width="240px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
+<img width="480px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
 
 ## Installing
 
@@ -153,45 +153,56 @@ global config
 
 ```js
   import {locale} from "better-datepicker"
-  import zhCn from 'better-datepicker/dist/locale_es/zh-cn'
+  import zhCn from 'better-datepicker/dist/locale_es/zh-cn'    // es
+  //require('better-datepicker/dist/locale_umd/zh-cn') // cjs
   locale(zhCn)
 ```
 
-Support locales
+Provided locales 
 
-- af
-- br
-- en
-- en-au
-- es
-- fi
-- fo
-- fr
-- fy
-- hr
-- ht
-- it
-- it-ch
-- ja
-- ko
-- ku
-- ky
-- lb
-- lo
-- ko
-- tet
-- uk
-- uz
-- uz-latn
-- vi
-- x-pseudo
-- yo
-- zh
-- zh-cn
-- zh-hk
+- [af](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/af.ts)
+- [br](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/br.ts)
+- [en](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/en.ts)
+- [en-au](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/en-au.ts)
+- [es](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/es.ts)
+- [fi](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/fi.ts)
+- [fo](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/fo.ts)
+- [fr](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/fr.ts)
+- [fy](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/fy.ts)
+- [hr](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/hr.ts)
+- [ht](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/ht.ts)
+- [it](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/it.ts)
+- [it-ch](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/it-ch.ts)
+- [ja](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/ja.ts)
+- [ko](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/ko.ts)
+- [ku](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/ku.ts)
+- [ky](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/ky.ts)
+- [lb](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/lb.ts)
+- [lo](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/lo.ts)
+- [tet](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/tet.ts)
+- [uk](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/uk.ts)
+- [uz](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/uz.ts)
+- [uz-latn](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/uz-latn.ts)
+- [vi](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/vi.ts)
+- [x-pseudo](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/x-pseudo.ts)
+- [yo](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/yo.ts)
+- [zh](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh.ts)
+- [zh-cn](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-cn.ts)
+- [zh-hk](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-hk.ts)
 
+or configure your own region
 
-
+```
+  import {locale} from "better-datepicker"
+  const CubaLocale =  {
+    name: 'Cuba',
+    weekStart: 6,  //Saturday is set as the first day of the week
+    months: ["کانونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمموز", "ئاب", "ئەیلوول", "تشرینی یەكەم", "تشرینی دووەم", "كانونی یەکەم"],
+    weekdays: ["ی", "د", "س", "چ", "پ", "ه", "ش"], //short for week
+    weekFormat: 'yyyy-ww'
+  }
+  locale(zhCn)
+```
 
 ## Instance methods
 
@@ -216,3 +227,8 @@ Support locales
 ## Browser support
 
 todo
+
+
+## License
+
+[MIT](https://github.com/Js-Monkey/better-datepicker/blob/master/LICENSE)

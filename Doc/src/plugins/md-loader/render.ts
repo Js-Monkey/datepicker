@@ -24,7 +24,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
     const html = filterCode(scriptTag)
     const htmlScript = hljs.highlight('html', html, true, undefined).value
     let script = filterCode('```').split('</script')[0]
-    const mdScript = toMd(script).replace('this.', '')
+    const mdScript = toMd(script).replace(/this\./, '')
     const source = `
    <demo-card>
      <div class=demo-card-description>
