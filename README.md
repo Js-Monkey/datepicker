@@ -147,6 +147,51 @@ only changes theme of the current instance
      })
 ```
 
+##  Locale
+
+global config
+
+```js
+  import {locale} from "better-datepicker"
+  import zhCn from 'better-datepicker/dist/locale_es/zh-cn'
+  locale(zhCn)
+```
+
+Support locales
+
+- af
+- br
+- en
+- en-au
+- es
+- fi
+- fo
+- fr
+- fy
+- hr
+- ht
+- it
+- it-ch
+- ja
+- ko
+- ku
+- ky
+- lb
+- lo
+- ko
+- tet
+- uk
+- uz
+- uz-latn
+- vi
+- x-pseudo
+- yo
+- zh
+- zh-cn
+- zh-hk
+
+
+
 
 ## Instance methods
 
@@ -165,8 +210,7 @@ only changes theme of the current instance
 | versions | Description|
 |---------|------------ |
 | 0.2.0 | support week |
-| 0.3.0 | support i18n |
-| 0.5.0 | support unlinkPanels、zIndex、readonly、disabled、default-value |
+| 0.5.0 | support unlinkPanels、zIndex、readonly、default-value .... |
 | 0.7.0 | - |
 
 ## Browser support

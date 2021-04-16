@@ -25,7 +25,7 @@ export function getStatus(self: State, date: string, idx: number, type: RangeCom
         year: yearStatus,
         month: monthStatus,
         date: dateStatus,
-        week: rangeStatus
+        week: dateStatus
     }
     function isToday() {
         return Date.parse(self.today) === Date.parse(date) ? 'today' : ''
