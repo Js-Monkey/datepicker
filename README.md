@@ -201,7 +201,7 @@ or configure your own region
     weekdays: ["ی", "د", "س", "چ", "پ", "ه", "ش"], //short for week
     weekFormat: 'yyyy-ww'
   }
-  locale(zhCn)
+  locale(CubaLocale)
 ```
 
 ## Instance methods
