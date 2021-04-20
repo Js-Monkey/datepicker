@@ -2,7 +2,7 @@
   <div class="enter-button">
     <b-icon class="logo" :font-size="300" name="better1"></b-icon>
     <div class="enter-button-description">
-      A Datepicker with no dependency
+      A PC Datepicker with no dependency
       <br>
       Lighter and Better
     </div>

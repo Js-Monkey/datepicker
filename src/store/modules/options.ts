@@ -7,7 +7,8 @@ let locale: LocaleConfig = {
     weekdays: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     yearFormat: 'yyyy',
-    weekFormat: 'yyyy-wwth'
+    weekFormat: 'yyyy-wwth',
+    yearStart: 1
 }
 
 export default function (options: Options): stateUtil {

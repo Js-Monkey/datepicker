@@ -88,4 +88,5 @@ export interface LocaleConfig {
     weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6
     yearFormat: string
     weekFormat: string
+    yearStart: number
 }
