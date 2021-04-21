@@ -5,7 +5,8 @@ import {pageName, State} from '../../../types/store'
 import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
-import {getFormatDate} from "../../util/format";
+import {getFormatDate} from "../../util/format"
+import {LocaleConfig} from "../../../types/options";
 
 let name: HeaderType = 'start'
 
@@ -22,8 +23,8 @@ const getRange = (year: number) => {
     return min + ' - ' + max
 }
 
-function format(date: string, format = 'yyyy'): string {
-    return getFormatDate(date, format) as string
+function format(date: string, locale: LocaleConfig): string {
+    return getFormatDate(date, locale.yearFormat, locale) as string
 }
 
 function yearRange(state: State) {
@@ -57,7 +58,7 @@ function year(state: State) {
                 name,
                 childKey: ['year', '_date']
             },
-            cb: year => format(year, state.locale.yearFormat)
+            cb: year => format(year, state.locale)
         },
         event: toYearPage,
         class: ['pointerCursor'],
@@ -93,7 +94,7 @@ function date(state: State) {
                 name,
                 childKey: ['month', 'year']
             },
-            cb: (idx, year) => format(year, state.locale.yearFormat) + ' ' + state.locale.months[idx - 1]
+            cb: (idx, year) => format(year, state.locale) + ' ' + state.locale.months[idx - 1]
         },
         month: {
             key: {

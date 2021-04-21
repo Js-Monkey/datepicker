@@ -18,7 +18,7 @@ export function dispatchDateChange(): void {
   const date = getDate(this)
   if (this.onChange) this.onChange(date)
   if (this.options.binding && this.reference) {
-    this.reference.value = getFormatDate(date, this.options.format)
+    this.reference.value = getFormatDate(date, this.options.format,this.locale)
   }
 }
 

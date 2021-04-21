@@ -1,4 +1,4 @@
-import Options from "./options"
+import Options, {LocaleConfig} from "./options"
 import {State} from "./store"
 
 export interface BetterPicker {
@@ -20,14 +20,14 @@ export interface BetterPickerInstance {
 
 
 export interface Formats {
-    d: (date: Date) => number
-    dd: (date: Date) => string
-    M: (date: Date) => number
-    MM: (date: Date) => string
-    yy: (date: Date) => string
-    yyyy: (date: Date) => number
-    w: (date: Date) => number
-    ww: (date: Date) => number
+    d: (date: Date, locale?: LocaleConfig) => number
+    dd: (date: Date, locale?: LocaleConfig) => string
+    M: (date: Date, locale?: LocaleConfig) => number
+    MM: (date: Date, locale?: LocaleConfig) => string
+    yy: (date: Date, locale?: LocaleConfig) => string
+    yyyy: (date: Date, locale?: LocaleConfig) => number
+    w: (date: Date, locale: LocaleConfig) => number
+    ww: (date: Date, locale: LocaleConfig) => number
 }
 
 export interface GetStatusFunctions {

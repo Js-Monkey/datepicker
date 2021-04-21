@@ -2,6 +2,7 @@ import {Formats} from "../../types/core"
 import {isArray} from "../../utils/typeOf"
 import {getDay, getMonth, getYear, getYearWeek} from "../../utils/date"
 import {DateType} from "../../types/utils"
+import {LocaleConfig} from "../../types/options";
 
 const token = /d{1,2}|M{1,2}|w{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
 
@@ -12,8 +13,8 @@ const formats: Formats = {
   MM: (date: Date) => pad(getMonth(date)),
   yy: (date: Date) => String(getYear(date)).substr(2),
   yyyy: (date: Date) => getYear(date),
-  w:(date: Date)=> getYearWeek(date),
-  ww:(date: Date)=> getYearWeek(date),
+  w:(date: Date,locale)=> getYearWeek(date,locale),
+  ww:(date: Date,locale)=> getYearWeek(date,locale),
 }
 
 function pad(val: string | number, len?: number) {
@@ -25,10 +26,10 @@ function pad(val: string | number, len?: number) {
   return val
 }
 
-export function getFormatDate(date: DateType | DateType[], format: string): string | null{
+export function getFormatDate(date: DateType | DateType[], format: string,locale: LocaleConfig): string | null{
   function formatParse(dateStr: DateType): string | null {
     if(!dateStr) return null
-    return format.replace(token, val => formats[val as 'dd'](new Date(dateStr.toString())))
+    return format.replace(token, val => formats[val as 'dd'](new Date(dateStr.toString()),locale))
   }
 
   if (isArray(date)) return date.map(d => formatParse(d)).join(' - ')

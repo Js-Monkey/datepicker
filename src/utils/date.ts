@@ -1,8 +1,11 @@
 import {DateData, State} from "../types/store"
-import {isArray, isObject} from "./typeOf"
+import {isArray, isObject, isString} from "./typeOf"
 import _for from "./for"
+import {LocaleConfig} from "../types/options";
 
-export function date(date: string | null): Date | null {
+const Ms = 86400000
+
+export function date(date: string | null | number): Date | null {
     if (!date) return null
     return new Date(date)
 }
@@ -44,13 +47,14 @@ export function joinDate<T = (number | string)>(month?: T[] | T, year = 1, day =
     return year + "/" + month + "/" + day
 }
 
-export function transformDate(date: Date): string {
+export function transformDate(date: Date | string): string {
+    if (isString(date)) return date
     return joinDate(getMonth(date), getYear(date), getDay(date))
 }
 
-export function isAfter(source: string | null, target: string | null): boolean {
+export function isAfter(source: string | null | Date, target: string | null | Date): boolean {
     if (!source || !target) return false
-    return Date.parse(source) > Date.parse(target)
+    return Date.parse(transformDate(source)) > Date.parse(transformDate(target))
 }
 
 
@@ -99,26 +103,29 @@ export function isDisabledDate(state: State, date: string): string {
 }
 
 
-export function getYearWeek(date: Date): number {
-    // const [y,m,d] = transformDateToArray(transformDate(date))
-    // //const yearStart = this.$locale().yearStart || 1
-    // const yearStart = 1
-    // if (this.month() === 11 && this.date() > 25) {
-    //
-    //     // d(this) is for badMutable
-    //     const nextYearStartDay = d(this).startOf(Y).add(1, Y).date(yearStart)
-    //
-    //     const thisEndOfWeek = d(this).endOf(W)
-    //     if (nextYearStartDay.isBefore(thisEndOfWeek)) {
-    //         return 1
-    //     }
-    // }
-    // const yearStartDay = d(this).startOf(Y).date(yearStart)
-    // const yearStartWeek = yearStartDay.startOf(W).subtract(1, MS)
-    // const diffInWeek = this.diff(yearStartWeek, W, true)
-    // if (diffInWeek < 0) {
-    //     return d(this).startOf('week').week()
-    // }
-    // return Math.ceil(diffInWeek)
-   return 1 
+export function getYearWeek(date: Date, locale: LocaleConfig): number {
+    const [y, m, d] = transformDateToArray(transformDate(date))
+    const {yearStart, weekStart} = locale
+    if (m === 12 && d > 25) {
+        const nextYearStartDay = new Date(y + 1, 0, yearStart)
+        const endWeek = endOfWeek(date, weekStart)
+        if (isAfter(endWeek,nextYearStartDay)) return 1
+    }
+    const end = new Date(y, m - 1, d)
+    const start = new Date(y, 0, yearStart)
+    const days = Math.round((end.valueOf() - start.valueOf()) / Ms)
+    const diff = (days + ((start.getDay() + 1) - 1)) / 7
+    return Math.ceil(diff)
+}
+
+export function getWeeks<S = number>(weekdays: S[], weekStart: number): S[] {
+    return weekdays.slice(weekStart, weekdays.length).concat(weekdays.slice(0, weekStart))
+}
+
+const defaultWeeks = [0, 1, 2, 3, 4, 5, 6]
+
+export function endOfWeek(d: Date, weekStart: number): any {
+    const weeks = getWeeks(defaultWeeks, weekStart)
+    const diff = 6 - weeks.findIndex(week => week === d.getDay())
+    return date(Date.parse(transformDate(d)) + (diff + 1) * Ms - 1)
 }
