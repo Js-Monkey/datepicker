@@ -3,9 +3,9 @@ import {
   getMonth,
   getDay,
   daysInAMonth,
-  monthFirstDay,
+  monthStartDay,
   joinDate,
-  transformDate, transformDateToArray, dateCompare, getPre, getNext, isInRange, getYearWeek
+  transformDate, transformDateToArray, isSame, getPre, getNext, isInRange, getYearWeek
 } from '../../src/utils/date'
 
 describe('Date', () => {
@@ -56,9 +56,9 @@ describe('Date', () => {
   })
 
   it('should get the day of first day in the month', () => {
-    expect(monthFirstDay(2020, 9)).toBe(2)
-    expect(monthFirstDay(2021, 9)).toBe(3)
-    expect(monthFirstDay(1999, 6)).toBe(2)
+    expect(monthStartDay(2020, 9)).toBe(2)
+    expect(monthStartDay(2021, 9)).toBe(3)
+    expect(monthStartDay(1999, 6)).toBe(2)
   })
 
   it('should convert Date to string, the format is YYYY/M/D', () => {
@@ -77,13 +77,13 @@ describe('Date', () => {
   })
 
   test('should compare two dates, accurate to month, if days are different, also return true', () => {
-    expect(dateCompare('1999/9/1', '1999/9/10')).toBeTruthy()
-    expect(dateCompare('2009/10/1', '2009/10/12')).toBeTruthy()
-    expect(dateCompare('2099/1/1', '2099/1/1')).toBeTruthy()
-    expect(dateCompare('1999/9/1', '2009/9/10')).toBeFalsy()
-    expect(dateCompare('2020/9/1', '2021/9/10')).toBeFalsy()
-    expect(dateCompare('1999/9/1', '1999/2/10')).toBeFalsy()
-    expect(dateCompare('2020/9/1', '2020/10/10')).toBeFalsy()
+    expect(isSame('1999/9/1', '1999/9/10')).toBeTruthy()
+    expect(isSame('2009/10/1', '2009/10/12')).toBeTruthy()
+    expect(isSame('2099/1/1', '2099/1/1')).toBeTruthy()
+    expect(isSame('1999/9/1', '2009/9/10')).toBeFalsy()
+    expect(isSame('2020/9/1', '2021/9/10')).toBeFalsy()
+    expect(isSame('1999/9/1', '1999/2/10')).toBeFalsy()
+    expect(isSame('2020/9/1', '2020/10/10')).toBeFalsy()
   })
 
   // it('should get the week of the year', () => {

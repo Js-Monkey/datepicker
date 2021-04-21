@@ -31,7 +31,7 @@ export function getTenRange(year: number): number[] {
     return _for((idx) => year + idx - 1 - Number(year.toString().slice(-1)), 12)
 }
 
-export function monthFirstDay(year: number, month: number, start = 0): number {
+export function monthStartDay(year: number, month: number, start = 0): number {
     let firstDate = new Date(`${year}/${month}/01`).getDay()
     if (firstDate === 0) firstDate = 7
     return firstDate - start
@@ -48,13 +48,13 @@ export function transformDate(date: Date): string {
     return joinDate(getMonth(date), getYear(date), getDay(date))
 }
 
-export function isBigger(source: string | null, target: string | null): boolean {
+export function isAfter(source: string | null, target: string | null): boolean {
     if (!source || !target) return false
     return Date.parse(source) > Date.parse(target)
 }
 
 
-export function dateCompare(source: string | null, target: string | null, precision = 2): boolean {
+export function isSame(source: string | null, target: string | null, precision = 2): boolean {
     if (!source || !target) return false
     source = source.split('/').slice(0, precision).join('/')
     target = target.split('/').slice(0, precision).join('/')
@@ -63,12 +63,12 @@ export function dateCompare(source: string | null, target: string | null, precis
 
 export function rangeSort(min: string | null, max: string | null): (string | null)[] {
     const range = [min, max]
-    return isBigger(min, max) ? range : range.reverse()
+    return isAfter(min, max) ? range : range.reverse()
 }
 
 
 export function isInRange<T = number>(max: string, min: string, date: string): string {
-    return isBigger(max, date) && isBigger(date, min) ? 'in-range' : ''
+    return isAfter(max, date) && isAfter(date, min) ? 'in-range' : ''
 }
 
 
@@ -100,9 +100,25 @@ export function isDisabledDate(state: State, date: string): string {
 
 
 export function getYearWeek(date: Date): number {
-    const [y,m,d] = transformDateToArray(transformDate(date))
-    const end = new Date(y, m - 1, d)
-    const start = new Date(y, 0, 1)
-    const days = Math.round((end.valueOf() - start.valueOf()) / 86400000)
-    return Math.ceil((days + ((start.getDay() + 1) - 1)) / 7)
+    // const [y,m,d] = transformDateToArray(transformDate(date))
+    // //const yearStart = this.$locale().yearStart || 1
+    // const yearStart = 1
+    // if (this.month() === 11 && this.date() > 25) {
+    //
+    //     // d(this) is for badMutable
+    //     const nextYearStartDay = d(this).startOf(Y).add(1, Y).date(yearStart)
+    //
+    //     const thisEndOfWeek = d(this).endOf(W)
+    //     if (nextYearStartDay.isBefore(thisEndOfWeek)) {
+    //         return 1
+    //     }
+    // }
+    // const yearStartDay = d(this).startOf(Y).date(yearStart)
+    // const yearStartWeek = yearStartDay.startOf(W).subtract(1, MS)
+    // const diffInWeek = this.diff(yearStartWeek, W, true)
+    // if (diffInWeek < 0) {
+    //     return d(this).startOf('week').week()
+    // }
+    // return Math.ceil(diffInWeek)
+   return 1 
 }

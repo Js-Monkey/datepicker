@@ -1,5 +1,5 @@
 import {ComponentStatus, DateData, State} from "../../../../types/store"
-import {isBigger, transformDateToArray, rangeSort} from "../../../../utils/date"
+import {isAfter, transformDateToArray, rangeSort} from "../../../../utils/date"
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
 import {mergeClasses} from "../../../../utils/merge"
@@ -12,7 +12,7 @@ export function rangeStatus(state: State, date: string): ComponentStatus {
   const [max, min] = rangeSort(start, end)
   const isMin = date === min
   const isMax = date === max
-  const isInRange = isBigger(max, date) && isBigger(date, min)
+  const isInRange = isAfter(max, date) && isAfter(date, min)
   const st = 'range-start'
   const et = 'range-end'
   if (isInRange) return 'inRange'

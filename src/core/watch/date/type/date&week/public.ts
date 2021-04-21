@@ -1,5 +1,5 @@
 import {ComponentStatus, DateData} from "../../../../../types/store"
-import {daysInAMonth, getNext, getPre, joinDate, monthFirstDay} from "../../../../../utils/date"
+import {daysInAMonth, getNext, getPre, joinDate, monthStartDay} from "../../../../../utils/date"
 import {getStatus} from "../month&year/public"
 
 export function updateDays(
@@ -10,7 +10,7 @@ export function updateDays(
 ): void {
     const [preMonth, preYear] = getPre(month, year)
     const preDays = daysInAMonth(preYear, preMonth)
-    const [fd, days] = [monthFirstDay(year, month, this.locale.weekStart), daysInAMonth(year, month)]
+    const [fd, days] = [monthStartDay(year, month, this.locale.weekStart), daysInAMonth(year, month)]
     state._date.forEach((item, index) => {
         const idx = index + 1
         const currentIdx = idx - fd

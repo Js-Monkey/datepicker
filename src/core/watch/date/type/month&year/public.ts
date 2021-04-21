@@ -1,5 +1,5 @@
 import {ComponentStatus, DateData, State} from "../../../../../types/store"
-import {isDisabledDate, dateCompare, joinDate, getTenRange} from "../../../../../utils/date"
+import {isDisabledDate, isSame, joinDate, getTenRange} from "../../../../../utils/date"
 import {rangeStatus} from "../public"
 import {mergeClasses} from "../../../../../utils/merge"
 import {RangeComponentName} from "../../../../../types/components"
@@ -7,12 +7,12 @@ import {GetStatusFunctionsType} from "../../../../../types/core"
 import {has} from "../../../../../utils/has";
 
 export function monthStatus(state: State, date: string): ComponentStatus {
-    return dateCompare(state.start.date, date) ? 'selected' : ''
+    return isSame(state.start.date, date) ? 'selected' : ''
 }
 
 
 export function yearStatus(state: State, date: string, idx: number): ComponentStatus {
-    return idx === 0 ? 'pre' : idx === 11 ? 'next' : dateCompare(state.start.date, date, 1) ? 'selected' : ''
+    return idx === 0 ? 'pre' : idx === 11 ? 'next' : isSame(state.start.date, date, 1) ? 'selected' : ''
 }
 
 export function dateStatus(state: State, date: string): ComponentStatus {
