@@ -17,6 +17,9 @@ export type ComponentStatus =
   | 'range-start range-end'
   | 'today'
   | 'disabled'
+  | 'weekRange'
+  | 'weekStart'
+  | 'weekEnd'
 
 export interface DateComponents {
   text: string
@@ -88,6 +91,7 @@ export interface State extends stateComponent, stateUtil, stateDate {
   id: number
   type: keyof DatepickerType
   _type: pageName
+  hasWW: boolean
 }
 
 

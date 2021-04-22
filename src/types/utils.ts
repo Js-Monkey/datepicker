@@ -117,3 +117,8 @@ export interface Handler<> {
 export interface AddEventListenerFunction {
   (listener: _EventListener[] | Callback, arg?: unknown): void
 }
+
+export interface WeekRange{
+  start: Date
+  end: Date
+}

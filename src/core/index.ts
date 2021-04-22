@@ -15,7 +15,6 @@ import clickOutside from "../utils/clickoutside"
 import {Off} from "../types/event"
 import defaultOptions from "./util/default-options"
 import {Bind} from "../utils/bind"
-import {UtilObject} from "../types/utils";
 
 
 export default function Picker(): BetterPicker {
@@ -90,8 +89,8 @@ export default function Picker(): BetterPicker {
     }
 
     function changeWeekFormat(opt?:Options) {
-        console.log(opt)
         if(state?.type==='week' && (!opt || !opt.format)){
+            state.hasWW = true
             state.options.format = state.locale.weekFormat
         }
     }

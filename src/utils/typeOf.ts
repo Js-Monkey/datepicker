@@ -12,6 +12,11 @@ export function isObject(val: unknown): val is UtilObject {
   return typeOf(val, 'Object')
 }
 
+export function isDate(val: unknown): val is UtilObject {
+  return typeOf(val, 'Date')
+}
+
+
 export function isFunc<T = string>(val: unknown): val is (...arg: any) => T {
   return typeOf(val, 'Function')
 }

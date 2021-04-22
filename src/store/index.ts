@@ -1,6 +1,7 @@
 import {State, States} from '../types/store'
 import initState from './state'
 import Options from '../types/options'
+import {has} from "../utils/has"
 
 const Store = (function () {
   let id = 0
@@ -18,6 +19,7 @@ const Store = (function () {
     const state = initState(options)
     state.type = options.type
     state._type = state.type.split('-').shift() as 'date'
+    state.hasWW = has(state.options.format, 'w')
     state.id = ++id
     states[id] = state
     return state

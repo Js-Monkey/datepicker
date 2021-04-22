@@ -91,7 +91,7 @@ By default, the two interval panels are linked to each other, or you can use *un
 :::
 
 
-##  Week (Not yet completed)
+##  Week
 :::
 ```html
 <Input width="20vw" id="weekInput">

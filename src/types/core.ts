@@ -1,5 +1,6 @@
 import Options, {LocaleConfig} from "./options"
 import {State} from "./store"
+import {WeekRange} from "./utils";
 
 export interface BetterPicker {
     (el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined
@@ -31,12 +32,12 @@ export interface Formats {
 }
 
 export interface GetStatusFunctions {
-    (state: State, date: string, idx: number): string
+    (this: State, date: string, idx: number): string
 }
 
 export interface GetStatusFunctionsType {
     year: GetStatusFunctions
     month: GetStatusFunctions
     date: GetStatusFunctions
-    week: GetStatusFunctions
+    week: (date: Date) =>void
 }

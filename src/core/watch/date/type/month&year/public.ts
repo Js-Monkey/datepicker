@@ -1,39 +1,16 @@
-import {ComponentStatus, DateData, State} from "../../../../../types/store"
-import {isDisabledDate, isSame, joinDate, getTenRange} from "../../../../../utils/date"
-import {rangeStatus} from "../public"
-import {mergeClasses} from "../../../../../utils/merge"
-import {RangeComponentName} from "../../../../../types/components"
-import {GetStatusFunctionsType} from "../../../../../types/core"
-import {has} from "../../../../../utils/has";
+import {ComponentStatus, DateData} from "../../../../../types/store"
+import {isSame, joinDate, getTenRange} from "../../../../../utils/date"
+import {getStatus} from "../public"
 
-export function monthStatus(state: State, date: string): ComponentStatus {
-    return isSame(state.start.date, date) ? 'selected' : ''
+
+export function monthStatus(date: string): ComponentStatus {
+    return isSame(this.start.date, date) ? 'selected' : ''
 }
 
 
-export function yearStatus(state: State, date: string, idx: number): ComponentStatus {
-    return idx === 0 ? 'pre' : idx === 11 ? 'next' : isSame(state.start.date, date, 1) ? 'selected' : ''
+export function yearStatus(date: string, idx: number): ComponentStatus {
+    return idx === 0 ? 'pre' : idx === 11 ? 'next' : isSame(this.start.date, date, 1) ? 'selected' : ''
 }
-
-export function dateStatus(state: State, date: string): ComponentStatus {
-    return state.start.date === date ? 'selected' : ''
-}
-
-
-export function getStatus(self: State, date: string, idx: number, type: RangeComponentName = 'month',preStatus = ''): ComponentStatus {
-    const typeStatus: GetStatusFunctionsType = {
-        year: yearStatus,
-        month: monthStatus,
-        date: dateStatus,
-        week: dateStatus
-    }
-    function isToday() {
-        return Date.parse(self.today) === Date.parse(date) ? 'today' : ''
-    }
-    const method = has(self.type, 'range') ? rangeStatus : typeStatus[type]
-    return mergeClasses(method(self, date, idx), isDisabledDate(self, date),preStatus,isToday()) as ''
-}
-
 
 export function updateMonth(year: number, date: string, state: DateData): void {
     state._month.forEach((item, idx) => {
