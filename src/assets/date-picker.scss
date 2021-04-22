@@ -179,10 +179,10 @@ $transition: .3s all ease;
   }
 
   &-date &-pre,&-date &-next {
-    color: $text-tbody-light-color !important;
+    color: $text-tbody-light-color;
 
     > div {
-      color: $text-tbody-light-color !important;
+      color: $text-tbody-light-color;
       background: #ffffff;
     }
   }

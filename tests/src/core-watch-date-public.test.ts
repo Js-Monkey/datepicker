@@ -10,21 +10,21 @@ state.range.end = ed
 
 describe('rangeStatus', () => {
   it('if `value` < `min`, return empty string', () => {
-    expect(rangeStatus(state, '1999/9/19')).toEqual('')
+    expect(rangeStatus.call(state, '1999/9/19')).toEqual('')
   })
   it('if `value` > `min` && `value` < `max`, return `inRange`', () => {
-    expect(rangeStatus(state, '1999/10/19')).toEqual('inRange')
+    expect(rangeStatus.call(state, '1999/10/19')).toEqual('inRange')
   })
   it('if `value` === `min`, return `range-start`', () => {
-    expect(rangeStatus(state, sd)).toEqual('range-start')
+    expect(rangeStatus.call(state, sd)).toEqual('range-start')
   })
   it('if `value` === `max`, return `range-end`', () => {
-    expect(rangeStatus(state, ed)).toEqual('range-end')
+    expect(rangeStatus.call(state, ed)).toEqual('range-end')
   })
   it('if `value` === `max` && `value` === `min`, return `range-start range-end`', () => {
     state.range.start = ed
     state.range.end = ed
-    expect(rangeStatus(state, ed)).toEqual(`${logo}-range-start ${logo}-range-end`)
+    expect(rangeStatus.call(state, ed)).toEqual(`${logo}-range-start ${logo}-range-end`)
   })
 })
 
