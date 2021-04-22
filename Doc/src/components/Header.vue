@@ -15,7 +15,8 @@
       </div>
       <b-icon :font-size="14" name="right"></b-icon>
     </div>
-    <div class="header-github">
+    <div class="header-icons">
+      <b-icon @click="toggleLang" :font-size="23" fill="#ffffff" :name="bus.target.lang"></b-icon>
       <a href="https://github.com/Js-Monkey/better-datepicker" target="_blank">
         <b-icon :font-size="23" name="github1"></b-icon>
       </a>
@@ -35,6 +36,12 @@ export default defineComponent({
         {name: 'Document', value: 'doc'},
       ],
     }
+  },
+  inject: ['bus'],
+  methods:{
+    toggleLang(){
+      this.bus.toggleLang()
+    }
   }
 })
 </script>
@@ -53,9 +60,10 @@ $header-height: 66px;
   padding: $padding-left-more;
   background: $header-bg;
 
-  &-logo{
+  &-logo {
     cursor: pointer;
   }
+
   &-nav {
     margin-left: auto;
     display: flex;
@@ -70,6 +78,7 @@ $header-height: 66px;
     &-item {
       margin: 0 9px;
       position: relative;
+
       &::after {
         position: absolute;
         display: block;
@@ -90,21 +99,24 @@ $header-height: 66px;
     }
   }
 
-  &-github {
+  &-icons {
     margin-left: 50px;
     height: $header-height;
     display: flex;
     align-items: center;
-    a{
+
+    a {
       margin-top: 3px;
       display: inline-block;
     }
+
     svg {
       transition: .32s all;
       cursor: pointer;
-
+      margin-left: 5px;
+      margin-right: 5px;
       &:hover {
-        transform: rotate(8deg) ;
+        transform: rotate(8deg);
       }
     }
   }

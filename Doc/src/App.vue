@@ -1,17 +1,32 @@
 <template>
   <Header/>
   <router-view/>
+  {{lang}}
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, reactive} from 'vue'
 import Header from './components/Header.vue'
-
 export default defineComponent({
   name: 'App',
   components: {
     Header
-  }
+  },
+  setup(){
+    const target = reactive({lang: 'zh'})
+    function toggleLang(){
+      target.lang = target.lang === 'zh'? 'en' : 'zh'
+    }
+    return {
+      toggleLang,
+      target
+    }
+  },
+  provide() {
+    return {
+      bus: this
+    }
+  },
 })
 </script>
 
