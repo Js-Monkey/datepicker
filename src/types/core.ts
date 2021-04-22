@@ -1,6 +1,5 @@
 import Options, {LocaleConfig} from "./options"
 import {State} from "./store"
-import {WeekRange} from "./utils";
 
 export interface BetterPicker {
     (el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined

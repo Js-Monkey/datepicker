@@ -21,7 +21,7 @@ export function resetSelectColor(el: HTMLElement, state: State,classes: string):
     style.backgroundColor = has(classes, 'inRange') ? rangeBgColor : ''
   }
   if(themeColor){
-    style.backgroundColor = has(classes, ['selected','range-start', 'range-end']) ? themeColor : rangeBgColor ? style.backgroundColor: ''
+    style.backgroundColor = has(classes, ['selected','range-start', 'range-end', 'weekStart','weekEnd']) ? themeColor : rangeBgColor ? style.backgroundColor: ''
     style.borderColor = has(classes, 'today') ? themeColor : ''
   }
 }

@@ -17,7 +17,6 @@ export type ComponentStatus =
   | 'range-start range-end'
   | 'today'
   | 'disabled'
-  | 'weekRange'
   | 'weekStart'
   | 'weekEnd'
 

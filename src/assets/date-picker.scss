@@ -169,6 +169,14 @@ $transition: .3s all ease;
   &-week {
     tr {
       &:hover {
+        .better-datepicker-weekStart, .better-datepicker-weekEnd {
+          div {
+            background-color: $theme-color;
+          }
+        }
+      }
+
+      &:hover {
         div {
           transition: $transition;
           background-color: $border-color;
@@ -178,7 +186,8 @@ $transition: .3s all ease;
     }
   }
 
-  &-date &-pre,&-date &-next {
+
+  &-date &-pre, &-date &-next {
     color: $text-tbody-light-color;
 
     > div {
@@ -266,15 +275,9 @@ $transition: .3s all ease;
     }
   }
 
-  &-weekRange {
-    div {
-      background: $range-color !important;
-    }
-  }
-
   &-weekStart {
     div {
-      background: $theme-color !important;
+      background: $theme-color;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
       color: white !important;
@@ -283,7 +286,7 @@ $transition: .3s all ease;
 
   &-weekEnd {
     div {
-      background: $theme-color !important;
+      background: $theme-color;
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
       color: white !important;

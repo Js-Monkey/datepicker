@@ -8,9 +8,15 @@ import ColorPicker from 'element-plus/lib/el-color-picker'
 import Msg from 'element-plus/lib/el-message'
 import 'element-plus/lib/theme-chalk/index.css'
 import './assets/style/el-message.css'
-import {createDatePicker, locale} from '../../src'
+import {createDatePicker, locale,defaultOptions} from '../../src'
 import xx from '../../dist/locale_es/zh-cn'
 locale(xx)
+defaultOptions({
+    themeColor: '#1890ff',
+    rangeBgColor: '#e6f7ff',
+    tdColor: '#5f5f5f',
+    thColor: '#5f5f5f'
+})
 
 const app = createApp(App)
 useComponent(app)

@@ -2,7 +2,7 @@ import {DateData, State} from "../types/store"
 import {isArray, isObject, isString} from "./typeOf"
 import _for from "./for"
 import {LocaleConfig} from "../types/options"
-import {WeekRange} from "../types/utils";
+import {WeekRange} from "../types/utils"
 
 const Ms = 86400000
 
