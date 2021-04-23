@@ -2,7 +2,7 @@
   <div class="enter-button">
     <b-icon class="logo" :font-size="300" name="better1"></b-icon>
     <div class="enter-button-description">
-      A 9KB PC Datepicker
+      A PC Datepicker with only 9KB
     </div>
     <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn"
               icon="forward" position="right">

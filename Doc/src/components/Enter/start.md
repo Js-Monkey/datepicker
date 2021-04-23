@@ -52,15 +52,38 @@ you can also
   //more
 ```
 
-## METHODS
+##  Locale
 
-TODO
+**global config**
+
+```js
+  import {locale} from "better-datepicker"
+  import zhCn from 'better-datepicker/dist/locale_es/zh-cn'    // es
+  //require('better-datepicker/dist/locale_umd/zh-cn') // cjs
+  locale(zhCn)
+```
+
+or
+```js
+  const localeConfig = {
+     name: "en",
+     weekStart: 0,
+     yearStart: 1,
+     weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+     months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+     yearFormat: "yyyy",
+     weekFormat: 'yyyy-ww'
+  }
+  locale(en)
+```
+
+
 
 ## DOCUMENT TODOLIST
 
 | TODO     | VERSION   |
 | ----------------- | -------------------------------- |
-| Support Mobile  |    0.3     |
-| Show All Demo  |  0.4    |
-| Support online debugging  (codeSandBox)  |  0.5    |
+| Doc Support Mobile  |    0.3     |
+| Support onOpen、onClose  |  0.4    |
+| Support readonly、unlinkPanels、className、bordered、panelRender、size |  0.5    |
 | -  |  -   |

@@ -56,7 +56,7 @@ Instance method
 
 ##  onChange
 
-::: **onChange** 
+:::  It supports passing in a **callback**, which will be call after date change
 ```html
 <div>
 <Input id="onChangeInput" />

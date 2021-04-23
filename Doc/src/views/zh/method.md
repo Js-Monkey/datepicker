@@ -2,7 +2,7 @@
 
 ##  clear
 
-::: **clear** date and InputElement value
+::: **清除** 日期和输入框的值
 ```html
 <div>
 <Input id="clearInput" />
@@ -20,7 +20,7 @@
 
 ##  destroyed
 
-::: **destroyed** the datepicker, Instance methods are not available except *update*
+::: **销毁**选择器，移除弹出框节点，数据将从内部移除。实例不会被清空，但所有函数都会**不可用** 
 ```html
 <div>
 <Input id="destroyedInput" />
@@ -38,7 +38,7 @@
 
 ##  update
 
-::: **update** the datepicker
+::: **更新**选择器的配置，事实上它等于 *destroyed + create*, 之前的弹出框节点会被移除
 ```html
 <div>
 <Input id="updateInput" />
@@ -56,7 +56,7 @@
 
 ##  onChange
 
-::: **onChange** 
+:::  支持传入一个回调函数， 在选择日期变化后，会触发这个回调
 ```html
 <div>
 <Input id="onChangeInput" />
@@ -75,7 +75,7 @@
 
 ##  getCurrentDate
 
-::: **getCurrentDate** 
+::: 获取当前选择的日期，如果不存在则返回**null**
 ```html
 <div>
 <Input id="getCurrentDateInput" />
@@ -97,9 +97,8 @@
 
 ##  open/close
 
-::: **Manual open/close** 
-If *open/close* is executed in the event listener callback.
-please use **e.stopPropagation()** to prevent events from bubbling onto the **Body**
+::: **手动触发 open/close** 
+需要注意的是，如果
 ```html
 <div>
 <Input id="openInput" />
