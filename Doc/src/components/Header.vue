@@ -8,7 +8,7 @@
     <div class="header-nav">
       <b-icon :font-size="14" name="left"></b-icon>
       <div class="header-nav">
-        <router-link class="header-nav-item" v-for="(item,index) in routerItems" :to="`/${item.value}`"
+        <router-link class="header-nav-item" v-for="(item,index) in routerItems" :to="`/${bus.target.lang}/${item.value}`"
                      :key="index">
           {{ item.name }}
         </router-link>
@@ -33,14 +33,16 @@ export default defineComponent({
     return {
       routerItems: [
         {name: 'Home', value: ''},
-        {name: 'Document', value: 'doc'},
+        {name: 'Document', value:'doc'},
       ],
     }
   },
   inject: ['bus'],
-  methods:{
-    toggleLang(){
+  methods: {
+    toggleLang() {
+      const preLang = this.bus.target.lang
       this.bus.toggleLang()
+      this.$router.push(this.$route.path.replace(preLang, this.bus.target.lang));
     }
   }
 })
@@ -115,6 +117,7 @@ $header-height: 66px;
       cursor: pointer;
       margin-left: 5px;
       margin-right: 5px;
+
       &:hover {
         transform: rotate(8deg);
       }

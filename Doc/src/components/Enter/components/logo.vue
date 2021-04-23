@@ -2,9 +2,7 @@
   <div class="enter-button">
     <b-icon class="logo" :font-size="300" name="better1"></b-icon>
     <div class="enter-button-description">
-      A PC Datepicker with no dependency
-      <br>
-      Lighter and Better
+      A 9KB PC Datepicker
     </div>
     <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn"
               icon="forward" position="right">
@@ -19,7 +17,7 @@ export default {
   methods: {
     toDocument() {
       this.$router.push({
-        name: 'start'
+        path: this.$route.path + '/doc/start'
       })
     }
   }

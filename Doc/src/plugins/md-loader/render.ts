@@ -74,6 +74,7 @@ export default function getRenderComponent(demos: string[]): VueComponents {
                     getCurrentDate: null,
                     getDate: null,
                     open: null,
+                    setPlacementLeft: ()=>{},
                     close: null,
                  }
                },

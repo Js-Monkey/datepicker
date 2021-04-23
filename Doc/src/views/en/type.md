@@ -1,7 +1,7 @@
 datepicker Type
 ##  Date
 
-::: Default mode is Date, the basic unit is [day], and the day you choose is a **string** value.
+::: Default mode is Date, the basic unit is [day]
 ```html
 <Input width="20vw" id="dateInput">
 <script>
@@ -14,8 +14,8 @@ datepicker Type
 
 
 ##  Date-range
-::: **date-range** mode can choose the start time and the end time. The range you choose is a **date range**.
-By default, the two interval panels are linked to each other, or you can use *unlinkPanels* to unlink the panels.
+::: **date-range** mode can choose the start time and the end time. 
+
 ```html
 <Input width="20vw" id="dateRangeInput">
 <script>

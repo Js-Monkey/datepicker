@@ -1,15 +1,15 @@
 <template>
   <div class="slider">
     <ul>
-      <li :class="{secondLevel: isSecondLevel(list)}" @click="toRoute(list.name)" v-for="list in routeLists">
+      <li :class="{secondLevel: list.isSecondLevel}" @click="toRoute(list.name)" v-for="list in routeLists">
         {{ list.name }}
+        <span class="metaName">{{list.metaName}}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import {toRefs} from 'vue'
 
 export default {
   name: "slider",
@@ -18,21 +18,22 @@ export default {
       type: Object
     }
   },
-  setup(props) {
-    const route = toRefs(props).route.value
-    const documentList = route.options
-    const routeLists = documentList.routes[1].children
-    return {
-      routeLists
+  inject:['bus'],
+  computed:{
+    routeLists(){
+      const documentList = this.route.options
+      if(this.bus.target.lang==='en'){
+        return documentList.routes[2].children
+      }else{
+        return documentList.routes[4].children
+      }
     }
   },
+
   methods: {
     toRoute(name) {
       this.$router.push({name})
     },
-    isSecondLevel(list){
-      return list.path.indexOf('/')> -1
-    }
   }
 }
 </script>
@@ -49,7 +50,7 @@ export default {
   overflow-y: auto;
   color: #ffffff;
   font-size: 20px;
-  font-family: Futura;
+  font-family: Futura,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 
   ul {
     list-style: none;
@@ -58,8 +59,14 @@ export default {
       margin-top: 10px;
       cursor: pointer;
       transition: .23s color;
+      font-size: 16px;
       &:hover{
         color: #ffb311;
+      }
+      .metaName{
+        margin-left: 6px;
+        color: #efeedd;
+        font-size: 13px;
       }
     }
     .secondLevel{

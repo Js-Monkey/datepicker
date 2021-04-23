@@ -1,8 +1,8 @@
 ## START
- Import styles, **or you can customize theme colors** [Here](#/doc/theme)
+ Import styles, **or you can customize theme colors** [Here](#/en/doc/theme)
 ```js
   import  {createDatePicker} from 'better-datepicker'
-  import 'better-datepicker/index.css'
+  import 'better-datepicker/dist/index.css'
 
 ```
 
@@ -22,7 +22,7 @@ you can also
 
 ## OPTIONS
   *createDatePicker* accepts two parameters.
-  The first is the **InputElement**, and the second is the **configuration item**. For more details [Here](#/doc/options)
+  The first is the **InputElement**, and the second is the **configuration item**. For more details [Here](#/en/doc/options)
 ```js
   const input = document.querySelector('#input')
   createDatePicker(input,{
