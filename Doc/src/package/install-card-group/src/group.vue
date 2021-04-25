@@ -3,6 +3,7 @@
     <install-card icon="npm" text="npm i better-datepicker"></install-card>
     <install-card icon="yarn" text="yarn add better-datepicker"></install-card>
   </div>
+  <div class="fixedHeight"></div>
 </template>
 
 <script>
@@ -28,6 +29,10 @@ export default defineComponent({
   color: #f9fdfe;
   padding: 9px;
   font-family: Menlo;
-  border-radius: 5px;
+  position: absolute;
+  left: 0;
+}
+.fixedHeight{
+  height: 60px;
 }
 </style>

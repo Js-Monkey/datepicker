@@ -7,16 +7,10 @@
 </template>
 
 <script lang="ts">
-import Logo from './components/logo.vue'
-import installCard from './components/install-card.vue'
-import start from './start.md'
 
 export default {
   name: "Enter",
   components: {
-    Logo,
-    start,
-    installCard
   }
 }
 </script>
