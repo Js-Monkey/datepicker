@@ -98,7 +98,8 @@
 ##  open/close
 
 ::: **手动触发 open/close** 
-需要注意的是，如果
+需要注意的是，如果在点击事件监听回调函数中使用这两个函数，会触发组件自带的*clickoutside*,导致**不生效**
+或可以使用**e.stopPropagation()** 使点击事件不再冒泡到*body上面*
 ```html
 <div>
 <Input id="openInput" />

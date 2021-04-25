@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import {defineComponent, reactive} from 'vue'
-import Header from './components/Header.vue'
+import Header from './components/Header/Header.vue'
 
 export default defineComponent({
   name: 'App',

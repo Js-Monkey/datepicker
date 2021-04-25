@@ -1,5 +1,10 @@
+<logo></logo>
+
+
+<install-card-group></install-card-group>  
+
 ## START
- Import styles, **or you can customize theme colors** [Here](#/en/doc/theme)
+ Import styles, **  或者你可以自定义主题颜色** [Here](#/en/doc/theme)
 ```js
   import  {createDatePicker} from 'better-datepicker'
   import 'better-datepicker/dist/index.css'

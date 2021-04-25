@@ -4,9 +4,6 @@ import Document from '../components/Document'
 
 const history = createWebHashHistory()
 
-const routes = [
-    {path: '/', component: Enter},
-]
 
 function createRoute(lang: string, lists: any[]) {
     const createChild = (list: any) => {
@@ -18,74 +15,86 @@ function createRoute(lang: string, lists: any[]) {
             component: () => import(`../views/${lang}/${list.path}.md`)
         }
     }
-    const i18nRoute = [
-        {path: '/' + lang, name: lang, component: Enter},
-        {
-            path: `/${lang}/doc`,
-            component: Document,
-            redirect: `/${lang}/doc/start`,
-            children: lists.map(list => createChild(list))
-        }
-    ]
-    routes.push(...i18nRoute as any)
+
+    return {
+        path: `/${lang}/doc`,
+        component: Document,
+        redirect: `/${lang}/doc/start`,
+        children: lists.map(list => createChild(list))
+    }
 }
-
-
-createRoute('en', [
-    {
-        name: 'start',
-        path: 'start'
-    },
-    {
-        name: 'theme',
-        path: 'theme'
-    },
-    {
-        name: 'options',
-        path: 'options'
-    },
-    {
-        name: 'type',
-        path: 'type',
-        isSecond: true
-    },
-    {
-        name: 'method',
-        path: 'method'
-    },
-])
-createRoute('zh', [
-    {
-        name: 'Start',
-        path: 'start',
-        metaName: '开始'
-    },
-    {
-        name: 'Theme',
-        path: 'theme',
-        metaName: '主题'
-    },
-    {
-        name: 'Options',
-        path: 'options',
-        metaName: '配置'
-    },
-    {
-        name: 'Type',
-        path: 'type',
-        metaName: '类型',
-        isSecond: true
-    },
-    {
-        name: 'Method',
-        path: 'method',
-        metaName: '方法'
-    },
-])
 
 const router = createRouter({
     history,
-    routes
+    routes: [
+        {
+            path: '/',
+            component: Enter,
+            children: [
+                {
+                    path: 'zh',
+                    name:'zh',
+                    component: ()=>import('../views/zh/home.md')
+                },
+                {
+                    path: 'en',
+                    name:'en',
+                    component: ()=>import('../views/en/home.md')
+                },
+            ]
+        },
+        createRoute('en', [
+            {
+                name: 'start',
+                path: 'start'
+            },
+            {
+                name: 'theme',
+                path: 'theme'
+            },
+            {
+                name: 'options',
+                path: 'options'
+            },
+            {
+                name: 'type',
+                path: 'type',
+                isSecond: true
+            },
+            {
+                name: 'method',
+                path: 'method'
+            },
+        ]),
+        createRoute('zh', [
+            {
+                name: 'Start',
+                path: 'start',
+                metaName: '开始'
+            },
+            {
+                name: 'Theme',
+                path: 'theme',
+                metaName: '主题'
+            },
+            {
+                name: 'Options',
+                path: 'options',
+                metaName: '配置'
+            },
+            {
+                name: 'Type',
+                path: 'type',
+                metaName: '类型',
+                isSecond: true
+            },
+            {
+                name: 'Method',
+                path: 'method',
+                metaName: '方法'
+            },
+        ])
+    ]
 })
 
 
@@ -95,6 +104,8 @@ router.beforeEach((to, from, next) => {
         next({
             name
         })
+    } else if (to.path === '/zh/' || to.path === '/en/') {
+        next('/')
     } else {
         next()
     }

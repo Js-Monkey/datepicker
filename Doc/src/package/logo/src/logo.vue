@@ -11,8 +11,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from "vue"
+
+export default defineComponent({
   name: "logo",
   methods: {
     toDocument() {
@@ -21,7 +23,7 @@ export default {
       })
     }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">

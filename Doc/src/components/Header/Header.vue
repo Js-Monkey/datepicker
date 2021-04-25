@@ -49,7 +49,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import "../assets/style/global";
+@import "../../assets/style/global";
 
 $header-bg: $black;
 $header-height: 66px;

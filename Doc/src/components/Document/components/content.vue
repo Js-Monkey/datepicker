@@ -33,6 +33,9 @@ export default {
   }
 }
 .markdown-body{
-  width: 70%;
+  background: #112232;
+  p{
+    margin-top: 0;
+  }
 }
 </style>
