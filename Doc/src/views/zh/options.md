@@ -16,7 +16,7 @@ createDatePicker(input,options)
 
 | Property     | Description | Type   | Accepted Values | Default |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
-| type              |    选择器类型      |   string     |   date/date-range/month/month-range/year/year-range     | date
+| type              |    选择器类型      |   string     |   date/date-range/month/month-range/year/year-range/week     | date
 | format              |    格式  |   string     |   -     | yyyy/MM/d
 | offset              |    距离输入框的距离    |   number     |   -    | 12
 | zIndex              |      弹出框的z-index    |   number     |   -     | 2000

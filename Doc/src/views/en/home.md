@@ -38,21 +38,27 @@ you can also
   })
 ```
 
-## INSTANCE METHODS
+## METHODS
 
 ```js
   const input = document.querySelector('#input')
-  const instance = createDatePicker(input)
+  const picker = createDatePicker(input)
 
-  instance.destroyed() //destroyed the datepicker
+  picker.destroyed() //destroyed the datepicker
 
-  instance.update({placement: 'top'}) //Update configuration, destroyed old datepicker
+  picker.update({placement: 'top'}) //Update configuration, destroyed old datepicker
 
-  instance.onChange((date)=>{
+  picker.onChange((date)=>{
     console.log('The current date is ' + date)
   })
 
-  instance.getCurrentDate()
+  picker.getCurrentDate()
+
+  picker.open()  // to open picker
+
+  picker.close() // to close picker
+
+  picker.clear() // to clear picker
 
   //more
 ```

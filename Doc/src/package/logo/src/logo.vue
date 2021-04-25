@@ -2,11 +2,11 @@
   <div class="enter-button">
     <b-icon class="logo" :font-size="300" name="better1"></b-icon>
     <div class="enter-button-description">
-      A PC Datepicker with only 9KB
+     {{descriptions}}
     </div>
     <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn"
               icon="forward" position="right">
-      Document
+      {{buttonName}}
     </b-button>
   </div>
 </template>
@@ -16,13 +16,34 @@ import {defineComponent} from "vue"
 
 export default defineComponent({
   name: "logo",
+  data(){
+    return {
+        zh: {
+           description: '一个仅9k的日期选择器',
+           buttonName: '快速开始'
+        },
+        en:{
+          description: 'A PC Datepicker with only 9KB',
+          buttonName: 'Start'
+        }
+    }
+  },
+  computed:{
+    descriptions(){
+      return this[this.bus.target.lang].description
+    },
+    buttonName(){
+     return this[this.bus.target.lang].buttonName
+    }
+  },
+  inject:['bus'],
   methods: {
     toDocument() {
       this.$router.push({
         path: this.$route.path + '/doc/start'
       })
     }
-  }
+  },
 })
 </script>
 

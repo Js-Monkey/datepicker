@@ -91,7 +91,7 @@ If the format is illegal, it will use default value
 
 | Options | Description | Type | Accepted Values | Default |
 |---------|------------ |---------- |-------------  |-------- |
-| type | Type of datepicker | string | date/date-range/month/month-range/year/year-range | date |
+| type | Type of datepicker | string | date/date-range/month/month-range/year/year-range/week | date |
 | format | To set the date format | string | - | yyyy/mm/dd |
 | placement | Placement of datepicker | string | top/bottom/right/left | bottom |
 | disabledDate | Specifies the date that cannot be selected | function | - | - |

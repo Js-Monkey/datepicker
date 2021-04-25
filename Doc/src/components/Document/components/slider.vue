@@ -22,10 +22,11 @@ export default {
   computed:{
     routeLists(){
       const documentList = this.route.options
+      console.log(documentList)
       if(this.bus.target.lang==='en'){
-        return documentList.routes[2].children
+        return documentList.routes[1].children
       }else{
-        return documentList.routes[4].children
+        return documentList.routes[2].children
       }
     }
   },

@@ -4,18 +4,20 @@
 <install-card-group></install-card-group>  
 
 ## START
- Import styles, **  或者你可以自定义主题颜色** [Here](#/en/doc/theme)
+ 引入样式, **或者你可以自定义主题颜色** [这里](#/en/doc/theme)
 ```js
   import  {createDatePicker} from 'better-datepicker'
   import 'better-datepicker/dist/index.css'
 
+  const input = document.querySelector('#input')
+  createDatePicker(input)
 ```
 
-you can also 
+你同样可以
 
 ```html
   <div id="wrapper">
-     <span>Including children, find the first inputElement</span>
+     <span>如果传入的dom节点不是Input元素，则会在子元素里面逐级寻找</span>
      <input type="text">
   </div>
 ```
@@ -26,8 +28,8 @@ you can also
 
 
 ## OPTIONS
-  *createDatePicker* accepts two parameters.
-  The first is the **InputElement**, and the second is the **configuration item**. For more details [Here](#/en/doc/options)
+  *createDatePicker* 接受两个参数
+  第一个是需要绑定的**输入框节点**, 第二个是选择器局部配置[更多详情](#/en/doc/options)
 ```js
   const input = document.querySelector('#input')
   createDatePicker(input,{
@@ -38,28 +40,34 @@ you can also
   })
 ```
 
-## INSTANCE METHODS
+## METHODS 实例方法
 
 ```js
   const input = document.querySelector('#input')
-  const instance = createDatePicker(input)
+  const picker = createDatePicker(input)
 
-  instance.destroyed() //destroyed the datepicker
+  picker.destroyed() //destroyed the datepicker
 
-  instance.update({placement: 'top'}) //Update configuration, destroyed old datepicker
+  picker.update({placement: 'top'}) //Update configuration, destroyed old datepicker
 
-  instance.onChange((date)=>{
+  picker.onChange((date)=>{
     console.log('The current date is ' + date)
   })
 
-  instance.getCurrentDate()
+  picker.getCurrentDate()
+
+  picker.open()  // to open picker
+
+  picker.close() // to close picker
+
+  picker.clear() 
 
   //more
 ```
 
-##  Locale
+##  Locale 地区
 
-**global config**
+**全局配置**
 
 ```js
   import {locale} from "better-datepicker"
@@ -68,7 +76,7 @@ you can also
   locale(zhCn)
 ```
 
-or
+如果安装包没有提供的地区文件，可以自定义
 ```js
   const localeConfig = {
      name: "en",

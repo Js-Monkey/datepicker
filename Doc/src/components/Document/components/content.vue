@@ -19,10 +19,8 @@ export default {
   padding: 20px 20px 20px 20px;
   color: #dae3f6;
   max-width: calc(100vw - 230px);
-  min-width: calc(100vw - 230px);
   font-family: Futura;
-  display: flex;
-  justify-content: center;
+  width: 80%;
   &-wrapper{
     width: calc(100vw - 210px);
     background: #112232;
