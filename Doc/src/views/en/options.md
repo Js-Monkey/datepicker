@@ -13,11 +13,21 @@ const options = {
 createDatePicker(input,options)
 ```
 
+**Global config**
+```
+import {locale,defaultOptions} from 'better-datepicker'
+defaultOptions({
+    themeColor: '#1890ff',
+    rangeBgColor: '#e6f7ff',
+    tdColor: '#5f5f5f',
+    thColor: '#5f5f5f'
+})
+```
+
 
 | Property     | Description | Type   | Accepted Values | Default |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
 | type              |     type of picker     |   string     |   date/date-range/month/month-range/year/year-range/week     | date
-| unlinkPanels      |     Unlink between two panels    |   boolean     |                   -                         | false
 | format              |    To set the date format   |   string     |   -     | yyyy/MM/d
 | offset              |     Distance between Picker and inputElement    |   number     |   -    | 12
 | zIndex              |      z-index of Picker    |   number     |   -     | 2000

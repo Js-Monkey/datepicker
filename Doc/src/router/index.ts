@@ -62,9 +62,19 @@ const router = createRouter({
                 isSecond: true
             },
             {
+                name: 'basic',
+                path: 'basic',
+                isSecond: true
+            },
+            {
                 name: 'method',
                 path: 'method'
             },
+            {
+                name: 'locale',
+                path: 'locale',
+            },
+
         ]),
         createRoute('zh', [
             {
@@ -89,9 +99,20 @@ const router = createRouter({
                 isSecond: true
             },
             {
+                name: 'Basic',
+                isSecond: true,
+                path: 'basic',
+                metaName: '基础配置'
+            },
+            {
                 name: 'Method',
                 path: 'method',
                 metaName: '方法'
+            },
+            {
+                name: 'Locale',
+                path: 'locale',
+                metaName: '地区设置'
             },
         ])
     ]
