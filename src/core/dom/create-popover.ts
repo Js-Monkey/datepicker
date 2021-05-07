@@ -3,12 +3,12 @@ import {createElement} from '../../utils/element'
 import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Date&Week'
 import {Month, endMonth, Year,endYear} from '../components/Month&Year'
-import {PopoverType, RangeComponentName} from '../../types/components'
+import {PopoverType, DateComponentsType} from '../../types/components'
 import {has} from "../../utils/has"
 import {canIUseAnimation} from "../../utils/env";
 
 
-function rangeComponent(type: RangeComponentName = 'month') {
+function rangeComponent(type: keyof DateComponentsType = 'month') {
   const componentType = {
     date: {
       start: [HeaderLeft, Day],

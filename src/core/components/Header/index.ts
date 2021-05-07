@@ -1,13 +1,13 @@
-import {HeaderDateComponentsType, HeaderType} from '../../../types/components'
+import {DateComponentsType} from '../../../types/components'
 import {createElement, visible} from '../../../utils/element'
 import {nextMonth, nextYear, preMonth, preYear, isDayPage, toMonthPage, toYearPage} from '../utils'
-import {pageName, State} from '../../../types/store'
+import {pageName, State, RangeType} from '../../../types/store'
 import {getTenRange} from '../../../utils/date'
 import {CreateElementOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {getFormatDate} from "../../util/format"
 
-let name: HeaderType = 'start'
+let name: keyof RangeType = 'start'
 
 const togglePage = {
     display: {
@@ -87,7 +87,7 @@ function month(state: State) {
 }
 
 function date(state: State) {
-    const textType: HeaderDateComponentsType = {
+    const textType: DateComponentsType = {
         date: {
             key: {
                 name,
@@ -193,7 +193,7 @@ const headerChildren = {
     end: [date, nextYearIcon, nextMonthIcon]
 }
 
-export function Header(state: State, t?: HeaderType): Node {
+export function Header(state: State, t?: keyof RangeType): Node {
     const opt = {
         class: ['header'],
         children: headerChildren[t || 'main'],

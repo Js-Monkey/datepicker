@@ -8,7 +8,7 @@ import {
 import {Sub} from "../../../../types/observer"
 import {dispatchDateChange, getDate} from "../../../util/method"
 import {mergeClasses} from "../../../../utils/merge"
-import {RangeComponentName} from "../../../../types/components"
+import {DateComponentsType} from "../../../../types/components"
 import {has, not} from "../../../../utils/has"
 import {monthStatus, yearStatus} from "./month&year/public"
 import {dateStatus, weekStatus} from "./date&week/public"
@@ -81,7 +81,7 @@ export const startMonthAndYear: Sub = {
     }
 }
 
-export function hoverSelect(type: RangeComponentName = 'month'): Sub {
+export function hoverSelect(type: keyof DateComponentsType= 'month'): Sub {
     return {
         key: {name: 'range', childKey: ['start', 'end']},
         cb() {
@@ -92,7 +92,7 @@ export function hoverSelect(type: RangeComponentName = 'month'): Sub {
     }
 }
 
-export function getStatus(self: State, date: string, idx: number, type: RangeComponentName = 'month', preStatus = ''): ComponentStatus {
+export function getStatus(self: State, date: string, idx: number, type: keyof DateComponentsType= 'month', preStatus = ''): ComponentStatus {
     const typeStatus: GetStatusFunctionsType = {
         year: yearStatus,
         month: monthStatus,

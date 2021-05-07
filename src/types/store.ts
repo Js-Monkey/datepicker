@@ -48,9 +48,12 @@ export interface DateData {
 
 export type RangeStatus = 'complete' | 'selecting'
 
-export interface Range {
-  start: string | null
-  end: string | null
+export interface RangeType<T = null>{
+  start: T
+  end: T
+}
+
+export interface Range extends RangeType<string | null>{
   status: RangeStatus
 }
 

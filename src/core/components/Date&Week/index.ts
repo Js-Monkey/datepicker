@@ -1,13 +1,12 @@
 import {createElement} from '../../../utils/element'
-import {State} from '../../../types/store'
+import {State, RangeType} from '../../../types/store'
 import {isDayPage, utilStyle} from '../utils'
 import {CreateElementOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
-import {HeaderType} from "../../../types/components"
 import _for from "../../../utils/for"
 import {getWeeks} from "../../../utils/date"
 
-let type: HeaderType = 'start'
+let type: keyof RangeType = 'start'
 const rowsCount = 6
 const colsCount = 7
 
@@ -82,7 +81,7 @@ function bar(state: State): Node {
     )
 }
 
-export function Day(state: State, t: HeaderType = 'start'): Node {
+export function Day(state: State, t: keyof RangeType = 'start'): Node {
     type = t
     const classes = ['date']
     if (state.type === 'week') classes.push('week')

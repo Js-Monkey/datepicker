@@ -1,5 +1,5 @@
-import {MonthOrYearComponents, pageName, RangeStatus} from '../../types/store'
-import {HeaderType, RangeClickEvent} from '../../types/components'
+import {MonthOrYearComponents, pageName, RangeStatus,RangeType} from '../../types/store'
+import {RangeClickEvent} from '../../types/components'
 import {_EventListener} from "../../types/utils"
 import {getNext, getPre, transformDateToArray} from "../../utils/date"
 import {visible} from "../../utils/element"
@@ -45,7 +45,7 @@ export function handleRange(state: MonthOrYearComponents): _EventListener[] {
 }
 
 
-export function nextYear(type: HeaderType): void {
+export function nextYear(type: keyof RangeType): void {
   const num = this.page === 'year' ? 10 : 1
   this[type].year += num
 }
@@ -55,7 +55,7 @@ export function preYear(): void {
   this.start.year -= num
 }
 
-export function nextMonth(type: HeaderType): void {
+export function nextMonth(type: keyof RangeType): void {
   const child = this[type]
   ;[child.month, child.year] = getNext(child)
 }

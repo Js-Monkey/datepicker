@@ -1,5 +1,4 @@
 import {Sub} from './observer'
-import {Callback} from "./core";
 
 export interface UtilObject {
   [key: string]: any
@@ -111,11 +110,6 @@ export interface Handler<> {
   $style: HandlerCb
   children: HandlerCb
   hidden: HandlerCb
-}
-
-
-export interface AddEventListenerFunction {
-  (listener: _EventListener[] | Callback, arg?: unknown): void
 }
 
 export interface WeekRange{

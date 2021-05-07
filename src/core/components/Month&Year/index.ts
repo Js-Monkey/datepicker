@@ -1,18 +1,17 @@
 import {createElement, visible} from '../../../utils/element'
 import {utilStyle} from '../utils'
-import {State} from '../../../types/store'
+import {State,RangeType} from '../../../types/store'
 import {
-    ComponentsName,
+    ComponentsType,
     createMonthOrYearComponentsFunction,
     CreateMonthOrYearComponentsOptions,
-    HeaderType
 } from "../../../types/components"
 import {monthEvent, yearEvent} from "./event"
 import {CreateElementOptions} from "../../../types/utils"
 import _for from "../../../utils/for"
 import {getTenRange} from "../../../utils/date"
 
-let type: HeaderType = 'start'
+let type: keyof RangeType = 'start'
 const rows = 3
 const cols = 4
 
@@ -31,15 +30,15 @@ const components: CreateMonthOrYearComponentsOptions = {
                     name: type,
                     childKey: ['year']
                 },
-                cb: (y: number) => String(getTenRange(y)[idx])
+                cb: y => String(getTenRange(y)[idx])
             }
         }]
     }
 }
 
-export function YM(componentName: ComponentsName = 'month'): createMonthOrYearComponentsFunction {
+export function YM(componentName: keyof ComponentsType =  'month'): createMonthOrYearComponentsFunction {
     const {children, listener} = components[componentName]
-    return function (state: State, t: HeaderType = 'start'): Node {
+    return function (state: State, t: keyof RangeType = 'start'): Node {
         type = t
 
         function tBody(state: State): Node {

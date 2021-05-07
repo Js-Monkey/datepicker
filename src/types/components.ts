@@ -1,16 +1,11 @@
-import {MonthOrYearComponents, State} from './store'
+import {MonthOrYearComponents, RangeType, State} from './store'
 import {CreateElement, CreateElementOptions, eventHandler} from './utils'
 import {_EventListener} from "./utils"
 import {DatepickerType, DateType, MonthType, YearType} from "./options"
-import {Sub} from "./observer";
-
-export type HeaderType = 'start' | 'end'
-
-export type ComponentsName = 'month' | 'year'
-export type RangeComponentName = ComponentsName | 'date'
+import {Sub} from "./observer"
 
 export interface createMonthOrYearComponentsFunction {
-    (state: State, t: HeaderType): Node
+    (state: State, t: keyof RangeType): Node
 }
 
 
@@ -22,36 +17,41 @@ export interface UpdateCbType {
 
 export type PopoverType = DatepickerType<(CreateElementOptions | CreateElement)[]>
 
-export type DayEvent = DateType<(this: State) => void, _EventListener[]>
+type EventMethod = (this: State) => void
 
-export type MonthEvent = MonthType<(this: State) => void, _EventListener[]>
+export type DayEvent = DateType<EventMethod, _EventListener[]>
 
-export type YearEvent = YearType<(this: State) => void, _EventListener[]>
+export type MonthEvent = MonthType<EventMethod, _EventListener[]>
+
+export type YearEvent = YearType<EventMethod, _EventListener[]>
 
 export interface RangeClickEvent {
     complete: {
-        plt: HeaderType
+        plt: keyof RangeType
         status: 'selecting'
     }
     selecting: {
-        plt: HeaderType
+        plt: keyof RangeType
         status: 'complete'
     }
 }
 
-export interface CreateMonthOrYearComponentsOptions {
-    month: {
-        listener: (child: MonthOrYearComponents, state: State) => eventHandler
-        children: (idx: number, months: string[]) => (CreateElementOptions | CreateElement)[]
-    },
-    year: {
-        listener: (child: MonthOrYearComponents, state: State) => eventHandler
-        children: (idx: number) => (CreateElementOptions | CreateElement)[]
-    }
+interface CreateComponentsOptions {
+    listener: (child: MonthOrYearComponents, state: State) => eventHandler
+    children: (idx: number, months: string[]) => (CreateElementOptions | CreateElement)[]
 }
 
-export interface HeaderDateComponentsType {
-    date: Sub<string>
-    year: Sub<string>
-    month: Sub<string>
+
+export interface DateComponentsType<S = Sub<string>> {
+    date: S
+    year: S
+    month: S
 }
+
+
+export interface ComponentsType<C = never> {
+    month: C
+    year: C
+}
+
+export type CreateMonthOrYearComponentsOptions = ComponentsType<CreateComponentsOptions>
