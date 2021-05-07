@@ -4,7 +4,7 @@ export interface UtilObject {
   [key: string]: any
 }
 
-export type DateType = string | Date | null
+export type DateType =  Date | null
 
 export interface Fn {
   (...arg: any): any

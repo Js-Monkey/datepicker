@@ -18,16 +18,19 @@ export interface BetterPickerInstance {
     clear: () => void | null
 }
 
+export interface FormatValidator<R = number,P = unknown> {
+    (date: Date, ...arg: P[] ): R
+}
 
 export interface Formats {
-    d: (date: Date, locale?: LocaleConfig) => number
-    dd: (date: Date, locale?: LocaleConfig) => string
-    M: (date: Date, locale?: LocaleConfig) => number
-    MM: (date: Date, locale?: LocaleConfig) => string
-    yy: (date: Date, locale?: LocaleConfig) => string
-    yyyy: (date: Date, locale?: LocaleConfig) => number
-    w: (date: Date, locale: LocaleConfig) => number
-    ww: (date: Date, locale: LocaleConfig) => number
+    d: FormatValidator
+    dd: FormatValidator<string>
+    M: FormatValidator
+    MM: FormatValidator<string>
+    yy: FormatValidator<string>
+    yyyy: FormatValidator
+    w: FormatValidator<number,LocaleConfig>
+    ww: FormatValidator<number,LocaleConfig>
 }
 
 export interface GetStatusFunctions {
@@ -38,5 +41,5 @@ export interface GetStatusFunctionsType {
     year: GetStatusFunctions
     month: GetStatusFunctions
     date: GetStatusFunctions
-    week: (date: Date) =>void
+    week: (date: Date) => void
 }
