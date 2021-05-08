@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLeft should return HTMLElement 1`] = `
+Object {
+  "children": Array [
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "class": Array [
+    "header",
+  ],
+  "style": Object {
+    "text-align": "center",
+    "width": "298px",
+  },
+}
+`;
+
+exports[`HeaderRight should return HTMLElement 1`] = `
+Object {
+  "children": Array [
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "class": Array [
+    "header",
+  ],
+  "style": Object {
+    "text-align": "center",
+    "width": "298px",
+  },
+}
+`;

@@ -6,12 +6,12 @@ const state = createState(defaultOptions())
 
 describe('HeaderLeft',()=>{
   it('should return HTMLElement',()=>{
-    expect(HeaderLeft(state)).toBeInstanceOf(HTMLElement)
+    expect(HeaderLeft(state)).toMatchSnapshot()
   })
 })
 
 describe('HeaderRight',()=>{
   it('should return HTMLElement',()=>{
-    expect(HeaderRight(state)).toBeInstanceOf(HTMLElement)
+    expect(HeaderRight(state)).toMatchSnapshot()
   })
 })
