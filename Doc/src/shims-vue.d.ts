@@ -14,6 +14,12 @@ declare module 'rollup-plugin-sourcemaps'{
   export default value
 }
 
+declare module 'nprogress'{
+  const value: any
+  export default value
+}
+
+
 declare module 'rollup-plugin-json'{
   const value: any
   export default value

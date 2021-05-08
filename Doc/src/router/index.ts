@@ -1,6 +1,7 @@
 import {createRouter, createWebHashHistory} from "vue-router"
 import Enter from '../components/Enter'
 import Document from '../components/Document'
+import NProgress from "nprogress"
 
 const history = createWebHashHistory()
 
@@ -121,6 +122,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const name = localStorage.getItem('lang') || 'en'
+    NProgress.start()
     if (to.path === '/') {
         next({
             name
@@ -130,6 +132,10 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
+})
+
+router.afterEach(() => {
+    NProgress.done()
 })
 
 export default router

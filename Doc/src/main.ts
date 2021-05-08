@@ -9,6 +9,7 @@ import Msg from 'element-plus/lib/el-message'
 import 'element-plus/lib/theme-chalk/index.css'
 import './assets/style/el-message.css'
 import {createDatePicker, locale,defaultOptions} from '../../src'
+import NProgress from "nprogress";
 // import xx from '../../dist/locale_es/zh-cn'
 // locale(xx)
 // defaultOptions({
@@ -17,6 +18,12 @@ import {createDatePicker, locale,defaultOptions} from '../../src'
 //     tdColor: '#5f5f5f',
 //     thColor: '#5f5f5f'
 // })
+NProgress.configure({
+    easing: 'ease',  // 动画方式
+    speed: 200,  // 递增进度条的速度
+    showSpinner: true, // 是否显示加载ico
+    trickleSpeed: 200, // 自动递增间隔
+})
 
 const app = createApp(App)
 useComponent(app)

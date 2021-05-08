@@ -51,6 +51,7 @@
     "jest-config": "^25.0.0",
     "markdown-it": "^12.0.4",
     "markdown-it-anchor": "^7.0.2",
+    "nprogress": "^0.2.0",
     "rollup": "^2.37.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^3.1.0",

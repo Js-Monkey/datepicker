@@ -1,6 +1,6 @@
 <template>
   <Header/>
-  <router-view/>
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -17,12 +17,13 @@ export default defineComponent({
     const target = reactive({
       lang
     })
-    if(!lang){
-      localStorage.setItem('lang','en')
+    if (!lang) {
+      localStorage.setItem('lang', 'en')
     }
+
     function toggleLang() {
       target.lang = target.lang === 'zh' ? 'en' : 'zh'
-      localStorage.setItem('lang',target.lang)
+      localStorage.setItem('lang', target.lang)
     }
 
     return {
@@ -48,6 +49,16 @@ body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+#nprogress .bar {
+  background: rgb(198, 37, 36);
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  left: 0;
+  height: 3px;
+  width: 100%;
 }
 
 #app {
