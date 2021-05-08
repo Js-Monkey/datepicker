@@ -61,10 +61,8 @@ export function isAfter(source: string | null | Date, target: string | null | Da
 
 export function isSame(source: string | null | Date, target: string | null | Date, precision = 2): boolean {
     if (!source || !target) return false
-    source = transformDate(source)
-    target = transformDate(target)
-    source = source.split('/').slice(0, precision).join('/')
-    target = target.split('/').slice(0, precision).join('/')
+    source = transformDate(source).split('/').slice(0, precision).join('/')
+    target = transformDate(target).split('/').slice(0, precision).join('/')
     return source === target
 }
 

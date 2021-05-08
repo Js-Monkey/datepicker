@@ -46,9 +46,10 @@ function rangeComponent(type: keyof DateComponentsType = 'month') {
   ]
 }
 
+const dateAndWeek = [Header, Day, Month, Year]
 const popoverType: PopoverType = {
-  date: [Header, Day, Month, Year],
-  week: [Header, Day, Month, Year],
+  date: dateAndWeek,
+  week: dateAndWeek,
   'date-range': rangeComponent('date'),
   month: [Header, Month, Year],
   'month-range': rangeComponent(),

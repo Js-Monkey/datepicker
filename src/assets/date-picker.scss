@@ -93,7 +93,7 @@ $transition: .3s all ease;
 
   }
 
-  &-inRange, &-range-start, &-range-end {
+  &-inRange {
     > div {
       background: $range-color;
     }
@@ -275,8 +275,8 @@ $transition: .3s all ease;
     }
   }
 
-  &-weekStart {
-    div {
+  &-date &-weekStart {
+    >div {
       background: $theme-color;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
@@ -284,12 +284,17 @@ $transition: .3s all ease;
     }
   }
 
-  &-weekEnd {
-    div {
+  &-date &-weekEnd {
+    >div {
       background: $theme-color;
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
       color: white !important;
+    }
+  }
+  &-date &-inRangeWeek {
+    > div {
+      background: $range-color;
     }
   }
 

@@ -15,6 +15,7 @@ export type ComponentStatus =
     | 'next'
     | 'selected'
     | 'inRange'
+    | 'inRangeWeek'
     | 'range-start'
     | 'range-end'
     | ''

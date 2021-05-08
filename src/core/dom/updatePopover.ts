@@ -14,7 +14,7 @@ function transform(offset: number | string): Transform {
     }
 }
 
-export const animations = ['hidden 0.3s','show 0.3s']
+export const animations = ['hidden 0.3s', 'show 0.3s']
 export const sheetRule = [
     (orn: string) => `@keyframes hidden { 0% {opacity: 1;transform: ${orn} scaleY(1);} 100% {opacity: 0;visibility: hidden;transform: ${orn} scaleY(.8);} }`,
     (orn: string) => `@keyframes show { 0% {display: block;opacity: 0;transform:scaleY(.8) ${orn};} 100% {display: block;opacity: 1;transform: scaleY(1) ${orn};} }`
@@ -103,12 +103,7 @@ export function setPopoverLocation(): void {
     }
 }
 
-export function getPosition({
-                                top,
-                                left,
-                                height,
-                                width
-                            }: Rect, offset: number): Transform<{ left: number; top: number }> {
+export function getPosition({top, left, height, width}: Rect, offset: number): Transform<{ left: number; top: number }> {
     const _tTop = top + window.scrollY - offset
     const _bTop = top + height + window.scrollY + offset
     const _tLeft = left + window.scrollX
