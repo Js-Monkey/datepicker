@@ -52,7 +52,7 @@ export function YM(componentName: keyof ComponentsType =  'month'): createMonthO
             )
         }
 
-        function tr(): CreateElementOptions[] {
+        function tr(): Partial<CreateElementOptions>[] {
             return _for((rc) => {
                 return {
                     name: 'tr',
@@ -61,7 +61,7 @@ export function YM(componentName: keyof ComponentsType =  'month'): createMonthO
             }, rows)
         }
 
-        function td(rc: number): CreateElementOptions[] {
+        function td(rc: number): Partial<CreateElementOptions>[] {
             return _for((cc) => {
                 const idx = rc * cols + cc
                 const child = state[type][('_' + componentName) as '_month'][idx]

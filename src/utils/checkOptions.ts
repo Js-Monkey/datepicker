@@ -1,4 +1,4 @@
-import Options, {AcceptOptions} from '../types/options'
+import Options, {CheckOptions} from '../types/options'
 import {isArray, isBoolean, isFunc, isNumber, isString} from './typeOf'
 import {has} from "./has"
 
@@ -6,7 +6,7 @@ import {has} from "./has"
 const str = isString
 const bool = isBoolean
 const num = isNumber
-const acceptOptions: AcceptOptions = {
+const acceptOptions: CheckOptions = {
   placement: ['top', 'left', 'bottom', 'right'],
   type: ['date', 'date-range', 'week','month', 'month-range','year','year-range'],
   unlinkPanels: bool,

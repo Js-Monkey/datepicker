@@ -28,7 +28,7 @@ function config(child: any, name: 'text' | 'status' = 'status') {
 }
 
 function tBody(state: State): Node {
-    function tr(): CreateElementOptions[] {
+    function tr(): Partial<CreateElementOptions>[] {
         return _for((rc) => {
             return {
                 name: 'tr',
@@ -37,7 +37,7 @@ function tBody(state: State): Node {
         }, rowsCount)
     }
 
-    function td(rc: number): CreateElementOptions[] {
+    function td(rc: number): Partial<CreateElementOptions>[] {
         return _for((cc) => {
             const idx = rc * 7 + cc
             const child = state[type]._date[idx]

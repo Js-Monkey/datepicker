@@ -2,7 +2,7 @@ import {Formats} from "../../types/core"
 import {isArray, isDate} from "../../utils/typeOf"
 import {getDay, getMonth, getWeekRange, getYear, getYearWeek} from "../../utils/date"
 import {DateType} from "../../types/utils"
-import {State} from "../../types/store";
+import {State} from "../../types/store"
 
 const token = /d{1,2}|M{1,2}|w{1,2}|yy(?:yy)?|"[^"]*"|'[^']*'/g
 

@@ -38,7 +38,7 @@ export interface RangeClickEvent {
 
 interface CreateComponentsOptions {
     listener: (child: MonthOrYearComponents, state: State) => eventHandler
-    children: (idx: number, months: string[]) => (CreateElementOptions | CreateElement)[]
+    children: (idx: number, months: string[]) => (Partial<CreateElementOptions> | CreateElement)[]
 }
 
 

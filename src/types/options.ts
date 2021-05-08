@@ -29,22 +29,7 @@ export interface DatepickerType<T = unknown, U = any> extends DateType, MonthTyp
     'year-range': T | U
 }
 
-export interface PickerOptions {
-    placement?: Placement
-    type?: keyof DatepickerType
-    unlinkPanels?: boolean
-    offset?: number
-    zIndex?: number
-    format?: string
-    insertTo?: 'body' | 'parent'
-    binding?: boolean
-    disabledDate?: ((date: Date) => boolean) | null
-    disabled?: boolean
-    themeColor?: string
-    rangeBgColor?: string
-    tdColor?: string
-    thColor?: string
-}
+export type PickerOptions = Partial<Options>
 
 export default interface Options {
     placement: Placement
@@ -63,7 +48,7 @@ export default interface Options {
     thColor: string
 }
 
-export interface AcceptOptions<T = (val: unknown) => boolean> {
+export interface CheckOptions<T = (val: unknown) => boolean> {
     placement: Placement[]
     type: (keyof DatepickerType)[]
     unlinkPanels: T

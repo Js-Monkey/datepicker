@@ -153,7 +153,7 @@ function preMonthIcon(state: State) {
 }
 
 function nextYearIcon(state: State) {
-    const opt: CreateElementOptions = {
+    const opt: Partial<CreateElementOptions> = {
         name: 'svg',
         text: 'year',
         style: {
