@@ -22,7 +22,6 @@ export default {
   computed:{
     routeLists(){
       const documentList = this.route.options
-      console.log(documentList)
       if(this.bus.target.lang==='en'){
         return documentList.routes[1].children
       }else{

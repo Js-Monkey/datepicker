@@ -6,7 +6,7 @@ import {
     eventHandler,
     eventType,
     Handler,
-    _EventListener
+    _EventListener, CreateElement
 } from '../types/utils'
 import {State} from '../types/store'
 import {addWatch} from '../observer/watcher'
@@ -16,9 +16,11 @@ import {UpdateCbType} from "../types/components"
 import {SvgName} from "../types/element"
 import {resetHoverColor, resetSelectColor} from "./theme"
 import {Callback} from "../types/core"
+
 const handler: Handler = {
     event(el, val, state) {
         const {themeColor} = state.options
+
         function addListener(listener: _EventListener[] | Callback, arg?: unknown): void {
             if (isArray<{ name: eventType; handler: eventHandler }>(listener)) {
                 listener.forEach(e => on(el, e.handler, e.name, state, arg))
@@ -26,6 +28,7 @@ const handler: Handler = {
                 on(el, listener, 'click', state, arg)
             }
         }
+
         if ('listener' in val) {
             addListener(val.listener, val.arg)
         } else {
@@ -41,8 +44,8 @@ const handler: Handler = {
     class: (el, val, state) => update.call(state, el, val, 'cls'),
     style: (el, val) => addAttr(el, transformStyle(val), 'style'),
     name: (el, val, state) => {
-        const color:string | undefined =  state.options[(val + 'Color') as 'thColor']
-        if(color)addAttr(el,{color}, 'style')
+        const color: string | undefined = state.options[(val + 'Color') as 'thColor']
+        if (color) addAttr(el, {color}, 'style')
     },
     text(el, val) {
         if (isString(val)) {
@@ -84,8 +87,8 @@ export default function createSVG(name: string): Element {
 }
 
 
-export function createElement(opt: Partial<CreateElementOptions>, state: State): Node {
-    if (isFunc<Node>(opt)) return opt(state)
+export function createElement(opt: Partial<CreateElementOptions> | CreateElement, state: State): Node {
+    if (isFunc<Partial<CreateElementOptions>>(opt)) return createElement(opt(state), state)
     const el = opt.name === 'svg' ? createSVG(opt.text as string) : createEL(opt.name)
     Object.keys(opt).forEach(key => {
         handler[key as keyof Handler](el as HTMLElement, opt[key as never], state)

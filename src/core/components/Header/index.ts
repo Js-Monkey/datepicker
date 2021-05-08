@@ -1,9 +1,9 @@
 import {DateComponentsType} from '../../../types/components'
-import {createElement, visible} from '../../../utils/element'
+import {visible} from '../../../utils/element'
 import {nextMonth, nextYear, preMonth, preYear, isDayPage, toMonthPage, toYearPage} from '../utils'
 import {pageName, State, RangeType} from '../../../types/store'
 import {getTenRange} from '../../../utils/date'
-import {CreateElementOptions} from '../../../types/utils'
+import {CreateElementPartOptions} from '../../../types/utils'
 import {Bind} from "../../../utils/bind"
 import {getFormatDate} from "../../util/format"
 
@@ -26,31 +26,28 @@ function format(date: string, state: State): string {
     return getFormatDate.call(state,date, state.locale.yearFormat) as string
 }
 
-function yearRange(state: State) {
-    return createElement(
-        {
-            name: 'span',
-            text: {
-                key: {
-                    name: 'start',
-                    childKey: ['year', '_date']
-                },
-                cb: (year: number) => getRange(year)
+function yearRange():  CreateElementPartOptions{
+    return {
+        name: 'span',
+        text: {
+            key: {
+                name: 'start',
+                childKey: ['year', '_date']
             },
-            $style: {
-                display: {
-                    key: ['page'],
-                    cb: (page: pageName) => visible(page === 'year')
-                }
-            },
-            event: toYearPage
+            cb: (year: number) => getRange(year)
         },
-        state
-    )
+        $style: {
+            display: {
+                key: ['page'],
+                cb: (page: pageName) => visible(page === 'year')
+            }
+        },
+        event: toYearPage
+    }
 }
 
-function year(state: State) {
-    return createElement({
+function year(state: State):  CreateElementPartOptions{
+    return {
         name: 'span',
         text: {
             key: {
@@ -67,23 +64,23 @@ function year(state: State) {
                 cb: (page: pageName) => visible(page !== 'year')
             }
         }
-    }, state)
+    }
 }
 
-function month(state: State) {
-    return createElement({
+function month(state: State):  CreateElementPartOptions{
+    return {
         name: 'span',
         text: {
             key: {
                 name,
                 childKey: ['month']
             },
-            cb: idx => state.locale.months[idx - 1]
+            cb: (idx: number) => state.locale.months[idx - 1]
         },
         class: ['pointerCursor'],
         event: toMonthPage,
         $style: togglePage
-    }, state)
+    }
 }
 
 function date(state: State) {
@@ -110,91 +107,82 @@ function date(state: State) {
             cb: (year: number) => getRange(year)
         },
     }
-    return createElement({
+    return {
         name: 'span',
         text: textType[state._type as 'date']
 
-    }, state)
+    }
 }
 
-function preYearIcon(state: State) {
-    return createElement(
-        {
-            name: 'svg',
-            text: 'year',
-            style: {
-                position: 'absolute',
-                left: '30px',
-                width: '14px',
-                height: '14px',
-            },
-            event: preYear
-        },
-        state
-    )
-}
-
-function preMonthIcon(state: State) {
-    return createElement(
-        {
-            name: 'svg',
-            text: 'month',
-            style: {
-                position: 'absolute',
-                left: '50px',
-                width: '14px',
-                height: '14px',
-            },
-            event: preMonth,
-            $style: togglePage
-        },
-        state
-    )
-}
-
-function nextYearIcon(state: State) {
-    const opt: Partial<CreateElementOptions> = {
+function preYearIcon():  CreateElementPartOptions{
+    return {
         name: 'svg',
         text: 'year',
         style: {
             position: 'absolute',
-            right: '30px',
+            left: '30px',
+            width: '14px',
+            height: '14px',
+        },
+        event: preYear
+    }
+}
+
+function preMonthIcon() {
+    return {
+        name: 'svg',
+        text: 'month',
+        style: {
+            position: 'absolute',
+            left: '50px',
+            width: '14px',
+            height: '14px',
+        },
+        event: preMonth,
+        $style: togglePage
+    }
+}
+
+function nextYearIcon() {
+   return {
+       name: 'svg',
+       text: 'year',
+       style: {
+           position: 'absolute',
+           right: '30px',
+           transform: 'rotate(180deg)',
+           width: '14px',
+           height: '14px',
+       },
+       event: Bind(nextYear, name)
+   }
+}
+
+function nextMonthIcon() {
+    return {
+        name: 'svg',
+        text: 'month',
+        style: {
+            position: 'absolute',
+            right: '50px',
             transform: 'rotate(180deg)',
             width: '14px',
             height: '14px',
         },
-        event: Bind(nextYear, name)
+        event: Bind(nextMonth, name),
+        $style: togglePage
     }
-    return createElement(opt, state)
 }
 
-function nextMonthIcon(state: State) {
-    return createElement(
-        {
-            name: 'svg',
-            text: 'month',
-            style: {
-                position: 'absolute',
-                right: '50px',
-                transform: 'rotate(180deg)',
-                width: '14px',
-                height: '14px',
-            },
-            event: Bind(nextMonth, name),
-            $style: togglePage
-        },
-        state
-    )
-}
-
-const headerChildren = {
+const headerChildren: any = {
     start: [preYearIcon, preMonthIcon, date],
     main: [preYearIcon, preMonthIcon, yearRange, year, month, nextYearIcon, nextMonthIcon],
     end: [date, nextYearIcon, nextMonthIcon]
 }
 
-export function Header(state: State, t?: keyof RangeType): Node {
-    const opt = {
+export function Header(state: State, t?: keyof RangeType): CreateElementPartOptions{
+    name = t || 'start'
+    return {
         class: ['header'],
         children: headerChildren[t || 'main'],
         style: {
@@ -202,14 +190,12 @@ export function Header(state: State, t?: keyof RangeType): Node {
             'text-align': 'center'
         }
     }
-    name = t || 'start'
-    return createElement(opt, state)
 }
 
-export function HeaderLeft(state: State): Node {
+export function HeaderLeft(state: State):  CreateElementPartOptions{
     return Header(state, 'start')
 }
 
-export function HeaderRight(state: State): Node {
+export function HeaderRight(state: State):  CreateElementPartOptions{
     return Header(state, 'end')
 }

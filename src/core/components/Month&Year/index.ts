@@ -1,4 +1,4 @@
-import {createElement, visible} from '../../../utils/element'
+import { visible} from '../../../utils/element'
 import {utilStyle} from '../utils'
 import {State,RangeType} from '../../../types/store'
 import {
@@ -7,7 +7,7 @@ import {
     CreateMonthOrYearComponentsOptions,
 } from "../../../types/components"
 import {monthEvent, yearEvent} from "./event"
-import {CreateElementOptions} from "../../../types/utils"
+import {CreateElementPartOptions} from "../../../types/utils"
 import _for from "../../../utils/for"
 import {getTenRange} from "../../../utils/date"
 
@@ -38,21 +38,18 @@ const components: CreateMonthOrYearComponentsOptions = {
 
 export function YM(componentName: keyof ComponentsType =  'month'): createMonthOrYearComponentsFunction {
     const {children, listener} = components[componentName]
-    return function (state: State, t: keyof RangeType = 'start'): Node {
+    return function (state: State, t: keyof RangeType = 'start'): CreateElementPartOptions{
         type = t
 
-        function tBody(state: State): Node {
+        function tBody(): CreateElementPartOptions {
 
-            return createElement(
-                {
-                    children: tr(),
-                    name: 'tbody'
-                },
-                state
-            )
+            return {
+                children: tr(),
+                name: 'tbody'
+            }
         }
 
-        function tr(): Partial<CreateElementOptions>[] {
+        function tr(): CreateElementPartOptions[] {
             return _for((rc) => {
                 return {
                     name: 'tr',
@@ -61,7 +58,7 @@ export function YM(componentName: keyof ComponentsType =  'month'): createMonthO
             }, rows)
         }
 
-        function td(rc: number): Partial<CreateElementOptions>[] {
+        function td(rc: number): CreateElementPartOptions[] {
             return _for((cc) => {
                 const idx = rc * cols + cc
                 const child = state[type][('_' + componentName) as '_month'][idx]
@@ -83,32 +80,29 @@ export function YM(componentName: keyof ComponentsType =  'month'): createMonthO
             }, cols)
         }
 
-        return createElement(
-            {
-                name: 'table',
-                children: [tBody],
-                class: [componentName],
-                style: utilStyle,
-                $style: {
-                    display: {
-                        key: ['page'],
-                        cb: (page: string) => visible(page === componentName)
-                    }
+        return {
+            name: 'table',
+            children: [tBody()],
+            class: [componentName],
+            style: utilStyle,
+            $style: {
+                display: {
+                    key: ['page'],
+                    cb: (page: string) => visible(page === componentName)
                 }
-            },
-            state
-        )
+            }
+        }
     }
 }
 
 export const Month = YM()
 
-export function endMonth(state: State): Node {
+export function endMonth(state: State): CreateElementPartOptions{
     return Month(state, 'end')
 }
 
 export const Year = YM('year')
 
-export function endYear(state: State): Node {
+export function endYear(state: State): CreateElementPartOptions {
     return Year(state, 'end')
 }

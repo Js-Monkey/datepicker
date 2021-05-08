@@ -74,7 +74,7 @@ export interface Style {
 }
 
 export interface CreateElement {
-    (...arg: any): Node
+    (...arg: any): Partial<CreateElementOptions>
 }
 
 export interface updateOptions<T = string> extends Sub<T> {
@@ -87,6 +87,8 @@ export interface DynamicStyle {
     background?: updateOptions
 }
 
+export type CreateElementPartOptions = Partial<CreateElementOptions>
+
 export interface CreateElementOptions {
     name: 'span' | 'div' | 'ul' | 'li' | 'input' | 'svg' | 'table' | 'tr' | 'th' | 'td' | 'thead' | 'tbody' | 'i'
     text: string | Sub<string>
@@ -94,7 +96,7 @@ export interface CreateElementOptions {
     event: eventHandler | _EventListener[] | EventListenerHasArguments
     style: Style
     $style: DynamicStyle
-    children: (Partial<CreateElementOptions> | CreateElement)[]
+    children: (CreateElementPartOptions | CreateElement)[]
     hidden: boolean
 }
 
@@ -102,15 +104,8 @@ interface HandlerCb<V> {
     (el: HTMLElement, val: V, state: State): void
 }
 
-export type Handler = {
-    name: HandlerCb<string>
-    text: HandlerCb<string>
-    class:HandlerCb<Sub<string>>
-    event: HandlerCb<EventListenerHasArguments>
-    style: HandlerCb<Style>
-    $style: HandlerCb<{[key in keyof Style]: Sub<string>}>
-    children:HandlerCb<Partial<CreateElementOptions>[]>
-    hidden: HandlerCb<boolean>
+export type Handler ={
+    [K in keyof CreateElementOptions]: HandlerCb<CreateElementOptions[K]>
 }
 
 export interface WeekRange {

@@ -1,7 +1,6 @@
-import {createElement} from '../../../utils/element'
 import {State, RangeType} from '../../../types/store'
 import {isDayPage, utilStyle} from '../utils'
-import {CreateElementOptions} from '../../../types/utils'
+import {CreateElementPartOptions} from '../../../types/utils'
 import {dayEvent} from "./event"
 import _for from "../../../utils/for"
 import {getWeeks} from "../../../utils/date"
@@ -27,8 +26,8 @@ function config(child: any, name: 'text' | 'status' = 'status') {
     }
 }
 
-function tBody(state: State): Node {
-    function tr(): Partial<CreateElementOptions>[] {
+function tBody(state: State): CreateElementPartOptions {
+    function tr(): CreateElementPartOptions[] {
         return _for((rc) => {
             return {
                 name: 'tr',
@@ -37,7 +36,7 @@ function tBody(state: State): Node {
         }, rowsCount)
     }
 
-    function td(rc: number): Partial<CreateElementOptions>[] {
+    function td(rc: number): CreateElementPartOptions[] {
         return _for((cc) => {
             const idx = rc * 7 + cc
             const child = state[type]._date[idx]
@@ -58,50 +57,41 @@ function tBody(state: State): Node {
         }, colsCount)
     }
 
-    return createElement(
-        {
-            children: tr(),
-            name: 'tbody'
-        },
-        state
-    )
+    return {
+        children: tr(),
+        name: 'tbody'
+    }
 }
 
-function bar(state: State): Node {
+function bar(state: State): CreateElementPartOptions {
     const offset = state.locale.weekStart
     const {weekdays} = state.locale
-    return createElement(
-        {
-            name: 'thead',
-            children: getWeeks<string>(weekdays, offset).map(name => {
-                return {text: name, name: 'th', style: tableStyle}
-            })
-        },
-        state
-    )
+    return {
+        name: 'thead',
+        children: getWeeks<string>(weekdays, offset).map(name => {
+            return {text: name, name: 'th', style: tableStyle}
+        })
+    }
 }
 
-export function Day(state: State, t: keyof RangeType = 'start'): Node {
+export function Day(state: State, t: keyof RangeType = 'start'): CreateElementPartOptions {
     type = t
     const classes = ['date']
     if (state.type === 'week') classes.push('week')
-    return createElement(
-        {
-            name: 'table',
-            children: [bar, tBody],
-            class: classes,
-            style: utilStyle,
-            $style: {
-                display: {
-                    key: ['page'],
-                    cb: isDayPage
-                }
+    return {
+        name: 'table',
+        children: [bar, tBody],
+        class: classes,
+        style: utilStyle,
+        $style: {
+            display: {
+                key: ['page'],
+                cb: isDayPage
             }
-        },
-        state
-    )
+        }
+    }
 }
 
-export function endDay(state: State): Node {
+export function endDay(state: State): CreateElementPartOptions {
     return Day(state, 'end')
 }

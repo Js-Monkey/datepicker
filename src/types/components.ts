@@ -5,7 +5,7 @@ import {DatepickerType, DateType, MonthType, YearType} from "./options"
 import {Sub} from "./observer"
 
 export interface createMonthOrYearComponentsFunction {
-    (state: State, t: keyof RangeType): Node
+    (state: State, t: keyof RangeType): Partial<CreateElementOptions>
 }
 
 
