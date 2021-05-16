@@ -57,7 +57,7 @@ export function setPopoverLocation(): void {
 
     function setPosition(): void {
         const position = getPosition(rect, offset)
-        Array.from(['left', 'top'] as ['left', 'top']).forEach(attr => (popover.style[attr] = position[placement as 'left'][attr] + 'px'))
+        Array.from(['left', 'top'] as const).forEach(attr => (popover.style[attr] = position[placement as 'left'][attr] + 'px'))
     }
 
     function fixReferencePosition() {

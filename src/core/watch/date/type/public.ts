@@ -85,7 +85,7 @@ export function hoverSelect(type: keyof DateComponentsType= 'month'): Sub {
     return {
         key: {name: 'range', childKey: ['start', 'end']},
         cb() {
-            (['start', 'end'] as ['start', 'end']).forEach(name => {
+            (['start', 'end'] as const).forEach(name => {
                 this[name][('_' + type) as '_month'].filter(item => not(item.status, ['pre', 'next'])).forEach((item, idx) => item.status = getStatus(this, item.date, idx, type))
             })
         }
