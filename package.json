@@ -1,6 +1,6 @@
 {
   "name": "better-datepicker",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "better-datepicker",
   "main": "dist/betterDatePicker.umd.js",
   "module": "dist/betterDatePicker.es5.js",

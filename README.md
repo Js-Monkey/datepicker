@@ -93,6 +93,9 @@ If the format is illegal, it will use default value
 |---------|------------ |---------- |-------------  |-------- |
 | type | Type of datepicker | string | date/date-range/month/month-range/year/year-range/week | date |
 | format | To set the date format | string | - | yyyy/MM/dd |
+| classes | To set the picker wrapper classes(**It will have a logo prefix: better-datepicker**) | string[] | - | - |
+| zIndex   |      z-index of Picker    |   number     |   -     | 2000
+| style | To set the picker wrapper style(**zIndex Priority is lower than above**) | Object  | - | - |
 | placement | Placement of datepicker | string | top/bottom/right/left | bottom |
 | disabledDate | Specifies the date that cannot be selected | function | - | - |
 | offset | Distance between Picker and inputElement | number | - | 12 |
@@ -102,7 +105,6 @@ If the format is illegal, it will use default value
 | rangeBgColor  |     The backgroundColor that element is in range ,It's usually lighter than the themeColor     |   string     |   -   | -
 | tdColor  |     Td text color   |   string     |   -   | -
 | thColor  |     Th text color   |   string     |   -   | -
-
 
 ## Default Options
 

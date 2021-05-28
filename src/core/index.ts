@@ -104,6 +104,7 @@ export default function Picker(): BetterPicker {
         create(options)
         return {
             id: state?.id,
+            popover: state?.popover,
             getCurrentDate,
             onChange,
             update,

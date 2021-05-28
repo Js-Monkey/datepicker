@@ -71,6 +71,7 @@ export interface Style {
     'text-align'?: string
     display?: 'inline-block' | 'none' | 'block'
     'border-right'?: string
+    'z-index'?: number
 }
 
 export interface CreateElement {

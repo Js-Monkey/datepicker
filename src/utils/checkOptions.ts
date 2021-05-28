@@ -1,5 +1,5 @@
 import Options, {CheckOptions} from '../types/options'
-import {isArray, isBoolean, isFunc, isNumber, isString,has} from './typeOf'
+import {isArray, isBoolean, isFunc, isNumber, isString, has, isObject} from './typeOf'
 
 
 const str = isString
@@ -13,6 +13,8 @@ const acceptOptions: CheckOptions = {
   zIndex: num,
   disabled: bool,
   disabledDate: isFunc,
+  style: isObject,
+  classes: isArray,
   offset: num,
   insertTo: ['body', 'parent'],
   binding: bool,

@@ -1,3 +1,5 @@
+import {Style} from "./utils";
+
 export type Placement = 'top' | 'left' | 'bottom' | 'right'
 
 export interface MonthType<T = unknown, U = unknown> {
@@ -33,6 +35,8 @@ export type PickerOptions = Partial<Options>
 
 export default interface Options {
     placement: Placement
+    style: Style
+    classes: string[]
     type: keyof DatepickerType
     unlinkPanels: boolean
     offset: number
@@ -50,6 +54,8 @@ export default interface Options {
 
 export interface CheckOptions<T = (val: unknown) => boolean> {
     placement: Placement[]
+    style: T
+    classes: T
     type: (keyof DatepickerType)[]
     unlinkPanels: T
     offset: T
@@ -57,7 +63,7 @@ export interface CheckOptions<T = (val: unknown) => boolean> {
     format: T
     binding: T
     insertTo: ('body' | 'parent')[]
-    disabledDate: (date: Date) => boolean
+    disabledDate: T
     disabled: T
     themeColor: T
     rangeBgColor: T

@@ -103,11 +103,10 @@
 ```
 
 
-## DOCUMENT TODOLIST
+## TODOLIST
 
-| TODO     | VERSION   |
-| ----------------- | -------------------------------- |
-| Doc Support Mobile  |    0.3     |
-| Support onOpen、onClose  |  0.4    |
-| Support readonly、unlinkPanels、className、bordered、panelRender、size |  0.5    |
-| -  |  -   |
+| versions | Description|
+|---------|------------ |
+| 0.5.0 | support unlinkPanels、zIndex、readonly、default-value、className、style、size .... |
+| 0.7.0 | support extends plugins |
+| 0.9.0 | support time picker |

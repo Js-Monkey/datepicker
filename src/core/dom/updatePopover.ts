@@ -41,11 +41,10 @@ export function updatePopover(vis: boolean): void {
 }
 
 export function setPopoverStyle(el: HTMLElement, zx: number): void {
-    const style = {
+    addAttr(el, {
         position: 'absolute',
         'z-index': zx
-    }
-    addAttr(el, style, 'style')
+    }, 'style')
 }
 
 export function setPopoverLocation(): void {

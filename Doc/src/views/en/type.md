@@ -7,6 +7,7 @@ datepicker Type
 <script>
     const input = document.querySelector('#dateInput')
     const picker = this.createDatePicker(input)
+    console.log(picker)
 </script>
 
 ```

@@ -82,9 +82,10 @@ function listenToAnimation(pop: HTMLElement) {
 export function createPopover(state: State): HTMLElement {
   const pop = createElement(
     {
-      class: ['wrapper'],
+      class: state.options.classes.concat(['wrapper']),
       children: popoverType[state.type],
-      hidden: true
+      hidden: true,
+      style: state.options.style,
     },
     state
   ) as HTMLElement

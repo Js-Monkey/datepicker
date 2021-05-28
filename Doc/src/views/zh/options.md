@@ -18,8 +18,10 @@ createDatePicker(input,options)
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
 | type              |    选择器类型      |   string     |   date/date-range/month/month-range/year/year-range/week     | date
 | format              |    格式  |   string     |   -     | yyyy/MM/d
+| classes | 设置弹出框的classes，**注意，这会携带logo前缀 better-datepicker** | string[] | - | - |
+| zIndex |      设置弹出框的z-index    |   number     |   -     | 2000
+| style | 设置弹出框的样式，**需要注意类似z-index这种优先级没有上面高** | Object  | - | - |
 | offset              |    距离输入框的距离    |   number     |   -    | 12
-| zIndex              |      弹出框的z-index    |   number     |   -     | 2000
 | insertTo              |   设置弹出框的父节点，设置*body*可以规避 *overflow: hidden*    |   string     |   body/parent     | body
 | binding              |   选择日期后是否改变输入框的值   |   boolean     |   -     | true
 | disabledDate              |   决定日期是否被禁用   |   Function     |   -    | -

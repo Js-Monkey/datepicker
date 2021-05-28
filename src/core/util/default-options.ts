@@ -15,7 +15,9 @@ const opt: Options = {
     themeColor: '',
     rangeBgColor: '',
     tdColor:'',
-    thColor:''
+    thColor:'',
+    style: {},
+    classes:[]
 }
 
 

@@ -1,6 +1,6 @@
 import Options, {DatepickerType, LocaleConfig} from './options'
 import {DateType, Fn} from "./utils"
-import {Callback} from "./core";
+import {Callback} from "./core"
 
 interface Watcher<K> {
     (target: stateComponent, key: keyof K, value: unknown): void
