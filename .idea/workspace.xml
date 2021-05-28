@@ -5,35 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b661a6ed-8e3f-465d-9058-ca2794d5033f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/date-picker.079c96b9.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/index.2b85e3ff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/index.9a58a6ea.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor.37ce11fe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/better-datepicker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/basic.d5ff1018.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/basic.f0eeb777.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/basic.de409ef0.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/basic.f256c8d9.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/date-picker.16cd7ab6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/home.501cdab5.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/home.d9b462b8.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/home.b75c042b.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/home.92f2c5a0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.1cc8ccac.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.55d5a1b7.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/locale.44aec7f1.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locale.94c6ddde.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/locale.6da30604.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locale.a1afb101.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/method.b6cd8de6.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/method.3eee71c9.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/method.d8c1edf2.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/method.e409d587.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/options.b4a182dc.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/options.d9f2a378.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/options.dff42563.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/options.ca7320ac.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/start.2ba7426d.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/start.21afa153.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/start.699049e0.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/start.00470275.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/theme.a37f93dc.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/theme.f29bead2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/theme.c081dcfe.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/theme.b7bfa100.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/type.2afd0948.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/type.213f6e04.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/type.4badbb50.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/type.439c0707.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/vendor.2128ca7e.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/@popperjs.a6f3ec41.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/@vue.3dbb8f52.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/api.75a4b3bc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/api.e14f96da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/basic.3b7aa1ec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/basic.646ef15f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/dayjs.fdf1b0d3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/element-plus.3163a756.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/element-plus.4d870618.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/highlight.js.e5f2aeb5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/home.5b0de769.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/home.b0f81719.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/index.cf9875d1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/index.e5a6dad8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/locale.2fa7d27d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/locale.56a8e66f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/method.380dfe0d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/method.e280d6c8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/mitt.9e427e6d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/normalize-wheel.1528d13b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/nprogress.cfe26ff3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/options.2f7e11ac.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/options.516239f6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/start.bfce334d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/start.f30846d6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/theme.1b7f9eba.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/theme.aaaadb8b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/type.1c6cce22.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/type.e4190b82.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/vue-router.f917b6fe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/vue.d67edee9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/basic.f0eeb777.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/basic.f256c8d9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/home.92f2c5a0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/home.d9b462b8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index.2b85e3ff.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index.9a58a6ea.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/locale.94c6ddde.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/locale.a1afb101.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/method.3eee71c9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/method.e409d587.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/options.ca7320ac.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/options.d9f2a378.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/start.00470275.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/start.21afa153.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/theme.b7bfa100.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/theme.f29bead2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/type.213f6e04.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/type.439c0707.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/vendor.37ce11fe.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +119,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
