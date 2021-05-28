@@ -75,45 +75,46 @@ const router = createRouter({
                 name: 'locale',
                 path: 'locale',
             },
-
+            {
+                name: 'API',
+                path: 'api'
+            },
         ]),
         createRoute('zh', [
             {
-                name: 'Start',
+                name: '开始',
                 path: 'start',
-                metaName: '开始'
             },
             {
-                name: 'Theme',
+                name: '主题',
                 path: 'theme',
-                metaName: '主题'
             },
             {
-                name: 'Options',
+                name: '配置',
                 path: 'options',
-                metaName: '配置'
             },
             {
-                name: 'Type',
+                name: '类型',
                 path: 'type',
-                metaName: '类型',
                 isSecond: true
             },
             {
-                name: 'Basic',
+                name: '基础配置',
                 isSecond: true,
                 path: 'basic',
-                metaName: '基础配置'
             },
             {
-                name: 'Method',
-                path: 'method',
-                metaName: '方法'
+                name: '方法',
+                path: 'method'
             },
+
             {
-                name: 'Locale',
+                name: '地区设置',
                 path: 'locale',
-                metaName: '地区设置'
+            },
+            {
+                name: '其他接口',
+                path: 'api'
             },
         ])
     ]

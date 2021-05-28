@@ -2,8 +2,8 @@
   <div class="slider">
     <ul>
       <li :class="{secondLevel: list.isSecondLevel}" @click="toRoute(list.name)" v-for="list in routeLists">
-        {{ list.name }}
-        <span class="metaName">{{list.metaName}}</span>
+        <span v-if="list.metaName" class="metaName">{{list.metaName}}</span>
+       <span v-else>{{ list.name }}</span>
       </li>
     </ul>
   </div>

@@ -1,8 +1,7 @@
 import Options from "../types/options"
 import {checkOptions} from "./checkOptions"
 import {logo} from "./classes"
-import {isArray} from "./typeOf"
-import {has} from "./has"
+import {isArray,has} from "./typeOf"
 
 export function mergeOptions(source: any, target = Object.create(null)): Options {
   for (const key in source) {

@@ -4,7 +4,7 @@ import {Header, HeaderLeft, HeaderRight} from '../components/Header'
 import {Day, endDay} from '../components/Date&Week'
 import {Month, endMonth, Year,endYear} from '../components/Month&Year'
 import {PopoverType, DateComponentsType} from '../../types/components'
-import {has} from "../../utils/has"
+import {has} from "../../utils/typeOf"
 import {canIUseAnimation} from "../../utils/env";
 
 

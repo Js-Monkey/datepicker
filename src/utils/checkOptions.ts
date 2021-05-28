@@ -1,6 +1,5 @@
 import Options, {CheckOptions} from '../types/options'
-import {isArray, isBoolean, isFunc, isNumber, isString} from './typeOf'
-import {has} from "./has"
+import {isArray, isBoolean, isFunc, isNumber, isString,has} from './typeOf'
 
 
 const str = isString

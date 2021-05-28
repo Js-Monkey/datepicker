@@ -65,6 +65,7 @@ export default function Picker(): BetterPicker {
     function create(options?: Options): void {
         if (!reference) return
         state = createState(opt)
+        state.destroyed = destroyed
         changeWeekFormat(options)
         watch(opt)
         addListener()
@@ -102,7 +103,7 @@ export default function Picker(): BetterPicker {
         opt = mergeOptions(defaultOptions(), options)
         create(options)
         return {
-            options,
+            id: state?.id,
             getCurrentDate,
             onChange,
             update,

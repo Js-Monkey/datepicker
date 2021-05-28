@@ -1,5 +1,6 @@
 import Options, {DatepickerType, LocaleConfig} from './options'
 import {DateType, Fn} from "./utils"
+import {Callback} from "./core";
 
 interface Watcher<K> {
     (target: stateComponent, key: keyof K, value: unknown): void
@@ -77,6 +78,7 @@ export interface stateUtil {
     visible: boolean
     page: pageName
     locale: LocaleConfig
+    destroyed?: Callback
 }
 
 export interface componentsWatchers<T = componentWatcher> {

@@ -55,9 +55,13 @@ export default function transformToVue(source: string): string {
  <script>
  import {defineComponent} from 'vue'
  import * as Vue from 'vue'
+ import {destroy} from "../../../../src";
  export default {
      name: 'demo-card',
-     components: ${componentsRender}
+     components: ${componentsRender},
+     beforeUnmount() {
+        destroy()
+     }
  }
 </script>
 

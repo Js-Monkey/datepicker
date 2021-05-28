@@ -14,8 +14,8 @@
             d="M721.9968 979.0208l47.0528-47.104-419.94752-419.98848 419.94752-419.90144-47.05792-47.04768-419.93216 419.89632h-0.00512l-47.104 47.09888 47.04768 47.04256z"></path>
       </svg>
       <span style="display: none;">2020 - 2029</span><span class="better-datepicker-pointerCursor"
-                                                           style="display: inline-block;">2021年</span><span
-        class="better-datepicker-pointerCursor" style="display: inline-block;">4月</span>
+                                                           style="display: inline-block;">2021</span><span
+        class="better-datepicker-pointerCursor" style="display: inline-block;">May</span>
       <svg viewBox="0 0 1024 1024"
            style=" position:absolute;right:30px;transform:rotate(180deg);width:14px;height:14px">
         <path

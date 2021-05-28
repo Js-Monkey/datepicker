@@ -6,9 +6,9 @@ Object {
   "close": [Function],
   "destroyed": [Function],
   "getCurrentDate": [Function],
+  "id": 1,
   "onChange": [Function],
   "open": [Function],
-  "options": undefined,
   "update": [Function],
 }
 `;

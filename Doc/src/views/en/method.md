@@ -12,6 +12,7 @@ Instance method
     const input = document.querySelector('#clearInput')
     const picker = this.createDatePicker(input)
     this.clear = ()=> picker.clear()
+    console.log(picker)
 </script>
 
 ```

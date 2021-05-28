@@ -8,7 +8,7 @@ import {startDays} from "./type/date&week/date"
 import {LinkYear, wacthYM} from "./type/month&year"
 import {handleSelecting, startDate, endDate, date, startMonthAndYear,hoverSelect} from './type/public'
 import {Listeners} from "../../../types/watch"
-import {has} from "../../../utils/has"
+import {has} from "../../../utils/typeOf"
 
 const dateWeek = [startDays, wacthYM(false),wacthYM(),startMonthAndYear]
 

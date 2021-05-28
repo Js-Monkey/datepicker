@@ -1,7 +1,7 @@
 import {State, States} from '../types/store'
 import initState from './state'
 import Options from '../types/options'
-import {has} from "../utils/has"
+import {has} from "../utils/typeOf"
 
 const Store = (function () {
   let id = 0
@@ -24,8 +24,20 @@ const Store = (function () {
     states[id] = state
     return state
   }
-
-  return {createState, getState, removeState}
+  function runDestroyed(state: State) {
+    if(state && state.destroyed){
+      state.destroyed()
+    }
+  }
+  function destroyed(partialStates?: State[]){
+    if(partialStates){
+      partialStates.forEach(state=>runDestroyed(states[state.id]))
+    }else{
+      Object.keys(states).forEach(key=> runDestroyed(states[key as unknown as keyof typeof states]))
+      id = 0
+    }
+  }
+  return {createState, getState, removeState, destroyed}
 })()
 
-export const {createState, getState, removeState} = Store
+export const {createState, getState, removeState, destroyed} = Store

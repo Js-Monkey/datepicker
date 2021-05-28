@@ -1,7 +1,7 @@
 import {on} from "./event"
 import {_Event} from "../types/event"
 import {State} from "../types/store"
-import {has} from "./has";
+import {has} from "./typeOf";
 
 export function resetHoverColor(el: HTMLElement, theme: string): void {
   function hover(e: _Event) {

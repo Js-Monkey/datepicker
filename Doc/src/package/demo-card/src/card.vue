@@ -10,10 +10,7 @@
         <div  ref="code" v-show="activeIndex===0">
           <slot name="JS"></slot>
         </div>
-        <div v-show="activeIndex===1">
-          <slot name="HTML"></slot>
-        </div>
-        <div v-show="activeIndex===2" class="demo-card-result">
+        <div v-show="activeIndex===1" class="demo-card-result">
           <slot name="Result"></slot>
         </div>
       </div>
@@ -45,7 +42,6 @@ export default defineComponent({
     return {
       buttonGroup: [
         'JS',
-        'HTML',
         'Result'
       ]
     }

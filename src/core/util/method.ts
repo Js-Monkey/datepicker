@@ -1,7 +1,7 @@
 import {State} from "../../types/store"
 import {GetDateType} from "../../types/core"
 import {getFormatDate} from "./format"
-import {has} from "../../utils/has"
+import {has} from "../../utils/typeOf"
 import {date} from "../../utils/date";
 
 export function getDate(state: State): GetDateType {

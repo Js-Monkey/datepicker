@@ -22,9 +22,7 @@ Datepicker options 基础配置
 <Input width="20vw" id="placement">
 <script>
     const input = document.querySelector('#placement')
-    const picker = this.createDatePicker(input, {
-        placement: 'top'
-    })
+    const picker = this.createDatePicker(input)
 </script>
 
 ```
