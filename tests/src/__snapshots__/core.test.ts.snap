@@ -9,6 +9,435 @@ Object {
   "id": 1,
   "onChange": [Function],
   "open": [Function],
+  "popover": <div
+    class="better-datepicker-wrapper"
+    style="display: none;"
+  >
+    <div
+      class="better-datepicker-header"
+      style=" width:298px;text-align:center"
+    >
+      <svg
+        style=" position:absolute;left:30px;width:14px;height:14px"
+        viewBox="0 0 1024 1024"
+      >
+        <path
+          d="M176 513.7l392.73-395.44a32 32 0 0 0-45.41-45.1L108 491.3a32 32 0 0 0 0.16 45.25L523.48 949a32 32 0 1 0 45.1-45.41z"
+        />
+        <path
+          d="M525.23 513.7L918 118.26a32 32 0 1 0-45.41-45.1L457.27 491.3a32 32 0 0 0 0.16 45.25L872.7 949a32 32 0 0 0 45.1-45.41z"
+        />
+      </svg>
+      <svg
+        style="position: absolute; left: 50px; width: 14px; height: 14px; display: inline-block;"
+        viewBox="0 0 1024 1024"
+      >
+        <path
+          d="M721.9968 979.0208l47.0528-47.104-419.94752-419.98848 419.94752-419.90144-47.05792-47.04768-419.93216 419.89632h-0.00512l-47.104 47.09888 47.04768 47.04256z"
+        />
+      </svg>
+      <span
+        style="display: none;"
+      />
+      <span
+        class="better-datepicker-pointerCursor"
+        style="display: inline-block;"
+      />
+      <span
+        class="better-datepicker-pointerCursor"
+        style="display: inline-block;"
+      />
+      <svg
+        style=" position:absolute;right:30px;transform:rotate(180deg);width:14px;height:14px"
+        viewBox="0 0 1024 1024"
+      >
+        <path
+          d="M176 513.7l392.73-395.44a32 32 0 0 0-45.41-45.1L108 491.3a32 32 0 0 0 0.16 45.25L523.48 949a32 32 0 1 0 45.1-45.41z"
+        />
+        <path
+          d="M525.23 513.7L918 118.26a32 32 0 1 0-45.41-45.1L457.27 491.3a32 32 0 0 0 0.16 45.25L872.7 949a32 32 0 0 0 45.1-45.41z"
+        />
+      </svg>
+      <svg
+        style="position: absolute; right: 50px; transform: rotate(180deg); width: 14px; height: 14px; display: inline-block;"
+        viewBox="0 0 1024 1024"
+      >
+        <path
+          d="M721.9968 979.0208l47.0528-47.104-419.94752-419.98848 419.94752-419.90144-47.05792-47.04768-419.93216 419.89632h-0.00512l-47.104 47.09888 47.04768 47.04256z"
+        />
+      </svg>
+    </div>
+    <table
+      class="better-datepicker-date"
+      style="text-align: center; padding: 5px 20px; width: 320px; display: inline-block;"
+    >
+      <thead>
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+        <th
+          style=" height:40px;width:40px;padding:3px 0"
+        />
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-pre"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-today"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+            style=" height:40px;width:40px;padding:3px 0"
+          >
+            <div />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      class="better-datepicker-month"
+      style="text-align: center; padding: 5px 20px; width: 320px; display: none;"
+    >
+      <tbody>
+        <tr>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="better-datepicker-selected"
+          >
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      class="better-datepicker-year"
+      style="text-align: center; padding: 5px 20px; width: 320px; display: none;"
+    >
+      <tbody>
+        <tr>
+          <td
+            class="better-datepicker-pre"
+          >
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td
+            class="better-datepicker-selected"
+          >
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td>
+            <div />
+          </td>
+          <td
+            class="better-datepicker-next"
+          >
+            <div />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
   "update": [Function],
 }
 `;
