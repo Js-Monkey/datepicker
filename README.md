@@ -213,12 +213,39 @@ or configure your own region
 | close | close the datepicker | -
 | clear | clear the date | -
 
+
+## API 
+
+```js
+  import {destroy} from "better-datepicker"
+
+  const picker1 = createDatePicker('#input1')
+
+  const picker1 = createDatePickerc('#input2')
+  destroy([picker1,picker2]) // destroyed picker1 and picker 2
+  destroy() //destroyed all 
+```
+
+| name | Description | params |
+|---------|------------ |------------ |
+| destroyed | destroyed the datepicker,clear InputElement value| -
+| onChange | called callback when date has changed |(callback)
+| update | Update configuration, remove old datepicker | (options)
+| getCurrentDate | get current date | -
+| open | open the datepicker | -
+| close | close the datepicker | -
+| clear | clear the date | -
+
+
+
+
 ## TODO LIST
 
 | versions | Description|
 |---------|------------ |
 | 0.5.0 | support unlinkPanels、zIndex、readonly、default-value、className、style、size .... |
-| 0.7.0 | - |
+| 0.7.0 | support extends plugins |
+| 0.9.0 | support time picker |
 
 ## Browser support
 

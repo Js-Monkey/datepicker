@@ -90,6 +90,17 @@
   locale(en)
 ```
 
+## destroy 删除所有实例
+
+```js
+  import {destroy} from "better-datepicker"
+
+  const picker1 = createDatePicker('#input1')
+
+  const picker1 = createDatePickerc('#input2')
+  destroy([picker1,picker2]) // 删除 picker1 和 picker 2
+  destroy() // 如果不传参，则默认是删除所有实例
+```
 
 
 ## DOCUMENT TODOLIST
