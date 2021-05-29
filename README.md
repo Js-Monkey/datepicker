@@ -11,12 +11,14 @@ A PC Datepicker with only 9KB
 ![](http://img.badgesize.io/https://unpkg.com/better-datepicker/dist/betterDatePicker.es5.js?compression=gzip)
 [![install size](https://packagephobia.com/badge?p=better-datepicker)](https://packagephobia.com/result?p=better-datepicker)
 
+<img width="480px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
+
 ## Doc
 https://js-monkey.github.io/better-datepicker/
 
-## Demo
+## CDN
 
-<img width="480px" src="https://raw.githubusercontent.com/jumodada/img-store/main/better-datepciker-demo.png"/>
+https://cdn.jsdelivr.net/npm/better-datepicker@0.2.0/
 
 ## Installing
 
