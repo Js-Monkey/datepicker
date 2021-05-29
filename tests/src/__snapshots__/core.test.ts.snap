@@ -276,12 +276,12 @@ Object {
             <div />
           </td>
           <td
-            class="better-datepicker-today"
             style=" height:40px;width:40px;padding:3px 0"
           >
             <div />
           </td>
           <td
+            class="better-datepicker-today"
             style=" height:40px;width:40px;padding:3px 0"
           >
             <div />
