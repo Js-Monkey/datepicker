@@ -14,9 +14,9 @@ import  {createDatePicker} from 'better-datepicker'
 import 'better-datepicker/dist/index.css'
 ```
 
-## CreateDatePicker 
+## CreateDatePicker
 
-createDatePicker accepts two parameters. The first is the InputElement, and the second is the configuration item. 
+createDatePicker accepts two parameters. The first is the InputElement, and the second is the configuration item.
 
 ```
     const input = document.querySelector('#input')
@@ -26,8 +26,8 @@ createDatePicker accepts two parameters. The first is the InputElement, and the 
            placement: 'bottom' 
     })
 ```
-## defaultOptions
 
+## defaultOptions
 
 ```
 import {locale,defaultOptions} from 'better-datepicker'
@@ -39,8 +39,7 @@ defaultOptions({
 })
 ```
 
-
-## locale 
+## locale
 
 ```
 import {locale} from 'better-datepicker'

@@ -81,7 +81,7 @@ export const startMonthAndYear: Sub = {
     }
 }
 
-export function hoverSelect(type: keyof DateComponentsType= 'month'): Sub {
+export function hoverSelect(type: keyof DateComponentsType = 'month'): Sub {
     return {
         key: {name: 'range', childKey: ['start', 'end']},
         cb() {
@@ -92,7 +92,7 @@ export function hoverSelect(type: keyof DateComponentsType= 'month'): Sub {
     }
 }
 
-export function getStatus(self: State, date: string, idx: number, type: keyof DateComponentsType= 'month', preStatus = ''): ComponentStatus {
+export function getStatus(self: State, date: string, idx: number, type: keyof DateComponentsType = 'month', preStatus = ''): ComponentStatus {
     const typeStatus: GetStatusFunctionsType = {
         year: yearStatus,
         month: monthStatus,

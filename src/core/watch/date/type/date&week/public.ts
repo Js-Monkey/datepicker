@@ -50,9 +50,9 @@ export function dateStatus(date: string): ComponentStatus {
 
 export function weekStatus(curDate: Date): ComponentStatus {
     const {date} = this.start
-    if(!date) return ''
-    const {start,end} = getWeekRange(this.start.date, this.locale.weekStart)
-    if(isSame(curDate,start, 3)) return 'weekStart'
-    if(isSame(curDate,end, 3)) return 'weekEnd'
-    return (isAfter(curDate,start) && isAfter(end,curDate)) ? 'inRangeWeek' : ''
+    if (!date) return ''
+    const {start, end} = getWeekRange(this.start.date, this.locale.weekStart)
+    if (isSame(curDate, start, 3)) return 'weekStart'
+    if (isSame(curDate, end, 3)) return 'weekEnd'
+    return (isAfter(curDate, start) && isAfter(end, curDate)) ? 'inRangeWeek' : ''
 }

@@ -1,17 +1,18 @@
 <logo></logo>
 
-
-<install-card-group></install-card-group>  
+<install-card-group></install-card-group>
 
 ## START
- Import styles, **or you can customize theme colors** [Here](#/en/doc/theme)
+
+Import styles, **or you can customize theme colors** [Here](#/en/doc/theme)
+
 ```js
   import  {createDatePicker} from 'better-datepicker'
   import 'better-datepicker/dist/index.css'
 
 ```
 
-you can also 
+you can also
 
 ```html
   <div id="wrapper">
@@ -19,15 +20,17 @@ you can also
      <input type="text">
   </div>
 ```
+
 ```js
   const input = document.querySelector('#wrapper')
   createDatePicker(input)
 ```
 
-
 ## OPTIONS
-  *createDatePicker* accepts two parameters.
-  The first is the **InputElement**, and the second is the **configuration item**. For more details [Here](#/en/doc/options)
+
+*createDatePicker* accepts two parameters. The first is the **InputElement**, and the second is the **configuration
+item**. For more details [Here](#/en/doc/options)
+
 ```js
   const input = document.querySelector('#input')
   createDatePicker(input,{
@@ -63,7 +66,7 @@ you can also
   //more
 ```
 
-##  Locale
+## Locale
 
 **global config**
 
@@ -75,6 +78,7 @@ you can also
 ```
 
 or
+
 ```js
   const localeConfig = {
      name: "en",
@@ -87,7 +91,6 @@ or
   }
   locale(en)
 ```
-
 
 ## destroy
 

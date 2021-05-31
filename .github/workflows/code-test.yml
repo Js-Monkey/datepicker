@@ -1,4 +1,4 @@
-name:  code-test
+name: code-test
 
 on:
   push:
@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-    - name: test
-      run: |
-        npm i
-        npm run test
-        bash <(curl -s https://codecov.io/bash)
+      - uses: actions/checkout@master
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+      - name: test
+        run: |
+          npm i
+          npm run test
+          bash <(curl -s https://codecov.io/bash)

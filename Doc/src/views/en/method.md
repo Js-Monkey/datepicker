@@ -1,8 +1,9 @@
 Instance method
 
-##  clear
+## clear
 
 ::: **clear** date and InputElement value
+
 ```html
 <div>
 <Input id="clearInput" />
@@ -16,12 +17,13 @@ Instance method
 </script>
 
 ```
+
 :::
 
-
-##  destroyed
+## destroyed
 
 ::: **destroyed** the datepicker, Instance methods are not available except *update*
+
 ```html
 <div>
 <Input id="destroyedInput" />
@@ -34,12 +36,13 @@ Instance method
 </script>
 
 ```
+
 :::
 
-
-##  update
+## update
 
 ::: **update** the datepicker
+
 ```html
 <div>
 <Input id="updateInput" />
@@ -52,12 +55,13 @@ Instance method
 </script>
 
 ```
+
 :::
 
-
-##  onChange
+## onChange
 
 :::  It supports passing in a **callback**, which will be call after date change
+
 ```html
 <div>
 <Input id="onChangeInput" />
@@ -71,12 +75,13 @@ Instance method
 </script>
 
 ```
+
 :::
 
+## getCurrentDate
 
-##  getCurrentDate
+::: **getCurrentDate**
 
-::: **getCurrentDate** 
 ```html
 <div>
 <Input id="getCurrentDateInput" />
@@ -94,13 +99,15 @@ Instance method
 </script>
 
 ```
+
 :::
 
-##  open/close
+## open/close
 
-::: **Manual open/close** 
-If *open/close* is executed in the event listener callback.
-please use **e.stopPropagation()** to prevent events from bubbling onto the **Body**
+::: **Manual open/close**
+If *open/close* is executed in the event listener callback. please use **e.stopPropagation()** to prevent events from
+bubbling onto the **Body**
+
 ```html
 <div>
 <Input id="openInput" />
@@ -115,4 +122,5 @@ please use **e.stopPropagation()** to prevent events from bubbling onto the **Bo
 </script>
 
 ```
+
 :::

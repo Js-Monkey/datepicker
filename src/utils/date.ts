@@ -107,7 +107,7 @@ export function isDisabledDate(state: State, date: string): string {
 export function getYearWeek(date: Date, locale: LocaleConfig): number {
     const [y, m, d] = transformDateToArray(transformDate(date))
     const {yearStart, weekStart} = locale
-    const {start,end} = getWeekRange(date,weekStart)
+    const {start, end} = getWeekRange(date, weekStart)
     if (m === 12 && d > 25) {
         const nextYearStartDay = new Date(y + 1, 0, yearStart)
         if (isAfter(end, nextYearStartDay)) return 1
@@ -116,7 +116,7 @@ export function getYearWeek(date: Date, locale: LocaleConfig): number {
     const YearStart = new Date(y, 0, yearStart)
     const days = Math.round((YearEnd.valueOf() - YearStart.valueOf()) / Ms)
     const diff = (days + ((YearStart.getDay() + 1) - 1)) / 7
-    if(diff<=0){
+    if (diff <= 0) {
         return getYearWeek(start, locale)
     }
     return Math.ceil(diff)
@@ -129,14 +129,13 @@ export function getWeeks<S = number>(weekdays: S[], weekStart: number): S[] {
 const defaultWeeks = [0, 1, 2, 3, 4, 5, 6]
 
 
-
-export function getWeekRange(d: Date | string, weekStart: number): WeekRange{
-    if(isString(d)) d = date(d) as Date
+export function getWeekRange(d: Date | string, weekStart: number): WeekRange {
+    if (isString(d)) d = date(d) as Date
     const weeks = getWeeks(defaultWeeks, weekStart)
-    const  startDiff = weeks.findIndex(week => week === (d as Date).getDay())
+    const startDiff = weeks.findIndex(week => week === (d as Date).getDay())
     const endDiff = 6 - startDiff
     return {
-        end:date(Date.parse(transformDate(d)) + (endDiff + 1) * Ms - 1) as Date,
-        start: date(Date.parse(transformDate(d)) - startDiff * Ms)  as Date
+        end: date(Date.parse(transformDate(d)) + (endDiff + 1) * Ms - 1) as Date,
+        start: date(Date.parse(transformDate(d)) - startDiff * Ms) as Date
     }
 }

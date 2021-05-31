@@ -1,7 +1,9 @@
-Datepicker options 
-##  format
+Datepicker options
 
-::: 
+## format
+
+:::
+
 ```html
 <Input width="20vw" id="format">
 <script>
@@ -12,11 +14,12 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
+## placement
 
-##  placement
-::: 
+:::
 
 ```html
 <Input width="20vw" id="placement">
@@ -26,11 +29,13 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
+## offset
 
-##  offset
-::: 
+:::
+
 ```html
 <Input width="20vw" id="offset">
 <script>
@@ -42,11 +47,13 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
+## binding
 
-##  binding
 ::: Whether to bind the value of the inputElement
+
 ```html
 <Input width="20vw" id="bind">
 <script>
@@ -57,10 +64,13 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
-##  disabledDate
+## disabledDate
+
 :::
+
 ```html
 <Input width="20vw" id="disabledDate">
 <script>
@@ -73,12 +83,15 @@ Datepicker options
 </script>
 
 ```
-:::
 
 :::
 
-##  insertTo
+:::
+
+## insertTo
+
 ::: **Set** the DOM node that the picker insertTo, *body/parent*
+
 ```html 
 <Input width="20vw" id="insertTo">
 <script>
@@ -90,11 +103,13 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
+## Theme
 
-##  Theme
 :::
+
 ```html
 <Input width="20vw" id="Theme">
 <script>
@@ -109,10 +124,13 @@ Datepicker options
 </script>
 
 ```
+
 :::
 
-## Todo  
-::: Support *ClassName*、*Style*、*Size*、*unlinkPanels*、*zIndex*、*more format*、*readonly* 
+## Todo
+
+::: Support *ClassName*、*Style*、*Size*、*unlinkPanels*、*zIndex*、*more format*、*readonly*
+
 ```html
 
 :::

@@ -1,10 +1,11 @@
 <logo></logo>
 
-
-<install-card-group></install-card-group>  
+<install-card-group></install-card-group>
 
 ## START
- 引入样式, **或者你可以自定义主题颜色** [这里](#/en/doc/theme)
+
+引入样式, **或者你可以自定义主题颜色** [这里](#/en/doc/theme)
+
 ```js
   import  {createDatePicker} from 'better-datepicker'
   import 'better-datepicker/dist/index.css'
@@ -21,15 +22,16 @@
      <input type="text">
   </div>
 ```
+
 ```js
   const input = document.querySelector('#wrapper')
   createDatePicker(input)
 ```
 
-
 ## OPTIONS
-  *createDatePicker* 接受两个参数
-  第一个是需要绑定的**输入框节点**, 第二个是选择器局部配置[更多详情](#/en/doc/options)
+
+*createDatePicker* 接受两个参数 第一个是需要绑定的**输入框节点**, 第二个是选择器局部配置[更多详情](#/en/doc/options)
+
 ```js
   const input = document.querySelector('#input')
   createDatePicker(input,{
@@ -65,7 +67,7 @@
   //more
 ```
 
-##  Locale 地区
+## Locale 地区
 
 **全局配置**
 
@@ -77,6 +79,7 @@
 ```
 
 如果安装包没有提供的地区文件，可以自定义
+
 ```js
   const localeConfig = {
      name: "en",
@@ -101,7 +104,6 @@
   destroy([picker1,picker2]) // 删除 picker1 和 picker 2
   destroy() // 如果不传参，则默认是删除所有实例
 ```
-
 
 ## TODOLIST
 

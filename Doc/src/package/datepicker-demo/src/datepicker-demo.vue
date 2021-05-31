@@ -32,7 +32,7 @@
     <table class="better-datepicker-date better-datepicker-week"
            style="text-align: center; padding: 5px 20px; width: 320px; display: inline-block;">
       <thead>
-        <th :style="{color: th.value}" v-for="name in thName" style="height:40px;width:40px;padding:3px 0">{{ name }}</th>
+      <th :style="{color: th.value}" v-for="name in thName" style="height:40px;width:40px;padding:3px 0">{{ name }}</th>
       </thead>
       <tbody>
       <tr v-for="row in 6">

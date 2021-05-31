@@ -1,4 +1,4 @@
-#  Options
+# Options
 
 configuration of better-datepicker
 
@@ -14,6 +14,7 @@ createDatePicker(input,options)
 ```
 
 **Global config**
+
 ```
 import {locale,defaultOptions} from 'better-datepicker'
 defaultOptions({
@@ -23,7 +24,6 @@ defaultOptions({
     thColor: '#5f5f5f'
 })
 ```
-
 
 | Property     | Description | Type   | Accepted Values | Default |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |

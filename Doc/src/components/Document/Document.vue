@@ -8,16 +8,17 @@
 <script>
 import Slider from './components/slider.vue'
 import documentContent from './components/content.vue'
+
 export default {
   name: "Document",
-  components:{Slider, documentContent},
+  components: {Slider, documentContent},
   mounted() {
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .document{
-    display: flex;
-  }
+.document {
+  display: flex;
+}
 </style>

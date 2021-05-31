@@ -1,28 +1,31 @@
 <template>
   <div class="install-card">
-    <div class="install-card-icon"> <b-icon :font-size="24" :name="icon"></b-icon></div>
-    <div class="install-card-code" @click="copyText">{{text}}</div>
+    <div class="install-card-icon">
+      <b-icon :font-size="24" :name="icon"></b-icon>
+    </div>
+    <div class="install-card-code" @click="copyText">{{ text }}</div>
   </div>
 </template>
 
 <script lang="ts">
 import {copyText} from "../../../utils"
+
 export default {
   name: "install-card",
   props: {
     text: {
       type: String
     },
-    icon:{
+    icon: {
       type: String,
       default: 'yarn'
     }
   },
- setup(){
+  setup() {
     return {
       copyText
     }
- }
+  }
 }
 
 </script>
@@ -31,18 +34,21 @@ export default {
 .install-card {
   margin-left: 10px;
   margin-right: 10px;
-  &-icon{
+
+  &-icon {
     vertical-align: middle;
     padding: 6px 12px;
     background: #ffb311;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
-  &-code{
+
+  &-code {
     position: relative;
     padding: 10px 15px;
     cursor: pointer;
     transition: background-color .31s ease;
+
     &::after {
       position: absolute;
       display: block;
@@ -61,6 +67,7 @@ export default {
       }
     }
   }
+
   background: #ffb311a6;
   display: inline-flex;
   border-radius: 5px;

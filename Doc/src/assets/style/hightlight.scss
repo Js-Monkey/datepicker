@@ -11,7 +11,8 @@ Darcula color scheme from the JetBrains family of IDEs
   background: #131b2e;
   color: #efefe4;
 }
-a{
+
+a {
   color: #3498DB;
 }
 
@@ -20,16 +21,19 @@ pre {
   padding: 0;
   display: flex;
   align-items: stretch;
+
   code {
     width: 100%;
     border-radius: 7px;
     padding: 20px !important;
     font-size: 16px;
     line-height: 1.7;
-    span{
+
+    span {
       display: inline-block;
     }
-    p{
+
+    p {
       line-height: 1.75;
     }
   }
@@ -67,10 +71,11 @@ pre {
   color: #ffb311;
 }
 
-.hljs-attr{
+.hljs-attr {
   color: #aafa91;
 }
-.hljs-title{
+
+.hljs-title {
   color: #6ed766;
 }
 
@@ -100,16 +105,19 @@ pre {
 .hljs-meta {
   color: #aafa91;
 }
-.hljs-comment{
+
+.hljs-comment {
   color: #7a7a7a;
 }
 
-.markdown-body, .demo{
+.markdown-body, .demo {
   color: #dae3f6;
+
   strong {
     color: #e84c3b;
   }
-  >table {
+
+  > table {
     width: 100%;
     margin-top: 100px;
     border-collapse: collapse;
@@ -148,6 +156,7 @@ pre {
       border-bottom: 1px solid #808a89 !important;
     }
   }
+
   h1 {
     color: #ffb311;
   }
@@ -155,16 +164,20 @@ pre {
   h2 {
     color: #eec15c;
   }
-  h2,h1{
+
+  h2, h1 {
     font-family: Futura;
   }
-  pre{
+
+  pre {
 
   }
+
   h3 {
     color: #eac674;
   }
-  em{
+
+  em {
     color: #3498DB;
   }
 }

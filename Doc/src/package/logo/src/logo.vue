@@ -2,11 +2,11 @@
   <div class="enter-button">
     <b-icon class="logo" :font-size="300" name="better1"></b-icon>
     <div class="enter-button-description">
-     {{descriptions}}
+      {{ descriptions }}
     </div>
     <b-button @click="toDocument" style="background: rgb(198 37 36);" class="better-logo-enter" type="warn"
               icon="forward" position="right">
-      {{buttonName}}
+      {{ buttonName }}
     </b-button>
   </div>
 </template>
@@ -16,27 +16,27 @@ import {defineComponent} from "vue"
 
 export default defineComponent({
   name: "logo",
-  data(){
+  data() {
     return {
-        zh: {
-           description: '一个仅9k的日期选择器',
-           buttonName: '快速开始'
-        },
-        en:{
-          description: 'A PC Datepicker with only 9KB',
-          buttonName: 'Start'
-        }
+      zh: {
+        description: '一个仅9k的日期选择器',
+        buttonName: '快速开始'
+      },
+      en: {
+        description: 'A PC Datepicker with only 9KB',
+        buttonName: 'Start'
+      }
     }
   },
-  computed:{
-    descriptions(){
+  computed: {
+    descriptions() {
       return this[this.bus.target.lang].description
     },
-    buttonName(){
-     return this[this.bus.target.lang].buttonName
+    buttonName() {
+      return this[this.bus.target.lang].buttonName
     }
   },
-  inject:['bus'],
+  inject: ['bus'],
   methods: {
     toDocument() {
       this.$router.push({
@@ -63,7 +63,8 @@ button {
   align-items: center;
   padding-bottom: 50px;
   font-family: Futura, sans-serif;
-  &-description{
+
+  &-description {
     color: #ECF0F1;
     margin-bottom: 30px;
     font-size: 20px;

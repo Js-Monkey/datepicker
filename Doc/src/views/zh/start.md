@@ -26,8 +26,8 @@ import 'better-datepicker/dist/index.css'
            placement: 'bottom' 
     })
 ```
-## defaultOptions 全局默认配置
 
+## defaultOptions 全局默认配置
 
 ```
 import {locale,defaultOptions} from 'better-datepicker'
@@ -38,7 +38,6 @@ defaultOptions({
     thColor: '#5f5f5f'
 })
 ```
-
 
 ## locale 地区配置
 

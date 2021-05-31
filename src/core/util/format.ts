@@ -31,7 +31,7 @@ export function getFormatDate(this: State, date: DateType | DateType[], format: 
 
     function formatParse(dateStr: DateType): string | null {
         if (!dateStr) return null
-        if (hasWW && isDate(dateStr)){
+        if (hasWW && isDate(dateStr)) {
             dateStr = getWeekRange(dateStr, locale.weekStart).start
         }
         return format.replace(token, val => formats[val as 'dd'](new Date(dateStr!.toString()), locale))

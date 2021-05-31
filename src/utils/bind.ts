@@ -1,10 +1,12 @@
 import {Fn} from '../types/utils'
 import {isArray} from "./typeOf";
 
-export function Bind(fn: Fn,arg: unknown[] | any): Fn {
-  if(!isArray(arg)) arg = [arg]
-  function proxyFn() {
-    return fn.apply(this, arg.concat(Array.from(arguments)))
-  }
-  return proxyFn
+export function Bind(fn: Fn, arg: unknown[] | any): Fn {
+    if (!isArray(arg)) arg = [arg]
+
+    function proxyFn() {
+        return fn.apply(this, arg.concat(Array.from(arguments)))
+    }
+
+    return proxyFn
 }

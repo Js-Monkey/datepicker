@@ -1,12 +1,12 @@
 export function isInBody(el: HTMLElement | null): boolean {
-  if (!el) return false
-  const bodyChildren = document.body.childNodes
-  let isExist = false
-  for (let i = bodyChildren.length; i >= 0; i--) {
-    if (bodyChildren[i] === el) {
-      isExist = true
-      break
+    if (!el) return false
+    const bodyChildren = document.body.childNodes
+    let isExist = false
+    for (let i = bodyChildren.length; i >= 0; i--) {
+        if (bodyChildren[i] === el) {
+            isExist = true
+            break
+        }
     }
-  }
-  return isExist
+    return isExist
 }

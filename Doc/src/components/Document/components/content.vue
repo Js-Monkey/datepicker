@@ -21,7 +21,8 @@ export default {
   max-width: calc(100vw - 230px);
   font-family: Futura;
   width: 80%;
-  &-wrapper{
+
+  &-wrapper {
     width: calc(100vw - 210px);
     background: #112232;
     display: flex;
@@ -30,9 +31,11 @@ export default {
     overflow-y: auto;
   }
 }
-.markdown-body{
+
+.markdown-body {
   background: #112232;
-  p{
+
+  p {
     margin-top: 0;
   }
 }

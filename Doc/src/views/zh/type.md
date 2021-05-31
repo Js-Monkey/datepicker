@@ -1,7 +1,9 @@
 datepicker Type 选择器类型
-##  Date
 
-::: 默认值是*date*, 单位是[**日**] 
+## Date
+
+::: 默认值是*date*, 单位是[**日**]
+
 ```html
 <Input width="20vw" id="dateInput">
 <script>
@@ -10,11 +12,13 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::
 
+## Date-range
 
-##  Date-range
-::: 选择时间范围，单位是[**日**] 
+::: 选择时间范围，单位是[**日**]
+
 ```html
 <Input width="20vw" id="dateRangeInput">
 <script>
@@ -25,11 +29,13 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::
 
+## Month
 
-##  Month
 ::: 基础单位是[**月**]，日期是选择月份的**第一天**
+
 ```html
 <Input width="20vw" id="monthInput">
 <script>
@@ -40,11 +46,13 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::
 
+## Month-range
 
-##  Month-range
 ::: 选择时间范围，单位是[**月**]
+
 ```html
 <Input width="20vw" id="monthRangeInput">
 <script>
@@ -55,10 +63,13 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::
 
-##  Year
+## Year
+
 ::: 单位是[**年**]
+
 ```html
 <Input width="20vw" id="yearInput">
 <script>
@@ -70,12 +81,15 @@ datepicker Type 选择器类型
 </script>
 
 ```
-:::
 
 :::
 
-##  Year-range
+:::
+
+## Year-range
+
 :::  选择时间范围，单位是[**年**]
+
 ```html
 <Input width="20vw" id="yearRangeInput">
 <script>
@@ -87,12 +101,14 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::
 
+## Week
 
-##  Week
-::: 得到的日期即是选择的日期，单位是[**日**]。输入框绑定的值是选择日期那周**第一天的周数**，可以被**format**覆盖。
-值得注意的时候，如果**format** 包含*w*或者*ww*,那么最终处理显示在输入框上的日期依然会被设为当前周的第一天，当然，这不影响你选择日期的值。
+::: 得到的日期即是选择的日期，单位是[**日**]。输入框绑定的值是选择日期那周**第一天的周数**，可以被**format**覆盖。 值得注意的时候，如果**format** 包含*w*或者*ww*
+,那么最终处理显示在输入框上的日期依然会被设为当前周的第一天，当然，这不影响你选择日期的值。
+
 ```html
 <Input width="20vw" id="weekInput">
 <script>
@@ -105,4 +121,5 @@ datepicker Type 选择器类型
 </script>
 
 ```
+
 :::

@@ -6,9 +6,9 @@ import ObserveState from '../observer'
 import Options from '../types/options'
 
 function State(options: Options): State {
-  return Object.assign(picker(), date(), other(options)) as State
+    return Object.assign(picker(), date(), other(options)) as State
 }
 
 export default function initState(options: Options): State {
-  return ObserveState(State(options))
+    return ObserveState(State(options))
 }

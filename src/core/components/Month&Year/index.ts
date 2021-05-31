@@ -1,6 +1,6 @@
-import { visible} from '../../../utils/element'
+import {visible} from '../../../utils/element'
 import {utilStyle} from '../utils'
-import {State,RangeType} from '../../../types/store'
+import {State, RangeType} from '../../../types/store'
 import {
     ComponentsType,
     createMonthOrYearComponentsFunction,
@@ -36,9 +36,9 @@ const components: CreateMonthOrYearComponentsOptions = {
     }
 }
 
-export function YM(componentName: keyof ComponentsType =  'month'): createMonthOrYearComponentsFunction {
+export function YM(componentName: keyof ComponentsType = 'month'): createMonthOrYearComponentsFunction {
     const {children, listener} = components[componentName]
-    return function (state: State, t: keyof RangeType = 'start'): CreateElementPartOptions{
+    return function (state: State, t: keyof RangeType = 'start'): CreateElementPartOptions {
         type = t
 
         function tBody(): CreateElementPartOptions {
@@ -97,7 +97,7 @@ export function YM(componentName: keyof ComponentsType =  'month'): createMonthO
 
 export const Month = YM()
 
-export function endMonth(state: State): CreateElementPartOptions{
+export function endMonth(state: State): CreateElementPartOptions {
     return Month(state, 'end')
 }
 

@@ -23,9 +23,9 @@ import defaultOptions from "../../src/core/util/default-options"
 
 
 describe('hoverDay callback', () => {
-  const state = createState(defaultOptions())
-  it('should changed all `_date.status`', () => {
-    hoverSelect().cb.call(state)
-    expect(state.start._date[0].status).toBe('')
-  });
+    const state = createState(defaultOptions())
+    it('should changed all `_date.status`', () => {
+        hoverSelect().cb.call(state)
+        expect(state.start._date[0].status).toBe('')
+    });
 })

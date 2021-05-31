@@ -1,4 +1,4 @@
-# Locale 地区设置 
+# Locale 地区设置
 
 安装包提供一部分地区静态配置文件
 
@@ -10,6 +10,7 @@
 ```
 
 如果安装包没有提供的地区文件，可以自定义
+
 ```js
   const localeConfig = {
      name: "en",
@@ -22,8 +23,6 @@
   }
   locale(en)
 ```
-
-
 
 | 地区/语言   | 缩写/链接 | 
 | ----------------- | -------------------------------- | 
@@ -52,6 +51,5 @@
 | 简体中文  |     [zh-cn](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-cn.ts)   | 
 | 中国香港 |    [zh-hk](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-hk.ts)   | 
 | 中国台湾 |    [zh-tw](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-tw.ts)   | 
-
 
 <br />  

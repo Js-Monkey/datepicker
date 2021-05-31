@@ -105,7 +105,7 @@ interface HandlerCb<V> {
     (el: HTMLElement, val: V, state: State): void
 }
 
-export type Handler ={
+export type Handler = {
     [K in keyof CreateElementOptions]: HandlerCb<CreateElementOptions[K]>
 }
 

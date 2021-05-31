@@ -1,4 +1,4 @@
-# Locale 
+# Locale
 
 We provide some regional profiles
 
@@ -10,6 +10,7 @@ We provide some regional profiles
 ```
 
 or you can add it yourself, pull request
+
 ```js
   const localeConfig = {
      name: "en",
@@ -22,8 +23,6 @@ or you can add it yourself, pull request
   }
   locale(en)
 ```
-
-
 
 | Locale/Language   | Abbreviation/Link | 
 | ----------------- | -------------------------------- | 
@@ -52,6 +51,5 @@ or you can add it yourself, pull request
 | Simplified Chinese  |     [zh-cn](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-cn.ts)   | 
 | Hong Kong China  |    [zh-hk](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-hk.ts)   | 
 | Taiwan China |    [zh-tw](https://github.com/Js-Monkey/better-datepicker/blob/master/locale/zh-tw.ts)   | 
-
 
 <br />  

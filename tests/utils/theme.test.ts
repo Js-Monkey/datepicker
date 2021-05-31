@@ -22,7 +22,7 @@ describe('Theme', () => {
     })
     describe('resetSelectColor', () => {
         const state = {
-            options:{
+            options: {
                 rangeBgColor: '#f3f3f3',
                 themeColor: '#f3f3f3'
             }
@@ -31,9 +31,9 @@ describe('Theme', () => {
             const parent = document.createElement('div')
             const children = document.createElement('div')
             parent.appendChild(children)
-            resetSelectColor(parent,state, '')
+            resetSelectColor(parent, state, '')
             expect(children.style.backgroundColor).toBe('')
-            resetSelectColor(parent,state, 'inRange')
+            resetSelectColor(parent, state, 'inRange')
             expect(children.style.backgroundColor).toBe('rgb(243, 243, 243)')
         });
 

@@ -276,7 +276,7 @@ $transition: .3s all ease;
   }
 
   &-date &-weekStart {
-    >div {
+    > div {
       background: $theme-color;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
@@ -285,13 +285,14 @@ $transition: .3s all ease;
   }
 
   &-date &-weekEnd {
-    >div {
+    > div {
       background: $theme-color;
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
       color: white !important;
     }
   }
+
   &-date &-inRangeWeek {
     > div {
       background: $range-color;

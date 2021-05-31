@@ -4,7 +4,7 @@ import {watchOptions} from "./options"
 import Options from '../../types/options'
 
 export function watch(options: Options): void {
-  watchComponents()
-  watchDate(options)
-  watchOptions()
+    watchComponents()
+    watchDate(options)
+    watchOptions()
 }

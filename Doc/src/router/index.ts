@@ -34,13 +34,13 @@ const router = createRouter({
             children: [
                 {
                     path: 'zh',
-                    name:'zh',
-                    component: ()=>import('../views/zh/home.md')
+                    name: 'zh',
+                    component: () => import('../views/zh/home.md')
                 },
                 {
                     path: 'en',
-                    name:'en',
-                    component: ()=>import('../views/en/home.md')
+                    name: 'en',
+                    component: () => import('../views/en/home.md')
                 },
             ]
         },

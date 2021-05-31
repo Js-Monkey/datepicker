@@ -14,10 +14,10 @@ const opt: Options = {
     disabledDate: null,
     themeColor: '',
     rangeBgColor: '',
-    tdColor:'',
-    thColor:'',
+    tdColor: '',
+    thColor: '',
     style: {},
-    classes:[]
+    classes: []
 }
 
 

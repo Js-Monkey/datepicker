@@ -32,7 +32,8 @@ export default defineComponent({
   position: absolute;
   left: 0;
 }
-.fixedHeight{
+
+.fixedHeight {
   height: 60px;
 }
 </style>

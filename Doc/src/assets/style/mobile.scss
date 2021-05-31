@@ -1,16 +1,19 @@
 @media screen and (max-width: 893px) {
-  body{
+  body {
     font-size: 14px;
   }
-  .install{
+  .install {
     flex-direction: column;
     font-size: 14px;
-    &-card{
+
+    &-card {
       margin: 6px 0;
-      &-code{
+
+      &-code {
         padding: 6px 9px;
       }
-      svg{
+
+      svg {
         font-size: 14px !important;
       }
     }
@@ -19,28 +22,29 @@
 
 
 @media screen and (max-width: 564px) {
-  .install{
+  .install {
     font-size: 12px;
   }
-  .enter-button{
-    &-description{
+  .enter-button {
+    &-description {
       font-size: 15px !important;
     }
+
     //button{
     //  padding: 5px 12px !important;
     //  font-size: 12px !important;
     //}
-    button{
+    button {
       display: none !important;
     }
   }
-  .header-nav{
+  .header-nav {
     display: none !important;
   }
-  .header-github{
+  .header-github {
     margin-left: auto !important;
   }
-  .logo{
+  .logo {
     width: 50vw !important;
     height: 39vw !important;
   }

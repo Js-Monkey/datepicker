@@ -8,7 +8,8 @@
     <div class="header-nav">
       <b-icon :font-size="14" name="left"></b-icon>
       <div class="header-nav">
-        <router-link class="header-nav-item" v-for="(item,index) in routeLists" :to="`/${bus.target.lang}/${item.value}`"
+        <router-link class="header-nav-item" v-for="(item,index) in routeLists"
+                     :to="`/${bus.target.lang}/${item.value}`"
                      :key="index">
           {{ item.name }}
         </router-link>
@@ -33,20 +34,20 @@ export default defineComponent({
     return {
       zh: [
         {name: '首页', value: ''},
-        {name: '文档', value:'doc'}
+        {name: '文档', value: 'doc'}
       ],
       en: [
         {name: 'Home', value: ''},
-        {name: 'Document', value:'doc'}
+        {name: 'Document', value: 'doc'}
       ]
     }
   },
-  computed:{
-    routeLists(){
+  computed: {
+    routeLists() {
       return this[this.bus.target.lang]
     }
   },
-  inject:['bus'],
+  inject: ['bus'],
   methods: {
     toggleLang() {
       const preLang = this.bus.target.lang

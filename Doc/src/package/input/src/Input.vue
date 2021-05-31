@@ -1,22 +1,22 @@
 <template>
-  <div  class="b-input" :for="id">
+  <div class="b-input" :for="id">
     <input
-      class="f-form-placeholder"
-      :id="id"
-      :style="style"
-      :autocomplete="autocomplete"
-      :spellcheck="spellcheck"
-      :wrap="wrap"
-      :value="value"
-      :disabled="disabled"
-      :readonly="readonly"
-      :maxlength="maxLength"
-      :placeholder="placeholder"
-      @input="handleInput"
-      @change="$emit('change',$event.target.value)"
-      @blur="$emit('blur',$event.target.value)"
-      @focus="$emit('focus',$event.target.value)"
-      type="text">
+        class="f-form-placeholder"
+        :id="id"
+        :style="style"
+        :autocomplete="autocomplete"
+        :spellcheck="spellcheck"
+        :wrap="wrap"
+        :value="value"
+        :disabled="disabled"
+        :readonly="readonly"
+        :maxlength="maxLength"
+        :placeholder="placeholder"
+        @input="handleInput"
+        @change="$emit('change',$event.target.value)"
+        @blur="$emit('blur',$event.target.value)"
+        @focus="$emit('focus',$event.target.value)"
+        type="text">
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default defineComponent({
     id: String,
     name: String,
     width: {
-      type:[Number, String],
+      type: [Number, String],
       default: 200
     },
     value: String,
@@ -89,10 +89,10 @@ export default defineComponent({
   },
   setup(props) {
     const {width} = toRefs(props)
-    let computedWidth  = width.value
-    if(isNumber(width.value)) computedWidth += 'px'
+    let computedWidth = width.value
+    if (isNumber(width.value)) computedWidth += 'px'
     return {
-      style:{
+      style: {
         width: computedWidth
       }
     }
@@ -108,6 +108,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "./Doc/src/assets/style/global";
+
 $input-height: 27px;
 $input-large-height: 30px;
 $input-small-height: 24px;

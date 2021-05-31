@@ -52,17 +52,17 @@ const rollupConfig = (config: any) => {
                 name: l.split('.ts').shift()
             }))
         })
-        await  fs.readFile('./dist/types/index.d.ts','utf8', function(err: null, data: string) {
-                if (err) {
-                    throw err;
+        await fs.readFile('./dist/types/index.d.ts', 'utf8', function (err: null, data: string) {
+            if (err) {
+                throw err;
+            }
+            const curData = data.replace(/\.\//g, './types/')
+            fs.writeFile('./dist/index.d.ts', curData, 'utf8', function (error: null) {
+                if (error) {
+                    throw error;
                 }
-                const curData = data.replace(/\.\//g,'./types/')
-                fs.writeFile('./dist/index.d.ts',curData,'utf8',function(error: null){
-                    if(error){
-                        throw error;
-                    }
-                });
-            })
+            });
+        })
     } catch (e) {
         console.error(e)
     }

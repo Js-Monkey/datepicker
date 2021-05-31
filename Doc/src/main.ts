@@ -8,7 +8,7 @@ import ColorPicker from 'element-plus/lib/el-color-picker'
 import Msg from 'element-plus/lib/el-message'
 import 'element-plus/lib/theme-chalk/index.css'
 import './assets/style/el-message.css'
-import {createDatePicker, locale,defaultOptions,destroy} from '../../src'
+import {createDatePicker, locale, defaultOptions, destroy} from '../../src'
 import NProgress from "nprogress";
 // import xx from '../../dist/locale_es/zh-cn'
 // locale(xx)

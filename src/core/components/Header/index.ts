@@ -23,10 +23,10 @@ const getRange = (year: number) => {
 }
 
 function format(date: string, state: State): string {
-    return getFormatDate.call(state,date, state.locale.yearFormat) as string
+    return getFormatDate.call(state, date, state.locale.yearFormat) as string
 }
 
-function yearRange():  CreateElementPartOptions{
+function yearRange(): CreateElementPartOptions {
     return {
         name: 'span',
         text: {
@@ -46,7 +46,7 @@ function yearRange():  CreateElementPartOptions{
     }
 }
 
-function year(state: State):  CreateElementPartOptions{
+function year(state: State): CreateElementPartOptions {
     return {
         name: 'span',
         text: {
@@ -67,7 +67,7 @@ function year(state: State):  CreateElementPartOptions{
     }
 }
 
-function month(state: State):  CreateElementPartOptions{
+function month(state: State): CreateElementPartOptions {
     return {
         name: 'span',
         text: {
@@ -114,7 +114,7 @@ function date(state: State) {
     }
 }
 
-function preYearIcon():  CreateElementPartOptions{
+function preYearIcon(): CreateElementPartOptions {
     return {
         name: 'svg',
         text: 'year',
@@ -144,18 +144,18 @@ function preMonthIcon() {
 }
 
 function nextYearIcon() {
-   return {
-       name: 'svg',
-       text: 'year',
-       style: {
-           position: 'absolute',
-           right: '30px',
-           transform: 'rotate(180deg)',
-           width: '14px',
-           height: '14px',
-       },
-       event: Bind(nextYear, name)
-   }
+    return {
+        name: 'svg',
+        text: 'year',
+        style: {
+            position: 'absolute',
+            right: '30px',
+            transform: 'rotate(180deg)',
+            width: '14px',
+            height: '14px',
+        },
+        event: Bind(nextYear, name)
+    }
 }
 
 function nextMonthIcon() {
@@ -180,7 +180,7 @@ const headerChildren: any = {
     end: [date, nextYearIcon, nextMonthIcon]
 }
 
-export function Header(state: State, t?: keyof RangeType): CreateElementPartOptions{
+export function Header(state: State, t?: keyof RangeType): CreateElementPartOptions {
     name = t || 'start'
     return {
         class: ['header'],
@@ -192,10 +192,10 @@ export function Header(state: State, t?: keyof RangeType): CreateElementPartOpti
     }
 }
 
-export function HeaderLeft(state: State):  CreateElementPartOptions{
+export function HeaderLeft(state: State): CreateElementPartOptions {
     return Header(state, 'start')
 }
 
-export function HeaderRight(state: State):  CreateElementPartOptions{
+export function HeaderRight(state: State): CreateElementPartOptions {
     return Header(state, 'end')
 }

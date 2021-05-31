@@ -3,9 +3,9 @@ import defaultOptions from "../../src/core/util/default-options"
 import {endDay} from "../../src/core/components/Date&Week"
 
 const state = createState(defaultOptions())
-describe('endDay',()=>{
-  it('should return HTMLElement',()=>{
-    expect(endDay(state)).toMatchSnapshot()
-  })
+describe('endDay', () => {
+    it('should return HTMLElement', () => {
+        expect(endDay(state)).toMatchSnapshot()
+    })
 })
 

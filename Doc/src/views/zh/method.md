@@ -1,8 +1,9 @@
 示例方法
 
-##  clear
+## clear
 
 ::: **清除** 日期和输入框的值
+
 ```html
 <div>
 <Input id="clearInput" />
@@ -15,12 +16,13 @@
 </script>
 
 ```
+
 :::
 
-
-##  destroyed
+## destroyed
 
 ::: **销毁**选择器，移除弹出框节点，数据将从内部移除。实例不会被清空，但所有函数都会**不可用**
+
 ```html
 <div>
 <Input id="destroyedInput" />
@@ -33,12 +35,13 @@
 </script>
 
 ```
+
 :::
 
-
-##  update
+## update
 
 ::: **更新**选择器的配置，事实上它等于 *destroyed + create*, 之前的弹出框节点会被移除
+
 ```html
 <div>
 <Input id="updateInput" />
@@ -51,12 +54,13 @@
 </script>
 
 ```
+
 :::
 
-
-##  onChange
+## onChange
 
 :::  支持传入一个回调函数， 在选择日期变化后，会触发这个回调
+
 ```html
 <div>
 <Input id="onChangeInput" />
@@ -70,12 +74,13 @@
 </script>
 
 ```
+
 :::
 
-
-##  getCurrentDate
+## getCurrentDate
 
 ::: 获取当前选择的日期，如果不存在则返回**null**
+
 ```html
 <div>
 <Input id="getCurrentDateInput" />
@@ -93,13 +98,15 @@
 </script>
 
 ```
+
 :::
 
-##  open/close
+## open/close
 
 ::: **手动触发 open/close**
 需要注意的是，如果在点击事件监听回调函数中使用这两个函数，会触发组件自带的*clickoutside*,导致**不生效**
 或可以使用**e.stopPropagation()** 使点击事件不再冒泡到*body上面*
+
 ```html
 <div>
     <Input id="openInput" />
@@ -114,4 +121,5 @@
 </script>
 
 ```
+
 :::

@@ -18,8 +18,8 @@ export interface BetterPickerInstance {
     clear: () => void | null
 }
 
-export interface FormatValidator<R = number,P = unknown> {
-    (date: Date, ...arg: P[] ): R
+export interface FormatValidator<R = number, P = unknown> {
+    (date: Date, ...arg: P[]): R
 }
 
 export interface Formats {
@@ -29,8 +29,8 @@ export interface Formats {
     MM: FormatValidator<string>
     yy: FormatValidator<string>
     yyyy: FormatValidator
-    w: FormatValidator<number,LocaleConfig>
-    ww: FormatValidator<number,LocaleConfig>
+    w: FormatValidator<number, LocaleConfig>
+    ww: FormatValidator<number, LocaleConfig>
 }
 
 export interface GetStatusFunctions {

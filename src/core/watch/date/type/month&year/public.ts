@@ -23,7 +23,7 @@ export function updateYear(year: number, date: string, state: DateData): void {
     const range = getTenRange(year)
     state._year.forEach((item, idx) => {
         item.date = joinDate(1, range[idx])
-        const status = idx === 0 ? 'pre' : idx === 11 ? 'next':''
-        item.status = getStatus(this, item.date, idx, 'year',status)
+        const status = idx === 0 ? 'pre' : idx === 11 ? 'next' : ''
+        item.status = getStatus(this, item.date, idx, 'year', status)
     })
 }

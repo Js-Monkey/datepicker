@@ -4,14 +4,14 @@ import {HeaderLeft, HeaderRight} from "../../src/core/components/Header"
 
 const state = createState(defaultOptions())
 
-describe('HeaderLeft',()=>{
-  it('should return HTMLElement',()=>{
-    expect(HeaderLeft(state)).toMatchSnapshot()
-  })
+describe('HeaderLeft', () => {
+    it('should return HTMLElement', () => {
+        expect(HeaderLeft(state)).toMatchSnapshot()
+    })
 })
 
-describe('HeaderRight',()=>{
-  it('should return HTMLElement',()=>{
-    expect(HeaderRight(state)).toMatchSnapshot()
-  })
+describe('HeaderRight', () => {
+    it('should return HTMLElement', () => {
+        expect(HeaderRight(state)).toMatchSnapshot()
+    })
 })

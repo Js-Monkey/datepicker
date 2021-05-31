@@ -10,8 +10,7 @@
 
 export default {
   name: "Enter",
-  components: {
-  }
+  components: {}
 }
 </script>
 
@@ -25,6 +24,7 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100%;
+
   .install {
     width: 100%;
     display: flex;

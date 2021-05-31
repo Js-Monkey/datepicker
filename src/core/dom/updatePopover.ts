@@ -102,7 +102,12 @@ export function setPopoverLocation(): void {
     }
 }
 
-export function getPosition({top, left, height, width}: Rect, offset: number): Transform<{ left: number; top: number }> {
+export function getPosition({
+                                top,
+                                left,
+                                height,
+                                width
+                            }: Rect, offset: number): Transform<{ left: number; top: number }> {
     const _tTop = top + window.scrollY - offset
     const _bTop = top + height + window.scrollY + offset
     const _tLeft = left + window.scrollX

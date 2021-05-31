@@ -1,4 +1,4 @@
-#  Options
+# Options
 
 日期选择器配置
 
@@ -13,7 +13,6 @@ const options = {
 createDatePicker(input,options)
 ```
 
-
 | Property     | Description | Type   | Accepted Values | Default |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
 | type              |    选择器类型      |   string     |   date/date-range/month/month-range/year/year-range/week     | date
@@ -27,11 +26,11 @@ createDatePicker(input,options)
 | disabledDate              |   决定日期是否被禁用   |   Function     |   -    | -
 | disabled              |    是否禁用整个输出框    |   boolean     |   -    | false
 | placement              |     弹出框弹出的位置    |   string     |   top/bottom/right/left    | bottom
-| themeColor              |     主题颜色(selected、hover、range-start、range-end), like *#2ECC71*     |   string     |   -    | -
+| themeColor              |     主题颜色(selected、hover、range-start、range-end), like *
+#2ECC71*     |   string     |   -    | -
 | rangeBgColor              |      处于时间范围的背景色   |   string     |   -   | -
 | tdColor  |     Td文字颜色   |   string     |   -   | -
 | thColor  |     Th文字颜色   |   string     |   -   | -
-
 
 ## TODO
 

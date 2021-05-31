@@ -4,7 +4,7 @@
     <b-icon fill="#FF4D4F" @click="downloadCss" name="download"></b-icon>
     <div class="theme-color-picker">
       <datepicker-demo :cssLists="cssLists"></datepicker-demo>
-      <div  class="theme-ul">
+      <div class="theme-ul">
         <li v-for="(list,idx) in cssLists">
           <div class="color-card" @click="selectColor(idx)" :style="{background: list.value}">
             <div class="cloak">
@@ -53,6 +53,7 @@ export default defineComponent({
         label: 'tbody'
       },
     ])
+
     function reset() {
       cssLists.forEach(item => item.value = item.originVal)
     }
@@ -127,10 +128,12 @@ $width: 60px;
       justify-content: left;
       margin-left: 40px;
       width: 120px;
+
       li {
         text-align: center;
         height: $width;
         margin-bottom: 15px;
+
         .color-card {
           width: $width;
           height: $width;
