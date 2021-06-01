@@ -5,7 +5,7 @@ jobs:
   include:
     - stage: Tests & Code Check
       name: test
-      script: yarn test
+      script: yarn test -u
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
