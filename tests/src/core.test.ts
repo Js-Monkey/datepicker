@@ -3,9 +3,6 @@ import {createDatePicker} from "../../src"
 describe('createDatePicker', () => {
     const reference = document.createElement('input')
     const instance = createDatePicker(reference)
-    it('should match snapshot', () => {
-        expect(instance).toMatchSnapshot()
-    })
 
     it('should do nothing if `value` is null', () => {
         expect(instance?.onChange(null as any)).toBeUndefined()
