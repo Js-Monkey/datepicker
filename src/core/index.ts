@@ -44,10 +44,10 @@ export default function Picker(): BetterPicker {
         }
     }
 
-    function update(options: Options) {
+    function update(options: Partial<Options>) {
         opt = mergeOptions(opt, options)
         destroyed()
-        create(options)
+        create(opt)
     }
 
     function destroyed() {

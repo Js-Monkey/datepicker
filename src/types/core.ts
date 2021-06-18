@@ -14,7 +14,7 @@ export interface BetterPickerInstance {
     id: number,
     getCurrentDate: () => GetDateType
     onChange: (cb: Callback) => void
-    update: (options: Options) => void
+    update: (options: Partial<Options>) => void
     destroyed: () => void
     clear: () => void
     close:()=>  void
