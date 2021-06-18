@@ -42,7 +42,6 @@ export function YM(componentName: keyof ComponentsType = 'month'): createMonthOr
         type = t
 
         function tBody(): CreateElementPartOptions {
-
             return {
                 children: tr(),
                 name: 'tbody'

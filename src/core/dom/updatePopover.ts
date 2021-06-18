@@ -25,7 +25,7 @@ export function updatePopover(vis: boolean): void {
     if (!el) return
     const {zIndex} = this.options
     if (vis) {
-        el.style.display = 'inline-block'
+        el.style.display = ''
         setPopoverLocation.call(this)
     }
     setPopoverStyle(el, zIndex)
@@ -102,12 +102,7 @@ export function setPopoverLocation(): void {
     }
 }
 
-export function getPosition({
-                                top,
-                                left,
-                                height,
-                                width
-                            }: Rect, offset: number): Transform<{ left: number; top: number }> {
+export function getPosition({top, left, height, width}: Rect, offset: number): Transform<{ left: number; top: number }> {
     const _tTop = top + window.scrollY - offset
     const _bTop = top + height + window.scrollY + offset
     const _tLeft = left + window.scrollX

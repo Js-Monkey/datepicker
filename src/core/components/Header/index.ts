@@ -84,33 +84,21 @@ function month(state: State): CreateElementPartOptions {
 }
 
 function date(state: State) {
-    const textType: DateComponentsType = {
-        date: {
-            key: {
-                name,
-                childKey: ['month', 'year']
-            },
-            cb: (idx, year) => format(year, state) + ' ' + state.locale.months[idx - 1]
-        },
-        month: {
-            key: {
-                name,
-                childKey: ['year']
-            },
-            cb: (year) => year
-        },
-        year: {
-            key: {
-                name,
-                childKey: ['year', '_date']
-            },
-            cb: (year: number) => getRange(year)
-        },
+    const textType: DateComponentsType<[string[],(...arg: any)=> string | number]> = {
+        date: [['month', 'year'],(idx: number, year: string) => format(year, state) + ' ' + state.locale.months[idx - 1]],
+        month: [['year'],(year: number) => year],
+        year: [['year', '_date'],(year: number) => getRange(year)],
     }
+    const [childKey,cb] = textType[state._type]
     return {
         name: 'span',
-        text: textType[state._type as 'date']
-
+        text: {
+            key: {
+                name,
+                childKey
+            },
+            cb
+        }
     }
 }
 
