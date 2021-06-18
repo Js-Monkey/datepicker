@@ -13,7 +13,7 @@ describe('findInputElement', () => {
     it('should return `null` if `value` is null', () => {
         const wrapper = document.createElement('div')
         wrapper.appendChild(document.createElement('div'))
-        expect(findInputElement(wrapper)).toBeNull()
+        expect(()=>findInputElement(wrapper)).toThrowError()
     })
     it('should get childrenNode which is HTMLInputElement', () => {
         const wrapper = document.createElement('div')
@@ -21,6 +21,6 @@ describe('findInputElement', () => {
         expect(findInputElement(wrapper) instanceof window.HTMLElement).toBeTruthy()
     })
     it('if parameter is null, return null', () => {
-        expect(findInputElement(null as unknown as HTMLElement)).toBeNull()
+        expect(()=>findInputElement(null as unknown as HTMLElement)).toThrowError()
     })
 })

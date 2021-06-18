@@ -1,6 +1,5 @@
 import Options from '../types/options'
 import {findInputElement} from '../utils/findInputElement'
-import {isInputElement} from '../utils/check-input-element'
 import {createState, removeState} from '../store'
 import {mergeOptions} from '../utils/merge'
 import {watch} from './watch'
@@ -8,7 +7,7 @@ import {State} from "../types/store"
 import {createPopover} from "./dom/create-popover"
 import {isFunc} from "../utils/typeOf"
 import {destroyHook, getDate} from "./util/method"
-import {BetterPicker, Callback} from "../types/core"
+import {BetterPicker, BetterPickerInstance, Callback} from "../types/core"
 import {getEventListener} from "../utils/event";
 import {listenToScrollParents} from "../utils/listenToParents"
 import clickOutside from "../utils/clickoutside"
@@ -18,7 +17,7 @@ import {Bind} from "../utils/bind"
 
 
 export default function Picker(): BetterPicker {
-    let state: State | null, reference: HTMLInputElement, opt: Options
+    let state: State, reference: HTMLInputElement, opt: Options
     let onRef, offRef: Off, onBody, offBody: Off
 
     function openPopover() {
@@ -34,12 +33,10 @@ export default function Picker(): BetterPicker {
     }
 
     function getCurrentDate() {
-        if (!state) return null
         return getDate(state)
     }
 
     function onChange(cb: Callback) {
-        if (!state) return
         if (isFunc(cb)) {
             state.onChange = cb
         } else {
@@ -54,16 +51,13 @@ export default function Picker(): BetterPicker {
     }
 
     function destroyed() {
-        if (!state) return null
         destroyHook(state)
         offBody()
         offRef()
         removeState(state.id)
-        state = null
     }
 
     function create(options?: Options): void {
-        if (!reference) return
         state = createState(opt)
         state.destroyed = destroyed
         changeWeekFormat(options)
@@ -73,19 +67,16 @@ export default function Picker(): BetterPicker {
         state.popover = createPopover(state)
     }
 
-    function clear(): null | void {
-        if (!state) return null
+    function clear(): void {
         if (state.reference) state.reference.value = ''
         state.range.start = state.range.end = state.start.date = state.end.date = null
     }
 
-    function open(): null | void {
-        if (!state) return null
+    function open():  void {
         state.visible = true
     }
 
-    function close(): null | void {
-        if (!state) return null
+    function close():  void {
         state.visible = false
     }
 
@@ -96,15 +87,13 @@ export default function Picker(): BetterPicker {
         }
     }
 
-    return function (el: HTMLInputElement, options?: Options) {
-        const inputElement = findInputElement(el)
-        if (!isInputElement(inputElement)) return
-        reference = inputElement
+    return function (el: HTMLInputElement, options?: Options): BetterPickerInstance {
+        reference = findInputElement(el)
         opt = mergeOptions(defaultOptions(), options)
         create(options)
         return {
-            id: state?.id,
-            popover: state?.popover,
+            id: state.id,
+            state,
             getCurrentDate,
             onChange,
             update,

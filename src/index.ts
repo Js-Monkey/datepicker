@@ -5,9 +5,9 @@ import {changeOpt} from "./core/util/default-options"
 import {pickerLocale} from "./store/modules/options"
 import {destroyed} from "./store"
 
-export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined {
+export function createDatePicker(el: HTMLInputElement, options?: Options): BetterPickerInstance {
     const picker = BD()
-    return picker(el, options)
+    return <BetterPickerInstance>picker(el, options)
 }
 
 export const defaultOptions = changeOpt

@@ -2,7 +2,7 @@ import Options, {LocaleConfig} from "./options"
 import {State} from "./store"
 
 export interface BetterPicker {
-    (el: HTMLInputElement, options?: Options): BetterPickerInstance | undefined
+    (el: HTMLInputElement, options?: Options): BetterPickerInstance
 }
 
 export type GetDateType = (Date | null) | (Date | null)[]
@@ -11,11 +11,15 @@ export type GetDateType = (Date | null) | (Date | null)[]
 export type Callback = (...arg: any) => any
 
 export interface BetterPickerInstance {
+    id: number,
     getCurrentDate: () => GetDateType
     onChange: (cb: Callback) => void
     update: (options: Options) => void
     destroyed: () => void
-    clear: () => void | null
+    clear: () => void
+    close:()=>  void
+    open:()=> void
+    state: State
 }
 
 export interface FormatValidator<R = number, P = unknown> {

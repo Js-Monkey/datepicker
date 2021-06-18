@@ -12,12 +12,12 @@ import {createDatePicker, locale, defaultOptions, destroy} from '../../src'
 import NProgress from "nprogress";
 // import xx from '../../dist/locale_es/zh-cn'
 // locale(xx)
-defaultOptions({
-    themeColor: '#1890ff',
-    rangeBgColor: '#e6f7ff',
-    tdColor: '#5f5f5f',
-    thColor: '#5f5f5f',
-})
+// defaultOptions({
+//     themeColor: '#1890ff',
+//     rangeBgColor: '#e6f7ff',
+//     tdColor: '#5f5f5f',
+//     thColor: '#5f5f5f',
+// })
 NProgress.configure({
     easing: 'ease',
     speed: 200,
