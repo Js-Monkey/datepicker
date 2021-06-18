@@ -57,7 +57,7 @@ export default function Picker(): BetterPicker {
         removeState(state.id)
     }
 
-    function create(options?: Options): void {
+    function create(options?: Partial<Options>): void {
         state = createState(opt)
         state.destroyed = destroyed
         changeWeekFormat(options)
@@ -80,14 +80,14 @@ export default function Picker(): BetterPicker {
         state.visible = false
     }
 
-    function changeWeekFormat(opt?: Options) {
+    function changeWeekFormat(opt?: Partial<Options>) {
         if (state?.type === 'week' && (!opt || !opt.format)) {
             state.hasWW = true
             state.options.format = state.locale.weekFormat
         }
     }
 
-    return function (el: HTMLInputElement, options?: Options): BetterPickerInstance {
+    return function (el: HTMLInputElement, options?: Partial<Options>): BetterPickerInstance {
         reference = findInputElement(el)
         opt = mergeOptions(defaultOptions(), options)
         create(options)

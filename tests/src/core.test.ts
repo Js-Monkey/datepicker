@@ -53,10 +53,8 @@ describe('createDatePicker', () => {
     })
 
     it('should change format when set weekType', () => {
-       instance.update({
-           type: 'week'
-       })
-
+       instance = createDatePicker(document.createElement('input'),{type: 'week'})
+        expect(instance.state.hasWW).toBeTruthy()
     })
     it('should destroy binding between `reference` and `DatePicker`', () => {
         expect(instance.destroyed()).toBeUndefined()

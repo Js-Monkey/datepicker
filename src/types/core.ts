@@ -2,7 +2,7 @@ import Options, {LocaleConfig} from "./options"
 import {State} from "./store"
 
 export interface BetterPicker {
-    (el: HTMLInputElement, options?: Options): BetterPickerInstance
+    (el: HTMLInputElement, options?: Partial<Options>): BetterPickerInstance
 }
 
 export type GetDateType = (Date | null) | (Date | null)[]
