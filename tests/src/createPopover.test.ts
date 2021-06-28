@@ -1,17 +1,24 @@
-import {createPopover} from "../../src/core/dom/create-popover"
-import {createState} from "../../src/store"
-import defaultOptions from "../../src/core/util/default-options"
+import {deleteRules} from "../../src/core/dom/create-popover"
 
 
 describe('createPopover', () => {
-    it('should add eventListener on animationend', () => {
-        const state = createState(defaultOptions())
-        const reference = document.createElement('input')
-        state.popover = createPopover(state)
-        document.body.appendChild(state.popover)
-        state.reference = reference
-        const ev = new Event('animationend')
-        state.popover.dispatchEvent(ev)
-        expect(state.popover.style.display).toBe('none')
+    document.styleSheets[0] = {
+        rules:[
+            {
+                name: 'show',
+                type: 7
+            },
+            {
+                name:'hidden',
+                type: 7
+            }
+        ],
+        deleteRule(){
+            //do nothing
+        }
+    } as any
+    it('should call deleteRule when rules is exists', () => {
+        deleteRules()
+        expect(document.styleSheets[0]).toBeDefined()
     })
 })
