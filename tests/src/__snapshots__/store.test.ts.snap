@@ -1,0 +1,689 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can i use Store should create state 1`] = `
+Object {
+  "_type": "date",
+  "date": null,
+  "end": Object {
+    "_date": Array [
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+    ],
+    "_month": Array [
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+    ],
+    "_year": Array [
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+    ],
+    "date": null,
+    "month": 7,
+    "year": 2021,
+  },
+  "hasWW": false,
+  "id": 1,
+  "locale": Object {
+    "months": Array [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    "name": "en",
+    "weekFormat": "yyyy-wwth",
+    "weekStart": 0,
+    "weekdays": Array [
+      "Su",
+      "Mo",
+      "Tu",
+      "We",
+      "Th",
+      "Fr",
+      "Sa",
+    ],
+    "yearFormat": "yyyy",
+    "yearStart": 1,
+  },
+  "onChange": null,
+  "options": Object {
+    "type": "date",
+  },
+  "page": "date",
+  "popover": null,
+  "range": Object {
+    "end": null,
+    "start": null,
+    "status": "complete",
+  },
+  "reference": null,
+  "start": Object {
+    "_date": Array [
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+        "text": "",
+      },
+    ],
+    "_month": Array [
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+    ],
+    "_year": Array [
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+      Object {
+        "date": "",
+        "status": "",
+      },
+    ],
+    "date": null,
+    "month": 6,
+    "year": 2021,
+  },
+  "today": "2021/6/28",
+  "type": "date",
+  "visible": false,
+}
+`;
