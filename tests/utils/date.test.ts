@@ -7,7 +7,8 @@ import {
     joinDate,
     transformDate, transformDateToArray, isSame, getPre, getNext, isInRange, getYearWeek
 } from '../../src/utils/date'
-
+import {createDatePicker,locale} from '../../src'
+import zhCN from '../../locale/zh-cn'
 describe('Date', () => {
     const date = new Date('1999-9-1')
     const today = new Date()
@@ -16,12 +17,6 @@ describe('Date', () => {
         expect(getYear()).toEqual(getYear(today))
         expect(getYear(date)).toBe(1999)
     })
-    //
-    // it('should get Date from string', () => {
-    //   expect(getFormatDate('2020/5/1')).toEqual(new Date('2020/5/1'))
-    //   expect(getFormatDate(['2020/1/1', '2020/3/3'])).toEqual([new Date('2020/1/1'), new Date('2020/3/3')])
-    // })
-    //
 
     it('should get the date of the previous month', () => {
         expect(getPre(1, 2020)).toEqual([12, 2019])
@@ -76,7 +71,7 @@ describe('Date', () => {
         expect(transformDate(new Date('2009/1/18'))).toBe('2009/1/18')
     })
 
-    test('should compare two dates, accurate to month, if days are different, also return true', () => {
+    it('should compare two dates, accurate to month, if days are different, also return true', () => {
         expect(isSame('1999/9/1', '1999/9/10')).toBeTruthy()
         expect(isSame('2009/10/1', '2009/10/12')).toBeTruthy()
         expect(isSame('2099/1/1', '2099/1/1')).toBeTruthy()
@@ -86,11 +81,18 @@ describe('Date', () => {
         expect(isSame('2020/9/1', '2020/10/10')).toBeFalsy()
     })
 
-    // it('should get the week of the year', () => {
-    //   expect(getYearWeek('2020/4/15')).toBe(16)
-    //   expect(getYearWeek('2020/1/01')).toBe(1)
-    //   expect(getYearWeek('2024/10/15')).toBe(42)
-    //   expect(getYearWeek('2016/7/19')).toBe(30)
-    //   expect(getYearWeek('2016/1/17')).toBe(4)
-    // })
+    it('should get the week number of the current date', () => {
+
+        locale(zhCN as any)
+        const {state} = createDatePicker(document.createElement('input'))
+        expect(getYearWeek(new Date('2019-06-10T00:00:00.000Z'),state.locale)).toBe(24)
+        expect(getYearWeek(new Date('2019-01-01T00:00:00.000Z'),state.locale)).toBe(1)
+        expect(getYearWeek(new Date('2019-01-06T00:00:00.000Z'),state.locale)).toBe(1)
+        expect(getYearWeek(new Date('2020-01-06T00:00:00.000Z'),state.locale)).toBe(2)
+
+        expect(getYearWeek(new Date('2020-12-26T00:00:00.000Z'),state.locale)).toBe(52)
+        expect(getYearWeek(new Date('2020-12-28T00:00:00.000Z'),state.locale)).toBe(53)
+
+        expect(getYearWeek(new Date('2023-01-01T00:00:00.000Z'),state.locale)).toBe(52)
+    })
 })
