@@ -56,8 +56,8 @@ function year(state: State): CreateElementPartOptions {
             },
             cb: year => format(year, state)
         },
-        event: toYearPage,
         class: ['pointerCursor'],
+        event: toYearPage,
         $style: {
             display: {
                 key: ['page'],

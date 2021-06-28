@@ -3,13 +3,16 @@ import {
     nextMonth,
     nextYear,
     preMonth,
-    preYear, selectMonth,
-    selectYear, toDayPage, isDayPage,
-    toMonthPage, toYearPage
+    preYear,
+    isDayPage,
+    toYearPage,
+    selectYM,
+    toDayPage,
+    toMonthPage
 } from "../../src/core/components/utils"
 import {createState} from "../../src/store"
 import defaultOptions from "../../src/core/util/default-options"
-import {_Event} from "../../src/types/event"
+import {MonthOrYearComponents} from '../../src/types/store'
 
 const state = createState(defaultOptions())
 const date = '1999/10/1'
@@ -115,13 +118,17 @@ describe('nextMonth', () => {
     })
 })
 
-// describe('toMonthPage', () => {
-//   it('should set state page to `month`', () => {
-//     state.page = 'year'
-//     toMonthPage.call(state)
-//     expect(state.page).toEqual('month')
-//   })
-// })
+describe('toMonthPage', () => {
+    const mockEventTarget: MonthOrYearComponents = {
+        status: 'inRange',
+        date: '2099/10/3'
+    }
+    it('should set state page to `month`', () => {
+        state.page = 'year'
+        toMonthPage.call(state, mockEventTarget)
+        expect(state.page).toEqual('month')
+    })
+})
 
 describe('toYearPage', () => {
     it('should set state page to `year`', () => {
@@ -130,46 +137,51 @@ describe('toYearPage', () => {
         expect(state.page).toEqual('year')
     })
 })
-//
-// describe('toDayPage', () => {
-//   it('should set state page to `day`', () => {
-//     state.page = 'month'
-//     state.start.month = 12
-//     toDayPage.call(state, )
-//     expect(state.page).toEqual('day')
-//     expect(state.start.month).toEqual(2)
-//   })
-// })
+
+describe('toDayPage', () => {
+    const mockEventTarget: MonthOrYearComponents = {
+        status: 'inRange',
+        date: '2099/10/3'
+    }
+    it('should set state page to `day`', () => {
+        state.page = 'month'
+        state.start.month = 12
+        toDayPage.call(state, mockEventTarget)
+        expect(state.page).toEqual('date')
+        expect(state.start.month).toEqual(10)
+    })
+})
 
 describe('selectYear', () => {
-    const mockEventTarget = {
-        target: {
-            innerText: '2099'
-        }
-    } as _Event
-    // it('should  set `year` and `page`', () => {
-    //   state.page = 'year'
-    //   state.start.year = 2020
-    //   const fn = selectYear.bind(state)
-    //   fn(mockEventTarget)
-    //   expect(state.page).toEqual('month')
-    //   expect(state.start.year).toEqual(2099)
-    // })
+    const mockEventTarget: MonthOrYearComponents = {
+        status: 'inRange',
+        date: '2099/10/3'
+    }
+    it('should  set `year` and `page`', () => {
+        state.page = 'year'
+        state.start.year = 2020
+        selectYM.call(state, mockEventTarget, 'year')
+        expect(state.page).toEqual('year')
+        expect(state.start.year).toEqual(2099)
+    })
 })
 
 
-// describe('selectMonth', () => {
-//   it('should  set `month` and `page`', () => {
-//     state.page = 'year'
-//     state.start.month = 12
-//     state.start.date = '1789/10/10'
-//     state.start._month[1].date = date
-//     const fn = selectMonth.bind(state)
-//     fn(1)
-//     expect(state.visible).toBeFalsy()
-//     expect(state.start.month).toEqual(1)
-//   })
-// })
+describe('selectMonth', () => {
+    const mockEventTarget = {
+        status: 'complete',
+        date: '2099/10/3'
+    } as any
+    it('should  set `month` and `page`', () => {
+        state.page = 'year'
+        state.start.month = 12
+        state.start.date = '1789/10/10'
+        state.start._month[1].date = date
+        selectYM.call(state, mockEventTarget, 'month')
+        expect(state.visible).toBeFalsy()
+        expect(state.start.month).toEqual(10)
+    })
+})
 
 
 describe('toggleVisibility', () => {

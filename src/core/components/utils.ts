@@ -71,20 +71,12 @@ export function toMonthPage(state: MonthOrYearComponents): void {
     this.page = 'month'
 }
 
-export function selectYear(state: MonthOrYearComponents): void {
+export function selectYM(state: MonthOrYearComponents,name: 'year'| 'month'): void {
     const {date} = state
-    ;[this.start.year] = transformDateToArray(date)
+    this.start[name] = transformDateToArray(date)[name==='year'? 0: 1]
     this.start.date = date
     this.visible = false
 }
-
-export function selectMonth(state: MonthOrYearComponents): void {
-    const {date} = state
-    this.start.month = transformDateToArray(date)
-    this.start.date = date
-    this.visible = false
-}
-
 
 export function toDayPage(state: MonthOrYearComponents): void {
     this.start.month = transformDateToArray(state.date)[1]
