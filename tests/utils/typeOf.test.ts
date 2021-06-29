@@ -1,4 +1,4 @@
-import {isString, isArray, isFunc, isNumber, isObject, isBoolean} from '../../src/utils/typeOf'
+import {isString, isArray, isFunc, isNumber, isObject, isBoolean, not} from '../../src/utils/typeOf'
 
 describe('type-of', () => {
     it('should return whether value is Number, NaN is not a Number type here', () => {
@@ -58,5 +58,9 @@ describe('type-of', () => {
         expect(isBoolean(0)).toBeFalsy()
         expect(isBoolean(1)).toBeFalsy()
         expect(isBoolean('0')).toBeFalsy()
+    })
+    it('should return `true` whether `target` is not has the value', () => {
+        expect(not(['a'],'a')).toBeFalsy()
+        expect(not(['a'],'b')).toBeTruthy()
     })
 })
