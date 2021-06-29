@@ -83,13 +83,16 @@ function month(state: State): CreateElementPartOptions {
     }
 }
 
+export function getTextType(state: State): DateComponentsType<[string[],(...arg: any)=> string | number]> {
+   return {
+       date: [['month', 'year'],(idx: number, year: string) => format(year, state) + ' ' + state.locale.months[idx - 1]],
+       month: [['year'],(year: number) => year],
+       year: [['year', '_date'],(year: number) => getRange(year)],
+   }
+}
+
 function date(state: State) {
-    const textType: DateComponentsType<[string[],(...arg: any)=> string | number]> = {
-        date: [['month', 'year'],(idx: number, year: string) => format(year, state) + ' ' + state.locale.months[idx - 1]],
-        month: [['year'],(year: number) => year],
-        year: [['year', '_date'],(year: number) => getRange(year)],
-    }
-    const [childKey,cb] = textType[state._type]
+    const [childKey,cb] = getTextType(state)[state._type]
     return {
         name: 'span',
         text: {

@@ -33,3 +33,28 @@ Object {
   },
 }
 `;
+
+exports[`getTextType should match snapShot 1`] = `
+Object {
+  "date": Array [
+    Array [
+      "month",
+      "year",
+    ],
+    [Function],
+  ],
+  "month": Array [
+    Array [
+      "year",
+    ],
+    [Function],
+  ],
+  "year": Array [
+    Array [
+      "year",
+      "_date",
+    ],
+    [Function],
+  ],
+}
+`;

@@ -1,5 +1,7 @@
-import createSVG, {createEL} from '../../src/utils/element'
+import createSVG, {createEL, createElement, appendChild} from '../../src/utils/element'
 import {addAttr, resetAttr} from '../../src/utils/attribute'
+import {createState} from "../../src/store"
+import defaultOptions from "../../src/core/util/default-options"
 
 function isNode(el: any) {
     expect(el.addEventListener).toBeDefined()
@@ -11,6 +13,18 @@ describe('createEl', () => {
         const span = createEL('span')
         expect(span.nodeName.toLowerCase()).toBe('span')
         isNode(span)
+    })
+
+    it('should add EventListener if options has themeColor', () => {
+        const state = createState(defaultOptions())
+        const themeColor = 'rgb(231, 20, 228)'
+        state.options.themeColor = themeColor
+        const el = createElement({
+            event: (e) => e
+        }, state)
+        const mouseenter = new Event('mouseenter')
+        el.dispatchEvent(mouseenter)
+        expect((el as HTMLElement).style.color).toBe(themeColor)
     })
 
     it('if `parameter` is null, return `div`', () => {
@@ -43,6 +57,25 @@ describe('resetAttr', () => {
         expect(classes).toContain(className)
     })
 })
+
+describe('appendChild', () => {
+    it('should append childNodes to Parent: Node[]', () => {
+        const parent = document.createElement('div')
+        const child1 = document.createElement('div')
+        const child2 = document.createElement('span')
+        appendChild([child1, child2], parent)
+        expect(parent.childNodes[0]).toEqual(child1)
+        expect(parent.childNodes[1]).toEqual(child2)
+    })
+    it('should append childNodes to Parent: Node', () => {
+        const parent = document.createElement('div')
+        const child = document.createElement('div')
+        appendChild(child, parent)
+        expect(parent.childNodes[0]).toEqual(child)
+        expect(parent.childNodes.length).toEqual(1)
+    })
+})
+
 
 describe('addAttr', () => {
     it('should add element attribute, and merge the original values', () => {
