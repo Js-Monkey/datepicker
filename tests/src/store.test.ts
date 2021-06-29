@@ -9,10 +9,10 @@ describe('can i use Store', () => {
         popover: document.createElement('div')
     })
 
-    it('should create state', () => {
-        expect(createState(options)).toMatchSnapshot(
-        )
-    })
+    // it('should create state', () => {
+    //     expect(createState(options)).toMatchSnapshot(
+    //     )
+    // })
 
     it('should destroyed state', () => {
         expect(destroyed()).toBeUndefined()
