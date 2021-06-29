@@ -10,11 +10,7 @@ export function flushCallbacks(): void {
     const copies = callbacks.slice(0)
     callbacks.length = 0
     for (let i = 0; i < copies.length; i++) {
-        try {
-            copies[i]()
-        } catch (e) {
-            console.error('nextTick callback error: ' + e)
-        }
+        copies[i]()
     }
 }
 
